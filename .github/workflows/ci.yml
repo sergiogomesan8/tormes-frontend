@@ -1,0 +1,15 @@
+name: Frontend CI - Linter and Sonarcloud
+run-name: ${{ github.actor }} run Backend CI 🚀
+on:
+  push:
+    branches: ['develop', 'release-*']
+jobs:
+    linter:
+        name: Linter
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v3
+        - name: Install modules
+          run: npm install
+        - name: Run ESlint
+          run: npm run lint:changes
