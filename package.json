@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint:all": "eslint 'src/**/*.{ts,tsx}'",
+    "lint:changes": "eslint $(git diff --name-only HEAD --diff-filter=d src/ | xargs)"
   },
   "private": true,
   "dependencies": {
