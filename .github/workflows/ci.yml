@@ -1,5 +1,5 @@
 name: Frontend CI - Linter and Sonarcloud
-run-name: ${{ github.actor }} run Backend CI 🚀
+run-name: ${{ github.actor }} run Frontend CI 🚀
 on:
   push:
     branches: ['develop', 'release-*']
@@ -12,4 +12,4 @@ jobs:
         - name: Install modules
           run: npm install
         - name: Run ESlint
-          run: npm run lint:changes
+          run: eslint $(git diff --name-only HEAD --diff-filter=d src/ | xargs)
