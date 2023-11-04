@@ -12,4 +12,4 @@ jobs:
         - name: Install modules
           run: npm install
         - name: Run ESlint
-          run: eslint $(git diff --name-only HEAD --diff-filter=d src/ | xargs)
+          run: npm run lint:changes
