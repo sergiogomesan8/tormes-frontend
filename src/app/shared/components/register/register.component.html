@@ -1,0 +1,89 @@
+<div id="register">
+  <div class="header">
+    <div class="logo">
+      <img src="..\assets\images\Tormes-Logo.png" />
+    </div>
+    <div class="title">
+      <p>Registrate</p>
+      <span>TORMES</span>
+    </div>
+  </div>
+
+  <div class="dialog-container">
+    <form
+      class="form-container"
+      [formGroup]="formGroup"
+      (ngSubmit)="signin()"
+      fxLayout="column"
+      fxLayoutAlign="start center"
+    >
+      <!-- <h2>{{'login.title' | translate}}</h2>
+        <h6>{{'login.desc' | translate}}</h6> -->
+
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" ng-model="data.name" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="name" ng-model="data.name" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          formControlName="pass"
+          [type]="hidePass ? 'password' : 'text'"
+          required
+        />
+        <mat-icon *ngIf="hidePass" (click)="hidePass = false" matSuffix
+          >visibility</mat-icon
+        >
+        <mat-icon *ngIf="!hidePass" (click)="hidePass = true" matSuffix
+          >visibility_off</mat-icon
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          formControlName="passConfirmation"
+          [type]="hidePass ? 'password' : 'text'"
+          required
+        />
+        <mat-icon *ngIf="hidePass" (click)="hidePass = false" matSuffix
+          >visibility</mat-icon
+        >
+        <mat-icon *ngIf="!hidePass" (click)="hidePass = true" matSuffix
+          >visibility_off</mat-icon
+        >
+      </mat-form-field>
+
+      <!-- <p class="reset-password" (click)="redirectToResetPass()">{{ 'dialog.payment.message.password.reset' | translate }}</p> -->
+
+      <div class="container-button">
+        <button
+          class="button-purple"
+          type="submit"
+          [attr.disabled]="loading ? 'true' : null"
+        >
+          <div *ngIf="!loading">Registrarse</div>
+          <div *ngIf="loading">
+            <div class="loader-button disabled"></div>
+          </div>
+        </button>
+      </div>
+    </form>
+
+    <!-- <app-landing-providers class="provider-buttons"></app-landing-providers> -->
+    <div class="already-account">
+      <p>Ya tienes una cuenta?</p>
+      <button routerLink="/registroUsuario" type="submit">
+        Iniciar sesión
+      </button>
+    </div>
+  </div>
+</div>
