@@ -1,0 +1,71 @@
+.button-container .gold-button {
+  font-size: 15px;
+
+  align-items: center;
+
+  border: none;
+  border-radius: 8px;
+  box-decoration-break: none;
+
+  height: 2rem;
+  width: 100%;
+
+  background-color: #f2c679;
+  color: white;
+
+  cursor: pointer;
+}
+
+.button-container .gold-button:hover {
+  background-color: #cc9901;
+}
+
+.button-container .purple-button {
+  font-size: 15px;
+
+  align-items: center;
+
+  border: none;
+  border-radius: 8px;
+  box-decoration-break: none;
+
+  height: 2rem;
+  width: 100%;
+
+  background-color: #2e1834;
+  color: white;
+
+  cursor: pointer;
+}
+
+.button-container .purple-button:hover {
+  background-color: #6a3c99;
+}
+
+.button-container .border-purple-button {
+  font-size: 15px;
+
+  align-items: center;
+
+  border-style: solid;
+  border-width: 0.13rem;
+  border-color: #2e1834;
+  border-radius: 0.4rem 0.4rem;
+
+  box-decoration-break: none;
+
+  height: 1.8rem;
+  width: 100%;
+
+  background-color: transparent;
+  color: #2e1834;
+
+  cursor: pointer;
+}
+
+.button-container .border-purple-button:hover {
+  background-color: #6a3c99;
+  border-width: 0px;
+
+  color: white;
+}
