@@ -4,6 +4,7 @@ import {
   provideClientHydration,
 } from '@angular/platform-browser';
 
+import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,7 +12,7 @@ import { CoreModule } from './core/core.module';
 import { ShopModule } from './shop/shop.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,6 +22,6 @@ import { ShopModule } from './shop/shop.module';
     ShopModule,
   ],
   providers: [provideClientHydration()],
-  bootstrap: [],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
