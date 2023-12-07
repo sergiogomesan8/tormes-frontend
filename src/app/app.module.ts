@@ -5,14 +5,13 @@ import {
 } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { ShopModule } from './shop/shop.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,6 +21,6 @@ import { ShopModule } from './shop/shop.module';
     ShopModule,
   ],
   providers: [provideClientHydration()],
-  bootstrap: [AppComponent],
+  bootstrap: [],
 })
 export class AppModule {}
