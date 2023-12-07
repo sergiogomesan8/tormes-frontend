@@ -23,6 +23,11 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
+        <mat-label>Last name</mat-label>
+        <input matInput formControlName="lastName" ng-model="data.lastName" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input
           matInput
@@ -64,15 +69,56 @@
         >
       </mat-form-field>
 
-      <purple-button [label]="'login.signin'" [disabled]="!formGroup.valid">
-      </purple-button>
-    </form>
-    <div class="already-account">
-      <border-purple-button
-        [label]="'login.signin'"
+      <mat-form-field appearance="outline">
+        <mat-label>Phone Number</mat-label>
+        <input matInput formControlName="phoneNumber" ng-model="data.phoneNumber" required pattern="[0-9]*"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Delivery Address</mat-label>
+        <input matInput formControlName="deliveryAddress" ng-model="data.deliveryAddress" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Billing Address</mat-label>
+        <input matInput formControlName="billingAddress" ng-model="data.billingAddress" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Postal Code</mat-label>
+        <input matInput formControlName="postalCode" ng-model="data.postalCode" required pattern="[0-9]*" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender" ng-model="data.gender" required>
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+          <mat-option value="other">Other</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Birthdate</mat-label>
+        <input matInput [matDatepicker]="datepicker" formControlName="birthdate" ng-model="data.birthdate" required />
+        <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker></mat-datepicker>
+      </mat-form-field>
+
+      <button-component
+        [class]="'purple-button'"
+        [label]="'register.button' | translate"
         [disabled]="!formGroup.valid"
       >
-      </border-purple-button>
+      </button-component>
+    </form>
+    <div class="already-account">
+      <button-component
+        [class]="'border-purple-button'"
+        [label]="'register.new-user' | translate"
+        [disabled]="!formGroup.valid"
+      >
+      </button-component>
     </div>
   </div>
 </div>
