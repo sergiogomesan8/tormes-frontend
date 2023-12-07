@@ -1,11 +1,10 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
-// eslint-disable-next-line new-cap
 @Component({
-	selector: 'app-root',
-	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.scss'],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
-	title = 'tormes-frontend';
+  title = 'tormes-frontend';
 }
