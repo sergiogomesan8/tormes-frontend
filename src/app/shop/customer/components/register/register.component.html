@@ -67,10 +67,12 @@
       <purple-button [label]="'login.signin'" [disabled]="!formGroup.valid">
       </purple-button>
     </form>
-
-    <border-purple-button>
-      [label]="'login.signin'" [disabled]="!formGroup.valid">
-    </border-purple-button>
+    <div class="already-account">
+      <border-purple-button
+        [label]="'login.signin'"
+        [disabled]="!formGroup.valid"
+      >
+      </border-purple-button>
+    </div>
   </div>
 </div>
-
