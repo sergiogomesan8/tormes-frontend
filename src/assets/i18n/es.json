@@ -1,0 +1,20 @@
+{
+  "login": {
+    "title": "Inicio de sesión en",
+    "web-title": "TORMES",
+    "label-email": "Email",
+    "label-password": "Contraseña",
+    "button": "Iniciar sesión",
+    "new-user": "¿Eres nuevo por aquí?",
+    "register": "Registrarse"
+  },
+  "register": {
+    "title": "Registrarse",
+    "web-title": "TORMES",
+    "label-email": "Email",
+    "label-password": "Contraseña",
+    "button": "Registrarse",
+    "new-user": "¿Ya tienes cuenta?",
+    "login": "Iniciar sesión"
+  }
+}

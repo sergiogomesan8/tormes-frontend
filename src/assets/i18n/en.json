@@ -1,0 +1,20 @@
+{
+  "login": {
+    "title": "Log in",
+    "web-title": "TORMES",
+    "label-email": "Email",
+    "label-password": "Password",
+    "button": "Log in",
+    "new-user": "Are you new here?",
+    "register": "Sing in"
+  },
+  "register": {
+    "title": "Sign in",
+    "web-title": "TORMES",
+    "label-email": "Email",
+    "label-password": "Password",
+    "button": "Sign in",
+    "new-user": "Already have an account?",
+    "login": "Log in"
+  }
+}
