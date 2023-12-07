@@ -1,0 +1,47 @@
+.container-button .button-gold{
+  font-size: 15px;
+
+  align-items: center;
+
+  border: none;
+  border-radius: 8px;
+  box-decoration-break: none;
+
+  height: 2rem;
+  width: 100%;
+
+  background-color: #F2C679;
+  color:white;
+
+  cursor:pointer;
+}
+
+.container-button .button-gold:hover{
+    background-color: #CC9901;
+}
+
+
+.container-button .button-purple{
+  font-size: 15px;
+
+  align-items: center;
+
+  border: none;
+  border-radius: 8px;
+  box-decoration-break: none;
+
+  height: 2rem;
+  width: 100%;
+
+  background-color: #2E1834;
+  color:white;
+
+  cursor:pointer;
+}
+
+.container-button .button-purple:hover{
+    background-color: #6A3C99;
+}
+
+
+
