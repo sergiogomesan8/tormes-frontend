@@ -2,6 +2,7 @@
   "register": {
     "title": "Sign in",
     "web-title": "TORMES",
+    "welcome": "Welcome!",
     "label-name": "Name",
     "label-lastName": "Last name",
     "label-email": "Email",

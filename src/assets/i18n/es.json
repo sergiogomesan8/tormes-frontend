@@ -2,6 +2,7 @@
   "register": {
     "title": "Registrarse en",
     "web-title": "TORMES",
+    "welcome": "Bienvenido!",
     "label-name": "Nombre",
     "label-lastName": "Apellidos",
     "label-email": "Email",
