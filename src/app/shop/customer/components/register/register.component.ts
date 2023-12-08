@@ -47,18 +47,12 @@ export class RegisterComponent implements OnInit {
         password: this.formGroup.value.pass,
       };
 
-      try {
-        const result = await this.customerService.signin(createUserDto);
-
-        if (result) {
+      await this.customerService.signin(createUserDto).subscribe({
+        next: (result) => {
           console.log(result);
           // this.router.navigate(['/catalog']);
-        }
-      } catch (error) {
-        console.error('Error al registrar el usuario', error);
-      }
-    } else {
-      console.log('Formulario inválido');
+        },
+      });
     }
   }
 }
