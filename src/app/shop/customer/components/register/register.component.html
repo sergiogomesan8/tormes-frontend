@@ -32,16 +32,6 @@
             />
           </mat-form-field>
 
-          <!-- <mat-form-field appearance="outline">
-            <mat-label [translate]="'register.label-lastName'"></mat-label>
-            <input
-              matInput
-              formControlName="lastName"
-              ng-model="data.lastName"
-              required
-            />
-          </mat-form-field> -->
-
           <mat-form-field appearance="outline">
             <mat-label [translate]="'register.label-email'"></mat-label>
             <input
@@ -85,6 +75,44 @@
               >visibility_off</mat-icon
             >
           </mat-form-field>
+
+          <button-component
+            [class]="'purple-button'"
+            [type]="'submit'"
+            [label]="'register.button' | translate"
+            [disabled]="!formGroup.valid"
+            (buttonClick)="signin()"
+          >
+          </button-component>
+        </form>
+      </div>
+      <div class="already-account">
+        <p [translate]="'register.new-user' | translate"></p>
+        <button-component
+          [class]="'border-gold-button'"
+          [label]="'register.login' | translate"
+          [disabled]="!formGroup.valid"
+        >
+        </button-component>
+      </div>
+    </div>
+    <div class="image-column">
+      <div class="color-container"></div>
+    </div>
+  </div>
+</div>
+
+
+          <!-- <mat-form-field appearance="outline">
+            <mat-label [translate]="'register.label-lastName'"></mat-label>
+            <input
+              matInput
+              formControlName="lastName"
+              ng-model="data.lastName"
+              required
+            />
+          </mat-form-field> -->
+
 
           <!-- <mat-form-field appearance="outline">
           <mat-label [translate]="'register.label-phoneNumber'"></mat-label>
@@ -158,27 +186,3 @@
           ></mat-datepicker-toggle>
           <mat-datepicker #datepicker></mat-datepicker>
         </mat-form-field> -->
-
-          <button-component
-            [class]="'purple-button'"
-            [label]="'register.button' | translate"
-            [disabled]="!formGroup.valid"
-          >
-          </button-component>
-        </form>
-      </div>
-      <div class="already-account">
-        <p [translate]="'register.new-user' | translate"></p>
-        <button-component
-          [class]="'border-gold-button'"
-          [label]="'register.login' | translate"
-          [disabled]="!formGroup.valid"
-        >
-        </button-component>
-      </div>
-    </div>
-    <div class="image-column">
-      <div class="color-container"></div>
-    </div>
-  </div>
-</div>
