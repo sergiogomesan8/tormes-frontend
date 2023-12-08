@@ -9,7 +9,7 @@ type AllowedClassValues =
 @Component({
   selector: 'button-component',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss'],
+  styleUrls: ['./button.component.scss', '../../../styles/styles.scss'],
 })
 export class ButtonComponent {
   @Input()
