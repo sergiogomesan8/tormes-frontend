@@ -19,10 +19,17 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
+    "baseUrl": "./", 
     "paths": {
       "tormes-library": [
         "./dist/tormes-library"
-      ]
+      ],
+      "@env": ["src/environments/environment.ts"],
+      "@shared/*": ["src/app/shared/*"],
+      "@core/*": ["src/app/core/*"],
+      "@shop/*": ["src/app/shop/*"],
+      "@customer/*": ["src/app/shop/customer/*"],
+      "@admin/*": ["src/app/shop/admin/*"]
     },
     "lib": [
       "ES2022",
