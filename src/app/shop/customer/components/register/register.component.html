@@ -6,12 +6,12 @@
           <img alt="Tormes-Logo" src="..\assets\images\Tormes-Logo.png" />
         </div>
         <div class="welcome-container">
-          <h5 class="welcome-title" [translate]="'register.welcome'"></h5>
+          <h5 class="welcome-title" [translate]="'shop.customer.register.welcome'"></h5>
           <!-- <p class="welcome-text"></p> -->
         </div>
         <div class="title">
-          <p [translate]="'register.title'"></p>
-          <span [translate]="'register.web-title'"></span>
+          <p [translate]="'shop.customer.register.title'"></p>
+          <span [translate]="'shop.customer.register.web-title'"></span>
         </div>
       </div>
       <div class="dialog-container">
@@ -23,7 +23,7 @@
           fxLayoutAlign="start center"
         >
           <mat-form-field appearance="outline">
-            <mat-label [translate]="'register.label-name'"></mat-label>
+            <mat-label [translate]="'shop.customer.register.label-name'"></mat-label>
             <input
               matInput
               formControlName="name"
@@ -33,7 +33,7 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline">
-            <mat-label [translate]="'register.label-email'"></mat-label>
+            <mat-label [translate]="'shop.customer.register.label-email'"></mat-label>
             <input
               matInput
               formControlName="email"
@@ -43,7 +43,7 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline">
-            <mat-label [translate]="'register.label-password'"></mat-label>
+            <mat-label [translate]="'shop.customer.register.label-password'"></mat-label>
             <input
               matInput
               formControlName="pass"
@@ -60,7 +60,7 @@
 
           <mat-form-field appearance="outline">
             <mat-label
-              [translate]="'register.label-passwordConfirmation'"
+              [translate]="'shop.customer.register.label-passwordConfirmation'"
             ></mat-label>
             <input
               matInput
@@ -79,17 +79,17 @@
           <button-component
             [class]="'purple-button'"
             [type]="'submit'"
-            [label]="'register.button' | translate"
+            [label]="'shop.customer.register.button' | translate"
             [disabled]="!formGroup.valid"
           >
           </button-component>
         </form>
       </div>
       <div class="already-account">
-        <p [translate]="'register.new-user' | translate"></p>
+        <p [translate]="'shop.customer.register.new-user' | translate"></p>
         <button-component
           [class]="'border-gold-button'"
-          [label]="'register.login' | translate"
+          [label]="'shop.customer.register.login' | translate"
           [disabled]="!formGroup.valid"
         >
         </button-component>
@@ -102,7 +102,7 @@
 </div>
 
 <!-- <mat-form-field appearance="outline">
-            <mat-label [translate]="'register.label-lastName'"></mat-label>
+            <mat-label [translate]="'shop.customer.register.label-lastName'"></mat-label>
             <input
               matInput
               formControlName="lastName"
@@ -112,7 +112,7 @@
           </mat-form-field> -->
 
 <!-- <mat-form-field appearance="outline">
-          <mat-label [translate]="'register.label-phoneNumber'"></mat-label>
+          <mat-label [translate]="'shop.customer.register.label-phoneNumber'"></mat-label>
           <input
             matInput
             formControlName="phoneNumber"
@@ -123,7 +123,7 @@
         </mat-form-field>
   
         <mat-form-field appearance="outline">
-          <mat-label [translate]="'register.label-deliveryAddress'"></mat-label>
+          <mat-label [translate]="'shop.customer.register.label-deliveryAddress'"></mat-label>
           <input
             matInput
             formControlName="deliveryAddress"
@@ -133,7 +133,7 @@
         </mat-form-field>
   
         <mat-form-field appearance="outline">
-          <mat-label [translate]="'register.label-billingAddress'"></mat-label>
+          <mat-label [translate]="'shop.customer.register.label-billingAddress'"></mat-label>
           <input
             matInput
             formControlName="billingAddress"
@@ -143,7 +143,7 @@
         </mat-form-field>
   
         <mat-form-field appearance="outline">
-          <mat-label [translate]="'register.label-postalCode'"></mat-label>
+          <mat-label [translate]="'shop.customer.register.label-postalCode'"></mat-label>
           <input
             matInput
             formControlName="postalCode"
@@ -154,22 +154,22 @@
         </mat-form-field>
   
         <mat-form-field appearance="outline">
-          <mat-label [translate]="'register.label-gender'"></mat-label>
+          <mat-label [translate]="'shop.customer.register.label-gender'"></mat-label>
           <mat-select formControlName="gender" ng-model="data.gender" required>
             <mat-option value="male">{{
-              "register.label-gender-male" | translate
+              "shop.customer.register.label-gender-male" | translate
             }}</mat-option>
             <mat-option value="female">{{
-              "register.label-gender-female" | translate
+              "shop.customer.register.label-gender-female" | translate
             }}</mat-option>
             <mat-option value="other">{{
-              "register.label-gender-other" | translate
+              "shop.customer.register.label-gender-other" | translate
             }}</mat-option>
           </mat-select>
         </mat-form-field>
   
         <mat-form-field appearance="outline">
-          <mat-label [translate]="'register.label-birthdate'"></mat-label>
+          <mat-label [translate]="'shop.customer.register.label-birthdate'"></mat-label>
           <input
             matInput
             [matDatepicker]="datepicker"
