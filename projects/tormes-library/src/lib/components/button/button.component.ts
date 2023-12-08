@@ -1,6 +1,10 @@
 import { Component, Input } from '@angular/core';
 
-type AllowedClassValues = 'gold-button' | 'purple-button' | 'border-gold-button' | 'border-purple-button';
+type AllowedClassValues =
+  | 'gold-button'
+  | 'purple-button'
+  | 'border-gold-button'
+  | 'border-purple-button';
 
 @Component({
   selector: 'button-component',
