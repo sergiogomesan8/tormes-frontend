@@ -40,25 +40,20 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {}
 
   async signin(): Promise<void> {
-    console.log('Entrando en signin()');
-
     if (this.formGroup.valid) {
-      console.log('Formulario válido');
-
       const createUserDto: CreateUserDto = {
         name: this.formGroup.value.name,
         email: this.formGroup.value.email,
         password: this.formGroup.value.pass,
-        userType: UserType.customer,
       };
 
       try {
-        console.log('Intentando registrar usuario');
-        await this.customerService.signin(createUserDto);
+        const result = await this.customerService.signin(createUserDto);
 
-        this.router.navigate(['/catalog']);
-
-        console.log('Usuario registrado exitosamente');
+        if (result) {
+          console.log(result);
+          // this.router.navigate(['/catalog']);
+        }
       } catch (error) {
         console.error('Error al registrar el usuario', error);
       }
