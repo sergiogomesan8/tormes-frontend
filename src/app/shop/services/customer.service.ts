@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { CreateUserDto } from '../customer/dtos/user.dto';
 import { User } from '../models/user.model';
-import { HttpService } from '../../core/services/http-service.service';
+import { HttpService } from '@core/services/http-service.service';
 import { Observable, catchError, tap, of } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { HttpError } from '../../core/models/error.model';
+import { HttpError } from '@core/models/error.model';
 
 @Injectable({
   providedIn: 'root',
