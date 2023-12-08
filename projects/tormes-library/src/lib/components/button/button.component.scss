@@ -10,14 +10,23 @@
   height: 2rem;
   width: 100%;
 
-  background-color: #f2c679;
+  background-color: #ec9819;
   color: white;
 
   cursor: pointer;
+
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px 24px;
+
+    cursor: pointer;
+  }
 }
 
 .button-container .gold-button:hover {
-  background-color: #cc9901;
+  background-color: #f5ac2f;
 }
 
 .button-container .purple-button {
@@ -36,6 +45,15 @@
   color: white;
 
   cursor: pointer;
+
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px 24px;
+
+    cursor: pointer;
+  }
 }
 
 .button-container .purple-button:hover {
@@ -61,11 +79,60 @@
   color: #2e1834;
 
   cursor: pointer;
+
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px 16px;
+
+    cursor: pointer;
+  }
 }
 
 .button-container .border-purple-button:hover {
   background-color: #6a3c99;
-  border-width: 0px;
+  border-width: 0.13rem;
+  border-color: #6a3c99;
+
+  color: white;
+}
+
+
+.button-container .border-gold-button {
+  font-size: 15px;
+
+  align-items: center;
+
+  border-style: solid;
+  border-width: 0.13rem;
+  border-color: #ec9819;
+  border-radius: 0.4rem 0.4rem;
+
+  box-decoration-break: none;
+
+  height: 1.8rem;
+  width: 100%;
+
+  background-color: transparent;
+  color: #ec9819;
+
+  cursor: pointer;
+
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px 16px;
+
+    cursor: pointer;
+  }
+}
+
+.button-container .border-gold-button:hover {
+  background-color: #f5ac2f;
+  border-width: 0.13rem;
+  border-color: #f5ac2f;
 
   color: white;
 }
