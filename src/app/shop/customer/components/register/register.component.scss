@@ -26,6 +26,7 @@
 
       p {
         margin-right: 4px;
+        margin-bottom: 0px;
       }
 
       span {
@@ -66,12 +67,16 @@
 
     .already-account {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
+
+      width: 90%;
 
       margin: 16px auto;
 
-      width: 80%;
+      p {
+        margin-bottom: 0px;
+      }
     }
   }
 }
