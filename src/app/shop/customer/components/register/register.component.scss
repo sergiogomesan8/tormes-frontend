@@ -1,81 +1,125 @@
 #register {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 32px;
-  margin-bottom: 32px;
+  justify-content: center;
 
-  .header {
+  height: 100%;
+  width: 100%;
+
+  // background: linear-gradient(to right, #f5ac2f, #6a3c99);
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.2)
+    ),
+    linear-gradient(to right, #f5ac2f, #6a3c99);
+  .register-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 
-    .logo {
-      margin: 0px auto 12px;
-      cursor: pointer;
+    max-width: 1000px;
+    height: 650px;
+    margin: auto;
 
-      img {
-        height: 50px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 12px 0 rgb(0 0 0 / 30%);
+    .form-column {
+      padding: 32px 16px;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .logo {
+          margin: 32px;
+          cursor: pointer;
+
+          img {
+            height: 50px;
+          }
+        }
+
+        .welcome-container {
+          margin-bottom: 16px;
+          .welcome-title {
+            font-size: 20px;
+          }
+        }
+
+        .title {
+          display: flex;
+          width: 300px;
+          margin-bottom: 8px;
+
+          p {
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 0px;
+          }
+
+          span {
+            font-size: 20px;
+            line-height: 14px;
+            margin-left: 4px;
+          }
+        }
+      }
+
+      .dialog-container {
+        min-width: 400px;
+        form {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+
+          mat-form-field {
+            width: 300px;
+          }
+
+          button-component {
+            margin-top: 8px;
+            width: 300px;
+          }
+        }
+      }
+      .already-account {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 300px;
+
+        margin: 24px auto;
+
+        p {
+          margin-bottom: 0px;
+        }
+
+        button-component{
+          width: 125px;
+        }
       }
     }
-
-    .title {
-      display: flex;
-      align-items: flex-end;
-
-      margin: 0px auto;
-
-      p {
-        margin-right: 4px;
-        margin-bottom: 0px;
-      }
-
-      span {
-        font-size: 24px;
-        margin-left: 4px;
-      }
-    }
-  }
-
-  .dialog-container {
-    min-width: 328px;
-
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      padding: 24px 0px;
-
-      background-color: #f9f9f9;
-
-      border: solid 1px #f9f9f9;
-      border-radius: 10px;
-      box-shadow: 0 5px 12px 0 rgb(0 0 0 / 15%);
-
-      margin-top: 32px;
-      margin-bottom: auto;
-
-      mat-form-field {
-        width: 250px;
-      }
-
-      .container-button {
-        width: 8rem;
-        margin-top: 8px;
-      }
-    }
-
-    .already-account {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      width: 90%;
-
-      margin: 16px auto;
-
-      p {
-        margin-bottom: 0px;
+    .image-column {
+      width: 870px;
+      height: 100%;
+      .color-container {
+        width: 100%;
+        height: 100%;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background: linear-gradient(
+            rgba(69, 69, 69, 0.4),
+            rgba(69, 69, 69, 0.4)
+          ),
+          url("../../../../../assets/images/mural-ibericos-selectos-tormes.jpg");
+        background-size: 270%;
+        background-position-x: 65%;
+        background-repeat: no-repeat;
+        overflow: hidden;
       }
     }
   }

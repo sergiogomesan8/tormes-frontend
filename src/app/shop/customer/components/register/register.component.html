@@ -1,169 +1,184 @@
 <div id="register">
-  <div class="header">
-    <div class="logo">
-      <img alt="Tormes-Logo" src="..\assets\images\Tormes-Logo.png" />
+  <div class="register-container">
+    <div class="form-column">
+      <div class="header">
+        <div class="logo">
+          <img alt="Tormes-Logo" src="..\assets\images\Tormes-Logo.png" />
+        </div>
+        <div class="welcome-container">
+          <h5 class="welcome-title" [translate]="'register.welcome'"></h5>
+          <!-- <p class="welcome-text"></p> -->
+        </div>
+        <div class="title">
+          <p [translate]="'register.title'"></p>
+          <span [translate]="'register.web-title'"></span>
+        </div>
+      </div>
+      <div class="dialog-container">
+        <form
+          class="form-container"
+          [formGroup]="formGroup"
+          (ngSubmit)="signin()"
+          fxLayout="column"
+          fxLayoutAlign="start center"
+        >
+          <mat-form-field appearance="outline">
+            <mat-label [translate]="'register.label-name'"></mat-label>
+            <input
+              matInput
+              formControlName="name"
+              ng-model="data.name"
+              required
+            />
+          </mat-form-field>
+
+          <!-- <mat-form-field appearance="outline">
+            <mat-label [translate]="'register.label-lastName'"></mat-label>
+            <input
+              matInput
+              formControlName="lastName"
+              ng-model="data.lastName"
+              required
+            />
+          </mat-form-field> -->
+
+          <mat-form-field appearance="outline">
+            <mat-label [translate]="'register.label-email'"></mat-label>
+            <input
+              matInput
+              formControlName="email"
+              ng-model="data.email"
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label [translate]="'register.label-password'"></mat-label>
+            <input
+              matInput
+              formControlName="pass"
+              [type]="hidePass ? 'password' : 'text'"
+              required
+            />
+            <mat-icon *ngIf="hidePass" (click)="hidePass = false" matSuffix
+              >visibility</mat-icon
+            >
+            <mat-icon *ngIf="!hidePass" (click)="hidePass = true" matSuffix
+              >visibility_off</mat-icon
+            >
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label
+              [translate]="'register.label-passwordConfirmation'"
+            ></mat-label>
+            <input
+              matInput
+              formControlName="passConfirmation"
+              [type]="hidePass ? 'password' : 'text'"
+              required
+            />
+            <mat-icon *ngIf="hidePass" (click)="hidePass = false" matSuffix
+              >visibility</mat-icon
+            >
+            <mat-icon *ngIf="!hidePass" (click)="hidePass = true" matSuffix
+              >visibility_off</mat-icon
+            >
+          </mat-form-field>
+
+          <!-- <mat-form-field appearance="outline">
+          <mat-label [translate]="'register.label-phoneNumber'"></mat-label>
+          <input
+            matInput
+            formControlName="phoneNumber"
+            ng-model="data.phoneNumber"
+            required
+            pattern="[0-9]*"
+          />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label [translate]="'register.label-deliveryAddress'"></mat-label>
+          <input
+            matInput
+            formControlName="deliveryAddress"
+            ng-model="data.deliveryAddress"
+            required
+          />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label [translate]="'register.label-billingAddress'"></mat-label>
+          <input
+            matInput
+            formControlName="billingAddress"
+            ng-model="data.billingAddress"
+            required
+          />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label [translate]="'register.label-postalCode'"></mat-label>
+          <input
+            matInput
+            formControlName="postalCode"
+            ng-model="data.postalCode"
+            required
+            pattern="[0-9]*"
+          />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label [translate]="'register.label-gender'"></mat-label>
+          <mat-select formControlName="gender" ng-model="data.gender" required>
+            <mat-option value="male">{{
+              "register.label-gender-male" | translate
+            }}</mat-option>
+            <mat-option value="female">{{
+              "register.label-gender-female" | translate
+            }}</mat-option>
+            <mat-option value="other">{{
+              "register.label-gender-other" | translate
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label [translate]="'register.label-birthdate'"></mat-label>
+          <input
+            matInput
+            [matDatepicker]="datepicker"
+            formControlName="birthdate"
+            ng-model="data.birthdate"
+            required
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="datepicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #datepicker></mat-datepicker>
+        </mat-form-field> -->
+
+          <button-component
+            [class]="'purple-button'"
+            [label]="'register.button' | translate"
+            [disabled]="!formGroup.valid"
+          >
+          </button-component>
+        </form>
+      </div>
+      <div class="already-account">
+        <p [translate]="'register.new-user' | translate"></p>
+        <button-component
+          [class]="'border-gold-button'"
+          [label]="'register.login' | translate"
+          [disabled]="!formGroup.valid"
+        >
+        </button-component>
+      </div>
     </div>
-    <div class="title">
-      <p [translate]="'register.title'"></p>
-      <span [translate]="'register.web-title'"></span>
-    </div>
-  </div>
-
-  <div class="dialog-container">
-    <form
-      class="form-container"
-      [formGroup]="formGroup"
-      (ngSubmit)="signin()"
-      fxLayout="column"
-      fxLayoutAlign="start center"
-    >
-      <mat-form-field appearance="outline">
-        <mat-label [translate]="'register.label-name'"></mat-label>
-        <input matInput formControlName="name" ng-model="data.name" required />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label [translate]="'register.label-lastName'"></mat-label>
-        <input
-          matInput
-          formControlName="lastName"
-          ng-model="data.lastName"
-          required
-        />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label [translate]="'register.label-email'"></mat-label>
-        <input
-          matInput
-          formControlName="email"
-          ng-model="data.email"
-          required
-        />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label [translate]="'register.label-password'"></mat-label>
-        <input
-          matInput
-          formControlName="pass"
-          [type]="hidePass ? 'password' : 'text'"
-          required
-        />
-        <mat-icon *ngIf="hidePass" (click)="hidePass = false" matSuffix
-          >visibility</mat-icon
-        >
-        <mat-icon *ngIf="!hidePass" (click)="hidePass = true" matSuffix
-          >visibility_off</mat-icon
-        >
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label
-          [translate]="'register.label-passwordConfirmation'"
-        ></mat-label>
-        <input
-          matInput
-          formControlName="passConfirmation"
-          [type]="hidePass ? 'password' : 'text'"
-          required
-        />
-        <mat-icon *ngIf="hidePass" (click)="hidePass = false" matSuffix
-          >visibility</mat-icon
-        >
-        <mat-icon *ngIf="!hidePass" (click)="hidePass = true" matSuffix
-          >visibility_off</mat-icon
-        >
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label [translate]="'register.label-phoneNumber'"></mat-label>
-        <input
-          matInput
-          formControlName="phoneNumber"
-          ng-model="data.phoneNumber"
-          required
-          pattern="[0-9]*"
-        />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label [translate]="'register.label-deliveryAddress'"></mat-label>
-        <input
-          matInput
-          formControlName="deliveryAddress"
-          ng-model="data.deliveryAddress"
-          required
-        />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label [translate]="'register.label-billingAddress'"></mat-label>
-        <input
-          matInput
-          formControlName="billingAddress"
-          ng-model="data.billingAddress"
-          required
-        />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label [translate]="'register.label-postalCode'"></mat-label>
-        <input
-          matInput
-          formControlName="postalCode"
-          ng-model="data.postalCode"
-          required
-          pattern="[0-9]*"
-        />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label [translate]="'register.label-gender'"></mat-label>
-        <mat-select formControlName="gender" ng-model="data.gender" required>
-          <mat-option value="male">{{
-            "register.label-gender-male" | translate
-          }}</mat-option>
-          <mat-option value="female">{{
-            "register.label-gender-female" | translate
-          }}</mat-option>
-          <mat-option value="other">{{
-            "register.label-gender-other" | translate
-          }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label [translate]="'register.label-birthdate'"></mat-label>
-        <input
-          matInput
-          [matDatepicker]="datepicker"
-          formControlName="birthdate"
-          ng-model="data.birthdate"
-          required
-        />
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="datepicker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #datepicker></mat-datepicker>
-      </mat-form-field>
-
-      <button-component
-        [class]="'purple-button'"
-        [label]="'register.button' | translate"
-        [disabled]="!formGroup.valid"
-      >
-      </button-component>
-    </form>
-    <div class="already-account">
-      <p [translate]="'register.new-user' | translate"></p>
-      <button-component
-        [class]="'border-gold-button'"
-        [label]="'register.login' | translate"
-        [disabled]="!formGroup.valid"
-      >
-      </button-component>
+    <div class="image-column">
+      <div class="color-container"></div>
     </div>
   </div>
 </div>
