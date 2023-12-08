@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
@@ -21,7 +21,6 @@ import { ShopModule } from './shop/shop.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     // TRANSLATOR
     TranslateModule.forRoot({
       useDefaultLang: true,
