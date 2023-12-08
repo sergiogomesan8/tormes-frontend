@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 type AllowedClassValues =
   | 'gold-button'
@@ -16,8 +16,19 @@ export class ButtonComponent {
   class: AllowedClassValues = null as any;
 
   @Input()
+  type: string = '';
+
+  @Input()
   label: string = '';
 
   @Input()
   disabled: boolean = false;
+
+  @Output() buttonClick: EventEmitter<void> = new EventEmitter<void>();
+
+  onClick() {
+    if (!this.disabled) {
+      this.buttonClick.emit();
+    }
+  }
 }
