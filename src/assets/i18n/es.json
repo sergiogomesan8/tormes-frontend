@@ -1,4 +1,25 @@
 {
+  "register": {
+    "title": "Registrarse en",
+    "web-title": "TORMES",
+    "label-name": "Nombre",
+    "label-lastName": "Apellidos",
+    "label-email": "Email",
+    "label-password": "Contraseña",
+    "label-passwordConfirmation": "Confirmar contraseña",
+    "label-phoneNumber": "Teléfono",
+    "label-deliveryAddress": "Dirección de entrega",
+    "label-billingAddress": "Dirección de facturación",
+    "label-postalCode": "Código de postal",
+    "label-gender": "Género",
+    "label-gender-male": "Hombre",
+    "label-gender-female": "Mujer",
+    "label-gender-other": "Otro",
+    "label-birthdate": "Fecha de nacimiento",
+    "button": "Registrarse",
+    "new-user": "¿Ya tienes cuenta?",
+    "login": "Iniciar sesión"
+  },
   "login": {
     "title": "Inicio de sesión en",
     "web-title": "TORMES",
@@ -7,14 +28,5 @@
     "button": "Iniciar sesión",
     "new-user": "¿Eres nuevo por aquí?",
     "register": "Registrarse"
-  },
-  "register": {
-    "title": "Registrarse",
-    "web-title": "TORMES",
-    "label-email": "Email",
-    "label-password": "Contraseña",
-    "button": "Registrarse",
-    "new-user": "¿Ya tienes cuenta?",
-    "login": "Iniciar sesión"
   }
 }
