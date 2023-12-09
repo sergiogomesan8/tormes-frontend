@@ -17,6 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CustomerComponent } from './customer.component';
 
 @NgModule({
   imports: [
@@ -38,6 +39,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 
     TranslateModule,
   ],
-  declarations: [RegisterComponent],
+  declarations: [RegisterComponent, CustomerComponent],
 })
 export class CustomerModule {}
