@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { CustomerService } from '../../../services/customer.service';
 import { CreateUserDto } from '../../dtos/user.dto';
-import { UserType } from '../../../models/user.model';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '@core/services/authentication.service';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +18,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     public translate: TranslateService,
     public readonly formBuilder: FormBuilder,
-    private readonly customerService: CustomerService,
+    private readonly authenticationService: AuthenticationService,
     private readonly router: Router
   ) {
     this.formGroup = this.formBuilder.group({
@@ -47,7 +46,7 @@ export class RegisterComponent implements OnInit {
         password: this.formGroup.value.pass,
       };
 
-      await this.customerService.signin(createUserDto).subscribe({
+      await this.authenticationService.signin(createUserDto).subscribe({
         next: (result) => {
           console.log(result);
           // this.router.navigate(['/catalog']);
