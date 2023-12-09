@@ -3,7 +3,6 @@ import { CreateUserDto } from '@shop/customer/dtos/user.dto';
 import { HttpService } from './http-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, catchError, tap, of } from 'rxjs';
-import { HttpError } from '@core/models/error.model';
 import { AuthEndPoint } from '@shared/end-points';
 import { AuthUser } from '@core/models/auth.user';
 import { TranslateService } from '@ngx-translate/core';
