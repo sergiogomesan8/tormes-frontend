@@ -7,11 +7,14 @@ import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from '@core/services/authentication.service';
 import { CreateUserDto } from '@shop/customer/dtos/user.dto';
 import { AuthUser } from '@core/models/auth.user';
+import { Renderer2 } from '@angular/core';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let formBuilder: FormBuilder;
   let authenticationService: jest.Mocked<AuthenticationService>;
+  let renderer: jest.Mocked<Renderer2>;
+
   let router: jest.Mocked<Router>;
   let translateService: jest.Mocked<TranslateService>;
 
@@ -22,6 +25,7 @@ describe('RegisterComponent', () => {
     translateService = {} as any;
 
     component = new RegisterComponent(
+      renderer,
       translateService,
       formBuilder,
       authenticationService
