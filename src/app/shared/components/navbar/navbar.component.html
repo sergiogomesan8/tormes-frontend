@@ -1,0 +1,87 @@
+<mat-toolbar id="navbar">
+  <mat-toolbar-row>
+    <span class="navbar-brand" routerLink="/">
+      <img
+        src="..\assets\images\Tormes-Logo.png"
+        height="30"
+        alt=""
+        loading="lazy"
+      />
+    </span>
+
+    <button
+      class="toggle-menu app-menu"
+      mat-icon-button
+      [matMenuTriggerFor]="appMenu"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu class="navbar-menu app-menu" #appMenu="matMenu">
+      <button
+        mat-menu-item
+        [matMenuTriggerFor]="catalogMenu"
+        routerLink="/catalog"
+      >
+        Catalogo
+      </button>
+      <button
+        mat-menu-item
+        [matMenuTriggerFor]="ordersMenu"
+        routerLink="/orders"
+      >
+        Pedidos
+      </button>
+    </mat-menu>
+
+    <div class="navbar-menu-big-size">
+      <button
+        mat-menu-item
+        [matMenuTriggerFor]="catalogMenu"
+        routerLink="/catalog"
+      >
+        Catalogo
+      </button>
+      <button
+        mat-menu-item
+        [matMenuTriggerFor]="ordersMenu"
+        routerLink="/orders"
+      >
+        Pedidos
+      </button>
+    </div>
+
+    <mat-menu class="catalog-menu" #catalogMenu="matMenu">
+      <button mat-menu-item>Sections</button>
+      <button mat-menu-item>Products</button>
+    </mat-menu>
+
+    <mat-menu class="orders-menu" #ordersMenu="matMenu">
+      <button mat-menu-item>Mis pedidos</button>
+      <button mat-menu-item>Pendientes</button>
+      <button mat-menu-item>Cancelados</button>
+    </mat-menu>
+
+    <search-component></search-component>
+
+    <div class="authentication">
+      <button-component
+        mat-button
+        [routerLink]="'/login'"
+        [label]="'Iniciar Sesión'"
+        [class]="'border-purple-button'"
+      ></button-component>
+      <p>o</p>
+      <button-component
+        mat-raised-button
+        [routerLink]="'/signin'"
+        [label]="'Registrarse'"
+        [class]="'gold-button'"
+      ></button-component>
+    </div>
+
+    <button mat-icon-button class="shopping-cart-container">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

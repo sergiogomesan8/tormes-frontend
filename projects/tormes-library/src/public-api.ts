@@ -8,3 +8,4 @@ export * from './lib/tormes-library.component';
 // Components
 export * from './lib/components/components.module';
 export * from './lib/components/button/button.component';
+export * from './lib/components/search/search.component';

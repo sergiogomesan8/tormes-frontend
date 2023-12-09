@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 type AllowedClassValues =
   | 'gold-button'
@@ -24,11 +25,18 @@ export class ButtonComponent {
   @Input()
   disabled: boolean = false;
 
+  @Input()
+  routerLink: string = '';
+
   @Output() buttonClick: EventEmitter<void> = new EventEmitter<void>();
 
+  constructor(private router: Router) {}
   onClick() {
     if (!this.disabled) {
       this.buttonClick.emit();
+      if (this.routerLink) {
+        this.router.navigateByUrl(this.routerLink);
+      }
     }
   }
 }

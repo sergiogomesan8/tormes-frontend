@@ -12,7 +12,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ShopModule } from '@shop/shop.module';
 import { CoreModule } from '@core/core.module';
 
 @NgModule({
@@ -32,7 +31,6 @@ import { CoreModule } from '@core/core.module';
     }),
 
     CoreModule,
-    ShopModule,
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],

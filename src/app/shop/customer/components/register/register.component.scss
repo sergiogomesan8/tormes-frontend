@@ -2,8 +2,15 @@
   display: flex;
   justify-content: center;
 
+  min-height: 816px;
   height: 100%;
   width: 100%;
+
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.2)
+    ),
+    linear-gradient(to right, #f5ac2f, #6a3c99);
 
   .register-container {
     display: flex;
