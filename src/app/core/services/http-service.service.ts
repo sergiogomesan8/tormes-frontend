@@ -85,7 +85,7 @@ export class HttpService implements IHttpService {
   }
 
   private handleResponse(response: any): any {
-    console.log('response', response);
+    return response;
   }
 
   private handleError(error: any): Observable<HttpError>  {
