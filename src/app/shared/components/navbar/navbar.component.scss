@@ -1,0 +1,63 @@
+#navbar {
+  background-color: #24262b !important;
+  color: white;
+
+  .navbar-brand {
+    width: 30px;
+    height: 30px;
+    img {
+      cursor: pointer;
+    }
+  }
+
+  .toggle-menu {
+    color: white;
+    display: flex;
+  }
+
+  .navbar-menu {
+    display: flex;
+  }
+
+  .navbar-menu-big-size {
+    display: none;
+    margin-left: 32px;
+    button {
+      color: white !important;
+      font-size: 15px;
+    }
+  }
+
+  .authentication {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+
+    font-size: 15px;
+
+    p {
+      margin: 0px;
+    }
+  }
+
+  .shopping-cart-container {
+    display: flex;
+    color: var(--gold-color);
+    margin-left: 16px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #navbar {
+    .app-menu {
+      display: none;
+    }
+
+    .navbar-menu-big-size {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}
