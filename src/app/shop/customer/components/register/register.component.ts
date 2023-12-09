@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { CreateUserDto } from '../../dtos/user.dto';
-import { Router } from '@angular/router';
 import { AuthenticationService } from '@core/services/authentication.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { AuthenticationService } from '@core/services/authentication.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   formGroup: FormGroup;
   loading: boolean = false;
   hidePass = true;
@@ -18,8 +17,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     public translate: TranslateService,
     public readonly formBuilder: FormBuilder,
-    private readonly authenticationService: AuthenticationService,
-    private readonly router: Router
+    private readonly authenticationService: AuthenticationService
   ) {
     this.formGroup = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -36,9 +34,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
-
-  async signin(): Promise<void> {
+  signin() {
     if (this.formGroup.valid) {
       const createUserDto: CreateUserDto = {
         name: this.formGroup.value.name,
@@ -46,7 +42,7 @@ export class RegisterComponent implements OnInit {
         password: this.formGroup.value.pass,
       };
 
-      await this.authenticationService.signin(createUserDto).subscribe({
+      this.authenticationService.signin(createUserDto).subscribe({
         next: (result) => {
           console.log(result);
           // this.router.navigate(['/catalog']);

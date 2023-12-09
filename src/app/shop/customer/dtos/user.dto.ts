@@ -1,5 +1,3 @@
-import { Gender, UserType } from '../../models/user.model';
-
 export class CreateUserDto {
   name: string;
   email: string;
