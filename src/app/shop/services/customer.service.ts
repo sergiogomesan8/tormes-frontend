@@ -18,11 +18,11 @@ export class CustomerService {
   signin(createUserDto: CreateUserDto): Observable<User | undefined> {
     return this.httpService.post('/users', createUserDto).pipe(
       tap((response: User) => {
-        this.showSuccessSnackbar('Usuario creado correctamente');
+        // this.showSuccessSnackbar('Usuario creado correctamente');
       }),
-      catchError((error: any) => {
-        this.showErrorSnackbar(error);
-        return of(undefined);
+      catchError((error: undefined) => {
+        // this.showErrorSnackbar('Usuario no creado');
+        return of(error);
       })
     );
   }
@@ -31,10 +31,7 @@ export class CustomerService {
     this.snackBar.open(message, 'Success', { duration: 2000 });
   }
 
-  private showErrorSnackbar(httpError: HttpError): void {
-    const message = httpError.code
-      ? `${httpError.code} ${httpError.message}`
-      : httpError.message;
+  private showErrorSnackbar(message: string): void {
     this.snackBar.open(message, 'Error', { duration: 2000 });
   }
 }
