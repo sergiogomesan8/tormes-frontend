@@ -1,3 +1,4 @@
+//gold-button
 .button-container .gold-button {
   font-size: 15px;
 
@@ -10,16 +11,46 @@
   height: 2rem;
   width: 100%;
 
-  background-color: #ec9819;
+  background-color: var(--gold-color);
   color: white;
 
   cursor: pointer;
+  .gold-button:hover {
+    background-color: var(--gold-hover-color);
+  }
 }
 
-.button-container .gold-button:hover {
-  background-color: #f5ac2f;
+//border-gold-button
+.button-container .border-gold-button {
+  font-size: 15px;
+
+  align-items: center;
+
+  border-style: solid;
+  border-width: 0.13rem;
+  border-color: var(--gold-color);
+  border-radius: 0.4rem 0.4rem;
+
+  box-decoration-break: none;
+
+  height: 1.8rem;
+  width: 100%;
+
+  background-color: transparent;
+  color: var(--gold-color);
+
+  cursor: pointer;
+
+  .border-gold-button:hover {
+    background-color: var(--gold-hover-color);
+    border-width: 0.13rem;
+    border-color: var(--gold-hover-color);
+
+    color: white;
+  }
 }
 
+//purple-button
 .button-container .purple-button {
   font-size: 15px;
 
@@ -32,17 +63,16 @@
   height: 2rem;
   width: 100%;
 
-  background-color: #6a3c99;
+  background-color: var(--purple-color);
   color: white;
 
   cursor: pointer;
-
+  .purple-button:hover {
+    background-color: var(--purple-hover-color);
+  }
 }
 
-.button-container .purple-button:hover {
-  background-color: #2e1834;
-}
-
+//border-purple-button
 .button-container .border-purple-button {
   font-size: 15px;
 
@@ -50,7 +80,7 @@
 
   border-style: solid;
   border-width: 0.13rem;
-  border-color: #2e1834;
+  border-color: var(--purple-color);
   border-radius: 0.4rem 0.4rem;
 
   box-decoration-break: none;
@@ -59,44 +89,15 @@
   width: 100%;
 
   background-color: transparent;
-  color: #2e1834;
+  color: var(--purple-color);
 
   cursor: pointer;
-}
 
-.button-container .border-purple-button:hover {
-  background-color: #6a3c99;
-  border-width: 0.13rem;
-  border-color: #6a3c99;
+  .border-purple-button:hover {
+    background-color: var(--purple-hover-color);
+    border-width: 0.13rem;
+    border-color: var(--purple-hover-color);
 
-  color: white;
-}
-
-.button-container .border-gold-button {
-  font-size: 15px;
-
-  align-items: center;
-
-  border-style: solid;
-  border-width: 0.13rem;
-  border-color: #ec9819;
-  border-radius: 0.4rem 0.4rem;
-
-  box-decoration-break: none;
-
-  height: 1.8rem;
-  width: 100%;
-
-  background-color: transparent;
-  color: #ec9819;
-
-  cursor: pointer;
-}
-
-.button-container .border-gold-button:hover {
-  background-color: #f5ac2f;
-  border-width: 0.13rem;
-  border-color: #f5ac2f;
-
-  color: white;
+    color: white;
+  }
 }

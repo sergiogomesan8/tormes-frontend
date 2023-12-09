@@ -7,8 +7,8 @@ body {
   font-family: Inter, "Helvetica Neue", sans-serif;
 }
 
-/* Importing Bootstrap SCSS file. */
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap");
+@import "../../../../src/styles/variables.scss";
 
 * {
   font-family: "Titillium Web", sans-serif !important;
