@@ -67,14 +67,14 @@
     <div class="authentication">
       <button-component
         mat-button
-        routerLink="/login"
+        [routerLink]="'/login'"
         [label]="'Iniciar Sesión'"
         [class]="'border-purple-button'"
       ></button-component>
       <p>o</p>
       <button-component
         mat-raised-button
-        routerLink="/signin"
+        [routerLink]="'/signin'"
         [label]="'Registrarse'"
         [class]="'gold-button'"
       ></button-component>
