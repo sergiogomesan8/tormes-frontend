@@ -196,6 +196,12 @@ const config: Config = {
   // watchman: true,
   preset: 'jest-preset-angular',
   setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
+  moduleNameMapper: {
+    '@shared/(.*)': '<rootDir>/src/app/shared/$1',
+    '@core/(.*)': '<rootDir>/src/app/core/$1',
+    '@shop/(.*)': '<rootDir>/src/app/shop/$1',
+    '@env': '<rootDir>/src/environments/environment'
+  },
 };
 
 export default config;
