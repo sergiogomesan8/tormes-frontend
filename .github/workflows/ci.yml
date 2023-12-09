@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: npm install
         
-      - name: Coverage
+      - name: Test & Coverage
         run: npm run test:coverage
 
       - name: SonarCloud Scan
