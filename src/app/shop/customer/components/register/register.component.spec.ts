@@ -24,8 +24,7 @@ describe('RegisterComponent', () => {
     component = new RegisterComponent(
       translateService,
       formBuilder,
-      authenticationService,
-      router
+      authenticationService
     );
   });
 
