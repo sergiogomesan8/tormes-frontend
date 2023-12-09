@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { CreateUserDto } from '../../dtos/user.dto';
@@ -9,13 +9,12 @@ import { AuthenticationService } from '@core/services/authentication.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   formGroup: FormGroup;
   loading: boolean = false;
   hidePass = true;
 
   constructor(
-    private renderer: Renderer2,
     public translate: TranslateService,
     public readonly formBuilder: FormBuilder,
     private readonly authenticationService: AuthenticationService
@@ -33,13 +32,6 @@ export class RegisterComponent implements OnInit {
       // gender: ['', [Validators.required]],
       // birthdate: ['', [Validators.required]],
     });
-  }
-  ngOnInit(): void {
-    this.renderer.setStyle(
-      document.body,
-      'background',
-      'linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), linear-gradient(to right, #f5ac2f, #6a3c99)'
-    );
   }
 
   signin() {
