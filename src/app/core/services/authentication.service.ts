@@ -43,10 +43,18 @@ export class AuthenticationService {
   }
 
   private showSuccessSnackbar(message: string): void {
-    this.snackBar.open(message, 'Success', { duration: 2000 });
+    this.snackBar.open(message, 'Success', {
+      duration: 2000,
+      verticalPosition: 'top',
+      panelClass: ['green-snackbar'],
+    });
   }
 
   private showErrorSnackbar(message: string): void {
-    this.snackBar.open(message, 'Error', { duration: 2000 });
+    this.snackBar.open(message, 'Error', {
+      duration: 2000,
+      verticalPosition: 'top',
+      panelClass: ['red-snackbar'],
+    });
   }
 }
