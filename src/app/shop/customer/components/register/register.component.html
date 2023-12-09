@@ -6,8 +6,10 @@
           <img alt="Tormes-Logo" src="..\assets\images\Tormes-Logo.png" />
         </div>
         <div class="welcome-container">
-          <h5 class="welcome-title" [translate]="'shop.customer.register.welcome'"></h5>
-          <!-- <p class="welcome-text"></p> -->
+          <h5
+            class="welcome-title"
+            [translate]="'shop.customer.register.welcome'"
+          ></h5>
         </div>
         <div class="title">
           <p [translate]="'shop.customer.register.title'"></p>
@@ -23,7 +25,9 @@
           fxLayoutAlign="start center"
         >
           <mat-form-field appearance="outline">
-            <mat-label [translate]="'shop.customer.register.label-name'"></mat-label>
+            <mat-label
+              [translate]="'shop.customer.register.label-name'"
+            ></mat-label>
             <input
               matInput
               formControlName="name"
@@ -33,7 +37,9 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline">
-            <mat-label [translate]="'shop.customer.register.label-email'"></mat-label>
+            <mat-label
+              [translate]="'shop.customer.register.label-email'"
+            ></mat-label>
             <input
               matInput
               formControlName="email"
@@ -43,7 +49,9 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline">
-            <mat-label [translate]="'shop.customer.register.label-password'"></mat-label>
+            <mat-label
+              [translate]="'shop.customer.register.label-password'"
+            ></mat-label>
             <input
               matInput
               formControlName="pass"
