@@ -1,0 +1,24 @@
+.search-bar {
+  display: flex;
+  position: relative;
+  input {
+    width: 200px;
+    height: 1.8rem;
+    border-radius: 5px;
+    border: 1px solid;
+    border-color: var(--gold-color);
+  }
+  input:focus {
+    border-radius: 5px;
+    border: 1px solid;
+    border-color: var(--gold-color);
+    box-decoration-break: none;
+  }
+  button {
+    position: absolute;
+    top: 40%;
+    right: 0px;
+    transform: translateY(-50%);
+    color: black;
+  }
+}
