@@ -8,6 +8,4 @@ import { Product } from '@shop/models/product';
 })
 export class ProductComponent {
   @Input() product!: Product;
-
-  constructor() {}
 }
