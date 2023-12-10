@@ -8,6 +8,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -18,9 +20,13 @@ import { MatInputModule } from '@angular/material/input';
     MatIconModule,
     MatMenuModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+
+    //Ng Bootstrap
+    NgbModule,
+    NgbCarouselModule,
   ],
-  declarations: [NavbarComponent],
-  exports: [ComponentsModule, NavbarComponent],
+  declarations: [NavbarComponent, CarouselComponent],
+  exports: [ComponentsModule, NavbarComponent, CarouselComponent],
 })
 export class SharedModule {}

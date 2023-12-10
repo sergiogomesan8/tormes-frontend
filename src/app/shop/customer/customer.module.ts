@@ -19,17 +19,22 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CustomerComponent } from './customer.component';
 import { LoginComponent } from './components/login/login.component';
+import { CatalogComponent } from './components/catalog/catalog.component';
+import { ProductComponent } from './components/product/product.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     CustomerRoutingModule,
+    RouterModule,
 
     SharedModule,
 
     FormsModule,
     ReactiveFormsModule,
 
+    //Angular Material
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
@@ -40,6 +45,12 @@ import { LoginComponent } from './components/login/login.component';
 
     TranslateModule,
   ],
-  declarations: [RegisterComponent, LoginComponent, CustomerComponent],
+  declarations: [
+    CustomerComponent,
+    RegisterComponent,
+    LoginComponent,
+    CatalogComponent,
+    ProductComponent,
+  ],
 })
 export class CustomerModule {}

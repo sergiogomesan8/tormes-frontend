@@ -1,0 +1,17 @@
+<div id="carousel">
+  <ngb-carousel
+    class="custom-carousel"
+    [style.width]="carouselWidth"
+    *ngIf="carouselItems && carouselItems.length > 0"
+  >
+    <ng-template ngbSlide *ngFor="let item of carouselItems; let i = index">
+      <div class="picsum-img-wrapper">
+        <img [src]="item.src" [alt]="'Slide ' + (i + 1)" />
+      </div>
+      <div class="carousel-caption">
+        <h3>{{ item.label }}</h3>
+        <p>{{ item.description }}</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>

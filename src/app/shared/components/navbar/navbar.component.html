@@ -18,13 +18,8 @@
     </button>
 
     <mat-menu class="navbar-menu app-menu" #appMenu="matMenu">
-      <button
-        mat-menu-item
-        [matMenuTriggerFor]="catalogMenu"
-        routerLink="/catalog"
-      >
-        Catalogo
-      </button>
+      <a mat-menu-item routerLink="/home">Inicio</a>
+      <button mat-menu-item routerLink="catalog">Catalogo</button>
       <button
         mat-menu-item
         [matMenuTriggerFor]="ordersMenu"
@@ -35,45 +30,27 @@
     </mat-menu>
 
     <div class="navbar-menu-big-size">
-      <button
-        mat-menu-item
-        [matMenuTriggerFor]="catalogMenu"
-        routerLink="/catalog"
-      >
-        Catalogo
-      </button>
-      <button
-        mat-menu-item
-        [matMenuTriggerFor]="ordersMenu"
-        routerLink="/orders"
-      >
-        Pedidos
-      </button>
+      <a routerLink="home">Inicio</a>
+      <a routerLink="catalog">Catalogo</a>
+      <a [matMenuTriggerFor]="ordersMenu">Pedidos</a>
     </div>
 
-    <mat-menu class="catalog-menu" #catalogMenu="matMenu">
-      <button mat-menu-item>Sections</button>
-      <button mat-menu-item>Products</button>
-    </mat-menu>
-
     <mat-menu class="orders-menu" #ordersMenu="matMenu">
-      <button mat-menu-item>Mis pedidos</button>
+      <button mat-menu-item routerLink="orders">Mis pedidos</button>
       <button mat-menu-item>Pendientes</button>
       <button mat-menu-item>Cancelados</button>
     </mat-menu>
 
-    <search-component></search-component>
+    <search-component [placeholder]="'Buscar producto..'"></search-component>
 
     <div class="authentication">
       <button-component
-        mat-button
         [routerLink]="'/login'"
         [label]="'Iniciar Sesión'"
         [class]="'border-purple-button'"
       ></button-component>
       <p>o</p>
       <button-component
-        mat-raised-button
         [routerLink]="'/signin'"
         [label]="'Registrarse'"
         [class]="'gold-button'"

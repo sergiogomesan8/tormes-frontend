@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'navbar-component',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
