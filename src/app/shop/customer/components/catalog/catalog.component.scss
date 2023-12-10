@@ -1,0 +1,202 @@
+$product-width-margin: 276px;
+#catalog {
+  .img-mobile {
+    width: auto;
+    height: 250px;
+    background-image: url("/assets/images/ganaderia-porcina-campo.png");
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .header {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+
+    margin: 32px 48px 0px;
+
+    .title {
+      font-size: 3rem;
+    }
+  }
+
+  .sections-carousel {
+    flex-direction: row;
+    justify-content: center;
+
+    max-width: calc(($product-width-margin) - 32px);
+    margin: 64px auto;
+
+    gap: 8px;
+    --bs-gutter-x: 0 !important;
+    .section-card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      position: relative;
+
+      width: 100px;
+      height: 100px;
+
+      margin: auto auto 16px ;
+
+      overflow: hidden;
+      border-radius: 16px;
+      background-color: #ffffff;
+      box-shadow: 0 5px 12px 0 rgb(0 0 0 / 5%);
+
+      cursor: pointer;
+
+      img {
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .section-name {
+        z-index: 1;
+        position: absolute;
+
+        margin-bottom: 0px;
+        background: transparent;
+
+        font-weight: 700;
+        color: white;
+      }
+    }
+
+    .section-card:hover {
+      box-shadow: 0 10px 18px 0 rgba(29, 3, 36, 0.3);
+    }
+
+    .section-card:focus {
+      box-shadow: 0 5px 12px 0 rgb(46 24 52 / 20%);
+    }
+  }
+
+  .sections {
+    margin-bottom: 48px;
+    .banner__separator {
+      margin: 32px auto 8px;
+      border: 0;
+      border-top: 3px solid;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      color: var(--purple-color);
+      max-width: calc(($product-width-margin) - 32px);
+    }
+
+    .info {
+      margin: 0px auto;
+      max-width: calc(($product-width-margin) - 32px);
+      .section {
+        font-weight: 700;
+        margin-bottom: 0px;
+      }
+      .section-subtitle {
+        margin-bottom: 0px;
+      }
+    }
+
+    .my-container {
+      margin: 24px auto;
+      max-width: calc($product-width-margin);
+      .container-products {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 576px) {
+  #catalog {
+    .header {
+      .title {
+        font-size: 3.5rem;
+      }
+    }
+    .sections-carousel{
+      max-width: calc(($product-width-margin * 2) - 32px);
+    }
+    .sections .my-container {
+      max-width: calc($product-width-margin * 2);
+    }
+    .sections .banner__separator,
+    .sections .info {
+      max-width: calc(($product-width-margin * 2) - 32px);
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #catalog {
+    .header {
+      display: flex;
+      margin: 0px;
+
+      .container-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: auto;
+        height: 250px;
+
+        background-image: url("/assets/images/ganaderia-porcina-campo.png");
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+
+        background-position: center;
+      }
+      .title {
+        font-size: 4rem;
+      }
+    }
+    .sections-carousel{
+      max-width: calc(($product-width-margin * 2) - 32px);
+    }
+    .sections .my-container {
+      max-width: calc($product-width-margin * 2);
+    }
+    .sections .banner__separator,
+    .sections .info {
+      max-width: calc(($product-width-margin * 2) - 32px);
+    }
+  }
+}
+@media screen and (min-width: 992px) {
+  #catalog {
+    .header {
+      .title {
+        font-size: 4.5rem;
+      }
+    }
+    .sections-carousel{
+      max-width: calc(($product-width-margin * 3) - 32px);
+    }
+    .sections .my-container {
+      max-width: calc($product-width-margin * 3);
+    }
+    .sections .banner__separator,
+    .sections .info {
+      max-width: calc(($product-width-margin * 3) - 32px);
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+}
+
+@media screen and (min-width: 1400px) {
+  #catalog {
+    .sections .my-container {
+      max-width: calc($product-width-margin * 4);
+    }
+    .sections .banner__separator,
+    .sections .info {
+      max-width: calc(($product-width-margin * 4) - 32px);
+    }
+  }
+}
