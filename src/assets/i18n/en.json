@@ -28,11 +28,13 @@
       "login": {
         "title": "Log in",
         "web-title": "TORMES",
+        "welcome": "Welcome!",
         "label-email": "Email",
         "label-password": "Password",
         "button": "Log in",
         "new-user": "Are you new here?",
-        "register": "Sing in"
+        "register": "Sing in",
+        "error": "Error login in, please try again later"
       }
     }
   }
