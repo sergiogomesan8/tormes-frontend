@@ -80,10 +80,10 @@ $product-width-margin: 276px;
     .banner__separator {
       margin: 32px auto 8px;
       border: 0;
-      border-top: 3px solid;
+      border-top: 2px solid;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
-      color: var(--purple-color);
+      color: black;
       max-width: calc(($product-width-margin) - 32px);
     }
 
