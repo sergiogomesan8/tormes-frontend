@@ -9,7 +9,6 @@ import { Product } from '@shop/models/product';
 describe('ProductComponent', () => {
   let component: ProductComponent;
   let fixture: ComponentFixture<ProductComponent>;
-  let product: Product;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -25,7 +24,7 @@ describe('ProductComponent', () => {
       image: 'root/to/product.jpg',
       name: 'product name',
       price: 100,
-      section: 'product section'
+      section: 'product section',
     };
     component.product = product;
     fixture.detectChanges();
