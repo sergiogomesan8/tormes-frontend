@@ -19,6 +19,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CustomerComponent } from './customer.component';
 import { LoginComponent } from './components/login/login.component';
+import { CatalogComponent } from './components/catalog/catalog.component';
 
 @NgModule({
   imports: [
@@ -40,6 +41,6 @@ import { LoginComponent } from './components/login/login.component';
 
     TranslateModule,
   ],
-  declarations: [RegisterComponent, LoginComponent, CustomerComponent],
+  declarations: [CustomerComponent, RegisterComponent, LoginComponent, CatalogComponent],
 })
 export class CustomerModule {}
