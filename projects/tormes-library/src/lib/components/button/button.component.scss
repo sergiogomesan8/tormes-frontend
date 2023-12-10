@@ -4,6 +4,7 @@
   font-size: 14px;
 
   align-items: center;
+  justify-content: center;
 
   border: none;
   border-radius: 8px;
@@ -28,6 +29,7 @@
   font-size: 14px;
 
   align-items: center;
+  justify-content: center;
 
   border-style: solid;
   border-width: 2px;
@@ -59,12 +61,13 @@
   font-size: 14px;
 
   align-items: center;
+  justify-content: center;
 
   border: none;
   border-radius: 8px;
   box-decoration-break: none;
 
-  height: 32x;
+  height: 32px;
   width: 100%;
 
   background-color: var(--purple-color);
@@ -83,7 +86,8 @@
   font-size: 14px;
 
   align-items: center;
-
+  justify-content: center;
+  
   border-style: solid;
   border-width: 2px;
   border-color: var(--purple-color);
