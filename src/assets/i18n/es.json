@@ -28,11 +28,13 @@
       "login": {
         "title": "Inicio de sesión en",
         "web-title": "TORMES",
+        "welcome": "Bienvenido!",
         "label-email": "Email",
         "label-password": "Contraseña",
         "button": "Iniciar sesión",
         "new-user": "¿Eres nuevo por aquí?",
-        "register": "Registrarse"
+        "register": "Registrarse",
+        "error": "Error al iniciar sesión, inténtelo de nuevo más tarde"
       }
     }
   }
