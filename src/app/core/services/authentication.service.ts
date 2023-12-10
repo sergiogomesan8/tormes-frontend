@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CreateUserDto } from '@shop/customer/dtos/user.dto';
+import { CreateUserDto, LoginUserDto } from '@shop/customer/dtos/user.dto';
 import { HttpService } from './http-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, catchError, tap, of } from 'rxjs';
@@ -39,6 +39,20 @@ export class AuthenticationService {
           return of(error);
         })
       );
+  }
+
+  login(loginUserDto: LoginUserDto): Observable<AuthUser | undefined> {
+    return this.httpService.post(this.authEndPoint.LOGIN, loginUserDto).pipe(
+      tap((response: AuthUser) => {}),
+      catchError((error: undefined) => {
+        this.translateService
+          .get('shop.customer.login.error')
+          .subscribe((res: string) => {
+            this.showErrorSnackbar(res);
+          });
+        return of(error);
+      })
+    );
   }
 
   private showSuccessSnackbar(message: string): void {
