@@ -1,6 +1,7 @@
 //gold-button
-.button-container .gold-button {
-  font-size: 15px;
+.gold-button {
+  display: flex;
+  font-size: 14px;
 
   align-items: center;
 
@@ -8,51 +9,54 @@
   border-radius: 8px;
   box-decoration-break: none;
 
-  height: 2rem;
+  height: 32px;
   width: 100%;
 
   background-color: var(--gold-color);
   color: white;
 
   cursor: pointer;
-  .gold-button:hover {
-    background-color: var(--gold-hover-color);
-  }
+}
+
+.button-container .gold-button:hover {
+  background-color: var(--gold-hover-color);
 }
 
 //border-gold-button
 .button-container .border-gold-button {
-  font-size: 15px;
+  display: flex;
+  font-size: 14px;
 
   align-items: center;
 
   border-style: solid;
-  border-width: 0.13rem;
+  border-width: 2px;
   border-color: var(--gold-color);
-  border-radius: 0.4rem 0.4rem;
+  border-radius: 6px;
 
   box-decoration-break: none;
 
-  height: 1.8rem;
+  height: 32px;
   width: 100%;
 
   background-color: transparent;
   color: var(--gold-color);
 
   cursor: pointer;
+}
 
-  .border-gold-button:hover {
-    background-color: var(--gold-hover-color);
-    border-width: 0.13rem;
-    border-color: var(--gold-hover-color);
+.button-container  .border-gold-button:hover {
+  background-color: var(--gold-color);
+  border-width: 2px;
+  border-color: var(--gold-hover-color);
 
-    color: white;
-  }
+  color: white;
 }
 
 //purple-button
 .button-container .purple-button {
-  font-size: 15px;
+  display: flex;
+  font-size: 14px;
 
   align-items: center;
 
@@ -60,44 +64,46 @@
   border-radius: 8px;
   box-decoration-break: none;
 
-  height: 2rem;
+  height: 32x;
   width: 100%;
 
   background-color: var(--purple-color);
   color: white;
 
   cursor: pointer;
-  .purple-button:hover {
-    background-color: var(--purple-hover-color);
-  }
+}
+
+.button-container .purple-button:hover {
+  background-color: var(--purple-hover-color);
 }
 
 //border-purple-button
 .button-container .border-purple-button {
-  font-size: 15px;
+  display: flex;
+  font-size: 14px;
 
   align-items: center;
 
   border-style: solid;
-  border-width: 0.13rem;
+  border-width: 2px;
   border-color: var(--purple-color);
-  border-radius: 0.4rem 0.4rem;
+  border-radius: 6px;
 
   box-decoration-break: none;
 
-  height: 1.8rem;
+  height: 32px;
   width: 100%;
 
   background-color: transparent;
   color: var(--purple-color);
 
   cursor: pointer;
+}
 
-  .border-purple-button:hover {
-    background-color: var(--purple-hover-color);
-    border-width: 0.13rem;
-    border-color: var(--purple-hover-color);
+.button-container .border-purple-button:hover {
+  background-color: var(--purple-color);
+  border-width: 2px;
+  border-color: var(--purple-hover-color);
 
-    color: white;
-  }
+  color: white;
 }

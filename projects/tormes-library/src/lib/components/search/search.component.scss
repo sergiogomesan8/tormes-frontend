@@ -2,23 +2,24 @@
   display: flex;
   position: relative;
   input {
-    width: 200px;
-    height: 1.8rem;
+    height: 32px;
+    font-size: 14px;
+    width: 190px;
     border-radius: 5px;
-    border: 1px solid;
-    border-color: var(--gold-color);
-  }
-  input:focus {
-    border-radius: 5px;
-    border: 1px solid;
-    border-color: var(--gold-color);
-    box-decoration-break: none;
+    border: none;
   }
   button {
     position: absolute;
-    top: 40%;
+    top: 46%;
     right: 0px;
     transform: translateY(-50%);
     color: black;
   }
+}
+
+.search-bar input:focus {
+  border-radius: 5px;
+  border: 2px solid;
+  border-color: var(--gold-color);
+  box-decoration-break: none;
 }
