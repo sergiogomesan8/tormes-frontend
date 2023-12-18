@@ -20,12 +20,7 @@ export class HttpService implements IHttpService {
       catchError((error) => this.handleError(error))
     );
   }
-  getAll(url: string, params?: ParamsType | undefined): Observable<any> {
-    return this.http.get(url, { params: this.createParams(params) }).pipe(
-      map((response) => this.handleResponse(response)),
-      catchError((error) => this.handleError(error))
-    );
-  }
+
   post(
     url: string,
     body: any,
@@ -88,7 +83,7 @@ export class HttpService implements IHttpService {
     return response;
   }
 
-  private handleError(error: any): Observable<HttpError>  {
+  private handleError(error: any): Observable<HttpError> {
     let errorToReturn: HttpError;
 
     if (error.status === HTTP_ERROR_CODE.CONNECTION_REFUSED) {
