@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CreateUserDto, LoginUserDto } from '@shop/customer/dtos/user.dto';
 import { HttpService } from './http-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable, catchError, tap, of, map } from 'rxjs';
+import { Observable, catchError, of, map } from 'rxjs';
 import { AuthEndPoint } from '@shared/end-points';
 import { AuthUser } from '@core/models/auth.user';
 import { TranslateService } from '@ngx-translate/core';
