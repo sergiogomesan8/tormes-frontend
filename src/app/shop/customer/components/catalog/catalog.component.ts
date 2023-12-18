@@ -11,6 +11,8 @@ import { Product } from '@shop/models/product';
 import { Section } from '@shop/models/section';
 import { isPlatformBrowser } from '@angular/common';
 import { New } from '@shop/models/new';
+import { ProductService } from '@shop/services/product.service';
+import { Observable, finalize, of, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-catalog',
@@ -21,18 +23,22 @@ export class CatalogComponent implements OnInit {
   @HostBinding('style.width')
   carouselWidth!: string;
 
-  products: Product[] = productsMock;
+  products: Product[] = [];
   sections: Section[] = sectionsMock;
   news: New[] = newsMock;
 
   sectionCarouselItems: CarouselItem[] = [];
   newsCarouselItems: CarouselItem[] = [];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private readonly productService: ProductService
+  ) {
     this.onResize();
   }
 
   ngOnInit(): void {
+    this.findAllProducts();
     this.sectionCarouselItems = this.sections.map((section) => ({
       src: section.image,
       alt: section.name,
@@ -45,6 +51,17 @@ export class CatalogComponent implements OnInit {
       label: news.name,
       description: news.description,
     }));
+  }
+
+  findAllProducts() {
+    this.productService.findAllProducts().subscribe({
+      next: (products) => {
+        this.products = products;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
 
   @HostListener('window:resize')
@@ -82,7 +99,7 @@ export const newsMock: New[] = [
 
 export const sectionsMock: Section[] = [
   {
-    name: 'Embutidos',
+    name: 'Example Section',
     image: '../assets/images/embutidos.jpg',
   },
   {
@@ -103,117 +120,117 @@ export const sectionsMock: Section[] = [
   },
 ];
 
-export const productsMock: Product[] = [
-  {
-    id: 'A000000000',
-    image: '../assets/images/chorizo-iberico-de-bellota.jpg',
-    name: 'Chorizo ibérico de bellota',
-    price: 8.99,
-    section: 'Embutidos',
-  },
-  {
-    id: 'B000000000',
-    image: '../assets/images/lomo-de-cebo-de-campo-50-raza-ibérica.jpg',
-    name: 'Lomo de cebo',
-    price: 5.99,
-    section: 'Embutidos',
-  },
-  {
-    id: 'C000000000',
-    image: '../assets/images/lomo-extra.jpg',
-    name: 'Lomo extra',
-    price: 20.99,
-    section: 'Carnes ',
-  },
-  {
-    id: 'D000000000',
-    image: '../assets/images/salchichón-iberico-de-bellota.jpg',
-    name: 'Slachichón ibérico de bellota',
-    price: 12.99,
-    section: 'Carnes ',
-  },
-  {
-    id: 'A000000001',
-    image: '../assets/images/chorizo-iberico-de-bellota.jpg',
-    name: 'Chorizo ibérico de bellota',
-    price: 8.99,
-    section: 'Quesos',
-  },
-  {
-    id: 'B000000001',
-    image: '../assets/images/lomo-de-cebo-de-campo-50-raza-ibérica.jpg',
-    name: 'Lomo de cebo',
-    price: 5.99,
-    section: 'Quesos',
-  },
-  {
-    id: 'C000000001',
-    image: '../assets/images/lomo-extra.jpg',
-    name: 'Lomo extra',
-    price: 20.99,
-    section: 'Quesos',
-  },
-  {
-    id: 'D000000001',
-    image: '../assets/images/salchichón-iberico-de-bellota.jpg',
-    name: 'Slachichón ibérico de bellota',
-    price: 12.99,
-    section: 'Fiambres',
-  },
-  {
-    id: 'A000000002',
-    image: '../assets/images/chorizo-iberico-de-bellota.jpg',
-    name: 'Chorizo ibérico de bellota',
-    price: 8.99,
-    section: 'Embutidos',
-  },
-  {
-    id: 'B000000002',
-    image: '../assets/images/lomo-de-cebo-de-campo-50-raza-ibérica.jpg',
-    name: 'Lomo de cebo',
-    price: 5.99,
-    section: 'Embutidos',
-  },
-  {
-    id: 'C000000002',
-    image: '../assets/images/lomo-extra.jpg',
-    name: 'Lomo extra',
-    price: 20.99,
-    section: 'Carnes ',
-  },
-  {
-    id: 'D000000002',
-    image: '../assets/images/salchichón-iberico-de-bellota.jpg',
-    name: 'Slachichón ibérico de bellota',
-    price: 12.99,
-    section: 'Carnes ',
-  },
-  {
-    id: 'A000000003',
-    image: '../assets/images/chorizo-iberico-de-bellota.jpg',
-    name: 'Chorizo ibérico de bellota',
-    price: 8.99,
-    section: 'Quesos',
-  },
-  {
-    id: 'B000000003',
-    image: '../assets/images/lomo-de-cebo-de-campo-50-raza-ibérica.jpg',
-    name: 'Lomo de cebo',
-    price: 5.99,
-    section: 'Quesos',
-  },
-  {
-    id: 'C000000003',
-    image: '../assets/images/lomo-extra.jpg',
-    name: 'Lomo extra',
-    price: 20.99,
-    section: 'Quesos',
-  },
-  {
-    id: 'D000000003',
-    image: '../assets/images/salchichón-iberico-de-bellota.jpg',
-    name: 'Slachichón ibérico de bellota',
-    price: 12.99,
-    section: 'Fiambres',
-  },
-];
+// export const productsMock: Product[] = [
+//   {
+//     id: 'A000000000',
+//     image: '../assets/images/chorizo-iberico-de-bellota.jpg',
+//     name: 'Chorizo ibérico de bellota',
+//     price: 8.99,
+//     section: 'Embutidos',
+//   },
+//   {
+//     id: 'B000000000',
+//     image: '../assets/images/lomo-de-cebo-de-campo-50-raza-ibérica.jpg',
+//     name: 'Lomo de cebo',
+//     price: 5.99,
+//     section: 'Embutidos',
+//   },
+//   {
+//     id: 'C000000000',
+//     image: '../assets/images/lomo-extra.jpg',
+//     name: 'Lomo extra',
+//     price: 20.99,
+//     section: 'Carnes ',
+//   },
+//   {
+//     id: 'D000000000',
+//     image: '../assets/images/salchichón-iberico-de-bellota.jpg',
+//     name: 'Slachichón ibérico de bellota',
+//     price: 12.99,
+//     section: 'Carnes ',
+//   },
+//   {
+//     id: 'A000000001',
+//     image: '../assets/images/chorizo-iberico-de-bellota.jpg',
+//     name: 'Chorizo ibérico de bellota',
+//     price: 8.99,
+//     section: 'Quesos',
+//   },
+//   {
+//     id: 'B000000001',
+//     image: '../assets/images/lomo-de-cebo-de-campo-50-raza-ibérica.jpg',
+//     name: 'Lomo de cebo',
+//     price: 5.99,
+//     section: 'Quesos',
+//   },
+//   {
+//     id: 'C000000001',
+//     image: '../assets/images/lomo-extra.jpg',
+//     name: 'Lomo extra',
+//     price: 20.99,
+//     section: 'Quesos',
+//   },
+//   {
+//     id: 'D000000001',
+//     image: '../assets/images/salchichón-iberico-de-bellota.jpg',
+//     name: 'Slachichón ibérico de bellota',
+//     price: 12.99,
+//     section: 'Fiambres',
+//   },
+//   {
+//     id: 'A000000002',
+//     image: '../assets/images/chorizo-iberico-de-bellota.jpg',
+//     name: 'Chorizo ibérico de bellota',
+//     price: 8.99,
+//     section: 'Embutidos',
+//   },
+//   {
+//     id: 'B000000002',
+//     image: '../assets/images/lomo-de-cebo-de-campo-50-raza-ibérica.jpg',
+//     name: 'Lomo de cebo',
+//     price: 5.99,
+//     section: 'Embutidos',
+//   },
+//   {
+//     id: 'C000000002',
+//     image: '../assets/images/lomo-extra.jpg',
+//     name: 'Lomo extra',
+//     price: 20.99,
+//     section: 'Carnes ',
+//   },
+//   {
+//     id: 'D000000002',
+//     image: '../assets/images/salchichón-iberico-de-bellota.jpg',
+//     name: 'Slachichón ibérico de bellota',
+//     price: 12.99,
+//     section: 'Carnes ',
+//   },
+//   {
+//     id: 'A000000003',
+//     image: '../assets/images/chorizo-iberico-de-bellota.jpg',
+//     name: 'Chorizo ibérico de bellota',
+//     price: 8.99,
+//     section: 'Quesos',
+//   },
+//   {
+//     id: 'B000000003',
+//     image: '../assets/images/lomo-de-cebo-de-campo-50-raza-ibérica.jpg',
+//     name: 'Lomo de cebo',
+//     price: 5.99,
+//     section: 'Quesos',
+//   },
+//   {
+//     id: 'C000000003',
+//     image: '../assets/images/lomo-extra.jpg',
+//     name: 'Lomo extra',
+//     price: 20.99,
+//     section: 'Quesos',
+//   },
+//   {
+//     id: 'D000000003',
+//     image: '../assets/images/salchichón-iberico-de-bellota.jpg',
+//     name: 'Slachichón ibérico de bellota',
+//     price: 12.99,
+//     section: 'Fiambres',
+//   },
+// ];
