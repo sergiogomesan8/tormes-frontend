@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { RegisterComponent } from './register.component';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from '@core/services/authentication.service';
@@ -25,7 +25,8 @@ describe('RegisterComponent', () => {
     component = new RegisterComponent(
       translateService,
       formBuilder,
-      authenticationService
+      authenticationService,
+      router
     );
   });
 
@@ -57,7 +58,7 @@ describe('RegisterComponent', () => {
     await component.signin();
 
     expect(authenticationService.signin).toHaveBeenCalledWith(createUserDto);
-    // expect(router.navigate).toHaveBeenCalledWith(['/catalog']);
+    expect(router.navigate).toHaveBeenCalledWith(['/catalog']);
   });
 
   it('should not call authenticationService.signin and router.navigate if form is invalid', async () => {
@@ -72,5 +73,22 @@ describe('RegisterComponent', () => {
 
     expect(authenticationService.signin).not.toHaveBeenCalled();
     expect(router.navigate).not.toHaveBeenCalled();
+  });
+
+  it('should handle error on signin', () => {
+    component.formGroup.setValue({
+      name: createUserDto.name,
+      email: createUserDto.email,
+      pass: createUserDto.password,
+      passConfirmation: createUserDto.password,
+    });
+
+    jest
+      .spyOn(authenticationService, 'signin')
+      .mockReturnValue(throwError(() => new Error('Error')));
+
+    component.signin();
+
+    expect(authenticationService.signin).toHaveBeenCalled();
   });
 });

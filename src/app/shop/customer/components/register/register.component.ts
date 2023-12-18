@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { CreateUserDto } from '../../dtos/user.dto';
 import { AuthenticationService } from '@core/services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,8 @@ export class RegisterComponent {
   constructor(
     public translate: TranslateService,
     public readonly formBuilder: FormBuilder,
-    private readonly authenticationService: AuthenticationService
+    private readonly authenticationService: AuthenticationService,
+    private router: Router
   ) {
     this.formGroup = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -45,7 +47,10 @@ export class RegisterComponent {
       this.authenticationService.signin(createUserDto).subscribe({
         next: (result) => {
           console.log(result);
-          // this.router.navigate(['/catalog']);
+          this.router.navigate(['/catalog']);
+        },
+        error: (error) => {
+          console.log(error);
         },
       });
     }

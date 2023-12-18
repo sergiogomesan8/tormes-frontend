@@ -1,12 +1,12 @@
 /* tslint:disable:no-unused-variable */
 import { LoginComponent } from './login.component';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthenticationService } from '@core/services/authentication.service';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LoginUserDto } from '@shop/customer/dtos/user.dto';
 import { AuthUser } from '@core/models/auth.user';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -38,9 +38,9 @@ describe('LoginComponent', () => {
 
   const authUser: AuthUser = {
     user_info: {
-      email: 'test@test.com',
+      email: email,
       id: '00',
-      name: 'test',
+      name: name,
     },
     token: 'token',
   };
@@ -69,5 +69,20 @@ describe('LoginComponent', () => {
 
     expect(authenticationService.login).not.toHaveBeenCalled();
     expect(router.navigate).not.toHaveBeenCalled();
+  });
+
+  it('should handle error on login', () => {
+    component.formGroup.setValue({
+      email: loginUserDto.email,
+      pass: loginUserDto.password,
+    });
+
+    jest
+      .spyOn(authenticationService, 'login')
+      .mockReturnValue(throwError(() => new Error('Error')));
+
+    component.login();
+
+    expect(authenticationService.login).toHaveBeenCalled();
   });
 });
