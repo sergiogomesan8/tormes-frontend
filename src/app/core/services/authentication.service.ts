@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CreateUserDto, LoginUserDto } from '@shop/customer/dtos/user.dto';
 import { HttpService } from './http-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable, catchError, tap, of } from 'rxjs';
+import { Observable, catchError, tap, of, map } from 'rxjs';
 import { AuthEndPoint } from '@shared/end-points';
 import { AuthUser } from '@core/models/auth.user';
 import { TranslateService } from '@ngx-translate/core';
@@ -19,16 +19,17 @@ export class AuthenticationService {
     private translateService: TranslateService
   ) {}
 
-  signin(createUserDto: CreateUserDto): Observable<AuthUser | undefined> {
+  signin(createUserDto: CreateUserDto): Observable<AuthUser> {
     return this.httpService
       .post(this.authEndPoint.REGISTER, createUserDto)
       .pipe(
-        tap((response: AuthUser) => {
+        map((response: AuthUser) => {
           this.translateService
             .get('shop.customer.register.success')
             .subscribe((res: string) => {
               this.showSuccessSnackbar(res);
             });
+          return response;
         }),
         catchError((error: undefined) => {
           this.translateService
@@ -36,21 +37,20 @@ export class AuthenticationService {
             .subscribe((res: string) => {
               this.showErrorSnackbar(res);
             });
-          return of(error);
+          return of({} as AuthUser);
         })
       );
   }
 
   login(loginUserDto: LoginUserDto): Observable<AuthUser | undefined> {
     return this.httpService.post(this.authEndPoint.LOGIN, loginUserDto).pipe(
-      tap((response: AuthUser) => {}),
       catchError((error: undefined) => {
         this.translateService
           .get('shop.customer.login.error')
           .subscribe((res: string) => {
             this.showErrorSnackbar(res);
           });
-        return of(error);
+        return of({} as AuthUser);
       })
     );
   }

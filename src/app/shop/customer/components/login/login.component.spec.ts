@@ -25,7 +25,8 @@ describe('LoginComponent', () => {
     component = new LoginComponent(
       translateService,
       formBuilder,
-      authenticationService
+      authenticationService,
+      router
     );
   });
 
@@ -55,7 +56,7 @@ describe('LoginComponent', () => {
     await component.login();
 
     expect(authenticationService.login).toHaveBeenCalledWith(loginUserDto);
-    // expect(router.navigate).toHaveBeenCalledWith(['/catalog']);
+    expect(router.navigate).toHaveBeenCalledWith(['/catalog']);
   });
 
   it('should not call authenticationService.login and router.navigate if form is invalid', async () => {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '@core/services/authentication.service';
 import { TranslateService } from '@ngx-translate/core';
 import { LoginUserDto } from '@shop/customer/dtos/user.dto';
@@ -17,7 +18,8 @@ export class LoginComponent {
   constructor(
     public translate: TranslateService,
     public readonly formBuilder: FormBuilder,
-    private readonly authenticationService: AuthenticationService
+    private readonly authenticationService: AuthenticationService,
+    private router: Router
   ) {
     this.formGroup = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -35,7 +37,10 @@ export class LoginComponent {
       this.authenticationService.login(loginUserDto).subscribe({
         next: (result) => {
           console.log(result);
-          // this.router.navigate(['/catalog']);
+          this.router.navigate(['/catalog']);
+        },
+        error: (error) => {
+          console.log(error);
         },
       });
     }
