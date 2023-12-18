@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  tormesBackend: 'http://localhost:3000',
+  tormesBackend: 'http://localhost:3000/tormes/api',
 };
