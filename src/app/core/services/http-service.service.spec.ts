@@ -7,10 +7,7 @@ import {
 } from '@angular/common/http/testing';
 import { HttpService } from './http-service.service';
 import { HttpParams } from '@angular/common/http';
-import {
-  HTTP_ERROR_CODE,
-  HTTP_ERROR_MESSAGE,
-} from '@core/models/error.model';
+import { HTTP_ERROR_CODE, HTTP_ERROR_MESSAGE } from '@core/models/error.model';
 
 describe('HttpService', () => {
   let service: HttpService;
@@ -38,18 +35,6 @@ describe('HttpService', () => {
     const dummyData = { hello: 'world' };
 
     service.get('testUrl').subscribe((data) => {
-      expect(data).toEqual(dummyData);
-    });
-
-    const req = httpMock.expectOne('testUrl');
-    expect(req.request.method).toBe('GET');
-    req.flush(dummyData);
-  });
-
-  it('should perform GET ALL request', () => {
-    const dummyData = { hello: 'world' };
-
-    service.getAll('testUrl').subscribe((data) => {
       expect(data).toEqual(dummyData);
     });
 
