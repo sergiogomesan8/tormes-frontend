@@ -1,7 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { IconName, faHome } from '@fortawesome/free-solid-svg-icons';
-import { faBoxOpen, faCashRegister, faStore, faUsers } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBoxOpen,
+  faCashRegister,
+  faStore,
+  faUsers,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'sidebar-component',
@@ -10,28 +15,22 @@ import { faBoxOpen, faCashRegister, faStore, faUsers } from '@fortawesome/free-s
   animations: [
     trigger('fadeInOut', [
       transition(':enter', [
-        style({opacity: 0}),
-        animate('700ms',
-          style({opacity: 1})
-        )
+        style({ opacity: 0 }),
+        animate('700ms', style({ opacity: 1 })),
       ]),
       transition(':leave', [
-        style({opacity: 1}),
-        animate('100ms',
-          style({opacity: 0})
-        )
+        style({ opacity: 1 }),
+        animate('100ms', style({ opacity: 0 })),
       ]),
-    ])
-  ]
+    ]),
+  ],
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent {
   @Input() isExpanded: boolean = false;
   @Output() toggleSidebar: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   handleSidebarToggle = () => this.toggleSidebar.emit(!this.isExpanded);
   navData = navbarData;
-
-  ngOnInit() {}
 }
 export const navbarData = [
   {
