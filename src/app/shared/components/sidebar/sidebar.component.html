@@ -1,0 +1,38 @@
+<div id="sidebar" class="sidebar" [ngClass]="{ expanded: isExpanded }">
+  <div class="header">
+    <a class="logo" (click)="handleSidebarToggle()">
+      <img
+        src="..\assets\images\Tormes-Logo.png"
+        height="30"
+        alt=""
+        loading="lazy"
+      />
+    </a>
+    <button
+      class="btn-close"
+      *ngIf="isExpanded"
+      (click)="handleSidebarToggle()"
+    >
+      <fa-icon class="close-icon" [icon]="['fas', 'times']"></fa-icon>
+      <!-- <i class="fal fa-times close-icon"></i> -->
+    </button>
+  </div>
+  <div class="content">
+    <div class="sidenav-nav">
+      <div class="sidenav-nav-item" *ngFor="let data of navData">
+        <a
+          href=""
+          class="sidenav-nav-link"
+          [routerLink]="[data.routerLink]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <fa-icon class="sidenav-link-icon" [icon]="data.icon"></fa-icon>
+          <span class="sidenav-link-text" @fadeInOut *ngIf="isExpanded">{{
+            data.label
+          }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
