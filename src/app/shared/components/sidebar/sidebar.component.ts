@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
-import { IconName, faHome } from '@fortawesome/free-solid-svg-icons';
 import {
+  IconName,
+  faHome,
   faBoxOpen,
   faCashRegister,
   faStore,
