@@ -12,7 +12,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CoreModule } from '@core/core.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CoreModule } from './core/core.module';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +31,7 @@ import { CoreModule } from '@core/core.module';
         deps: [HttpClient],
       },
     }),
+    FontAwesomeModule,
 
     CoreModule,
   ],

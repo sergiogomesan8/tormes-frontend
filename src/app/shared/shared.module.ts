@@ -10,10 +10,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
     ComponentsModule,
     MatToolbarModule,
     MatButtonModule,
@@ -21,12 +25,18 @@ import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
+    FontAwesomeModule,
 
     //Ng Bootstrap
     NgbModule,
     NgbCarouselModule,
   ],
-  declarations: [NavbarComponent, CarouselComponent],
-  exports: [ComponentsModule, NavbarComponent, CarouselComponent],
+  declarations: [NavbarComponent, CarouselComponent, SidebarComponent],
+  exports: [
+    ComponentsModule,
+    NavbarComponent,
+    CarouselComponent,
+    SidebarComponent,
+  ],
 })
 export class SharedModule {}
