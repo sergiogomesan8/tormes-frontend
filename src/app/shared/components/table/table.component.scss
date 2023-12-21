@@ -1,0 +1,9 @@
+#crud-table .mat-mdc-row:hover {
+  cursor: pointer;
+  background-color: var(--grey-color);
+}
+
+#crud-table .mat-mdc-row:active {
+    cursor: pointer;
+    background-color: var(--grey-color);
+  }
