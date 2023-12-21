@@ -7,7 +7,20 @@ import {
   faCashRegister,
   faStore,
   faUsers,
+  faChevronDown,
 } from '@fortawesome/free-solid-svg-icons';
+
+interface NavItem {
+  routerLink: string;
+  icon: IconName;
+  label: string;
+  childOptions?: ChildNavItem[];
+}
+
+interface ChildNavItem {
+  routerLink: string;
+  label: string;
+}
 
 @Component({
   selector: 'sidebar-component',
@@ -27,22 +40,55 @@ import {
   ],
 })
 export class SidebarComponent {
+  faChevronDown = faChevronDown;
   @Input() isExpanded: boolean = false;
   @Output() toggleSidebar: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   handleSidebarToggle = () => this.toggleSidebar.emit(!this.isExpanded);
   navData = navbarData;
+
+  openStates: Record<string, boolean> = {};  // Cambia esta línea
+
+  constructor() {
+    navbarData.forEach(item => {
+      this.openStates[item.routerLink] = false;
+    });
+  }
+
+  handleChildOptions(item: NavItem) {
+    this.openStates[item.routerLink] = !this.openStates[item.routerLink];
+  }
 }
-export const navbarData = [
+export const navbarData:NavItem[] = [
   {
     routerLink: 'dashboard',
     icon: faHome as unknown as IconName,
     label: 'Dashboard',
+    childOptions: [
+      {
+        routerLink: 'products',
+        label: 'Products',
+      },
+      {
+        routerLink: 'sections',
+        label: 'Sections',
+      },
+    ],
   },
   {
     routerLink: 'catalog',
     icon: faStore as unknown as IconName,
     label: 'Catalog',
+    childOptions: [
+      {
+        routerLink: 'products',
+        label: 'Products',
+      },
+      {
+        routerLink: 'sections',
+        label: 'Sections',
+      },
+    ],
   },
   {
     routerLink: 'cash-register',

@@ -60,38 +60,97 @@
     height: calc(100% - 3.65rem);
     cursor: pointer;
 
-    .sidenav-nav-item {
+    .sidenav-nav-items {
+      display: flex;
+      flex-direction: column;
       width: 100%;
-      margin-bottom: 0.625rem;
+      margin-bottom: 8px;
 
-      .sidenav-nav-link {
+      .sidenav-nav-item {
         display: flex;
-        align-items: center;
-        height: 3rem;
-        color: #f3f3f3;
-        text-decoration: none;
-        border-radius: 0.625rem;
-        transition: color 0.3s ease;
+        flex-direction: row;
+        border-radius: 10px;
 
-        .sidenav-link-icon {
-          font-size: 22px;
-          width: 2rem;
-          min-width: 2rem;
-          margin: 0 0.5rem;
-          text-align: center;
+        .sidenav-nav-link {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          height: 48px;
+          color: #f3f3f3;
+          text-decoration: none;
+          transition: color 0.3s ease;
+
+          .sidenav-link-icon {
+            font-size: 22px;
+            width: 2rem;
+            min-width: 2rem;
+            margin: 0 0.5rem;
+            text-align: center;
+          }
+
+          .sidenav-link-text {
+            font-size: 16px;
+            min-width: 100px;
+            margin-left: 1.5rem;
+          }
         }
-
-        .sidenav-link-text {
-          font-size: 16px;
-          min-width: 100px;
-          margin-left: 1.5rem;
+        .arrow-down {
+          margin-left: 24px;
+          display: flex;
+          align-items: center;
+          color: white;
         }
       }
-    }
-    .sidenav-nav-item:hover {
-      .sidenav-nav-link {
+
+      .sidenav-nav-child {
+        display: flex;
+        flex-direction: column;
+        margin-top: 8px;
+        margin-left: 62px;
+        gap: 4px;
+        color: white;
+        border-radius: 10px;
+
+        .sidenav-nav-child-item {
+          display: flex;
+          align-items: center;
+          padding-left: 10px;
+          height: 34px;
+
+          border-radius: 10px;
+
+          fa-icon{
+            margin-right: 8px;
+            color: #f5f5f5;
+          }
+          .sidenav-link-text {
+            font-size: 14px;
+            font-weight: 400px;
+          }
+        }
+      }
+      .sidenav-nav-child {
+        .sidenav-nav-child-item {
+          &:hover {
+            background-color: #f5f5f5;
+            fa-icon{
+              color: #333
+            }
+            .sidenav-link-text {
+              color: #333;
+            }
+          }
+        }
+      }
+
+      .sidenav-nav-item:hover {
         background-color: #fff;
-        color: #000;
+        .sidenav-nav-link {
+          color: #000;
+        }
+        .arrow-down {
+          color: #000;
+        }
       }
     }
   }
