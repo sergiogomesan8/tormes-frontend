@@ -13,6 +13,10 @@ import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   imports: [
@@ -25,18 +29,23 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+
     FontAwesomeModule,
 
     //Ng Bootstrap
     NgbModule,
     NgbCarouselModule,
   ],
-  declarations: [NavbarComponent, CarouselComponent, SidebarComponent],
+  declarations: [NavbarComponent, CarouselComponent, SidebarComponent, TableComponent],
   exports: [
     ComponentsModule,
     NavbarComponent,
     CarouselComponent,
     SidebarComponent,
+    TableComponent,
   ],
 })
 export class SharedModule {}
