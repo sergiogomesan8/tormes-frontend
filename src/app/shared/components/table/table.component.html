@@ -1,6 +1,7 @@
 <div id="crud-table" class="crud-table">
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
+      <caption></caption>
       <ng-container *ngFor="let column of displayedColumns">
         <ng-container [matColumnDef]="column">
           <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
