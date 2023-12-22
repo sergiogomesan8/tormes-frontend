@@ -15,7 +15,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from './core/core.module';
 
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -31,7 +30,6 @@ import { CoreModule } from './core/core.module';
         deps: [HttpClient],
       },
     }),
-    FontAwesomeModule,
 
     CoreModule,
   ],
