@@ -4,7 +4,7 @@ import { LoginComponent } from '@shop/customer/components/login/login.component'
 import { RegisterComponent } from '@shop/customer/components/register/register.component';
 import { AdminComponent } from './admin.component';
 import { CatalogComponent } from '@shop/customer/components/catalog/catalog.component';
-import { ProductsInfoComponent } from './components/products-info/products-info.component';
+import { ProductsComponent } from './components/products/products.component';
 
 const routes: Routes = [
   {
@@ -12,7 +12,7 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: 'catalog', component: CatalogComponent },
-      { path: 'products', component: ProductsInfoComponent },
+      { path: 'products', component: ProductsComponent },
     ],
   },
   { path: 'signin', component: RegisterComponent },

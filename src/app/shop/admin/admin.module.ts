@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { SharedModule } from '@shared/shared.module';
 import { AdminComponent } from './admin.component';
-import { ProductsInfoComponent } from './components/products-info/products-info.component';
+import { ProductsComponent } from './components/products/products.component';
 
 @NgModule({
   imports: [CommonModule, AdminRoutingModule, SharedModule],
-  declarations: [AdminComponent, ProductsInfoComponent],
+  declarations: [AdminComponent, ProductsComponent],
 })
 export class AdminModule {}
