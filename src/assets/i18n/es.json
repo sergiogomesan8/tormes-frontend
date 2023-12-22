@@ -1,4 +1,8 @@
 {
+  "shared": {
+    "success": "Éxito",
+    "error": "Error"
+  },
   "shop": {
     "customer": {
       "register": {
@@ -44,8 +48,14 @@
           "products": {
             "title": "Productos",
             "add": "Añadir producto",
-            "success": "Producto añadido con éxito!",
-            "error": "Error al añadir el producto, inténtelo de nuevo más tarde"
+            "addSuccess": "Producto añadido con éxito!",
+            "addError": "Error al añadir el producto, inténtelo de nuevo más tarde",
+            "delete": "Eliminar producto",
+            "deleteSuccess": "Producto eliminado con éxito!",
+            "deleteError": "Error al eliminar el producto, inténtelo de nuevo más tarde",
+            "update": "Actualizar producto",
+            "updateSuccess": "Producto actualizado con éxito!",
+            "updateError": "Error al actualizar el producto, inténtelo de nuevo más tarde"
           },
           "sections": "Secciones"
         }

@@ -1,4 +1,8 @@
 {
+  "shared": {
+    "success": "Success",
+    "error": "Error"
+  },
   "shop": {
     "customer": {
       "register": {
@@ -44,8 +48,14 @@
           "products": {
             "title": "Products",
             "add": "Add product",
-            "success": "Product added successfully!",
-            "error": "Error adding product, please try again later"
+            "addSuccess": "Product added successfully!",
+            "addError": "Error adding product, please try again later",
+            "delete": "Delete product",
+            "deleteSuccess": "Product deleted successfully! ",
+            "deleteError": "Error while deleting product, try again later",
+            "update": "Update producto",
+            "updateSuccess": "Product updated successfully!",
+            "updateError": "Error while updating the product, please try again later"
           },
           "sections": "Sections"
         }
