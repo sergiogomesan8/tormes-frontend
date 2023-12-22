@@ -18,7 +18,7 @@
   </div>
   <div class="content">
     <div class="sidenav-nav">
-      <div class="sidenav-nav-items" *ngFor="let item of navData">
+      <div class="sidenav-nav-items" *ngFor="let item of navbarData">
         <div
           class="sidenav-nav-item"
           routerLinkActive="active"
@@ -27,7 +27,7 @@
           <a href="" class="sidenav-nav-link" [routerLink]="[item.routerLink]">
             <fa-icon class="sidenav-link-icon" [icon]="item.icon"></fa-icon>
             <span class="sidenav-link-text" @fadeInOut *ngIf="isExpanded">{{
-              item.label
+              item.label | translate
             }}</span>
           </a>
           <fa-icon
@@ -53,7 +53,7 @@
               size="2xs"
             ></fa-icon>
             <span class="sidenav-link-text" @fadeInOut *ngIf="isExpanded">{{
-              child.label
+              child.label | translate
             }}</span>
           </div>
         </div>

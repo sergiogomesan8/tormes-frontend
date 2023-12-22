@@ -40,69 +40,59 @@ interface ChildNavItem {
   ],
 })
 export class SidebarComponent {
-  faChevronDown = faChevronDown;
   @Input() isExpanded: boolean = false;
   @Output() toggleSidebar: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  handleSidebarToggle = () => this.toggleSidebar.emit(!this.isExpanded);
-  navData = navbarData;
+  navbarData: NavItem[] = [
+    {
+      routerLink: 'dashboard',
+      icon: faHome as unknown as IconName,
+      label: 'shop.admin.dashboard.title',
+      childOptions: [
+        {
+          routerLink: 'products',
+          label: 'shop.admin.dashboard.options.products.title',
+        },
+        {
+          routerLink: 'sections',
+          label: 'shop.admin.dashboard.options.sections',
+        },
+      ],
+    },
+    {
+      routerLink: 'catalog',
+      icon: faStore as unknown as IconName,
+      label: 'shop.admin.catalog.title',
+    },
+    {
+      routerLink: 'cash-register',
+      icon: faCashRegister as unknown as IconName,
+      label: 'shop.admin.cashRegister.title',
+    },
+    {
+      routerLink: 'employee-management',
+      icon: faUsers as unknown as IconName,
+      label: 'shop.admin.employee.title',
+    },
+    {
+      routerLink: 'order',
+      icon: faBoxOpen as unknown as IconName,
+      label: 'shop.admin.orders.title',
+    },
+  ];
 
-  openStates: Record<string, boolean> = {};  // Cambia esta línea
+  faChevronDown = faChevronDown;
+  openStates: Record<string, boolean> = {};
 
   constructor() {
-    navbarData.forEach(item => {
+    this.navbarData.forEach((item) => {
       this.openStates[item.routerLink] = false;
     });
   }
+
+  handleSidebarToggle = () => this.toggleSidebar.emit(!this.isExpanded);
 
   handleChildOptions(item: NavItem) {
     this.openStates[item.routerLink] = !this.openStates[item.routerLink];
   }
 }
-export const navbarData:NavItem[] = [
-  {
-    routerLink: 'dashboard',
-    icon: faHome as unknown as IconName,
-    label: 'Dashboard',
-    childOptions: [
-      {
-        routerLink: 'products',
-        label: 'Products',
-      },
-      {
-        routerLink: 'sections',
-        label: 'Sections',
-      },
-    ],
-  },
-  {
-    routerLink: 'catalog',
-    icon: faStore as unknown as IconName,
-    label: 'Catalog',
-    childOptions: [
-      {
-        routerLink: 'products',
-        label: 'Products',
-      },
-      {
-        routerLink: 'sections',
-        label: 'Sections',
-      },
-    ],
-  },
-  {
-    routerLink: 'cash-register',
-    icon: faCashRegister as unknown as IconName,
-    label: 'Cash Register',
-  },
-  {
-    routerLink: 'employee-management',
-    icon: faUsers as unknown as IconName,
-    label: 'Employee',
-  },
-  {
-    routerLink: 'order',
-    icon: faBoxOpen as unknown as IconName,
-    label: 'Orders',
-  },
-];
