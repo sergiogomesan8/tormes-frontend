@@ -5,6 +5,7 @@ import { RegisterComponent } from '@shop/customer/components/register/register.c
 import { AdminComponent } from './admin.component';
 import { CatalogComponent } from '@shop/customer/components/catalog/catalog.component';
 import { ProductsComponent } from './components/products/products.component';
+import { CreateProductComponent } from './components/create-product/create-product.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
     children: [
       { path: 'catalog', component: CatalogComponent },
       { path: 'products', component: ProductsComponent },
+      { path: 'products/create-product', component: CreateProductComponent },
     ],
   },
   { path: 'signin', component: RegisterComponent },
