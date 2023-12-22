@@ -32,6 +32,7 @@
           </a>
           <fa-icon
             class="arrow-down"
+            @fadeInOut
             *ngIf="item.childOptions && isExpanded"
             [icon]="faChevronDown"
             (click)="handleChildOptions(item)"
