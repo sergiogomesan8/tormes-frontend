@@ -36,6 +36,32 @@
         "register": "Registrarse",
         "error": "Error al iniciar sesión, inténtelo de nuevo más tarde"
       }
+    },
+    "admin": {
+      "dashboard": {
+        "title": "Tablero",
+        "options": {
+          "products": {
+            "title": "Productos",
+            "add": "Añadir producto",
+            "success": "Producto añadido con éxito!",
+            "error": "Error al añadir el producto, inténtelo de nuevo más tarde"
+          },
+          "sections": "Secciones"
+        }
+      },
+      "catalog": {
+        "title": "Catálogo"
+      },
+      "cashRegister": {
+        "title": "Caja"
+      },
+      "employee": {
+        "title": "Empleados"
+      },
+      "orders": {
+        "title": "Pedidos"
+      }
     }
   }
 }

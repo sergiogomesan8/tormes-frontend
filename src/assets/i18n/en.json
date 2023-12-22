@@ -36,6 +36,32 @@
         "register": "Sing in",
         "error": "Error login in, please try again later"
       }
+    },
+    "admin": {
+      "dashboard": {
+        "title": "Dashboard",
+        "options": {
+          "products": {
+            "title": "Products",
+            "add": "Add product",
+            "success": "Product added successfully!",
+            "error": "Error adding product, please try again later"
+          },
+          "sections": "Sections"
+        }
+      },
+      "catalog": {
+        "title": "Catalog"
+      },
+      "cashRegister": {
+        "title": "Cash Register"
+      },
+      "employee": {
+        "title": "Employee"
+      },
+      "orders": {
+        "title": "Orders"
+      }
     }
   }
 }
