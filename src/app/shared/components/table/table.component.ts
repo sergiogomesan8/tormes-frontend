@@ -1,8 +1,10 @@
 import {
   AfterViewInit,
   Component,
+  EventEmitter,
   Input,
   OnInit,
+  Output,
   ViewChild,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -17,7 +19,13 @@ import { Product } from '@shop/models/product';
 })
 export class TableComponent implements OnInit, AfterViewInit {
   @Input() elementsTable: any[] = [];
-  @Input() displayedColumns: any = [];
+  @Input() displayedColumns: Array<string> = [];
+
+  @Input() updateAction = true;
+  @Input() deleteAction = true;
+
+  @Output() updateEvent = new EventEmitter<any>();
+  @Output() deleteEvent = new EventEmitter<any>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -25,6 +33,13 @@ export class TableComponent implements OnInit, AfterViewInit {
   dataSource!: MatTableDataSource<any>;
 
   ngOnInit() {
+    this.displayedColumns = this.displayedColumns.map((column) =>
+      column.toLowerCase()
+    );
+    this.dataSource = new MatTableDataSource<Product>(this.elementsTable);
+  }
+
+  ngOnChanges(): void {
     this.dataSource = new MatTableDataSource<Product>(this.elementsTable);
   }
 
@@ -33,10 +48,11 @@ export class TableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  edit() {
-    console.log('edit');
+  update(element: any): void {
+    this.updateEvent.emit(element);
   }
-  delete() {
-    console.log('delete');
+
+  delete(element: any): void {
+    this.deleteEvent.emit(element);
   }
 }
