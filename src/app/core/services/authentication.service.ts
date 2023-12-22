@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { CreateUserDto, LoginUserDto } from '@shop/customer/dtos/user.dto';
 import { HttpService } from './http-service.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, catchError, of, map } from 'rxjs';
 import { AuthEndPoint } from '@shared/end-points';
 import { AuthUser } from '@core/models/auth.user';
-import { TranslateService } from '@ngx-translate/core';
+import { SnackbarService } from '@shared/services/snackbar.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +14,7 @@ export class AuthenticationService {
 
   constructor(
     private readonly httpService: HttpService,
-    private snackBar: MatSnackBar,
-    private translateService: TranslateService
+    private readonly snackbarService: SnackbarService
   ) {}
 
   signin(createUserDto: CreateUserDto): Observable<AuthUser> {
@@ -24,19 +22,15 @@ export class AuthenticationService {
       .post(this.authEndPoint.REGISTER, createUserDto)
       .pipe(
         map((response: AuthUser) => {
-          this.translateService
-            .get('shop.customer.register.success')
-            .subscribe((res: string) => {
-              this.showSuccessSnackbar(res);
-            });
+          this.snackbarService.showSuccessSnackbar(
+            'shop.customer.register.success'
+          );
           return response;
         }),
         catchError((error: undefined) => {
-          this.translateService
-            .get('shop.customer.register.error')
-            .subscribe((res: string) => {
-              this.showErrorSnackbar(res);
-            });
+          this.snackbarService.showErrorSnackbar(
+            'shop.customer.register.error'
+          );
           return of({} as AuthUser);
         })
       );
@@ -45,29 +39,9 @@ export class AuthenticationService {
   login(loginUserDto: LoginUserDto): Observable<AuthUser | undefined> {
     return this.httpService.post(this.authEndPoint.LOGIN, loginUserDto).pipe(
       catchError((error: undefined) => {
-        this.translateService
-          .get('shop.customer.login.error')
-          .subscribe((res: string) => {
-            this.showErrorSnackbar(res);
-          });
+        this.snackbarService.showErrorSnackbar('shop.customer.login.error');
         return of({} as AuthUser);
       })
     );
-  }
-
-  private showSuccessSnackbar(message: string): void {
-    this.snackBar.open(message, 'Success', {
-      duration: 2000,
-      verticalPosition: 'top',
-      panelClass: ['green-snackbar'],
-    });
-  }
-
-  private showErrorSnackbar(message: string): void {
-    this.snackBar.open(message, 'Error', {
-      duration: 2000,
-      verticalPosition: 'top',
-      panelClass: ['red-snackbar'],
-    });
   }
 }
