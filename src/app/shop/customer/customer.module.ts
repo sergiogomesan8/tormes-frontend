@@ -5,46 +5,13 @@ import { CustomerRoutingModule } from './customer-routing.module';
 import { SharedModule } from '@shared/shared.module';
 
 import { RegisterComponent } from './components/register/register.component';
-
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatSelectModule } from '@angular/material/select';
-
-import { TranslateModule } from '@ngx-translate/core';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CustomerComponent } from './customer.component';
 import { LoginComponent } from './components/login/login.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { ProductComponent } from './components/product/product.component';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    CustomerRoutingModule,
-    RouterModule,
-
-    SharedModule,
-
-    FormsModule,
-    ReactiveFormsModule,
-
-    //Angular Material
-    MatIconModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatSelectModule,
-    MatSnackBarModule,
-
-    TranslateModule,
-  ],
+  imports: [CommonModule, CustomerRoutingModule, SharedModule],
   declarations: [
     CustomerComponent,
     RegisterComponent,
