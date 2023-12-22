@@ -32,19 +32,26 @@
           </a>
           <fa-icon
             class="arrow-down"
-            *ngIf="item.childOptions"
+            *ngIf="item.childOptions && isExpanded"
             [icon]="faChevronDown"
             (click)="handleChildOptions(item)"
           ></fa-icon>
         </div>
 
-        <div class="sidenav-nav-child" *ngIf="openStates[item.routerLink]">
+        <div
+          class="sidenav-nav-child"
+          *ngIf="openStates[item.routerLink] && isExpanded"
+        >
           <div
             class="sidenav-nav-child-item"
             *ngFor="let child of item.childOptions"
             [routerLink]="[child.routerLink]"
           >
-            <fa-icon class="circle-icon" [icon]="['fas', 'circle']" size="2xs"></fa-icon>
+            <fa-icon
+              class="circle-icon"
+              [icon]="['fas', 'circle']"
+              size="2xs"
+            ></fa-icon>
             <span class="sidenav-link-text" @fadeInOut *ngIf="isExpanded">{{
               child.label
             }}</span>
