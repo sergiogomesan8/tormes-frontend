@@ -1,0 +1,18 @@
+<div id="products-info">
+  <!-- <div class="table-header">
+    <h2>Manage Products</h2>
+    <search-component [placeholder]="'Buscar producto...'"></search-component>
+  </div> -->
+  <table-crud-component
+    (update)="update($event)"
+    (delete)="delete($event)"
+    [elementsTable]="products"
+    [displayedColumns]="displayedColumns"
+    [deleteAction]="true" [updateAction]="true"
+  ></table-crud-component>
+  <button-component
+    [label]="'Crear producto'"
+    [class]="'gold-button'"
+    [type]="'button'"
+  ></button-component>
+</div>
