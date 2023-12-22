@@ -23,4 +23,6 @@ export class ProductEndPoint extends EndPoint {
   }
 
   FIND_ALL = this.buildUrl('/list');
+  UPDATE = this.buildUrl('/');
+  DELETE = this.buildUrl('/');
 }
