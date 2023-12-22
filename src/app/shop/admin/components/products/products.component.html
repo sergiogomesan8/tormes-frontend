@@ -4,11 +4,12 @@
     <search-component [placeholder]="'Buscar producto...'"></search-component>
   </div> -->
   <table-crud-component
-    (update)="update($event)"
-    (delete)="delete($event)"
+    (updateEvent)="update($event)"
+    (deleteEvent)="delete($event)"
     [elementsTable]="products"
     [displayedColumns]="displayedColumns"
-    [deleteAction]="true" [updateAction]="true"
+    [deleteAction]="true"
+    [updateAction]="true"
   ></table-crud-component>
   <button-component
     [label]="'Crear producto'"
