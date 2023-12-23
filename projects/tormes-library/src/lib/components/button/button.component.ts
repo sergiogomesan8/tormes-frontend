@@ -5,7 +5,9 @@ type AllowedClassValues =
   | 'gold-button'
   | 'purple-button'
   | 'border-gold-button'
-  | 'border-purple-button';
+  | 'border-purple-button'
+  | 'granate-button'
+  | 'border-granate-button';
 
 @Component({
   selector: 'button-component',

@@ -1,12 +1,11 @@
-//gold-button
-.gold-button {
+button {
   display: flex;
   font-size: 14px;
 
   align-items: center;
   justify-content: center;
 
-  gap:8px;
+  gap: 8px;
 
   border: none;
   border-radius: 8px;
@@ -15,107 +14,74 @@
   height: 32px;
   width: 100%;
 
-  background-color: var(--gold-color);
-  color: white;
-
   cursor: pointer;
 }
 
-.button-container .gold-button:hover {
+.gold-button {
+  background-color: var(--gold-color);
+  color: white;
+}
+.gold-button:hover {
   background-color: var(--gold-hover-color);
 }
 
-//border-gold-button
-.button-container .border-gold-button {
-  display: flex;
-  font-size: 14px;
-
-  align-items: center;
-  justify-content: center;
-
-  gap:8px;
-
-  border-style: solid;
-  border-width: 2px;
-  border-color: var(--gold-color);
-  border-radius: 6px;
-
-  box-decoration-break: none;
-
-  height: 32px;
-  width: 100%;
-
-  background-color: transparent;
-  color: var(--gold-color);
-
-  cursor: pointer;
-}
-
-.button-container  .border-gold-button:hover {
-  background-color: var(--gold-color);
-  border-width: 2px;
-  border-color: var(--gold-hover-color);
-
-  color: white;
-}
-
-//purple-button
-.button-container .purple-button {
-  display: flex;
-  font-size: 14px;
-
-  align-items: center;
-  justify-content: center;
-
-  gap:8px;
-
-  border: none;
-  border-radius: 8px;
-  box-decoration-break: none;
-
-  height: 32px;
-  width: 100%;
-
+.purple-button {
   background-color: var(--purple-color);
   color: white;
-
-  cursor: pointer;
 }
-
-.button-container .purple-button:hover {
+.purple-button:hover {
   background-color: var(--purple-hover-color);
 }
 
-//border-purple-button
-.button-container .border-purple-button {
-  display: flex;
-  font-size: 14px;
+.granate-button {
+  background-color: var(--granate-color);
+  color: white;
+}
+.granate-button:hover {
+  background-color: var(--granate-hover-color);
+  color: white;
+}
 
-  align-items: center;
-  justify-content: center;
-
-  gap:8px;
-  
-  border-style: solid;
-  border-width: 2px;
-  border-color: var(--purple-color);
+.border-gold-button {
+  border: 2px solid var(--gold-color);
   border-radius: 6px;
 
-  box-decoration-break: none;
+  background-color: transparent;
+  color: var(--gold-color);
+}
+.border-gold-button:hover {
+  border: 2px solid var(--gold-hover-color);
+  background-color: var(--gold-hover-color);
 
-  height: 32px;
-  width: 100%;
+  color: white;
+}
+
+.border-purple-button {
+  border: 2px solid var(--purple-color);
+  border-radius: 6px;
 
   background-color: transparent;
   color: var(--purple-color);
-
-  cursor: pointer;
 }
 
-.button-container .border-purple-button:hover {
-  background-color: var(--purple-color);
-  border-width: 2px;
-  border-color: var(--purple-hover-color);
+.border-purple-button:hover {
+  border: 2px solid var(--purple-hover-color);
+  background-color: var(--purple-hover-color);
+
+  color: white;
+}
+
+.border-granate-button {
+  border: 2px solid var(--granate-color);
+  border-radius: 6px;
+
+  background-color: transparent;
+  color: var(--purple-color);
+}
+
+.border-granate-button:hover {
+  border: 2px solid var(--granate-hover-color);
+  background-color: var(--granate-hover-color);
 
   color: white;
 }
