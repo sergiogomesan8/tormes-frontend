@@ -1,0 +1,21 @@
+<div class="image-picker col-sm-12">
+  <div class="container-image" (click)="uploader.click()">
+    <img [src]="previewUrl" alt="" />
+  </div>
+  <input
+    hidden
+    type="file"
+    ng-model="data.image"
+    #uploader
+    (change)="onFileSelected($event)"
+    required
+  />
+  <button-component
+    (click)="uploader.click()"
+    [class]="'purple-button'"
+    [type]="'button'"
+    label="Upload"
+  >
+    <mat-icon>cloud_upload</mat-icon>
+  </button-component>
+</div>
