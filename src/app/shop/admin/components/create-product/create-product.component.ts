@@ -22,4 +22,9 @@ export class CreateProductComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  handleFile(file: File) {
+    console.log(file);
+    this.formGroup.get('image')?.setValue(file);
+  }
 }
