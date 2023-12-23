@@ -23,6 +23,9 @@ export class ButtonComponent {
   label: string = '';
 
   @Input()
+  matIcon: string = '';
+
+  @Input()
   disabled: boolean = false;
 
   @Input()
