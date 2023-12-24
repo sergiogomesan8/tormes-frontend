@@ -31,6 +31,12 @@ describe('TableComponent', () => {
     expect(component.dataSource.data).toEqual(component.elementsTable);
   });
 
+  it('should convert displayedColumns to lower case on ngOnInit', () => {
+    component.displayedColumns = ['Column1', 'Column2'];
+    component.ngOnInit();
+    expect(component.displayedColumns).toEqual(['column1', 'column2']);
+  });
+
   it('should update dataSource on ngOnChanges', () => {
     component.elementsTable = [{ id: 1 }, { id: 2 }];
     component.ngOnChanges();
