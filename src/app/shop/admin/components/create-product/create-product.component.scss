@@ -10,20 +10,38 @@
   .create-product-container {
     display: flex;
     flex-direction: column;
-    margin: 0 auto auto auto;
+    margin: 0 auto auto 0;
     padding: 32px;
     max-width: 850px;
 
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0 5px 12px 0 rgba(0, 0, 0, 0.3);
+    border: 1px solid #d8d8d8b3;
 
     .header-panel {
       display: flex;
       flex-direction: row;
-      height: 30px;
+      align-items: center;
+      height: 60px;
       padding-left: 4px;
       border-bottom: 2px solid var(--grey-color);
+
+      fa-icon {
+        cursor: pointer;
+      }
+
+      button-component {
+        margin-left: auto;
+        width: 150px;
+
+        mat-icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 10px;
+          height: 10px;
+        }
+      }
     }
 
     .form-creation {
