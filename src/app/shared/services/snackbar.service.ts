@@ -11,27 +11,23 @@ export class SnackbarService {
     private translateService: TranslateService
   ) {}
 
-  showSuccessSnackbar(message: string): void {
-    this.translateService
-      .get('shop.admin.dashboard.options.products.updateSuccess')
-      .subscribe((success: string) => {
-        this.snackBar.open(message, success, {
-          duration: 2000,
-          verticalPosition: 'top',
-          panelClass: ['green-snackbar'],
-        });
+  showSuccessSnackbar(messageKey: string): void {
+    this.translateService.get(messageKey).subscribe((message: string) => {
+      this.snackBar.open(message, 'Success', {
+        duration: 2000,
+        verticalPosition: 'top',
+        panelClass: ['green-snackbar'],
       });
+    });
   }
 
-  showErrorSnackbar(message: string): void {
-    this.translateService
-      .get('shop.admin.dashboard.options.products.updateSuccess')
-      .subscribe((error: string) => {
-        this.snackBar.open(message, error, {
-          duration: 2000,
-          verticalPosition: 'top',
-          panelClass: ['red-snackbar'],
-        });
+  showErrorSnackbar(messageKey: string): void {
+    this.translateService.get(messageKey).subscribe((message: string) => {
+      this.snackBar.open(message, 'Error', {
+        duration: 2000,
+        verticalPosition: 'top',
+        panelClass: ['red-snackbar'],
       });
+    });
   }
 }
