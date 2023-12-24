@@ -1,7 +1,21 @@
 <div id="create-product">
   <div class="create-product-container">
     <div class="header-panel">
-      <fa-icon class="close-icon" [icon]="['fas', 'times']"></fa-icon>
+      <fa-icon
+        class="close-icon"
+        routerLink="../"
+        [icon]="['fas', 'times']"
+      ></fa-icon>
+
+      <button-component
+        [label]="'shop.admin.dashboard.options.products.add' | translate"
+        [class]="'purple-button'"
+        [type]="'submit'"
+        [disabled]="!formGroup.valid"
+        (click)="addProduct()"
+      >
+        <mat-icon>add</mat-icon>
+      </button-component>
     </div>
     <div class="form-creation">
       <div class="form-header">
@@ -30,12 +44,14 @@
             <mat-label
               [translate]="'shop.admin.dashboard.options.products.section'"
             ></mat-label>
-            <input
-              matInput
-              formControlName="section"
-              ng-model="data.section"
-              required
-            />
+            <mat-select formControlName="section" required>
+              <mat-option
+                *ngFor="let section of sections"
+                [value]="section.name"
+              >
+                {{ section.name }}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="col-12">
@@ -44,6 +60,7 @@
             ></mat-label>
             <input
               matInput
+              type="number"
               formControlName="price"
               ng-model="data.price"
               required
@@ -70,14 +87,7 @@
           />
         </mat-form-field>
       </form>
-      <div class="form-submit">
-        <button-component
-          [label]="'shop.admin.dashboard.options.products.add' | translate"
-          [class]="'gold-button'"
-          [type]="'submit'"
-          [disabled]="!formGroup.valid"
-        ></button-component>
-      </div>
+      <div class="form-submit"></div>
     </div>
   </div>
 </div>
