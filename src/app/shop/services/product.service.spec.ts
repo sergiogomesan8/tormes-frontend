@@ -120,21 +120,23 @@ describe('ProductService', () => {
       );
     });
 
-    it('should return undefined if the http call fails', () => {
-      httpService.post.mockReturnValue(of(products[0]));
+    it('should show error snackbar and return undefined if the http call fails', () => {
+      const errorResponse = new Error('Error');
+      httpService.post.mockReturnValue(throwError(errorResponse));
 
-      service.addProduct(products[0]).subscribe(
+      service.addProduct(createProductDto).subscribe(
         () => {},
-        () => {
-          expect(httpService.get).toHaveBeenCalledWith(
-            productEndPoint.ADD,
-            createProductDto
-          );
-
+        (error) => {
+          expect(error).toEqual(errorResponse);
           expect(snackbarService.showErrorSnackbar).toHaveBeenCalledWith(
             'shop.admin.dashboard.options.products.addError'
           );
         }
+      );
+
+      expect(httpService.post).toHaveBeenCalledWith(
+        productEndPoint.ADD,
+        createProductDto
       );
     });
   });
