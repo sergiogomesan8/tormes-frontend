@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { SnackbarService } from '@shared/services/snackbar.service';
 import { Product } from '@shop/models/product';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { UpdateProductDto } from '@shop/admin/dtos/product.dto';
 
 describe('UpdateProductComponent', () => {
@@ -148,6 +148,22 @@ describe('UpdateProductComponent', () => {
       component.formGroup.setErrors({ invalid: true });
       component.updateProduct();
       expect(mockProductService.updateProduct).not.toHaveBeenCalled();
+    });
+
+    it('should log error if updateProduct service fails', () => {
+      const consoleSpy = jest.spyOn(console, 'log');
+      component.formGroup.setValue({
+        name: 'new name',
+        section: 'test',
+        price: 10,
+        description: 'test',
+        image: 'test',
+      });
+      component.product = product;
+      const error = new Error('Error');
+      mockProductService.updateProduct.mockReturnValue(throwError(() => error));
+      component.updateProduct();
+      expect(consoleSpy).toHaveBeenCalledWith(error);
     });
   });
 
