@@ -12,6 +12,7 @@
         <th mat-header-cell *matHeaderCellDef>Acciones</th>
         <td mat-cell *matCellDef="let element">
           <button
+            class="action-button"
             mat-icon-button
             color="primary"
             (click)="update(element)"
@@ -20,6 +21,7 @@
             <mat-icon>edit</mat-icon>
           </button>
           <button
+            class="action-button"
             mat-icon-button
             color="warn"
             (click)="delete(element)"
