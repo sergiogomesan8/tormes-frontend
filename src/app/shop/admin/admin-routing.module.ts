@@ -6,6 +6,7 @@ import { AdminComponent } from './admin.component';
 import { CatalogComponent } from '@shop/customer/components/catalog/catalog.component';
 import { ProductsComponent } from './components/products/products.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
+import { UpdateProductComponent } from './components/update-product/update-product.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
       { path: 'catalog', component: CatalogComponent },
       { path: 'products', component: ProductsComponent },
       { path: 'products/create-product', component: CreateProductComponent },
+      {
+        path: 'products/update-product/:id',
+        component: UpdateProductComponent,
+      },
     ],
   },
   { path: 'signin', component: RegisterComponent },
