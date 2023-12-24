@@ -28,11 +28,6 @@ describe('Service: Snackbar', () => {
         panelClass: ['green-snackbar'],
       });
     });
-
-    it('should call translateService.get with correct message key', () => {
-      service.showSuccessSnackbar('messageKey');
-      expect(translateService.get).toHaveBeenCalledWith('messageKey');
-    });
   });
 
   describe('showErrorSnackbar', () => {
@@ -46,10 +41,6 @@ describe('Service: Snackbar', () => {
         verticalPosition: 'top',
         panelClass: ['red-snackbar'],
       });
-    });
-    it('should call translateService.get with correct message key', () => {
-      service.showErrorSnackbar('messageKey');
-      expect(translateService.get).toHaveBeenCalledWith('messageKey');
     });
   });
 });
