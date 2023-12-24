@@ -49,7 +49,7 @@ export class ProductService {
   ): Observable<Product | undefined> {
     console.log(createProductDto);
     return this.httpService
-      .post(this.productEndPoint.DELETE, createProductDto)
+      .post(this.productEndPoint.ADD, createProductDto)
       .pipe(
         map((response: Product) => {
           this.snackbarService.showSuccessSnackbar(
@@ -85,7 +85,10 @@ export class ProductService {
       );
   }
 
-  updateProduct(productId:string, product: UpdateProductDto): Observable<Product | undefined> {
+  updateProduct(
+    productId: string,
+    product: UpdateProductDto
+  ): Observable<Product | undefined> {
     return this.httpService
       .patch(`${this.productEndPoint.UPDATE}${productId}`, product)
       .pipe(
