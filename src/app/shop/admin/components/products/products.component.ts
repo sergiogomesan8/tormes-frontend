@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from '@shop/models/product';
 import { ProductService } from '@shop/services/product.service';
 
@@ -10,9 +11,12 @@ import { ProductService } from '@shop/services/product.service';
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
 
-  displayedColumns = ['ID', 'Name', 'Price', 'Section'];
+  displayedColumns = ['Name', 'Price', 'Section'];
 
-  constructor(private readonly productService: ProductService) {}
+  constructor(
+    private readonly productService: ProductService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.findAllProducts();
@@ -28,8 +32,8 @@ export class ProductsComponent implements OnInit {
       },
     });
   }
-  delete(product: Product): void {
-    this.productService.delete(product).subscribe({
+  deleteProduct(product: Product): void {
+    this.productService.deleteProduct(product).subscribe({
       next: () => {
         this.findAllProducts();
       },
@@ -39,14 +43,7 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  update(product: Product): void {
-    this.productService.update(product).subscribe({
-      next: () => {
-        this.findAllProducts();
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+  updateProduct(product: Product): void {
+    this.router.navigate(['/admin/products/update-product', product.id]);
   }
 }

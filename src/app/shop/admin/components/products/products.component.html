@@ -1,20 +1,27 @@
 <div id="products-info">
-  <!-- <div class="table-header">
-    <h2>Manage Products</h2>
-    <search-component [placeholder]="'Buscar producto...'"></search-component>
+  <!-- <div class="products-header">
+    <h2>Dashboard / Products</h2>
   </div> -->
-  <table-crud-component
-    (updateEvent)="update($event)"
-    (deleteEvent)="delete($event)"
-    [elementsTable]="products"
-    [displayedColumns]="displayedColumns"
-    [deleteAction]="true"
-    [updateAction]="true"
-  ></table-crud-component>
-  <button-component
-    [label]="'shop.admin.dashboard.options.products.add' | translate"
-    [routerLink]="'/admin/products/create-product'"
-    [class]="'gold-button'"
-    [type]="'button'"
-  ></button-component>
+  <div class="products-container">
+    <div class="table-header">
+      <search-component [placeholder]="'Buscar producto...'"></search-component>
+      <button-component
+        [label]="'shop.admin.dashboard.options.products.add' | translate"
+        [routerLink]="'/admin/products/create-product'"
+        [class]="'purple-button'"
+        [type]="'button'"
+      >
+        <mat-icon>add</mat-icon>
+      </button-component>
+    </div>
+
+    <table-crud-component
+      (updateEvent)="updateProduct($event)"
+      (deleteEvent)="deleteProduct($event)"
+      [elementsTable]="products"
+      [displayedColumns]="displayedColumns"
+      [deleteAction]="true"
+      [updateAction]="true"
+    ></table-crud-component>
+  </div>
 </div>
