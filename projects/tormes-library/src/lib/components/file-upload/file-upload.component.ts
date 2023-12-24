@@ -1,10 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'file-upload-component',
@@ -16,8 +10,6 @@ export class FileUploadComponent {
   @Output() fileSelected: EventEmitter<File> = new EventEmitter<File>();
 
   previewUrl: string | ArrayBuffer = 'assets/images/icons/upload-file.png';
-
-  constructor(private cdr: ChangeDetectorRef) {}
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
