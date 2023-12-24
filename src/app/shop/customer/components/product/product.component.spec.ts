@@ -25,6 +25,7 @@ describe('ProductComponent', () => {
       name: 'product name',
       price: 100,
       section: 'product section',
+      description: 'product description',
     };
     component.product = product;
     fixture.detectChanges();
