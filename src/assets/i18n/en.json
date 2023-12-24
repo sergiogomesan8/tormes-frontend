@@ -60,7 +60,9 @@
             "deleteError": "Error while deleting product, try again later",
             "update": "Update producto",
             "updateSuccess": "Product updated successfully!",
-            "updateError": "Error while updating the product, please try again later"
+            "updateError": "Error while updating the product, please try again later",
+            "getByIdError": "An error has occurred, please try again later",
+            "noChanges": "No changes"
           },
           "sections": "Sections"
         }

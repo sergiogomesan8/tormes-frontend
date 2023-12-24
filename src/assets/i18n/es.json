@@ -60,7 +60,9 @@
             "deleteError": "Error al eliminar el producto, inténtelo de nuevo más tarde",
             "update": "Actualizar producto",
             "updateSuccess": "Producto actualizado con éxito!",
-            "updateError": "Error al actualizar el producto, inténtelo de nuevo más tarde"
+            "updateError": "Error al actualizar el producto, inténtelo de nuevo más tarde",
+            "getByIdError": "Se ha producido un error, inténtelo de nuevo más tarde",
+            "noChanges": "No hay cambios"
           },
           "sections": "Secciones"
         }
