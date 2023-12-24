@@ -25,21 +25,33 @@ describe('TableComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should initialize dataSource on ngOnInit', () => {
+    component.elementsTable = [{ id: 1 }, { id: 2 }];
+    component.ngOnInit();
+    expect(component.dataSource.data).toEqual(component.elementsTable);
+  });
+
+  it('should update dataSource on ngOnChanges', () => {
+    component.elementsTable = [{ id: 1 }, { id: 2 }];
+    component.ngOnChanges();
+    expect(component.dataSource.data).toEqual(component.elementsTable);
+  });
+
+  it('should emit updateEvent on update', () => {
+    const element = { id: 1 };
+    component.updateEvent.subscribe((e) => expect(e).toEqual(element));
+    component.update(element);
+  });
+
+  it('should emit deleteEvent on delete', () => {
+    const element = { id: 1 };
+    component.deleteEvent.subscribe((e) => expect(e).toEqual(element));
+    component.delete(element);
+  });
+
   it('should set paginator and sort on ngAfterViewInit', () => {
     component.ngAfterViewInit();
     expect(component.dataSource.paginator).toEqual(mockPaginator);
     expect(component.dataSource.sort).toEqual(mockSort);
-  });
-
-  it('should log "edit" on edit', () => {
-    console.log = jest.fn();
-    component.edit();
-    expect(console.log).toHaveBeenCalledWith('edit');
-  });
-
-  it('should log "delete" on delete', () => {
-    console.log = jest.fn();
-    component.delete();
-    expect(console.log).toHaveBeenCalledWith('delete');
   });
 });
