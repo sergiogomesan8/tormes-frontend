@@ -87,7 +87,7 @@ export class UpdateProductComponent implements OnInit {
     }
   }
 
-  private buildUpdateProductDto(): UpdateProductDto | null {
+  buildUpdateProductDto(): UpdateProductDto | null {
     const updateProductDto: UpdateProductDto = {};
 
     this.addIfChanged(
@@ -124,7 +124,7 @@ export class UpdateProductComponent implements OnInit {
     return Object.keys(updateProductDto).length > 0 ? updateProductDto : null;
   }
 
-  private addIfChanged(
+  addIfChanged(
     key: keyof UpdateProductDto,
     formValue: any,
     originalValue: any,
