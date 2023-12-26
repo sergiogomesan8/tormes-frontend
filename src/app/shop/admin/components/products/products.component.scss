@@ -7,22 +7,6 @@
 
   background-color: var(--grey-color);
 
-  // .products-header {
-  //   display: flex;
-  //   margin: 0 auto auto auto;
-  //   min-width: 710px;
-  //   height: 56px;
-  //   padding: 4px;
-  //   border-bottom: none;
-  //   border-top-left-radius: 8px;
-  //   border-top-right-radius: 8px;
-
-  //   h2 {
-  //     margin-left: 8px;
-  //     margin-bottom: 0px;
-  //   }
-  // }
-
   .products-container {
     display: flex;
     flex-direction: column;
@@ -77,10 +61,6 @@
       }
     }
   }
-}
-@media screen and (min-width: 992px) {
-}
-@media screen and (min-width: 1200px) {
 }
 @media screen and (min-width: 1400px) {
   #products-info {
