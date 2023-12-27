@@ -3,9 +3,17 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { SharedModule } from '@shared/shared.module';
 import { AdminComponent } from './admin.component';
+import { ProductsComponent } from './components/products/products.component';
+import { CreateProductComponent } from './components/create-product/create-product.component';
+import { UpdateProductComponent } from './components/update-product/update-product.component';
 
 @NgModule({
   imports: [CommonModule, AdminRoutingModule, SharedModule],
-  declarations: [AdminComponent],
+  declarations: [
+    AdminComponent,
+    ProductsComponent,
+    CreateProductComponent,
+    UpdateProductComponent,
+  ],
 })
 export class AdminModule {}

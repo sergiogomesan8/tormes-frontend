@@ -48,7 +48,7 @@
     align-items: center;
     gap: 12px;
     margin-right: 0px;
-    margin-left: 16px;
+    margin-left: auto;
 
     font-size: 15px;
 
@@ -73,6 +73,10 @@
     .navbar-menu-big-size {
       display: flex;
       flex-direction: row;
+    }
+
+    .authentication{
+      margin-left: 16px;
     }
   }
 }

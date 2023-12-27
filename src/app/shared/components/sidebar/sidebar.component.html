@@ -18,19 +18,46 @@
   </div>
   <div class="content">
     <div class="sidenav-nav">
-      <div class="sidenav-nav-item" *ngFor="let data of navData">
-        <a
-          href=""
-          class="sidenav-nav-link"
-          [routerLink]="[data.routerLink]"
+      <div class="sidenav-nav-items" *ngFor="let item of navbarData">
+        <div
+          class="sidenav-nav-item"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <fa-icon class="sidenav-link-icon" [icon]="data.icon"></fa-icon>
-          <span class="sidenav-link-text" @fadeInOut *ngIf="isExpanded">{{
-            data.label
-          }}</span>
-        </a>
+          <a href="" class="sidenav-nav-link" [routerLink]="[item.routerLink]">
+            <fa-icon class="sidenav-link-icon" [icon]="item.icon"></fa-icon>
+            <span class="sidenav-link-text" @fadeInOut *ngIf="isExpanded">{{
+              item.label | translate
+            }}</span>
+          </a>
+          <fa-icon
+            class="arrow-down"
+            @fadeInOut
+            *ngIf="item.childOptions && isExpanded"
+            [icon]="faChevronDown"
+            (click)="handleChildOptions(item)"
+          ></fa-icon>
+        </div>
+
+        <div
+          class="sidenav-nav-child"
+          *ngIf="openStates[item.routerLink] && isExpanded"
+        >
+          <div
+            class="sidenav-nav-child-item"
+            *ngFor="let child of item.childOptions"
+            [routerLink]="[child.routerLink]"
+          >
+            <fa-icon
+              class="circle-icon"
+              [icon]="['fas', 'circle']"
+              size="2xs"
+            ></fa-icon>
+            <span class="sidenav-link-text" @fadeInOut *ngIf="isExpanded">{{
+              child.label | translate
+            }}</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>

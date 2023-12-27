@@ -1,11 +1,15 @@
 <form class="search-bar">
   <input
     type="search"
-    class="form-control"
     [placeholder]="placeholder"
     aria-label="Search"
   />
-  <button mat-icon-button matSuffix>
+
+  <!-- <mat-form-field appearance="outline">
+    <mat-label>{{ placeholder }}</mat-label>
+    <input matInput />
+  </mat-form-field> -->
+  <button>
     <mat-icon>search</mat-icon>
   </button>
 </form>

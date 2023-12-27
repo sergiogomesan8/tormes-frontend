@@ -17,12 +17,26 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { TableComponent } from './components/table/table.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
+
+    //Tormes Library
     ComponentsModule,
+
+    //Angular Material
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatSnackBarModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
@@ -33,19 +47,63 @@ import { TableComponent } from './components/table/table.component';
     MatPaginatorModule,
     MatSortModule,
 
+    //Translate
+    TranslateModule,
+
+    //Font Awesome Icons
     FontAwesomeModule,
 
     //Ng Bootstrap
     NgbModule,
     NgbCarouselModule,
+
+    //Forms
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  declarations: [NavbarComponent, CarouselComponent, SidebarComponent, TableComponent],
-  exports: [
-    ComponentsModule,
+  declarations: [
     NavbarComponent,
     CarouselComponent,
     SidebarComponent,
     TableComponent,
+  ],
+  exports: [
+    NavbarComponent,
+    CarouselComponent,
+    SidebarComponent,
+    TableComponent,
+
+    //Tormes Library
+    ComponentsModule,
+
+    //Angular Material
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatSnackBarModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+
+    //Translate
+    TranslateModule,
+
+    //Font Awesome Icons
+    FontAwesomeModule,
+
+    //Ng Bootstrap
+    NgbModule,
+    NgbCarouselModule,
+
+    //Forms
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class SharedModule {}

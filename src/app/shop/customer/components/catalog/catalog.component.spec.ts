@@ -20,6 +20,7 @@ describe('CatalogComponent', () => {
       name: 'Salchichón ibérico de bellota',
       price: 12.99,
       section: 'Fiambres',
+      description: 'Salchichón ibérico de bellota',
     },
     {
       id: 'A000000002',
@@ -27,6 +28,7 @@ describe('CatalogComponent', () => {
       name: 'Chorizo ibérico de bellota',
       price: 8.99,
       section: 'Embutidos',
+      description: 'Chorizo ibérico de bellota',
     },
   ];
 

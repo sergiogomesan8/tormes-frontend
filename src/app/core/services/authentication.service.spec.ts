@@ -8,12 +8,13 @@ import { HttpService } from './http-service.service';
 import { AuthEndPoint } from '@shared/end-points';
 import { CreateUserDto, LoginUserDto } from '@shop/customer/dtos/user.dto';
 import { AuthUser } from '@core/models/auth.user';
+import { SnackbarService } from '@shared/services/snackbar.service';
 
 describe('AuthenticationService', () => {
   let service: AuthenticationService;
   let httpService: jest.Mocked<HttpService>;
-  let snackBar: jest.Mocked<MatSnackBar>;
-  let translateService: jest.Mocked<TranslateService>;
+  let snackbarService: jest.Mocked<SnackbarService>;
+
   let authEndPoint: AuthEndPoint;
 
   const email = 'user@example.com';
@@ -34,21 +35,18 @@ describe('AuthenticationService', () => {
 
   beforeEach(() => {
     httpService = { post: jest.fn() } as any;
-    snackBar = { open: jest.fn() } as any;
-    translateService = { get: jest.fn() } as any;
+    snackbarService = {
+      showSuccessSnackbar: jest.fn(),
+      showErrorSnackbar: jest.fn(),
+    } as any;
     authEndPoint = new AuthEndPoint();
 
-    service = new AuthenticationService(
-      httpService,
-      snackBar,
-      translateService
-    );
+    service = new AuthenticationService(httpService, snackbarService);
   });
 
   describe('signin', () => {
     it('should call httpService.post and show success snackbar on successful signin', () => {
       httpService.post.mockReturnValue(of(authUser));
-      translateService.get.mockReturnValue(of('Success message'));
 
       service.signin(createUserDto).subscribe();
 
@@ -56,19 +54,13 @@ describe('AuthenticationService', () => {
         authEndPoint.REGISTER,
         createUserDto
       );
-      expect(translateService.get).toHaveBeenCalledWith(
+      expect(snackbarService.showSuccessSnackbar).toHaveBeenCalledWith(
         'shop.customer.register.success'
-      );
-      expect(snackBar.open).toHaveBeenCalledWith(
-        'Success message',
-        'Success',
-        expect.any(Object)
       );
     });
 
     it('should call httpService.post and show error snackbar on failed signin', () => {
       httpService.post.mockReturnValue(throwError(() => new Error('Error')));
-      translateService.get.mockReturnValue(of('Error message'));
 
       service.signin(createUserDto).subscribe(
         () => {},
@@ -77,13 +69,8 @@ describe('AuthenticationService', () => {
             authEndPoint.REGISTER,
             createUserDto
           );
-          expect(translateService.get).toHaveBeenCalledWith(
+          expect(snackbarService.showErrorSnackbar).toHaveBeenCalledWith(
             'shop.customer.register.error'
-          );
-          expect(snackBar.open).toHaveBeenCalledWith(
-            'Error message',
-            'Error',
-            expect.any(Object)
           );
         }
       );
@@ -93,7 +80,6 @@ describe('AuthenticationService', () => {
   describe('login', () => {
     it('should call httpService.post on successful signin', () => {
       httpService.post.mockReturnValue(of(authUser));
-      translateService.get.mockReturnValue(of('Success message'));
 
       service.login(loginUserDto).subscribe();
 
@@ -105,7 +91,6 @@ describe('AuthenticationService', () => {
 
     it('should call httpService.post and show error snackbar on failed signin', () => {
       httpService.post.mockReturnValue(throwError(() => new Error('Error')));
-      translateService.get.mockReturnValue(of('Error message'));
 
       service.login(loginUserDto).subscribe(
         () => {},
@@ -114,13 +99,8 @@ describe('AuthenticationService', () => {
             authEndPoint.LOGIN,
             loginUserDto
           );
-          expect(translateService.get).toHaveBeenCalledWith(
+          expect(snackbarService.showErrorSnackbar).toHaveBeenCalledWith(
             'shop.customer.login.error'
-          );
-          expect(snackBar.open).toHaveBeenCalledWith(
-            'Error message',
-            'Error',
-            expect.any(Object)
           );
         }
       );

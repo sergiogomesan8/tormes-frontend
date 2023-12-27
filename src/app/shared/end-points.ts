@@ -22,5 +22,9 @@ export class ProductEndPoint extends EndPoint {
     super(environment.tormesBackend + '/product');
   }
 
+  FIND_BY_ID = this.buildUrl('/');
   FIND_ALL = this.buildUrl('/list');
+  UPDATE = this.buildUrl('/');
+  DELETE = this.buildUrl('/');
+  ADD = this.buildUrl('/');
 }

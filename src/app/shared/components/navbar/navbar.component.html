@@ -41,13 +41,13 @@
       <button mat-menu-item>Cancelados</button>
     </mat-menu>
 
-    <search-component [placeholder]="'Buscar producto..'"></search-component>
+    <search-component class="d-none d-md-flex" [placeholder]="'Buscar producto..'"></search-component>
 
     <div class="authentication">
       <button-component
         [routerLink]="'/login'"
         [label]="'Iniciar Sesión'"
-        [class]="'border-purple-button'"
+        [class]="'border-gold-button'"
       ></button-component>
       <p>o</p>
       <button-component
@@ -57,7 +57,7 @@
       ></button-component>
     </div>
 
-    <button mat-icon-button class="shopping-cart-container">
+    <button mat-icon-button routerLink="admin" class="shopping-cart-container">
       <mat-icon>shopping_cart</mat-icon>
     </button>
   </mat-toolbar-row>

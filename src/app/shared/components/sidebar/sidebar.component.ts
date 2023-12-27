@@ -7,7 +7,20 @@ import {
   faCashRegister,
   faStore,
   faUsers,
+  faChevronDown,
 } from '@fortawesome/free-solid-svg-icons';
+
+interface NavItem {
+  routerLink: string;
+  icon: IconName;
+  label: string;
+  childOptions?: ChildNavItem[];
+}
+
+interface ChildNavItem {
+  routerLink: string;
+  label: string;
+}
 
 @Component({
   selector: 'sidebar-component',
@@ -30,33 +43,56 @@ export class SidebarComponent {
   @Input() isExpanded: boolean = false;
   @Output() toggleSidebar: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  navbarData: NavItem[] = [
+    {
+      routerLink: 'dashboard',
+      icon: faHome as unknown as IconName,
+      label: 'shop.admin.dashboard.title',
+      childOptions: [
+        {
+          routerLink: 'products',
+          label: 'shop.admin.dashboard.options.products.title',
+        },
+        {
+          routerLink: 'sections',
+          label: 'shop.admin.dashboard.options.sections',
+        },
+      ],
+    },
+    {
+      routerLink: 'catalog',
+      icon: faStore as unknown as IconName,
+      label: 'shop.admin.catalog.title',
+    },
+    {
+      routerLink: 'cash-register',
+      icon: faCashRegister as unknown as IconName,
+      label: 'shop.admin.cashRegister.title',
+    },
+    {
+      routerLink: 'employee-management',
+      icon: faUsers as unknown as IconName,
+      label: 'shop.admin.employee.title',
+    },
+    {
+      routerLink: 'order',
+      icon: faBoxOpen as unknown as IconName,
+      label: 'shop.admin.orders.title',
+    },
+  ];
+
+  faChevronDown = faChevronDown;
+  openStates: Record<string, boolean> = {};
+
+  constructor() {
+    this.navbarData.forEach((item) => {
+      this.openStates[item.routerLink] = false;
+    });
+  }
+
   handleSidebarToggle = () => this.toggleSidebar.emit(!this.isExpanded);
-  navData = navbarData;
+
+  handleChildOptions(item: NavItem) {
+    this.openStates[item.routerLink] = !this.openStates[item.routerLink];
+  }
 }
-export const navbarData = [
-  {
-    routerLink: 'dashboard',
-    icon: faHome as unknown as IconName,
-    label: 'Dashboard',
-  },
-  {
-    routerLink: 'catalog',
-    icon: faStore as unknown as IconName,
-    label: 'Catalog',
-  },
-  {
-    routerLink: 'cash-register',
-    icon: faCashRegister as unknown as IconName,
-    label: 'Cash Register',
-  },
-  {
-    routerLink: 'employee-management',
-    icon: faUsers as unknown as IconName,
-    label: 'Employee',
-  },
-  {
-    routerLink: 'order',
-    icon: faBoxOpen as unknown as IconName,
-    label: 'Orders',
-  },
-];
