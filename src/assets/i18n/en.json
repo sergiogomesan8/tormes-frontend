@@ -61,6 +61,7 @@
             "update": "Update producto",
             "updateSuccess": "Product updated successfully!",
             "updateError": "Error while updating the product, please try again later",
+            "fileTypeError": "The file must be 'png', 'jpg' or 'jpeg'",
             "getByIdError": "An error has occurred, please try again later",
             "noChanges": "No changes"
           },

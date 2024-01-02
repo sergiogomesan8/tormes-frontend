@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SnackbarService } from '@shared/services/snackbar.service';
 import { CreateProductDto } from '@shop/admin/dtos/product.dto';
 import { Section } from '@shop/models/section';
 import { ProductService } from '@shop/services/product.service';
@@ -24,6 +25,7 @@ export class CreateProductComponent {
 
   constructor(
     private readonly productService: ProductService,
+    private readonly snackbarService: SnackbarService,
     private readonly formBuilder: FormBuilder,
     private router: Router
   ) {
@@ -38,9 +40,23 @@ export class CreateProductComponent {
       image: ['', [Validators.required]],
     });
   }
-  
-  handleFile(file: File) {
-    this.formGroup.get('image')?.setValue('/image/' + file.name);
+
+  handleFile(data: { file?: File; error?: string }) {
+    if (data.error) {
+      console.log('Error', data.error);
+      this.snackbarService.showErrorSnackbar(
+        'shop.admin.dashboard.options.products.fileTypeError'
+      );
+    } else if (data.file) {
+      try {
+        this.formGroup.get('image')?.setValue(data.file);
+      } catch (error) {
+        console.log('Error', error);
+        this.snackbarService.showErrorSnackbar(
+          'shop.admin.dashboard.options.products.fileTypeError'
+        );
+      }
+    }
   }
 
   addProduct(): void {
@@ -50,7 +66,7 @@ export class CreateProductComponent {
         section: this.formGroup.value.section,
         price: +this.formGroup.value.price,
         description: this.formGroup.value.description,
-        image: this.formGroup.value.image as string,
+        image: this.formGroup.value.image,
       };
       this.productService.addProduct(createProductDto).subscribe({
         next: () => {
