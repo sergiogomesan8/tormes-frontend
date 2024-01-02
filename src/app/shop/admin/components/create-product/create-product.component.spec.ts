@@ -4,32 +4,39 @@ import { Router } from '@angular/router';
 import { ProductService } from '@shop/services/product.service';
 import { CreateProductComponent } from './create-product.component';
 import { of, throwError } from 'rxjs';
+import { SnackbarService } from '@shared/services/snackbar.service';
 
 describe('CreateProductComponent', () => {
   let component: CreateProductComponent;
   let mockProductService: jest.Mocked<ProductService>;
   let mockRouter: jest.Mocked<Router>;
   let formBuilder: FormBuilder;
+  let snackbarService: jest.Mocked<SnackbarService>;
 
   beforeEach(() => {
     mockProductService = {
-      addProduct: jest.fn(),
+      createProduct: jest.fn(),
     } as any;
 
     mockRouter = {
       navigate: jest.fn(),
     } as any;
 
+    snackbarService = {
+      showErrorSnackbar: jest.fn(),
+    } as any;
+
     formBuilder = new FormBuilder();
 
     component = new CreateProductComponent(
       mockProductService,
+      snackbarService,
       formBuilder,
       mockRouter
     );
   });
 
-  describe('addProduct', () => {
+  describe('createProduct', () => {
     it('should add product and navigate on success', () => {
       component.formGroup = formBuilder.group({
         name: ['test', [Validators.required]],
@@ -50,11 +57,11 @@ describe('CreateProductComponent', () => {
         image: 'test',
       };
 
-      mockProductService.addProduct.mockReturnValue(of(undefined));
+      mockProductService.createProduct.mockReturnValue(of(undefined));
 
-      component.addProduct();
+      component.createProduct();
 
-      expect(mockProductService.addProduct).toHaveBeenCalledWith(productDto);
+      expect(mockProductService.createProduct).toHaveBeenCalledWith(productDto);
       expect(mockRouter.navigate).toHaveBeenCalledWith(['/admin/products']);
     });
 
@@ -73,9 +80,9 @@ describe('CreateProductComponent', () => {
         image: ['test', [Validators.required]],
       });
 
-      mockProductService.addProduct.mockReturnValue(throwError(() => error));
+      mockProductService.createProduct.mockReturnValue(throwError(() => error));
 
-      component.addProduct();
+      component.createProduct();
 
       expect(consoleSpy).toHaveBeenCalledWith(error);
     });
@@ -92,17 +99,25 @@ describe('CreateProductComponent', () => {
         image: ['test', [Validators.required]],
       });
 
-      component.addProduct();
+      component.createProduct();
 
-      expect(mockProductService.addProduct).not.toHaveBeenCalled();
+      expect(mockProductService.createProduct).not.toHaveBeenCalled();
     });
   });
 
   describe('handleFile', () => {
     it('should set image path on file handle', () => {
       const file = new File([''], 'test.png', { type: 'image/png' });
-      component.handleFile(file);
-      expect(component.formGroup.get('image')?.value).toBe('/image/test.png');
+      component.handleFile({ file });
+      expect(component.formGroup.get('image')?.value).toBe(file);
+    });
+
+    it('should handle error', () => {
+      const error = 'Test error';
+      component.handleFile({ error });
+      expect(snackbarService.showErrorSnackbar).toHaveBeenCalledWith(
+        'shop.admin.dashboard.options.products.fileTypeError'
+      );
     });
   });
 });

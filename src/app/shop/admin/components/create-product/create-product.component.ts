@@ -48,18 +48,11 @@ export class CreateProductComponent {
         'shop.admin.dashboard.options.products.fileTypeError'
       );
     } else if (data.file) {
-      try {
-        this.formGroup.get('image')?.setValue(data.file);
-      } catch (error) {
-        console.log('Error', error);
-        this.snackbarService.showErrorSnackbar(
-          'shop.admin.dashboard.options.products.fileTypeError'
-        );
-      }
+      this.formGroup.get('image')?.setValue(data.file);
     }
   }
 
-  addProduct(): void {
+  createProduct(): void {
     if (this.formGroup.valid) {
       const createProductDto: CreateProductDto = {
         name: this.formGroup.value.name,
@@ -68,7 +61,7 @@ export class CreateProductComponent {
         description: this.formGroup.value.description,
         image: this.formGroup.value.image,
       };
-      this.productService.addProduct(createProductDto).subscribe({
+      this.productService.createProduct(createProductDto).subscribe({
         next: () => {
           this.router.navigate(['/admin/products']);
         },
