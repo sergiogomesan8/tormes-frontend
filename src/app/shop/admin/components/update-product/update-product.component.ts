@@ -145,13 +145,7 @@ export class UpdateProductComponent implements OnInit {
         'shop.admin.dashboard.options.products.fileTypeError'
       );
     } else if (data.file) {
-      try {
-        this.formGroup.get('image')?.setValue(data.file);
-      } catch (error) {
-        this.snackbarService.showErrorSnackbar(
-          'shop.admin.dashboard.options.products.fileTypeError'
-        );
-      }
+      this.formGroup.get('image')?.setValue(data.file);
     }
   }
 }

@@ -49,14 +49,6 @@ describe('UpdateProductComponent', () => {
     );
   });
 
-  const updateProductDto: UpdateProductDto = {
-    name: 'test',
-    section: 'test',
-    price: 10,
-    description: 'test',
-    image: 'test',
-  };
-
   const product: Product = {
     id: '1',
     name: 'test',
@@ -170,8 +162,16 @@ describe('UpdateProductComponent', () => {
   describe('handleFile', () => {
     it('should set image path on file handle', () => {
       const file = new File([''], 'test.png', { type: 'image/png' });
-      component.handleFile(file);
-      expect(component.formGroup.get('image')?.value).toBe('/image/test.png');
+      component.handleFile({ file });
+      expect(component.formGroup.get('image')?.value).toBe(file);
+    });
+
+    it('should handle error', () => {
+      const error = 'Test error';
+      component.handleFile({ error });
+      expect(snackbarService.showErrorSnackbar).toHaveBeenCalledWith(
+        'shop.admin.dashboard.options.products.fileTypeError'
+      );
     });
   });
 
