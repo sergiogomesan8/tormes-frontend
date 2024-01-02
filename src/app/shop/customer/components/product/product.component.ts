@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { environment } from '@env';
 import { Product } from '@shop/models/product';
 
 @Component({
@@ -8,4 +9,8 @@ import { Product } from '@shop/models/product';
 })
 export class ProductComponent {
   @Input() product!: Product;
+
+  get productImageUrl() {
+    return `${environment.TORMES_BACKEND_IMAGES_PRODUCTS}/${this.product.image}`;
+  }
 }
