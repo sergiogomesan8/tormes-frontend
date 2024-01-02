@@ -1,4 +1,3 @@
-import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpService } from '@core/services/http-service.service';
 import { ProductEndPoint } from '@shared/end-points';
