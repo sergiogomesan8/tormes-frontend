@@ -3,14 +3,14 @@ export class CreateProductDto {
   section: string;
   price: number;
   description: string;
-  image: string;
+  image: Blob;
 
   constructor(
     name: string,
     section: string,
     price: number,
     description: string,
-    image: string
+    image: Blob
   ) {
     this.name = name;
     this.section = section;
@@ -25,14 +25,14 @@ export class UpdateProductDto {
   section?: string;
   price?: number;
   description?: string;
-  image?: string;
+  image?: Blob;
 
   constructor(
     name?: string,
     section?: string,
     price?: number,
     description?: string,
-    image?: string
+    image?: Blob
   ) {
     this.name = name;
     this.section = section;

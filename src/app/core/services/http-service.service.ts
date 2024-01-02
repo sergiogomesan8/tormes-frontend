@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { IHttpService, ParamsType } from '../interfaces/http-service.interface';
@@ -24,7 +24,8 @@ export class HttpService implements IHttpService {
   post(
     url: string,
     body: any,
-    params?: ParamsType | undefined
+    params?: ParamsType | undefined,
+    headers?: HttpHeaders | undefined
   ): Observable<any> {
     return this.http
       .post(url, body, { params: this.createParams(params) })
@@ -48,10 +49,11 @@ export class HttpService implements IHttpService {
   patch(
     url: string,
     body: any,
-    params?: ParamsType | undefined
+    params?: ParamsType | undefined,
+    headers?: HttpHeaders | undefined
   ): Observable<any> {
     return this.http
-      .patch(url, body, { params: this.createParams(params) })
+      .patch(url, body, { params: this.createParams(params), headers: headers })
       .pipe(
         map((response) => this.handleResponse(response)),
         catchError((error) => this.handleError(error))

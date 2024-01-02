@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from '@env';
 import { SnackbarService } from '@shared/services/snackbar.service';
 import { UpdateProductDto } from '@shop/admin/dtos/product.dto';
 import { Product } from '@shop/models/product';
@@ -15,6 +16,7 @@ import { ProductService } from '@shop/services/product.service';
 export class UpdateProductComponent implements OnInit {
   product!: Product;
   formGroup: FormGroup;
+  imageUrl!: string;
 
   sections: Section[] = [
     { name: 'Embutidos', image: 'image' },
@@ -55,6 +57,7 @@ export class UpdateProductComponent implements OnInit {
             description: this.product.description,
             image: this.product.image,
           });
+          this.imageUrl = `${environment.TORMES_BACKEND_IMAGES_PRODUCTS}/${this.product.image}`;
         } else {
           this.router.navigate(['/admin/products']);
         }
@@ -135,7 +138,14 @@ export class UpdateProductComponent implements OnInit {
     }
   }
 
-  handleFile(file: File) {
-    this.formGroup.get('image')?.setValue('/image/' + file.name);
+  handleFile(data: { file?: File; error?: string }) {
+    if (data.error) {
+      console.log('Error', data.error);
+      this.snackbarService.showErrorSnackbar(
+        'shop.admin.dashboard.options.products.fileTypeError'
+      );
+    } else if (data.file) {
+      this.formGroup.get('image')?.setValue(data.file);
+    }
   }
 }

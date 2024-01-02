@@ -3,7 +3,10 @@ import { ProductService } from './product.service';
 import { HttpService } from '@core/services/http-service.service';
 import { ProductEndPoint } from '@shared/end-points';
 import { SnackbarService } from '@shared/services/snackbar.service';
-import { CreateProductDto } from '@shop/admin/dtos/product.dto';
+import {
+  CreateProductDto,
+  UpdateProductDto,
+} from '@shop/admin/dtos/product.dto';
 import { Product } from '@shop/models/product';
 import { of, throwError } from 'rxjs';
 
@@ -48,14 +51,6 @@ describe('ProductService', () => {
       description: 'Chorizo ibérico de bellota de Guijuelo',
     },
   ];
-
-  const createProductDto: CreateProductDto = {
-    name: 'Chorizo ibérico de bellota',
-    price: 8.99,
-    section: 'Embutidos',
-    description: 'Chorizo ibérico de bellota de Guijuelo',
-    image: 'image/url',
-  };
 
   describe('findAllProducts', () => {
     it('should return an array of products if the http call is successful', () => {
@@ -108,15 +103,36 @@ describe('ProductService', () => {
     });
   });
 
-  describe('addProduct', () => {
+  describe('createProduct', () => {
+    const createProductDto: CreateProductDto = {
+      name: 'Chorizo ibérico de bellota',
+      price: 8.99,
+      section: 'Embutidos',
+      description: 'Chorizo ibérico de bellota de Guijuelo',
+      image: new Blob(['test'], { type: 'text/plain' }),
+    };
+    let formData: FormData;
+
+    beforeEach(() => {
+      formData = new FormData();
+      formData.append('name', createProductDto.name);
+      formData.append('description', createProductDto.description);
+      formData.append('image', createProductDto.image);
+      formData.append('price', createProductDto.price.toString());
+      formData.append('section', createProductDto.section);
+    });
+
     it('should return a product if the http call is successful', () => {
       httpService.post.mockReturnValue(of(products[0]));
 
-      service.addProduct(createProductDto).subscribe();
+      service.createProduct(createProductDto).subscribe();
 
       expect(httpService.post).toHaveBeenCalledWith(
         productEndPoint.ADD,
-        createProductDto
+        formData
+      );
+      expect(snackbarService.showSuccessSnackbar).toHaveBeenCalledWith(
+        'shop.admin.dashboard.options.products.addSuccess'
       );
     });
 
@@ -124,7 +140,7 @@ describe('ProductService', () => {
       const errorResponse = new Error('Error');
       httpService.post.mockReturnValue(throwError(errorResponse));
 
-      service.addProduct(createProductDto).subscribe(
+      service.createProduct(createProductDto).subscribe(
         () => {},
         (error) => {
           expect(error).toEqual(errorResponse);
@@ -136,29 +152,73 @@ describe('ProductService', () => {
 
       expect(httpService.post).toHaveBeenCalledWith(
         productEndPoint.ADD,
-        createProductDto
+        formData
       );
     });
   });
 
   describe('updateProduct', () => {
+    const updateProductDto: UpdateProductDto = {
+      name: 'test',
+      section: 'test',
+      price: 10,
+      description: 'test',
+      image: new Blob(['test'], { type: 'text/plain' }),
+    };
+
+    let formData: FormData;
+
+    beforeEach(() => {
+      formData = new FormData();
+      if (updateProductDto.name) {
+        formData.append('name', updateProductDto.name);
+      }
+      if (updateProductDto.description) {
+        formData.append('description', updateProductDto.description);
+      }
+      if (updateProductDto.image) {
+        formData.append('image', updateProductDto.image);
+      }
+      if (updateProductDto.price) {
+        formData.append('price', updateProductDto.price.toString());
+      }
+      if (updateProductDto.section) {
+        formData.append('section', updateProductDto.section);
+      }
+    });
     it('should return undefined if the http call is successful', () => {
       httpService.patch.mockReturnValue(of(undefined));
 
-      service.updateProduct(products[0].id, products[0]).subscribe((res) => {
-        expect(res).toBeUndefined();
-      });
-      expect(httpService.patch).toHaveBeenCalled();
+      service
+        .updateProduct(products[0].id, updateProductDto)
+        .subscribe((res) => {
+          expect(res).toBeUndefined();
+        });
+      expect(httpService.patch).toHaveBeenCalledWith(
+        `${productEndPoint.UPDATE}${products[0].id}`,
+        formData
+      );
+      expect(snackbarService.showSuccessSnackbar).toHaveBeenCalledWith(
+        'shop.admin.dashboard.options.products.updateSuccess'
+      );
     });
 
     it('should return undefined if the http call fails', () => {
       httpService.patch.mockReturnValue(throwError(() => new Error('Error')));
 
-      service.updateProduct(products[0].id, products[0]).subscribe((res) => {
-        expect(res).toBeUndefined();
-      });
+      service
+        .updateProduct(products[0].id, updateProductDto)
+        .subscribe((res) => {
+          expect(res).toBeUndefined();
+          expect(snackbarService.showErrorSnackbar).toHaveBeenCalledWith(
+            'shop.admin.dashboard.options.products.updateError'
+          );
+        });
 
-      expect(httpService.patch).toHaveBeenCalled();
+      expect(httpService.patch).toHaveBeenCalledWith(
+        `${productEndPoint.UPDATE}${products[0].id}`,
+        formData
+      );
     });
   });
 

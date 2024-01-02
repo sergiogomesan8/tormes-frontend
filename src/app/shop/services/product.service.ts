@@ -44,22 +44,66 @@ export class ProductService {
     );
   }
 
-  addProduct(
+  createProduct(
     createProductDto: CreateProductDto
   ): Observable<Product | undefined> {
-    console.log(createProductDto);
+    const formData: FormData = new FormData();
+    formData.append('name', createProductDto.name);
+    formData.append('description', createProductDto.description);
+    formData.append('image', createProductDto.image);
+    formData.append('price', createProductDto.price.toString());
+    formData.append('section', createProductDto.section);
+
+    return this.httpService.post(this.productEndPoint.ADD, formData).pipe(
+      map((response: Product) => {
+        this.snackbarService.showSuccessSnackbar(
+          'shop.admin.dashboard.options.products.addSuccess'
+        );
+        return response;
+      }),
+      catchError((error: undefined) => {
+        this.snackbarService.showErrorSnackbar(
+          'shop.admin.dashboard.options.products.addError'
+        );
+        return of(error);
+      })
+    );
+  }
+
+  updateProduct(
+    productId: string,
+    updateProductDto: UpdateProductDto
+  ): Observable<Product | undefined> {
+    const formData: FormData = new FormData();
+
+    if (updateProductDto.name) {
+      formData.append('name', updateProductDto.name);
+    }
+    if (updateProductDto.description) {
+      formData.append('description', updateProductDto.description);
+    }
+    if (updateProductDto.image) {
+      formData.append('image', updateProductDto.image);
+    }
+    if (updateProductDto.price) {
+      formData.append('price', updateProductDto.price.toString());
+    }
+    if (updateProductDto.section) {
+      formData.append('section', updateProductDto.section);
+    }
+
     return this.httpService
-      .post(this.productEndPoint.ADD, createProductDto)
+      .patch(`${this.productEndPoint.UPDATE}${productId}`, formData)
       .pipe(
-        map((response: Product) => {
+        map((response: undefined) => {
           this.snackbarService.showSuccessSnackbar(
-            'shop.admin.dashboard.options.products.addSuccess'
+            'shop.admin.dashboard.options.products.updateSuccess'
           );
           return response;
         }),
         catchError((error: undefined) => {
           this.snackbarService.showErrorSnackbar(
-            'shop.admin.dashboard.options.products.addError'
+            'shop.admin.dashboard.options.products.updateError'
           );
           return of(error);
         })
@@ -79,28 +123,6 @@ export class ProductService {
         catchError((error: undefined) => {
           this.snackbarService.showErrorSnackbar(
             'shop.admin.dashboard.options.products.deleteError'
-          );
-          return of(error);
-        })
-      );
-  }
-
-  updateProduct(
-    productId: string,
-    product: UpdateProductDto
-  ): Observable<Product | undefined> {
-    return this.httpService
-      .patch(`${this.productEndPoint.UPDATE}${productId}`, product)
-      .pipe(
-        map((response: undefined) => {
-          this.snackbarService.showSuccessSnackbar(
-            'shop.admin.dashboard.options.products.updateSuccess'
-          );
-          return response;
-        }),
-        catchError((error: undefined) => {
-          this.snackbarService.showErrorSnackbar(
-            'shop.admin.dashboard.options.products.updateError'
           );
           return of(error);
         })
