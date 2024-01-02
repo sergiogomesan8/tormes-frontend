@@ -45,7 +45,7 @@ export class ProductService {
     );
   }
 
-  addProduct(
+  createProduct(
     createProductDto: CreateProductDto
   ): Observable<Product | undefined> {
     const formData: FormData = new FormData();
@@ -69,25 +69,6 @@ export class ProductService {
         return of(error);
       })
     );
-  }
-
-  deleteProduct(product: Product): Observable<undefined> {
-    return this.httpService
-      .delete(`${this.productEndPoint.DELETE}${product.id}`, product)
-      .pipe(
-        map((response: undefined) => {
-          this.snackbarService.showSuccessSnackbar(
-            'shop.admin.dashboard.options.products.deleteSuccess'
-          );
-          return response;
-        }),
-        catchError((error: undefined) => {
-          this.snackbarService.showErrorSnackbar(
-            'shop.admin.dashboard.options.products.deleteError'
-          );
-          return of(error);
-        })
-      );
   }
 
   updateProduct(
@@ -124,6 +105,25 @@ export class ProductService {
         catchError((error: undefined) => {
           this.snackbarService.showErrorSnackbar(
             'shop.admin.dashboard.options.products.updateError'
+          );
+          return of(error);
+        })
+      );
+  }
+
+  deleteProduct(product: Product): Observable<undefined> {
+    return this.httpService
+      .delete(`${this.productEndPoint.DELETE}${product.id}`, product)
+      .pipe(
+        map((response: undefined) => {
+          this.snackbarService.showSuccessSnackbar(
+            'shop.admin.dashboard.options.products.deleteSuccess'
+          );
+          return response;
+        }),
+        catchError((error: undefined) => {
+          this.snackbarService.showErrorSnackbar(
+            'shop.admin.dashboard.options.products.deleteError'
           );
           return of(error);
         })
