@@ -20,28 +20,17 @@
     <mat-menu class="navbar-menu app-menu" #appMenu="matMenu">
       <a mat-menu-item routerLink="/home">Inicio</a>
       <button mat-menu-item routerLink="catalog">Catalogo</button>
-      <button
-        mat-menu-item
-        [matMenuTriggerFor]="ordersMenu"
-        routerLink="/orders"
-      >
-        Pedidos
-      </button>
     </mat-menu>
 
     <div class="navbar-menu-big-size">
       <a routerLink="home">Inicio</a>
       <a routerLink="catalog">Catalogo</a>
-      <a [matMenuTriggerFor]="ordersMenu">Pedidos</a>
     </div>
 
-    <mat-menu class="orders-menu" #ordersMenu="matMenu">
-      <button mat-menu-item routerLink="orders">Mis pedidos</button>
-      <button mat-menu-item>Pendientes</button>
-      <button mat-menu-item>Cancelados</button>
-    </mat-menu>
-
-    <search-component class="d-none d-md-flex" [placeholder]="'Buscar producto..'"></search-component>
+    <search-component
+      class="d-none d-md-flex"
+      [placeholder]="'Buscar producto..'"
+    ></search-component>
 
     <div class="authentication">
       <button-component
