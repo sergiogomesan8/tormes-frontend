@@ -6,7 +6,7 @@ import { AuthEndPoint } from '@shared/end-points';
 import { AuthUser } from '@core/models/auth.user';
 import { SnackbarService } from '@shared/services/snackbar.service';
 import { User } from '@shop/models/user.model';
-import { LocalstorageService } from '@shared/services/localStorage.service';
+import { LocalStorageService } from '@shared/services/localStorage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,7 @@ export class AuthenticationService {
   constructor(
     private readonly httpService: HttpService,
     private readonly snackbarService: SnackbarService,
-    private readonly localStorageService: LocalstorageService
+    private readonly localStorageService: LocalStorageService
   ) {}
 
   signin(createUserDto: CreateUserDto): Observable<AuthUser> {
@@ -26,6 +26,7 @@ export class AuthenticationService {
       .post(this.authEndPoint.REGISTER, createUserDto)
       .pipe(
         map((response: AuthUser) => {
+          this.setAuthUser(response);
           this.snackbarService.showSuccessSnackbar(
             'shop.customer.register.success'
           );
@@ -53,7 +54,7 @@ export class AuthenticationService {
     );
   }
 
-  setAuthUser(authUser: AuthUser): void {
+  setAuthUser(authUser: AuthUser) {
     this.user = authUser.user_info;
     this.localStorageService.setItem('accessToken', authUser.token);
     this.localStorageService.setItem('refreshToken', authUser.refreshToken);
