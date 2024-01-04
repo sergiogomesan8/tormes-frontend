@@ -43,6 +43,7 @@ describe('RegisterComponent', () => {
       name: 'test',
     },
     token: 'token',
+    refreshToken: 'refreshToken',
   };
 
   it('should call authenticationService.signin and router.navigate on successful signin', async () => {
