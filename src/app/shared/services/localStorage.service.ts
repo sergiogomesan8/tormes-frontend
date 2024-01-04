@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AppComponent } from 'src/app/app.component';
+import { AppComponent } from '../../../app/app.component';
 
 class LocalStorage implements Storage {
   [name: string]: any;
@@ -27,7 +27,7 @@ class LocalStorage implements Storage {
 @Injectable({
   providedIn: 'root',
 })
-export class LocalstorageService implements Storage {
+export class LocalStorageService implements Storage {
   private storage: Storage;
   length: number;
 
