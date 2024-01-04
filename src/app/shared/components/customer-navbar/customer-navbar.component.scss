@@ -1,0 +1,96 @@
+#navbar {
+  background-color: #24262b !important;
+  color: white;
+
+  .navbar-brand {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    img {
+      cursor: pointer;
+    }
+  }
+
+  .toggle-menu {
+    color: white;
+    display: flex;
+  }
+
+  .navbar-menu {
+    display: flex;
+  }
+
+  .navbar-menu-big-size {
+    display: none;
+    margin-left: 24px;
+    margin-right: 24px;
+
+    gap: 32px;
+    a {
+      font-size: 14px;
+      color: white !important;
+
+      text-decoration: none;
+      cursor: pointer;
+    }
+    a:hover {
+      color: var(--gold-color) !important;
+    }
+  }
+
+  search-component {
+    margin-left: auto;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+
+    gap: 6px;
+
+    mat-icon {
+      cursor: pointer;
+    }
+
+    a {
+      font-size: 14px;
+      color: white !important;
+
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  .user-info:hover {
+    mat-icon {
+      color: var(--gold-color) !important;
+    }
+    a {
+      color: var(--gold-color) !important;
+    }
+  }
+
+  .shopping-cart-container {
+    display: flex;
+    color: var(--gold-color);
+    margin-left: 12px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #navbar {
+    .app-menu {
+      display: none;
+    }
+
+    .navbar-menu-big-size {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .user-info {
+      margin-left: 16px;
+    }
+  }
+}
