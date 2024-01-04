@@ -6,11 +6,17 @@ describe('AppComponent', () => {
   let component: AppComponent;
   let mockTranslateService: any;
   let mockFaIconLibrary: any;
+  let mockPlatformId: any;
 
   beforeEach(() => {
     mockTranslateService = { setDefaultLang: jest.fn() };
     mockFaIconLibrary = { addIconPacks: jest.fn() };
-    component = new AppComponent(mockTranslateService, mockFaIconLibrary);
+    mockPlatformId = 'browser';
+    component = new AppComponent(
+      mockPlatformId,
+      mockTranslateService,
+      mockFaIconLibrary
+    );
   });
 
   it('should create', () => {
@@ -23,5 +29,9 @@ describe('AppComponent', () => {
 
   it('should add icon packs', () => {
     expect(mockFaIconLibrary.addIconPacks).toHaveBeenCalledWith(fas, far);
+  });
+
+  it('should set isBrowser to true if platform is browser', () => {
+    expect(AppComponent.isBrowser.value).toBe(true);
   });
 });
