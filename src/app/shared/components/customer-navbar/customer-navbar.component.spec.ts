@@ -1,19 +1,19 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CustomerNavbarComponent } from './customer-navbar.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('UserNavbarComponent', () => {
+describe('CustomerNavbarComponent', () => {
   let component: CustomerNavbarComponent;
   let fixture: ComponentFixture<CustomerNavbarComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [CustomerNavbarComponent],
+      imports: [MatMenuModule, NoopAnimationsModule],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CustomerNavbarComponent);
@@ -23,5 +23,19 @@ describe('UserNavbarComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have undefined customer initially', () => {
+    expect(component.customer).toBeUndefined();
+  });
+
+  it('should open menu when someMethod is called', () => {
+    jest.spyOn(component.trigger, 'openMenu');
+    component.someMethod();
+    expect(component.trigger.openMenu).toHaveBeenCalled();
+  });
+
+  it('should have a defined trigger', () => {
+    expect(component.trigger).toBeDefined();
   });
 });
