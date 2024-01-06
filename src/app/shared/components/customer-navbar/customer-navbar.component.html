@@ -52,7 +52,7 @@
     </div>
     <mat-menu class="profile-menu" #profileMenu="matMenu">
       <button mat-menu-item>Mi perfil</button>
-      <button mat-menu-item>Cerrar Sesión</button>
+      <button mat-menu-item (click)="logout()">Cerrar Sesión</button>
     </mat-menu>
 
     <button mat-icon-button routerLink="admin" class="shopping-cart-container">

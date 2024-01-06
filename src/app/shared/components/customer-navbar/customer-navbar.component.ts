@@ -1,4 +1,10 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { User } from '@shop/models/user.model';
 
@@ -10,8 +16,13 @@ import { User } from '@shop/models/user.model';
 export class CustomerNavbarComponent {
   @Input() customer: User | undefined;
   @ViewChild(MatMenuTrigger) trigger!: MatMenuTrigger;
+  @Output() logoutButtonClick: EventEmitter<void> = new EventEmitter<void>();
 
   someMethod() {
     this.trigger.openMenu();
+  }
+
+  logout() {
+    this.logoutButtonClick.emit();
   }
 }
