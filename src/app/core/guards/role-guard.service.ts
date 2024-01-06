@@ -1,15 +1,23 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { Injectable, inject } from '@angular/core';
+import {
+  ActivatedRouteSnapshot,
+  Router,
+  RouterStateSnapshot,
+  CanActivateFn,
+} from '@angular/router';
 import { AuthenticationService } from '@core/services/authentication.service';
 import { UserType } from '@shop/models/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class RoleGuardService implements CanActivate {
+export class RoleGuardService {
   constructor(private auth: AuthenticationService, private router: Router) {}
 
-  canActivate(route: ActivatedRouteSnapshot): boolean {
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean {
     const expectedRoles: UserType[] = route.data['roles'];
 
     const userInfo = this.auth.getUserInfo();
@@ -33,3 +41,10 @@ export class RoleGuardService implements CanActivate {
     }
   }
 }
+
+export const RoleGuard: CanActivateFn = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+): boolean => {
+  return inject(RoleGuardService).canActivate(route, state);
+};
