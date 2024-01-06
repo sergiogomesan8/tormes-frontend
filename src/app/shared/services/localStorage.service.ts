@@ -5,13 +5,16 @@ import { AppComponent } from '../../../app/app.component';
   providedIn: 'root',
 })
 export class LocalStorageService implements Storage {
+  private storage: Storage;
   length: number;
 
   constructor() {
+    this.storage = new LocalStorage();
     this.length = 0;
 
     AppComponent.isBrowser.subscribe((isBrowser) => {
       if (isBrowser) {
+        this.storage = localStorage;
         this.length = localStorage.length;
       }
     });
@@ -20,25 +23,45 @@ export class LocalStorageService implements Storage {
   [name: string]: any;
 
   clear(): void {
-    localStorage.clear();
-    this.length = 0;
+    this.storage.clear();
   }
 
   getItem(key: string): string | null {
-    return localStorage.getItem(key);
+    return this.storage.getItem(key);
   }
 
   key(index: number): string | null {
-    return localStorage.key(index);
+    return this.storage.key(index);
   }
 
   removeItem(key: string): void {
-    localStorage.removeItem(key);
-    this.length = localStorage.length;
+    return this.storage.removeItem(key);
   }
 
   setItem(key: string, value: string): void {
-    localStorage.setItem(key, value);
-    this.length = localStorage.length;
+    return this.storage.setItem(key, value);
   }
+}
+
+class LocalStorage implements Storage {
+  [name: string]: any;
+  readonly length: number;
+
+  constructor() {
+    this.length = 0;
+  }
+
+  clear(): void {}
+
+  getItem(key: string): string | null {
+    return null;
+  }
+
+  key(index: number): string | null {
+    return null;
+  }
+
+  removeItem(key: string): void {}
+
+  setItem(key: string, value: string): void {}
 }
