@@ -10,11 +10,15 @@ jest.mock('../../../app/app.component', () => ({
 
 describe('LocalStorageService', () => {
   let service: LocalStorageService;
-  let mockLocalStorage: any;
+  let localStorage: LocalStorage;
 
   beforeEach(() => {
     service = new LocalStorageService();
-    mockLocalStorage = (function () {
+    Object.defineProperty(window, 'localStorage', {
+      value: new LocalStorage(),
+      writable: true,
+    });
+    localStorage = (function () {
       let store: { [key: string]: string } = {};
       return {
         getItem: jest.fn(function (key: string | number) {
@@ -40,45 +44,59 @@ describe('LocalStorageService', () => {
         }),
       };
     })();
-    Object.defineProperty(window, 'localStorage', {
-      value: mockLocalStorage,
-      writable: true,
-    });
+    Object.defineProperty(window, 'localStorage', { value: localStorage });
   });
-  it('should be created', () => {
+  it('should create an instance', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should clear localStorage', () => {
+  it('should initialize with length 0', () => {
+    expect(service.length).toEqual(0);
+  });
+
+  it('should return null when key is called with an index that does not exist', () => {
+    expect(service.key(1)).toBeNull();
+  });
+
+  it('should set an item when setItem is called', () => {
+    service.setItem('key', 'value');
+    expect(service.getItem('key')).toEqual('value');
+  });
+
+  it('should remove an item when removeItem is called', () => {
+    service.setItem('key', 'value');
+    service.removeItem('key');
+    expect(service.getItem('key')).toBeNull();
+  });
+
+  it('should clear all items when clear is called', () => {
+    service.setItem('key1', 'value1');
+    service.setItem('key2', 'value2');
     service.clear();
-    expect(mockLocalStorage.clear).toHaveBeenCalled();
-    expect(service.length).toBe(0);
-  });
-
-  it('should get item from localStorage', () => {
-    const key = 'test';
-    service.getItem(key);
-    expect(mockLocalStorage.getItem).toHaveBeenCalledWith(key);
-  });
-
-  it('should get key from localStorage', () => {
-    const index = 1;
-    service.key(index);
-    expect(mockLocalStorage.key).toHaveBeenCalledWith(index);
-  });
-
-  it('should remove item from localStorage', () => {
-    const key = 'test';
-    service.removeItem(key);
-    expect(mockLocalStorage.removeItem).toHaveBeenCalledWith(key);
-    expect(service.length).toBe(mockLocalStorage.length);
-  });
-
-  it('should set item to localStorage', () => {
-    const key = 'test';
-    const value = 'value';
-    service.setItem(key, value);
-    expect(mockLocalStorage.setItem).toHaveBeenCalledWith(key, value);
-    expect(service.length).toBe(mockLocalStorage.length);
+    expect(service.getItem('key1')).toBeNull();
+    expect(service.getItem('key2')).toBeNull();
   });
 });
+
+class LocalStorage implements Storage {
+  [name: string]: any;
+  readonly length: number;
+
+  constructor() {
+    this.length = 0;
+  }
+
+  clear(): void {}
+
+  getItem(key: string): string | null {
+    return null;
+  }
+
+  key(index: number): string | null {
+    return null;
+  }
+
+  removeItem(key: string): void {}
+
+  setItem(key: string, value: string): void {}
+}
