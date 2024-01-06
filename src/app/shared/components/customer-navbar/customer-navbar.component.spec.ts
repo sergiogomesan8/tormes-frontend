@@ -38,4 +38,10 @@ describe('CustomerNavbarComponent', () => {
   it('should have a defined trigger', () => {
     expect(component.trigger).toBeDefined();
   });
+
+  it('should emit logoutButtonClick event when logout is called', () => {
+    const spy = jest.spyOn(component.logoutButtonClick, 'emit');
+    component.logout();
+    expect(spy).toHaveBeenCalled();
+  });
 });
