@@ -144,6 +144,17 @@ describe('AuthenticationService', () => {
     });
   });
 
+  describe('logout', () => {
+    it('should remove user info and tokens from local storage', () => {
+      service.setAuthUser(authUser);
+      service.logout();
+
+      expect(service.getUserInfo()).toBeUndefined();
+      expect(localStorageService.getItem('accessToken')).toBeUndefined();
+      expect(localStorageService.getItem('refreshToken')).toBeUndefined();
+    });
+  });
+
   describe('setAuthUser', () => {
     it('should set user info and tokens in local storage', () => {
       service.setAuthUser(authUser);
