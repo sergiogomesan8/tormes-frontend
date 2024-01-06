@@ -54,6 +54,12 @@ export class AuthenticationService {
     );
   }
 
+  logout() {
+    this.user = undefined;
+    this.localStorageService.removeItem('accessToken');
+    this.localStorageService.removeItem('refreshToken');
+  }
+
   setAuthUser(authUser: AuthUser) {
     this.user = authUser.user_info;
     this.localStorageService.setItem('accessToken', authUser.token);
