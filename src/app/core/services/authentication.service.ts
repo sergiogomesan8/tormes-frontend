@@ -61,10 +61,10 @@ export class AuthenticationService {
   }
 
   getUserInfo(): User | undefined {
-    return this.user ? this.user : undefined;
+    return this.user ?? undefined;
   }
 
   getToken(): string {
-    return this.localStorageService.getItem('accessToken') || '';
+    return this.localStorageService.getItem('accessToken') ?? '';
   }
 }
