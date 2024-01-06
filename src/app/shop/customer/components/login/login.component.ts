@@ -36,7 +36,6 @@ export class LoginComponent {
 
       this.authenticationService.login(loginUserDto).subscribe({
         next: (result) => {
-          console.log(result);
           this.router.navigate(['/catalog']);
         },
         error: (error) => {

@@ -46,7 +46,6 @@ export class RegisterComponent {
 
       this.authenticationService.signin(createUserDto).subscribe({
         next: (result) => {
-          console.log(result);
           this.router.navigate(['/catalog']);
         },
         error: (error) => {
