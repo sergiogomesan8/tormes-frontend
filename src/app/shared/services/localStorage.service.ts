@@ -1,43 +1,18 @@
 import { Injectable } from '@angular/core';
 import { AppComponent } from '../../../app/app.component';
 
-class LocalStorage implements Storage {
-  [name: string]: any;
-  readonly length: number;
-
-  constructor() {
-    this.length = 0;
-  }
-
-  clear(): void {}
-
-  getItem(key: string): string | null {
-    return null;
-  }
-
-  key(index: number): string | null {
-    return null;
-  }
-
-  removeItem(key: string): void {}
-
-  setItem(key: string, value: string): void {}
-}
-
 @Injectable({
   providedIn: 'root',
 })
 export class LocalStorageService implements Storage {
-  private storage: Storage;
   length: number;
 
   constructor() {
-    this.storage = new LocalStorage();
     this.length = 0;
 
     AppComponent.isBrowser.subscribe((isBrowser) => {
       if (isBrowser) {
-        this.storage = localStorage;
+        this.length = localStorage.length;
       }
     });
   }
@@ -45,22 +20,25 @@ export class LocalStorageService implements Storage {
   [name: string]: any;
 
   clear(): void {
-    this.storage.clear();
+    localStorage.clear();
+    this.length = 0;
   }
 
   getItem(key: string): string | null {
-    return this.storage.getItem(key);
+    return localStorage.getItem(key);
   }
 
   key(index: number): string | null {
-    return this.storage.key(index);
+    return localStorage.key(index);
   }
 
   removeItem(key: string): void {
-    return this.storage.removeItem(key);
+    localStorage.removeItem(key);
+    this.length = localStorage.length;
   }
 
   setItem(key: string, value: string): void {
-    return this.storage.setItem(key, value);
+    localStorage.setItem(key, value);
+    this.length = localStorage.length;
   }
 }
