@@ -15,6 +15,7 @@ export class AuthEndPoint extends EndPoint {
 
   REGISTER = this.buildUrl('/register');
   LOGIN = this.buildUrl('/login');
+  REFRESH_TOKEN = this.buildUrl('/refresh-token');
 }
 
 export class ProductEndPoint extends EndPoint {

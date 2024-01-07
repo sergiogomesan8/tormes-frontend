@@ -57,13 +57,23 @@ export class AuthenticationService {
   logout() {
     this.user = undefined;
     this.localStorageService.removeItem('accessToken');
-    this.localStorageService.removeItem('refreshToken');
+  }
+
+  refreshToken(): Observable<AuthUser> {
+    return this.httpService.post(this.authEndPoint.REFRESH_TOKEN, {}).pipe(
+      map((response: AuthUser) => {
+        this.setAuthUser(response);
+        return response;
+      }),
+      catchError((error: undefined) => {
+        return of({} as AuthUser);
+      })
+    );
   }
 
   setAuthUser(authUser: AuthUser) {
     this.user = authUser.user_info;
     this.localStorageService.setItem('accessToken', authUser.token);
-    this.localStorageService.setItem('refreshToken', authUser.refreshToken);
   }
 
   getUserInfo(): User | undefined {
