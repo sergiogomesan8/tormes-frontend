@@ -31,7 +31,6 @@ describe('AuthenticationService', () => {
       name: 'test',
     },
     token: 'token',
-    refreshToken: 'refreshToken',
   };
 
   const authUserResponse = of(authUser);
@@ -77,10 +76,6 @@ describe('AuthenticationService', () => {
         'accessToken',
         authUser.token
       );
-      expect(localStorageService.setItem).toHaveBeenCalledWith(
-        'refreshToken',
-        authUser.refreshToken
-      );
 
       expect(snackbarService.showSuccessSnackbar).toHaveBeenCalledWith(
         'shop.customer.register.success'
@@ -120,10 +115,6 @@ describe('AuthenticationService', () => {
         'accessToken',
         authUser.token
       );
-      expect(localStorageService.setItem).toHaveBeenCalledWith(
-        'refreshToken',
-        authUser.refreshToken
-      );
     });
 
     it('should call httpService.post, showErrorSnackbar, and return empty AuthUser on failed signin', () => {
@@ -151,7 +142,6 @@ describe('AuthenticationService', () => {
 
       expect(service.getUserInfo()).toBeUndefined();
       expect(localStorageService.getItem('accessToken')).toBeUndefined();
-      expect(localStorageService.getItem('refreshToken')).toBeUndefined();
     });
   });
 
@@ -162,9 +152,6 @@ describe('AuthenticationService', () => {
       expect(service.getUserInfo()).toEqual(authUser.user_info);
       expect(localStorageService.getItem('accessToken')).toEqual(
         authUser.token
-      );
-      expect(localStorageService.getItem('refreshToken')).toEqual(
-        authUser.refreshToken
       );
     });
   });
@@ -192,12 +179,10 @@ describe('AuthenticationService', () => {
 
     it('should return empty string if access token does not exist', () => {
       localStorageService.removeItem('accessToken');
-      localStorageService.removeItem('refreshToken');
 
       const mockAuthUser: AuthUser = {
         user_info: { id: '', email: '', name: '' },
         token: '',
-        refreshToken: '',
       };
 
       service.setAuthUser(mockAuthUser);

@@ -43,7 +43,6 @@ describe('LoginComponent', () => {
       name: name,
     },
     token: 'token',
-    refreshToken: 'refreshToken',
   };
 
   it('should call authenticationService.login and router.navigate on successful login', async () => {
