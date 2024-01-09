@@ -8,6 +8,7 @@ import { CreateUserDto, LoginUserDto } from '@shop/customer/dtos/user.dto';
 import { AuthUser } from '@core/models/auth.user';
 import { SnackbarService } from '@shared/services/snackbar.service';
 import { LocalStorageService } from '@shared/services/localStorage.service';
+import { HttpHeaders } from '@angular/common/http';
 
 describe('AuthenticationService', () => {
   let service: AuthenticationService;
@@ -30,7 +31,8 @@ describe('AuthenticationService', () => {
       id: '00',
       name: 'test',
     },
-    token: 'token',
+    access_token: 'access_token',
+    refresh_token: 'refresh_token',
   };
 
   const authUserResponse = of(authUser);
@@ -74,7 +76,11 @@ describe('AuthenticationService', () => {
 
       expect(localStorageService.setItem).toHaveBeenCalledWith(
         'access_token',
-        authUser.token
+        authUser.access_token
+      );
+      expect(localStorageService.setItem).toHaveBeenCalledWith(
+        'refresh_token',
+        authUser.refresh_token
       );
 
       expect(snackbarService.showSuccessSnackbar).toHaveBeenCalledWith(
@@ -113,7 +119,11 @@ describe('AuthenticationService', () => {
 
       expect(localStorageService.setItem).toHaveBeenCalledWith(
         'access_token',
-        authUser.token
+        authUser.access_token
+      );
+      expect(localStorageService.setItem).toHaveBeenCalledWith(
+        'refresh_token',
+        authUser.refresh_token
       );
     });
 
@@ -145,13 +155,56 @@ describe('AuthenticationService', () => {
     });
   });
 
+  describe('refreshToken', () => {
+    it('should return empty AuthUser if isRefreshingToken is true', () => {
+      service.isRefreshingToken = true;
+
+      service.refreshToken().subscribe((response) => {
+        expect(response).toEqual({} as AuthUser);
+      });
+    });
+
+    it('should call httpService.post and setAuthUser on successful refresh', () => {
+      service.isRefreshingToken = false;
+      httpService.post.mockReturnValue(authUserResponse);
+
+      service.refreshToken().subscribe((response) => {
+        expect(httpService.post).toHaveBeenCalledWith(
+          authEndPoint.REFRESH_TOKEN,
+          {},
+          undefined,
+          new HttpHeaders().set(
+            'Authorization',
+            'Bearer ' + service.getRefreshToken()
+          )
+        );
+        expect(service.setAuthUser).toHaveBeenCalledWith(authUser);
+        expect(response).toEqual(authUser);
+      });
+    });
+
+    it('should return empty AuthUser on failed refresh', () => {
+      service.isRefreshingToken = false;
+      httpService.post.mockReturnValue(throwError(() => new Error('Error')));
+
+      service.refreshToken().subscribe((response) => {
+        expect(response).toEqual({} as AuthUser);
+      });
+    });
+  });
+
   describe('setAuthUser', () => {
     it('should set user info and tokens in local storage', () => {
       service.setAuthUser(authUser);
 
       expect(service.getUserInfo()).toEqual(authUser.user_info);
-      expect(localStorageService.getItem('access_token')).toEqual(
-        authUser.token
+      expect(localStorageService.setItem).toHaveBeenCalledWith(
+        'access_token',
+        authUser.access_token
+      );
+      expect(localStorageService.setItem).toHaveBeenCalledWith(
+        'refresh_token',
+        authUser.refresh_token
       );
     });
   });
@@ -174,7 +227,10 @@ describe('AuthenticationService', () => {
     it('should return access token if it exists', () => {
       service.setAuthUser(authUser);
 
-      expect(service.getToken()).toEqual(authUser.token);
+      expect(localStorageService.setItem).toHaveBeenCalledWith(
+        'access_token',
+        authUser.access_token
+      );
     });
 
     it('should return empty string if access token does not exist', () => {
@@ -182,12 +238,38 @@ describe('AuthenticationService', () => {
 
       const mockAuthUser: AuthUser = {
         user_info: { id: '', email: '', name: '' },
-        token: '',
+        access_token: '',
+        refresh_token: '',
       };
 
       service.setAuthUser(mockAuthUser);
 
       expect(service.getToken()).toEqual('');
+    });
+  });
+
+  describe('getRefreshToken', () => {
+    it('should return refresh token if it exists', () => {
+      service.setAuthUser(authUser);
+
+      expect(localStorageService.setItem).toHaveBeenCalledWith(
+        'refresh_token',
+        authUser.refresh_token
+      );
+    });
+
+    it('should return empty string if refresh token does not exist', () => {
+      localStorageService.removeItem('refresh_token');
+
+      const mockAuthUser: AuthUser = {
+        user_info: { id: '', email: '', name: '' },
+        access_token: '',
+        refresh_token: '',
+      };
+
+      service.setAuthUser(mockAuthUser);
+
+      expect(service.getRefreshToken()).toEqual('');
     });
   });
 });
