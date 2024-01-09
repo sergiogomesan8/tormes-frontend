@@ -7,13 +7,14 @@ import { AuthUser } from '@core/models/auth.user';
 import { SnackbarService } from '@shared/services/snackbar.service';
 import { User } from '@shop/models/user.model';
 import { LocalStorageService } from '@shared/services/localStorage.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
   private authEndPoint = new AuthEndPoint();
-  private user: User | undefined;
+  isRefreshingToken = false;
 
   constructor(
     private readonly httpService: HttpService,
@@ -44,6 +45,7 @@ export class AuthenticationService {
   login(loginUserDto: LoginUserDto): Observable<AuthUser | undefined> {
     return this.httpService.post(this.authEndPoint.LOGIN, loginUserDto).pipe(
       map((response: AuthUser) => {
+        console.log('login response!!: ', response);
         this.setAuthUser(response);
         return response;
       }),
@@ -55,32 +57,57 @@ export class AuthenticationService {
   }
 
   logout() {
-    this.user = undefined;
-    this.localStorageService.removeItem('accessToken');
+    this.localStorageService.removeItem('user_info');
+    this.localStorageService.removeItem('access_token');
+    this.localStorageService.removeItem('refresh_token');
   }
 
   refreshToken(): Observable<AuthUser> {
-    return this.httpService.post(this.authEndPoint.REFRESH_TOKEN, {}).pipe(
-      map((response: AuthUser) => {
-        this.setAuthUser(response);
-        return response;
-      }),
-      catchError((error: undefined) => {
-        return of({} as AuthUser);
-      })
+    if (this.isRefreshingToken) {
+      return of({} as AuthUser);
+    }
+    this.isRefreshingToken = true;
+    console.log('refresh token');
+    const headers = new HttpHeaders().set(
+      'Authorization',
+      'Bearer ' + this.getRefreshToken()
     );
+    return this.httpService
+      .post(this.authEndPoint.REFRESH_TOKEN, {}, undefined, headers)
+      .pipe(
+        map((response: AuthUser) => {
+          console.log('refresh token response: ', response);
+          this.setAuthUser(response);
+          this.isRefreshingToken = false;
+          return response;
+        }),
+        catchError((error: undefined) => {
+          console.log('error: ', error);
+
+          return of({} as AuthUser);
+        })
+      );
   }
 
   setAuthUser(authUser: AuthUser) {
-    this.user = authUser.user_info;
-    this.localStorageService.setItem('accessToken', authUser.token);
+    this.localStorageService.setItem(
+      'user_info',
+      JSON.stringify(authUser.user_info)
+    );
+    this.localStorageService.setItem('access_token', authUser.access_token);
+    this.localStorageService.setItem('refresh_token', authUser.refresh_token);
   }
 
   getUserInfo(): User | undefined {
-    return this.user ?? undefined;
+    const userInfo = this.localStorageService.getItem('user_info');
+    return userInfo ? (JSON.parse(userInfo) as User) : undefined;
   }
 
   getToken(): string {
-    return this.localStorageService.getItem('accessToken') ?? '';
+    return this.localStorageService.getItem('access_token') ?? '';
+  }
+
+  getRefreshToken(): string {
+    return this.localStorageService.getItem('refresh_token') ?? '';
   }
 }
