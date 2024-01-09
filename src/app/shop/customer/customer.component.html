@@ -1,2 +1,7 @@
-<navbar-component></navbar-component>
+<navbar-component *ngIf="!isLoggedIn"></navbar-component>
+<customer-navbar
+  *ngIf="isLoggedIn"
+  [customer]="userInfo"
+  (logoutButtonClick)="logout()"
+></customer-navbar>
 <router-outlet></router-outlet>

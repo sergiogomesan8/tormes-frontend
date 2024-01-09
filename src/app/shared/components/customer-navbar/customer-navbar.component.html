@@ -20,31 +20,40 @@
     <mat-menu class="navbar-menu app-menu" #appMenu="matMenu">
       <a mat-menu-item routerLink="/home">Inicio</a>
       <button mat-menu-item routerLink="catalog">Catalogo</button>
+      <button
+        mat-menu-item
+        [matMenuTriggerFor]="ordersMenu"
+        routerLink="/orders"
+      >
+        Pedidos
+      </button>
     </mat-menu>
 
     <div class="navbar-menu-big-size">
       <a routerLink="home">Inicio</a>
       <a routerLink="catalog">Catalogo</a>
+      <a [matMenuTriggerFor]="ordersMenu">Pedidos</a>
     </div>
+
+    <mat-menu class="orders-menu" #ordersMenu="matMenu">
+      <button mat-menu-item routerLink="orders">Mis pedidos</button>
+      <button mat-menu-item>Pendientes</button>
+      <button mat-menu-item>Cancelados</button>
+    </mat-menu>
 
     <search-component
       class="d-none d-md-flex"
       [placeholder]="'Buscar producto..'"
     ></search-component>
 
-    <div class="authentication">
-      <button-component
-        [routerLink]="'/login'"
-        [label]="'Iniciar Sesión'"
-        [class]="'border-gold-button'"
-      ></button-component>
-      <p>o</p>
-      <button-component
-        [routerLink]="'/signin'"
-        [label]="'Registrarse'"
-        [class]="'gold-button'"
-      ></button-component>
+    <div class="user-info" *ngIf="customer">
+      <mat-icon>person_pin</mat-icon>
+      <a [matMenuTriggerFor]="profileMenu">{{ customer.name }}</a>
     </div>
+    <mat-menu class="profile-menu" #profileMenu="matMenu">
+      <button mat-menu-item>Mi perfil</button>
+      <button mat-menu-item (click)="logout()">Cerrar Sesión</button>
+    </mat-menu>
 
     <button mat-icon-button routerLink="admin" class="shopping-cart-container">
       <mat-icon>shopping_cart</mat-icon>

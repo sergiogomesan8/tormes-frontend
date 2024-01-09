@@ -1,27 +1,32 @@
+/* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NavbarComponent } from './navbar.component';
+import { CustomerNavbarComponent } from './customer-navbar.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('NavbarComponent', () => {
-  let component: NavbarComponent;
-  let fixture: ComponentFixture<NavbarComponent>;
+describe('CustomerNavbarComponent', () => {
+  let component: CustomerNavbarComponent;
+  let fixture: ComponentFixture<CustomerNavbarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NavbarComponent],
+      declarations: [CustomerNavbarComponent],
       imports: [MatMenuModule, NoopAnimationsModule],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavbarComponent);
+    fixture = TestBed.createComponent(CustomerNavbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have undefined customer initially', () => {
+    expect(component.customer).toBeUndefined();
   });
 
   it('should open menu when someMethod is called', () => {
@@ -32,5 +37,11 @@ describe('NavbarComponent', () => {
 
   it('should have a defined trigger', () => {
     expect(component.trigger).toBeDefined();
+  });
+
+  it('should emit logoutButtonClick event when logout is called', () => {
+    const spy = jest.spyOn(component.logoutButtonClick, 'emit');
+    component.logout();
+    expect(spy).toHaveBeenCalled();
   });
 });

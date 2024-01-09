@@ -28,7 +28,7 @@ export class HttpService implements IHttpService {
     headers?: HttpHeaders | undefined
   ): Observable<any> {
     return this.http
-      .post(url, body, { params: this.createParams(params) })
+      .post(url, body, { params: this.createParams(params), headers: headers })
       .pipe(
         map((response) => this.handleResponse(response)),
         catchError((error) => this.handleError(error))

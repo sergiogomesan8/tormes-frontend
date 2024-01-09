@@ -23,6 +23,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomerNavbarComponent } from './components/customer-navbar/customer-navbar.component';
 
 @NgModule({
   imports: [
@@ -63,12 +64,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   declarations: [
     NavbarComponent,
+    CustomerNavbarComponent,
     CarouselComponent,
     SidebarComponent,
     TableComponent,
   ],
   exports: [
     NavbarComponent,
+    CustomerNavbarComponent,
     CarouselComponent,
     SidebarComponent,
     TableComponent,
