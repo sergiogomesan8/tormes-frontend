@@ -7,6 +7,7 @@ import {
 } from '@angular/router';
 import { AuthenticationService } from '@core/services/authentication.service';
 import { UserType } from '@shop/models/user.model';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -20,10 +21,11 @@ export class RoleGuardService {
   ): boolean {
     const expectedRoles: UserType[] = route.data['roles'];
 
-    const userInfo = this.auth.getUserInfo();
+    const token = this.auth.getToken();
+    const decodedToken: any = jwtDecode(token);
 
-    if (userInfo) {
-      const userRole: UserType | undefined = userInfo.userType;
+    if (decodedToken) {
+      const userRole: UserType | undefined = decodedToken.userType;
 
       if (userRole) {
         if (expectedRoles.includes(userRole)) {
