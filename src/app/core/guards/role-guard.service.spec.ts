@@ -1,5 +1,6 @@
 import { UserType } from '@shop/models/user.model';
 import { RoleGuardService } from './role-guard.service';
+import * as jwt from 'jsonwebtoken';
 
 describe('RoleGuardService', () => {
   let service: RoleGuardService;
@@ -8,7 +9,7 @@ describe('RoleGuardService', () => {
 
   beforeEach(() => {
     authServiceMock = {
-      getUserInfo: jest.fn(),
+      getToken: jest.fn(),
     };
 
     routerMock = {
@@ -18,22 +19,22 @@ describe('RoleGuardService', () => {
     service = new RoleGuardService(authServiceMock, routerMock);
   });
 
-  it('should allow access if user role matches expected roles', () => {
+  it('should return true if user role matches expected roles', () => {
     const routeMock: any = {
       data: { roles: [UserType.manager, UserType.employee] },
     };
-    authServiceMock.getUserInfo.mockReturnValue({ userType: UserType.manager });
+    const mockToken = jwt.sign({ userType: UserType.manager }, 'secret');
+    authServiceMock.getToken.mockReturnValue(mockToken);
 
     expect(service.canActivate(routeMock, {} as any)).toBe(true);
   });
 
   it('should redirect to home if user role does not match expected roles', () => {
     const routeMock: any = {
-      data: { roles: [UserType.manager] },
+      data: { roles: [UserType.manager, UserType.employee] },
     };
-    authServiceMock.getUserInfo.mockReturnValue({
-      userType: UserType.customer,
-    });
+    const mockToken = jwt.sign({ userType: UserType.customer }, 'secret');
+    authServiceMock.getToken.mockReturnValue(mockToken);
 
     expect(service.canActivate(routeMock, {} as any)).toBe(false);
     expect(routerMock.navigate).toHaveBeenCalledWith(['/']);
@@ -43,18 +44,18 @@ describe('RoleGuardService', () => {
     const routeMock: any = {
       data: { roles: [UserType.manager] },
     };
-    authServiceMock.getUserInfo.mockReturnValue({
-      userType: undefined,
-    });
+
+    const mockToken = jwt.sign({ userType: undefined }, 'secret');
+    authServiceMock.getToken.mockReturnValue(mockToken);
 
     expect(service.canActivate(routeMock, {} as any)).toBe(false);
   });
 
-  it('should return false if user info is not available', () => {
+  it('should redirect to login if token is invalid', () => {
     const routeMock: any = {
-      data: { roles: [UserType.manager] },
+      data: { roles: [UserType.manager, UserType.employee] },
     };
-    authServiceMock.getUserInfo.mockReturnValue(null);
+    authServiceMock.getToken.mockReturnValue(null);
 
     expect(service.canActivate(routeMock, {} as any)).toBe(false);
     expect(routerMock.navigate).toHaveBeenCalledWith(['/login']);

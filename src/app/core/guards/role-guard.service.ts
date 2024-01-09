@@ -13,7 +13,10 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root',
 })
 export class RoleGuardService {
-  constructor(private auth: AuthenticationService, private router: Router) {}
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -21,24 +24,23 @@ export class RoleGuardService {
   ): boolean {
     const expectedRoles: UserType[] = route.data['roles'];
 
-    const token = this.auth.getToken();
+    const token = this.authenticationService.getToken();
+    if (!token) {
+      this.router.navigate(['/login']);
+      return false;
+    }
+
     const decodedToken: any = jwtDecode(token);
+    const userRole: UserType | undefined = decodedToken.userType;
 
-    if (decodedToken) {
-      const userRole: UserType | undefined = decodedToken.userType;
-
-      if (userRole) {
-        if (expectedRoles.includes(userRole)) {
-          return true;
-        } else {
-          this.router.navigate(['/']);
-          return false;
-        }
+    if (userRole) {
+      if (expectedRoles.includes(userRole)) {
+        return true;
       } else {
+        this.router.navigate(['/']);
         return false;
       }
     } else {
-      this.router.navigate(['/login']);
       return false;
     }
   }
