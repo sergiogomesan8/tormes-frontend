@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '@core/services/authentication.service';
 import { User } from '@shop/models/user.model';
-import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-customer',

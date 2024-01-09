@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable, catchError, switchMap, throwError } from 'rxjs';
 import { AuthenticationService } from '@core/services/authentication.service';
-import { AuthUser, TokenPayload } from '@core/models/auth.user';
+import { AuthUser } from '@core/models/auth.user';
 import { jwtDecode } from 'jwt-decode';
 
 @Injectable()
