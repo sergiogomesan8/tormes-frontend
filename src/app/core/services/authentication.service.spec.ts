@@ -73,7 +73,7 @@ describe('AuthenticationService', () => {
       );
 
       expect(localStorageService.setItem).toHaveBeenCalledWith(
-        'accessToken',
+        'access_token',
         authUser.token
       );
 
@@ -112,7 +112,7 @@ describe('AuthenticationService', () => {
       );
 
       expect(localStorageService.setItem).toHaveBeenCalledWith(
-        'accessToken',
+        'access_token',
         authUser.token
       );
     });
@@ -141,7 +141,7 @@ describe('AuthenticationService', () => {
       service.logout();
 
       expect(service.getUserInfo()).toBeUndefined();
-      expect(localStorageService.getItem('accessToken')).toBeUndefined();
+      expect(localStorageService.getItem('access_token')).toBeUndefined();
     });
   });
 
@@ -150,7 +150,7 @@ describe('AuthenticationService', () => {
       service.setAuthUser(authUser);
 
       expect(service.getUserInfo()).toEqual(authUser.user_info);
-      expect(localStorageService.getItem('accessToken')).toEqual(
+      expect(localStorageService.getItem('access_token')).toEqual(
         authUser.token
       );
     });
@@ -178,7 +178,7 @@ describe('AuthenticationService', () => {
     });
 
     it('should return empty string if access token does not exist', () => {
-      localStorageService.removeItem('accessToken');
+      localStorageService.removeItem('access_token');
 
       const mockAuthUser: AuthUser = {
         user_info: { id: '', email: '', name: '' },
