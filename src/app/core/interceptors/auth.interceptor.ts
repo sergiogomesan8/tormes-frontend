@@ -30,7 +30,6 @@ export class AuthInterceptor implements HttpInterceptor {
       const requestWithToken = this.addTokenToRequest(request, token);
       return next.handle(requestWithToken);
     }
-    console.log('token is expired');
 
     if (this.authenticationService.isRefreshingToken) {
       return next.handle(request);

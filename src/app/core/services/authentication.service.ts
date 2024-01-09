@@ -45,7 +45,6 @@ export class AuthenticationService {
   login(loginUserDto: LoginUserDto): Observable<AuthUser | undefined> {
     return this.httpService.post(this.authEndPoint.LOGIN, loginUserDto).pipe(
       map((response: AuthUser) => {
-        console.log('login response!!: ', response);
         this.setAuthUser(response);
         return response;
       }),
@@ -67,7 +66,6 @@ export class AuthenticationService {
       return of({} as AuthUser);
     }
     this.isRefreshingToken = true;
-    console.log('refresh token');
     const headers = new HttpHeaders().set(
       'Authorization',
       'Bearer ' + this.getRefreshToken()
@@ -76,7 +74,6 @@ export class AuthenticationService {
       .post(this.authEndPoint.REFRESH_TOKEN, {}, undefined, headers)
       .pipe(
         map((response: AuthUser) => {
-          console.log('refresh token response: ', response);
           this.setAuthUser(response);
           this.isRefreshingToken = false;
           return response;
