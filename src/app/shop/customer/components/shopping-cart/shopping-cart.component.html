@@ -1,0 +1,44 @@
+<div
+  id="shopping-cart"
+  class="shopping-cart"
+  [ngClass]="{ expanded: isExpanded }"
+>
+  <div class="header">
+    <button
+      class="btn-close"
+      *ngIf="isExpanded"
+      (click)="handleSidebarToggle()"
+    >
+      <fa-icon class="close-icon" [icon]="['fas', 'times']"></fa-icon>
+    </button>
+  </div>
+  <div class="content">
+    <div *ngFor="let product of (shoppingCart$ | async)?.shoppingCartProducts">
+      <div class="product-card">
+        <div class="container-img" id="imagen">
+          <img
+            src="{{ productImageUrl + product.product.image }}"
+            alt="{{ product.product.name }}"
+          />
+        </div>
+        <div class="container-text">
+          <h4>{{ product.product.name }}</h4>
+          <p class="section">{{ product.product.section }}</p>
+          <div>
+            <p class="amount">Cantidad: {{ product.amount }}</p>
+          </div>
+          <div class="container-price">
+            <span class="price">{{ product.product.price }}</span>
+            <p>€/Kg</p>
+          </div>
+        </div>
+        <interaction-control
+          [amount]="product.amount"
+          (deleteButtonClick)="deleteProduct(product)"
+          (removeButtonClick)="removeProduct(product)"
+          (addButtonClick)="addProduct(product)"
+        ></interaction-control>
+      </div>
+    </div>
+  </div>
+</div>
