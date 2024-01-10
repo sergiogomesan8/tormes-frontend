@@ -31,7 +31,7 @@ export class RoleGuardService {
     }
 
     const decodedToken: any = jwtDecode(token);
-    const userRole: UserType | undefined = decodedToken.userType;
+    const userRole: UserType | undefined = decodedToken.payload.userType;
 
     if (userRole) {
       if (expectedRoles.includes(userRole)) {
