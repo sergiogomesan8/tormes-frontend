@@ -6,10 +6,12 @@ import { User } from '@shop/models/user.model';
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
+  styleUrls: ['./customer.component.scss'],
 })
 export class CustomerComponent implements OnInit {
   isLoggedIn: boolean = false;
   userInfo: User | undefined;
+  sidebarExpanded = false;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -26,5 +28,9 @@ export class CustomerComponent implements OnInit {
     this.router.navigate(['/catalog']).then(() => {
       window.location.reload();
     });
+  }
+
+  handleShoppingCart() {
+    this.sidebarExpanded = !this.sidebarExpanded;
   }
 }
