@@ -17,6 +17,8 @@ export class CustomerNavbarComponent {
   @Input() customer: User | undefined;
   @ViewChild(MatMenuTrigger) trigger!: MatMenuTrigger;
   @Output() logoutButtonClick: EventEmitter<void> = new EventEmitter<void>();
+  @Output() shoppingCartButtonClick: EventEmitter<void> =
+    new EventEmitter<void>();
 
   someMethod() {
     this.trigger.openMenu();
@@ -24,5 +26,9 @@ export class CustomerNavbarComponent {
 
   logout() {
     this.logoutButtonClick.emit();
+  }
+
+  shoppingCart() {
+    this.shoppingCartButtonClick.emit();
   }
 }

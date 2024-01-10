@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
@@ -8,8 +8,14 @@ import { MatMenuTrigger } from '@angular/material/menu';
 })
 export class NavbarComponent {
   @ViewChild(MatMenuTrigger) trigger!: MatMenuTrigger;
+  @Output() shoppingCartButtonClick: EventEmitter<void> =
+    new EventEmitter<void>();
 
   someMethod() {
     this.trigger.openMenu();
+  }
+
+  shoppingCart() {
+    this.shoppingCartButtonClick.emit();
   }
 }
