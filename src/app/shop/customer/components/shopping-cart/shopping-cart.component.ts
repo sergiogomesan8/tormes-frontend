@@ -3,6 +3,8 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { ShoppingCartService } from '@shop/services/shopping-cart.service';
 import { environment } from '@env';
 import { take } from 'rxjs';
+import { Product } from '@shop/models/product';
+import { ShoppingCartProduct } from '@shop/models/shoppping-cart';
 
 @Component({
   selector: 'shopping-cart',
@@ -30,40 +32,32 @@ export class ShoppingCartComponent implements OnInit {
   constructor(private readonly shoppingCartService: ShoppingCartService) {}
 
   ngOnInit(): void {
-    this.shoppingCartService.getShoppingCart();
+    const sp = this.shoppingCartService.getShoppingCart();
   }
 
-  deleteProduct(product: any) {
-    console.log('delete', product);
-    this.shoppingCartService.shoppingCart$.pipe(take(1)).subscribe((cart) => {
-      console.log('cart', cart);
-      const index = cart.shoppingCartProducts.findIndex(
-        (p) => p.product.id === product.product.id
-      );
-      console.log('index', index);
-      if (index !== -1) {
-        cart.shoppingCartProducts.splice(index, 1);
-        console.log('after splice', cart);
-        this.shoppingCartService.updateShoppingCart(cart);
-        console.log('updateShoppingCart called');
-      }
-    });
+  deleteProductFromShoppingCart(product: Partial<Product>) {
+    this.shoppingCartService.deleteProductFromShoppingCart(product as Product);
   }
 
-  removeProduct(product: any) {
-    if (product.amount > 1) {
-      product.amount--;
-      this.shoppingCartService.shoppingCart$.pipe(take(1)).subscribe((cart) => {
-        this.shoppingCartService.updateShoppingCart(cart);
+  removeProductFromShoppingCart(product: Partial<Product>) {
+    this.shoppingCartService.removeProductFromShoppingCart(product as Product);
+  }
+
+  addProductToShoppingCart(product: Partial<Product>) {
+    this.shoppingCartService.addProductToShoppingCart(product as Product);
+  }
+
+  get totalOrderPrice() {
+    let total = 0;
+    this.shoppingCart$.subscribe((cart) => {
+      cart.shoppingCartProducts.forEach((shoppingCartProduct) => {
+        if (shoppingCartProduct.product.price) {
+          total +=
+            shoppingCartProduct.product.price * shoppingCartProduct.amount;
+        }
       });
-    }
-  }
-
-  addProduct(product: any) {
-    product.amount++;
-    this.shoppingCartService.shoppingCart$.pipe(take(1)).subscribe((cart) => {
-      this.shoppingCartService.updateShoppingCart(cart);
     });
+    return total.toFixed(2);
   }
 
   get productImageUrl() {
