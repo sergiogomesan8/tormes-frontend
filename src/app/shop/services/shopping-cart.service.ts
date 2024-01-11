@@ -2,7 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { LocalStorageService } from '@shared/services/localStorage.service';
 import { Product } from '@shop/models/product';
 import { ShoppingCart, ShoppingCartProduct } from '@shop/models/shoppping-cart';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, take } from 'rxjs';
 import { ProductService } from './product.service';
 
 @Injectable({
@@ -24,36 +24,6 @@ export class ShoppingCartService implements OnInit {
     this.getShoppingCart();
   }
 
-  addProductToShoppingCart(product: Product) {
-    let currentCart = this.shoppingCart.getValue();
-    let existingProduct = currentCart.shoppingCartProducts.find(
-      (p) => p.product.id === product.id
-    );
-
-    if (existingProduct) {
-      existingProduct.amount += 1;
-    } else {
-      currentCart.shoppingCartProducts.push({
-        product: { id: product.id, name: product.name, image: product.image },
-        amount: 1,
-      });
-    }
-
-    this.shoppingCart.next(currentCart);
-
-    let localStorageCart = JSON.parse(JSON.stringify(currentCart));
-    localStorageCart.shoppingCartProducts.forEach(
-      (item: ShoppingCartProduct) => {
-        item.product = { id: item.product.id, name: item.product.name };
-      }
-    );
-
-    this.localStorageService.setItem(
-      'shopping_cart',
-      JSON.stringify(localStorageCart)
-    );
-  }
-
   async getShoppingCart() {
     let localStorageShoppingCart =
       this.localStorageService.getItem('shopping_cart');
@@ -63,7 +33,6 @@ export class ShoppingCartService implements OnInit {
 
       for (let i = 0; i < shoppingCart.shoppingCartProducts.length; i++) {
         let productId = shoppingCart.shoppingCartProducts[i].product.id;
-
         if (productId) {
           this.productService
             .findProductById(productId)
@@ -81,8 +50,67 @@ export class ShoppingCartService implements OnInit {
     return this.shoppingCart.getValue();
   }
 
+  addProductToShoppingCart(product: Product) {
+    let currentCart = this.shoppingCart.getValue();
+    let existingProduct = currentCart.shoppingCartProducts.find(
+      (p) => p.product.id === product.id
+    );
+
+    if (existingProduct) {
+      existingProduct.amount += 1;
+    } else {
+      this.productService
+        .findProductById(product.id)
+        .subscribe((fullProduct) => {
+          if (fullProduct) {
+            currentCart.shoppingCartProducts.push({
+              product: fullProduct,
+              amount: 1,
+            });
+            this.updateShoppingCart(currentCart);
+          }
+        });
+    }
+
+    this.updateShoppingCart(currentCart);
+  }
+
+  removeProductFromShoppingCart(product: Product) {
+    let currentCart = this.shoppingCart.getValue();
+    let existingProduct = currentCart.shoppingCartProducts.find(
+      (p) => p.product.id === product.id
+    );
+
+    if (existingProduct && existingProduct.amount > 1) {
+      existingProduct.amount -= 1;
+    } else if (existingProduct && existingProduct.amount === 1) {
+      const index = currentCart.shoppingCartProducts.indexOf(existingProduct);
+      if (index > -1) {
+        currentCart.shoppingCartProducts.splice(index, 1);
+      }
+    }
+
+    this.updateShoppingCart(currentCart);
+  }
+
+  deleteProductFromShoppingCart(product: Product) {
+    let currentCart = this.shoppingCart.getValue();
+    let existingProduct = currentCart.shoppingCartProducts.find(
+      (p) => p.product.id === product.id
+    );
+
+    if (existingProduct && existingProduct.amount == 1) {
+      const index = currentCart.shoppingCartProducts.findIndex(
+        (p) => p.product.id === product.id
+      );
+      if (index !== -1) {
+        currentCart.shoppingCartProducts.splice(index, 1);
+      }
+      this.updateShoppingCart(currentCart);
+    }
+  }
+
   updateShoppingCart(newCart: ShoppingCart) {
-    console.log('newCart', newCart);
     this.shoppingCart.next(newCart);
 
     let localStorageCart = JSON.parse(JSON.stringify(newCart));
