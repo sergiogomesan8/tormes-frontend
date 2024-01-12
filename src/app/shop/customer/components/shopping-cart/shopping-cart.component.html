@@ -1,18 +1,18 @@
 <div
   id="shopping-cart"
   class="shopping-cart"
+  @fadeInOut
   [ngClass]="{ expanded: isExpanded }"
 >
-  <div class="header">
+  <div class="header" @fadeInOut>
     <button
       class="btn-close"
       *ngIf="isExpanded"
       (click)="handleSidebarToggle()"
-    >
-      <fa-icon class="close-icon" [icon]="['fas', 'times']"></fa-icon>
-    </button>
+    ></button>
+    <p>Shopping Cart</p>
   </div>
-  <div class="content">
+  <div class="content" @fadeInOut>
     <div
       *ngFor="
         let shoppingCartProduct of (shoppingCart$ | async)?.shoppingCartProducts
@@ -28,8 +28,9 @@
         <div class="container-text">
           <h4>{{ shoppingCartProduct.product.name }}</h4>
           <p class="section">{{ shoppingCartProduct.product.section }}</p>
-          <div>
-            <p class="amount">Cantidad: {{ shoppingCartProduct.amount }}</p>
+          <div class="container-amount">
+            <p>Cantidad:</p>
+            <span class="amount">{{ shoppingCartProduct.amount }}</span>
           </div>
           <div class="container-price">
             <span class="price">{{ shoppingCartProduct.product.price }}</span>
@@ -50,19 +51,18 @@
         ></interaction-control>
       </div>
     </div>
-    <div class="order-info-container">
-      <div>
-        <p>Total:</p>
-        <span>{{ totalOrderPrice }}</span>
-      </div>
-      <div>
-        <button-component
-          [class]="'purple-button'"
-          [label]="'Tramitar pedido'"
-          [type]="'button'"
-        >
-        </button-component>
-      </div>
+  </div>
+
+  <div class="order-info-container" *ngIf="totalOrderPrice > 0">
+    <div class="container-total">
+      <p>Total:</p>
+      <span class="total-price">{{ totalOrderPrice }} €</span>
     </div>
+    <button-component
+      [class]="'gold-button'"
+      [label]="'Tramitar pedido'"
+      [type]="'button'"
+    >
+    </button-component>
   </div>
 </div>

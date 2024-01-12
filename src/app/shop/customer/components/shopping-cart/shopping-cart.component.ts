@@ -2,9 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ShoppingCartService } from '@shop/services/shopping-cart.service';
 import { environment } from '@env';
-import { take } from 'rxjs';
 import { Product } from '@shop/models/product';
-import { ShoppingCartProduct } from '@shop/models/shoppping-cart';
 
 @Component({
   selector: 'shopping-cart',
@@ -32,7 +30,7 @@ export class ShoppingCartComponent implements OnInit {
   constructor(private readonly shoppingCartService: ShoppingCartService) {}
 
   ngOnInit(): void {
-    const sp = this.shoppingCartService.getShoppingCart();
+    this.shoppingCartService.getShoppingCart();
   }
 
   deleteProductFromShoppingCart(product: Partial<Product>) {
@@ -47,7 +45,7 @@ export class ShoppingCartComponent implements OnInit {
     this.shoppingCartService.addProductToShoppingCart(product as Product);
   }
 
-  get totalOrderPrice() {
+  get totalOrderPrice(): number {
     let total = 0;
     this.shoppingCart$.subscribe((cart) => {
       cart.shoppingCartProducts.forEach((shoppingCartProduct) => {
@@ -57,10 +55,11 @@ export class ShoppingCartComponent implements OnInit {
         }
       });
     });
-    return total.toFixed(2);
+    return parseFloat(total.toFixed(2));
   }
 
   get productImageUrl() {
+    console.log('image 1');
     return `${environment.TORMES_BACKEND_IMAGES_PRODUCTS}/`;
   }
 
