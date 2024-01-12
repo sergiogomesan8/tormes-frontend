@@ -46,8 +46,9 @@
       ></button-component>
     </div>
 
-    <button mat-icon-button (click)="shoppingCart()" class="shopping-cart-container">
-      <mat-icon>shopping_cart</mat-icon>
-    </button>
+    <shopping-cart-button
+      [amount]="shoppingCartItems"
+      (openCartClick)="shoppingCart()"
+    ></shopping-cart-button>
   </mat-toolbar-row>
 </mat-toolbar>

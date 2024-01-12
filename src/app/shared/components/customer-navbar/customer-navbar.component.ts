@@ -15,6 +15,8 @@ import { User } from '@shop/models/user.model';
 })
 export class CustomerNavbarComponent {
   @Input() customer: User | undefined;
+  @Input() shoppingCartItems: number = 0;
+  
   @ViewChild(MatMenuTrigger) trigger!: MatMenuTrigger;
   @Output() logoutButtonClick: EventEmitter<void> = new EventEmitter<void>();
   @Output() shoppingCartButtonClick: EventEmitter<void> =
