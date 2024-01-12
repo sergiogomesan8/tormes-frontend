@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { environment } from '@env';
 import { Product } from '@shop/models/product';
 import { ShoppingCartService } from '@shop/services/shopping-cart.service';
@@ -8,12 +8,19 @@ import { ShoppingCartService } from '@shop/services/shopping-cart.service';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit {
   @Input() product!: Product;
+
+  shoppingCart$ = this.shoppingCartService.shoppingCart$;
 
   constructor(private readonly shoppingCartService: ShoppingCartService) {}
 
+  ngOnInit(): void {
+    this.shoppingCartService.getShoppingCart();
+  }
+
   get productImageUrl() {
+    console.log('image 2');
     return `${environment.TORMES_BACKEND_IMAGES_PRODUCTS}/${this.product.image}`;
   }
 
@@ -27,5 +34,17 @@ export class ProductComponent {
 
   addProductToShoppingCart(product: Product) {
     this.shoppingCartService.addProductToShoppingCart(product);
+  }
+
+  get totalProductAmount() {
+    let total = 0;
+    this.shoppingCart$.subscribe((cart) => {
+      cart.shoppingCartProducts.forEach((shoppingCartProduct) => {
+        if (shoppingCartProduct.product.id === this.product.id) {
+          total += shoppingCartProduct.amount;
+        }
+      });
+    });
+    return total;
   }
 }

@@ -79,7 +79,7 @@ export const newsMock: New[] = [
       'Disfruta de los mejores productos provenientes de la zona del tormes.',
   },
   {
-    image: '../assets/images/ganaderia-porcina-campo.png',
+    image: '../assets/images/vacasCamino.jpg',
     name: 'Granjas propias',
     description:
       'Criamos y alimentamos a nuestros animales por los valles del Tormes.',

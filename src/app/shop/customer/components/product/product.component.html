@@ -11,10 +11,23 @@
     </div>
   </div>
   <button-component
+    *ngIf="totalProductAmount == 0"
     [class]="'purple-button'"
     [label]="'Añadir al carro'"
     [type]="'button'"
     (buttonClick)="addProductToShoppingCart(product)"
   >
   </button-component>
+  <div class="container-amount-interaction" *ngIf="totalProductAmount > 0">
+    <div class="container-amount">
+      <p>Cantidad:</p>
+      <span class="amount">{{ totalProductAmount }}</span>
+    </div>
+    <interaction-control
+      [amount]="totalProductAmount"
+      (deleteButtonClick)="deleteProductFromShoppingCart(product)"
+      (removeButtonClick)="removeProductFromShoppingCart(product)"
+      (addButtonClick)="addProductToShoppingCart(product)"
+    ></interaction-control>
+  </div>
 </div>
