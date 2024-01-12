@@ -13,9 +13,6 @@ describe('InteractionControlComponent', () => {
     TestBed.configureTestingModule({
       declarations: [InteractionControlComponent],
     }).compileComponents();
-
-    fixture = TestBed.createComponent(InteractionControlComponent);
-    component = fixture.componentInstance;
   }));
 
   beforeEach(() => {
