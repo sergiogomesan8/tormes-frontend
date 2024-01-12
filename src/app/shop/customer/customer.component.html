@@ -4,11 +4,13 @@
 ></shopping-cart>
 <navbar-component
   *ngIf="!isLoggedIn"
+  [shoppingCartItems]="shoppingCartItems"
   (shoppingCartButtonClick)="handleShoppingCart()"
 ></navbar-component>
 <customer-navbar
   *ngIf="isLoggedIn"
   [customer]="userInfo"
+  [shoppingCartItems]="shoppingCartItems"
   (logoutButtonClick)="logout()"
   (shoppingCartButtonClick)="handleShoppingCart()"
 ></customer-navbar>
