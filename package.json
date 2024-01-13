@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run start:heroku",
+    "local": "npm run serve:ssr:tormes-frontend",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "jest --verbose",
@@ -11,7 +12,8 @@
     "test:watch": "jest --watch",
     "serve:ssr:tormes-frontend": "node dist/tormes-frontend/server/server.mjs",
     "build-library": "ng build tormes-library",
-    "start-library": "npm link ./projects/tormes-library && ng serve --watch"
+    "start-library": "npm link ./projects/tormes-library && ng serve --watch",
+    "heroku-postbuild": "ng build — prod"
   },
   "private": true,
   "dependencies": {
@@ -46,6 +48,7 @@
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
     "node-sass": "^9.0.0",
+    "path": "^0.12.7",
     "rxjs": "~7.8.0",
     "save-dev": "^0.0.1-security",
     "ts-node": "^10.9.2",
