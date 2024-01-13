@@ -9,7 +9,7 @@
     "ng": "ng",
     "start": "ng serve",
     "start:prod": "run serve:ssr:tormes-frontend",
-    "build:local": "ng build",
+    "build": "ng build",
     "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "jest --verbose",
@@ -17,8 +17,7 @@
     "test:watch": "jest --watch",
     "serve:ssr:tormes-frontend": "node dist/tormes-frontend/server/server.mjs",
     "build-library": "ng build tormes-library",
-    "start-library": "npm link ./projects/tormes-library && ng serve --watch",
-    "heroku-postbuild": "ng build --configuration production"
+    "start-library": "npm link ./projects/tormes-library && ng serve --watch"
   },
   "private": true,
   "dependencies": {
