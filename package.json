@@ -7,8 +7,8 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "npm run start:heroku",
-    "local": "npm run serve:ssr:tormes-frontend",
+    "start": "npm run serve:ssr:tormes-frontend",
+    "local": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "jest --verbose",
