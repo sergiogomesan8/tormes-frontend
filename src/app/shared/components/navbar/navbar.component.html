@@ -1,0 +1,54 @@
+<mat-toolbar id="navbar">
+  <mat-toolbar-row>
+    <span class="navbar-brand" routerLink="/">
+      <img
+        src="..\assets\images\Tormes-Logo.png"
+        height="30"
+        alt=""
+        loading="lazy"
+      />
+    </span>
+
+    <button
+      class="toggle-menu app-menu"
+      mat-icon-button
+      [matMenuTriggerFor]="appMenu"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu class="navbar-menu app-menu" #appMenu="matMenu">
+      <a mat-menu-item routerLink="/home">Inicio</a>
+      <button mat-menu-item routerLink="catalog">Catalogo</button>
+    </mat-menu>
+
+    <div class="navbar-menu-big-size">
+      <a routerLink="home">Inicio</a>
+      <a routerLink="catalog">Catalogo</a>
+    </div>
+
+    <search-component
+      class="d-none d-md-flex"
+      [placeholder]="'Buscar producto..'"
+    ></search-component>
+
+    <div class="authentication">
+      <button-component
+        [routerLink]="'/login'"
+        [label]="'Iniciar Sesión'"
+        [class]="'border-gold-button'"
+      ></button-component>
+      <p>o</p>
+      <button-component
+        [routerLink]="'/signin'"
+        [label]="'Registrarse'"
+        [class]="'gold-button'"
+      ></button-component>
+    </div>
+
+    <shopping-cart-button
+      [amount]="shoppingCartItems"
+      (openCartClick)="shoppingCart()"
+    ></shopping-cart-button>
+  </mat-toolbar-row>
+</mat-toolbar>

@@ -1,0 +1,19 @@
+.green-snackbar {
+    color: white;
+    --mdc-snackbar-container-color: var(--success-color);
+    --mdc-snackbar-container-shape: 10px;
+  
+    button {
+      color: white !important;
+    }
+  }
+  
+  .red-snackbar {
+    color: white;
+    --mdc-snackbar-container-color: var(--error-color);
+    --mdc-snackbar-container-shape: 10px;
+  
+    button {
+      color: white !important;
+    }
+  }

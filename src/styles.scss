@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, "Helvetica Neue", sans-serif;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap");
+@import "styles/variables.scss";
+@import "styles/snackbar.scss";
+
+* {
+  font-family: "Titillium Web", sans-serif !important;
+}
+
+mat-icon {
+  font-family: "Material Icons" !important;
+}

@@ -1,0 +1,85 @@
+{
+  "shared": {
+    "success": "Success",
+    "error": "Error"
+  },
+  "shop": {
+    "customer": {
+      "register": {
+        "title": "Sign in",
+        "web-title": "TORMES",
+        "welcome": "Welcome!",
+        "label-name": "Name",
+        "label-lastName": "Last name",
+        "label-email": "Email",
+        "label-password": "Password",
+        "label-passwordConfirmation": "Confirm password",
+        "label-phoneNumber": "Phone number",
+        "label-deliveryAddress": "Delivery address",
+        "label-billingAddress": "Billing address",
+        "label-postalCode": "Postal code",
+        "label-gender": "Gender",
+        "label-gender-male": "Male",
+        "label-gender-female": "Female",
+        "label-gender-other": "Other",
+        "label-birthdate": "Birthdate",
+        "button": "Sign in",
+        "new-user": "Already have an account?",
+        "login": "Log in",
+        "error": "Error signing in, please try again later",
+        "success": "Sign-in completed successfully!"
+      },
+      "login": {
+        "title": "Log in",
+        "web-title": "TORMES",
+        "welcome": "Welcome!",
+        "label-email": "Email",
+        "label-password": "Password",
+        "button": "Log in",
+        "new-user": "Are you new here?",
+        "register": "Sing in",
+        "error": "Error login in, please try again later"
+      }
+    },
+    "admin": {
+      "dashboard": {
+        "title": "Dashboard",
+        "options": {
+          "products": {
+            "title": "Products",
+            "add": "Add product",
+            "addSuccess": "Product added successfully!",
+            "addError": "Error adding product, please try again later",
+            "name": "Product Name",
+            "section": "Section",
+            "price": "Price",
+            "image": "Image",
+            "description": "Description...",
+            "delete": "Delete product",
+            "deleteSuccess": "Product deleted successfully! ",
+            "deleteError": "Error while deleting product, try again later",
+            "update": "Update producto",
+            "updateSuccess": "Product updated successfully!",
+            "updateError": "Error while updating the product, please try again later",
+            "fileTypeError": "The file must be 'png', 'jpg' or 'jpeg'",
+            "getByIdError": "An error has occurred, please try again later",
+            "noChanges": "No changes"
+          },
+          "sections": "Sections"
+        }
+      },
+      "catalog": {
+        "title": "Catalog"
+      },
+      "cashRegister": {
+        "title": "Cash Register"
+      },
+      "employee": {
+        "title": "Employee"
+      },
+      "orders": {
+        "title": "Orders"
+      }
+    }
+  }
+}

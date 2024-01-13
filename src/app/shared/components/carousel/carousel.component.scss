@@ -1,0 +1,15 @@
+#carousel {
+  display: flex;
+  justify-content: center;
+
+  .custom-carousel {
+    margin: auto;
+  }
+  .picsum-img-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px !important;
+    max-height: 200px !important;
+  }
+}

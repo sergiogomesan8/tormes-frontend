@@ -2,7 +2,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "types": ["jest"],
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -10,16 +10,30 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
     "sourceMap": true,
     "declaration": false,
-    "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2020",
-    "module": "es2020",
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
+    "baseUrl": "./", 
+    "paths": {
+      "tormes-library": [
+        "./dist/tormes-library"
+      ],
+      "@env": ["src/environments/environment.ts"],
+      "@shared/*": ["src/app/shared/*"],
+      "@core/*": ["src/app/core/*"],
+      "@shop/*": ["src/app/shop/*"],
+      "@customer/*": ["src/app/shop/customer/*"],
+      "@admin/*": ["src/app/shop/admin/*"]
+    },
     "lib": [
-      "es2020",
+      "ES2022",
       "dom"
     ]
   },

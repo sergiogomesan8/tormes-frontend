@@ -1,35 +1,37 @@
-import {TestBed} from '@angular/core/testing';
-import {RouterTestingModule} from '@angular/router/testing';
-import {AppComponent} from './app.component';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { AppComponent } from './app.component';
+import { far } from '@fortawesome/free-regular-svg-icons';
 
 describe('AppComponent', () => {
-	beforeEach(async () => {
-		await TestBed.configureTestingModule({
-			imports: [
-				RouterTestingModule,
-			],
-			declarations: [
-				AppComponent,
-			],
-		}).compileComponents();
-	});
+  let component: AppComponent;
+  let mockTranslateService: any;
+  let mockFaIconLibrary: any;
+  let mockPlatformId: any;
 
-	it('should create the app', () => {
-		const fixture = TestBed.createComponent(AppComponent);
-		const app = fixture.componentInstance;
-		expect(app).toBeTruthy();
-	});
+  beforeEach(() => {
+    mockTranslateService = { setDefaultLang: jest.fn() };
+    mockFaIconLibrary = { addIconPacks: jest.fn() };
+    mockPlatformId = 'browser';
+    component = new AppComponent(
+      mockPlatformId,
+      mockTranslateService,
+      mockFaIconLibrary
+    );
+  });
 
-	it('should have as title \'tormes-frontend\'', () => {
-		const fixture = TestBed.createComponent(AppComponent);
-		const app = fixture.componentInstance;
-		expect(app.title).toEqual('tormes-frontend');
-	});
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
-	it('should render title', () => {
-		const fixture = TestBed.createComponent(AppComponent);
-		fixture.detectChanges();
-		const compiled = fixture.nativeElement as HTMLElement;
-		expect(compiled.querySelector('.content span')?.textContent).toContain('tormes-frontend app is running!');
-	});
+  it('should set default language to es', () => {
+    expect(mockTranslateService.setDefaultLang).toHaveBeenCalledWith('es');
+  });
+
+  it('should add icon packs', () => {
+    expect(mockFaIconLibrary.addIconPacks).toHaveBeenCalledWith(fas, far);
+  });
+
+  it('should set isBrowser to true if platform is browser', () => {
+    expect(AppComponent.isBrowser.value).toBe(true);
+  });
 });

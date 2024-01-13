@@ -1,0 +1,64 @@
+<div id="sidebar" class="sidebar" [ngClass]="{ expanded: isExpanded }">
+  <div class="header">
+    <a class="logo" (click)="handleSidebarToggle()">
+      <img
+        src="..\assets\images\Tormes-Logo.png"
+        height="30"
+        alt=""
+        loading="lazy"
+      />
+    </a>
+    <button
+      class="btn-close"
+      *ngIf="isExpanded"
+      (click)="handleSidebarToggle()"
+    >
+      <fa-icon class="close-icon" [icon]="['fas', 'times']"></fa-icon>
+    </button>
+  </div>
+  <div class="content">
+    <div class="sidenav-nav">
+      <div class="sidenav-nav-items" *ngFor="let item of navbarData">
+        <div
+          class="sidenav-nav-item"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a href="" class="sidenav-nav-link" [routerLink]="[item.routerLink]">
+            <fa-icon class="sidenav-link-icon" [icon]="item.icon"></fa-icon>
+            <span class="sidenav-link-text" @fadeInOut *ngIf="isExpanded">{{
+              item.label | translate
+            }}</span>
+          </a>
+          <fa-icon
+            class="arrow-down"
+            @fadeInOut
+            *ngIf="item.childOptions && isExpanded"
+            [icon]="faChevronDown"
+            (click)="handleChildOptions(item)"
+          ></fa-icon>
+        </div>
+
+        <div
+          class="sidenav-nav-child"
+          *ngIf="openStates[item.routerLink] && isExpanded"
+        >
+          <div
+            class="sidenav-nav-child-item"
+            *ngFor="let child of item.childOptions"
+            [routerLink]="[child.routerLink]"
+          >
+            <fa-icon
+              class="circle-icon"
+              [icon]="['fas', 'circle']"
+              size="2xs"
+            ></fa-icon>
+            <span class="sidenav-link-text" @fadeInOut *ngIf="isExpanded">{{
+              child.label | translate
+            }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

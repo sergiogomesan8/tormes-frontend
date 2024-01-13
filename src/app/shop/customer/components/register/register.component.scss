@@ -1,0 +1,307 @@
+#register {
+  display: flex;
+  justify-content: center;
+
+  min-height: 816px;
+  height: 100%;
+  width: 100%;
+
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.2)
+    ),
+    linear-gradient(to right, #f5ac2f, #6a3c99);
+
+  .register-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 688px;
+    max-width: 344px;
+    margin: auto;
+
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 12px 0 rgb(0 0 0 / 30%);
+    .form-column {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .logo {
+          margin-top: 16px;
+          cursor: pointer;
+
+          img {
+            height: 70px;
+          }
+        }
+
+        .welcome-container {
+          margin-top: 32px;
+          margin-bottom: 16px;
+          .welcome-title {
+            font-size: 20px;
+          }
+        }
+
+        .title {
+          display: flex;
+          width: 300px;
+          margin-bottom: 8px;
+
+          p {
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 0px;
+          }
+
+          span {
+            font-size: 20px;
+            line-height: 14px;
+            margin-left: 4px;
+          }
+        }
+      }
+
+      .dialog-container {
+        min-width: 344px;
+        form {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+
+          mat-form-field {
+            width: 300px;
+          }
+
+          button-component {
+            margin-top: 8px;
+            width: 300px;
+          }
+        }
+      }
+      .already-account {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 300px;
+
+        margin: 24px auto;
+
+        p {
+          margin-bottom: 0px;
+        }
+
+        button-component {
+          width: 125px;
+        }
+      }
+    }
+    .image-column {
+      display: none;
+      height: 100%;
+      .color-container {
+        width: 100%;
+        height: 100%;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background: linear-gradient(
+            rgba(69, 69, 69, 0.4),
+            rgba(69, 69, 69, 0.4)
+          ),
+          url("../../../../../assets/images/mural-ibericos-selectos-tormes.jpg");
+        background-repeat: no-repeat;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 576px) {
+  #register {
+    .register-container {
+      height: 688px;
+      max-width: 1000px;
+      .form-column {
+        padding: 32px 16px;
+        //   .header {
+        //     .logo {
+        //       img {
+        //       }
+        //     }
+        //     .welcome-container {
+        //       .welcome-title {
+        //       }
+        //     }
+        //     .title {
+        //       p {
+        //       }
+        //       span {
+        //       }
+        //     }
+        //   }
+        .dialog-container {
+          min-width: 400px;
+
+          //     form {
+          //       mat-form-field {
+          //       }
+          //       button-component {
+          //       }
+          //     }
+          //   }
+          //   .already-account {
+          //     p {
+          //     }
+          //     button-component {
+          //     }
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+}
+@media screen and (min-width: 992px) {
+  #register {
+    .register-container {
+      // .form-column {
+      //   .header {
+      //     .logo {
+      //       img {
+      //       }
+      //     }
+      //     .welcome-container {
+      //       .welcome-title {
+      //       }
+      //     }
+      //     .title {
+      //       p {
+      //       }
+      //       span {
+      //       }
+      //     }
+      //   }
+      //   .dialog-container {
+      //     form {
+      //       mat-form-field {
+      //       }
+      //       button-component {
+      //       }
+      //     }
+      //   }
+      //   .already-account {
+      //     p {
+      //     }
+      //     button-component {
+      //     }
+      //   }
+      // }
+      .image-column {
+        display: flex;
+        width: 432px;
+        .color-container {
+          background-size: 400%;
+          background-position-x: 60%;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1200px) {
+  #register {
+    .register-container {
+      // .form-column {
+      //   .header {
+      //     .logo {
+      //       img {
+      //       }
+      //     }
+      //     .welcome-container {
+      //       .welcome-title {
+      //       }
+      //     }
+      //     .title {
+      //       p {
+      //       }
+      //       span {
+      //       }
+      //     }
+      //   }
+      //   .dialog-container {
+      //     form {
+      //       mat-form-field {
+      //       }
+      //       button-component {
+      //       }
+      //     }
+      //   }
+      //   .already-account {
+      //     p {
+      //     }
+      //     button-component {
+      //     }
+      //   }
+      // }
+      .image-column {
+        width: 870px;
+        .color-container {
+          background-size: 290%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  #register {
+    .register-container {
+      max-width: 1200px;
+      // .form-column {
+      //   .header {
+      //     .logo {
+      //       img {
+      //       }
+      //     }
+      //     .welcome-container {
+      //       .welcome-title {
+      //       }
+      //     }
+      //     .title {
+      //       p {
+      //       }
+      //       span {
+      //       }
+      //     }
+      //   }
+      //   .dialog-container {
+      //     form {
+      //       mat-form-field {
+      //       }
+      //       button-component {
+      //       }
+      //     }
+      //   }
+      //   .already-account {
+      //     p {
+      //     }
+      //     button-component {
+      //     }
+      //   }
+      // }
+      .image-column {
+        .color-container {
+          background-size: 220%;
+          background-position-x: 65%;
+        }
+      }
+    }
+  }
+}

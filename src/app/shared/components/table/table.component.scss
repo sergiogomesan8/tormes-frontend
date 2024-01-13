@@ -1,0 +1,38 @@
+#crud-table {
+  caption {
+    padding: 0;
+  }
+  .mat-mdc-header-row {
+    background-color: var(--granate-hover-color) !important;
+  }
+  .mat-mdc-row:hover {
+    cursor: pointer;
+    background-color: var(--grey-color);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  #crud-table {
+    .mat-column-actions {
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  #crud-table {
+    min-width: 650px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #crud-table {
+    min-width: 900px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  #crud-table {
+    min-width: 1000px;
+  }
+}

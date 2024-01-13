@@ -1,0 +1,87 @@
+button {
+  display: flex;
+  font-size: 14px;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border: none;
+  border-radius: 8px;
+  box-decoration-break: none;
+
+  height: 32px;
+  width: 100%;
+
+  cursor: pointer;
+}
+
+.gold-button {
+  background-color: var(--gold-color);
+  color: white;
+}
+.gold-button:hover {
+  background-color: var(--gold-hover-color);
+}
+
+.purple-button {
+  background-color: var(--purple-color);
+  color: white;
+}
+.purple-button:hover {
+  background-color: var(--purple-hover-color);
+}
+
+.granate-button {
+  background-color: var(--granate-color);
+  color: white;
+}
+.granate-button:hover {
+  background-color: var(--granate-hover-color);
+  color: white;
+}
+
+.border-gold-button {
+  border: 2px solid var(--gold-color);
+  border-radius: 6px;
+
+  background-color: transparent;
+  color: var(--gold-color);
+}
+.border-gold-button:hover {
+  border: 2px solid var(--gold-hover-color);
+  background-color: var(--gold-hover-color);
+
+  color: white;
+}
+
+.border-purple-button {
+  border: 2px solid var(--purple-color);
+  border-radius: 6px;
+
+  background-color: transparent;
+  color: var(--purple-color);
+}
+
+.border-purple-button:hover {
+  border: 2px solid var(--purple-hover-color);
+  background-color: var(--purple-hover-color);
+
+  color: white;
+}
+
+.border-granate-button {
+  border: 2px solid var(--granate-color);
+  border-radius: 6px;
+
+  background-color: transparent;
+  color: var(--purple-color);
+}
+
+.border-granate-button:hover {
+  border: 2px solid var(--granate-hover-color);
+  background-color: var(--granate-hover-color);
+
+  color: white;
+}

@@ -1,0 +1,33 @@
+<div id="product" class="product">
+  <div class="container-img" id="imagen">
+    <img src="{{ productImageUrl }}" alt="{{ product.name }}" />
+  </div>
+  <div class="container-text">
+    <h4>{{ product.name }}</h4>
+    <p class="section">{{ product.section }}</p>
+    <div class="container-price">
+      <span class="price">{{ product.price }}</span>
+      <p>€/Kg</p>
+    </div>
+  </div>
+  <button-component
+    *ngIf="totalProductAmount == 0"
+    [class]="'purple-button'"
+    [label]="'Añadir al carro'"
+    [type]="'button'"
+    (buttonClick)="addProductToShoppingCart(product)"
+  >
+  </button-component>
+  <div class="container-amount-interaction" *ngIf="totalProductAmount > 0">
+    <div class="container-amount">
+      <p>Cantidad:</p>
+      <span class="amount">{{ totalProductAmount }}</span>
+    </div>
+    <interaction-control
+      [amount]="totalProductAmount"
+      (deleteButtonClick)="deleteProductFromShoppingCart(product)"
+      (removeButtonClick)="removeProductFromShoppingCart(product)"
+      (addButtonClick)="addProductToShoppingCart(product)"
+    ></interaction-control>
+  </div>
+</div>

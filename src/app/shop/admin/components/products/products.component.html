@@ -1,0 +1,24 @@
+<div id="products-info">
+  <div class="products-container">
+    <div class="table-header">
+      <search-component [placeholder]="'Buscar producto...'"></search-component>
+      <button-component
+        [label]="'shop.admin.dashboard.options.products.add' | translate"
+        [routerLink]="'/admin/products/create-product'"
+        [class]="'purple-button'"
+        [type]="'button'"
+      >
+        <mat-icon>add</mat-icon>
+      </button-component>
+    </div>
+
+    <table-crud-component
+      (updateEvent)="updateProduct($event)"
+      (deleteEvent)="deleteProduct($event)"
+      [elementsTable]="products"
+      [displayedColumns]="displayedColumns"
+      [deleteAction]="true"
+      [updateAction]="true"
+    ></table-crud-component>
+  </div>
+</div>
