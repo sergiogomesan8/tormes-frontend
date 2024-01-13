@@ -1,11 +1,11 @@
 /* tslint:disable:no-unused-variable */
-import { ProductComponent } from './product.component';
+import { ShoppingCartComponent } from './shopping-cart.component';
 import { ShoppingCartService } from '@shop/services/shopping-cart.service';
 import { Product } from '@shop/models/product';
 import { of } from 'rxjs';
 
-describe('ProductComponent', () => {
-  let component: ProductComponent;
+describe('ShoppingCartComponent', () => {
+  let component: ShoppingCartComponent;
   let mockShoppingCartService: ShoppingCartService;
   let mockProduct: Product;
 
@@ -14,8 +14,8 @@ describe('ProductComponent', () => {
       shoppingCart$: of({
         id: '1',
         shoppingCartProducts: [
-          { product: { id: '1' }, amount: 10 },
-          { product: { id: '2' }, amount: 2 },
+          { product: { price: 10 }, amount: 1 },
+          { product: { price: 20 }, amount: 2 },
         ],
       }),
       getShoppingCart: jest.fn(),
@@ -24,7 +24,7 @@ describe('ProductComponent', () => {
       addProductToShoppingCart: jest.fn(),
     } as any;
 
-    component = new ProductComponent(
+    component = new ShoppingCartComponent(
       mockShoppingCartService as ShoppingCartService
     );
 
@@ -36,8 +36,6 @@ describe('ProductComponent', () => {
       section: 'Mock Section',
       description: 'Mock Description',
     };
-
-    component.product = mockProduct;
   });
 
   it('should create', () => {
@@ -71,8 +69,8 @@ describe('ProductComponent', () => {
   });
 
   it('should return total price of shopping cart items', () => {
-    const totalPrice = component.totalProductAmount;
+    const totalPrice = component.totalOrderPrice;
 
-    expect(totalPrice).toBe(10);
+    expect(totalPrice).toBe(50);
   });
 });

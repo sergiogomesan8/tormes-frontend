@@ -44,4 +44,10 @@ describe('CustomerNavbarComponent', () => {
     component.logout();
     expect(spy).toHaveBeenCalled();
   });
+
+  it('should emit addButtonClick event when clicked and not disabled', () => {
+    component.shoppingCartButtonClick.emit = jest.fn();
+    component.shoppingCart();
+    expect(component.shoppingCartButtonClick.emit).toHaveBeenCalled();
+  });
 });

@@ -1,0 +1,68 @@
+<div
+  id="shopping-cart"
+  class="shopping-cart"
+  @fadeInOut
+  [ngClass]="{ expanded: isExpanded }"
+>
+  <div class="header" @fadeInOut>
+    <button
+      class="btn-close"
+      *ngIf="isExpanded"
+      (click)="handleSidebarToggle()"
+    ></button>
+    <p>Shopping Cart</p>
+  </div>
+  <div class="content" @fadeInOut>
+    <div
+      *ngFor="
+        let shoppingCartProduct of (shoppingCart$ | async)?.shoppingCartProducts
+      "
+    >
+      <div class="product-card">
+        <div class="container-img" id="imagen">
+          <img
+            src="{{ productImageUrl + shoppingCartProduct.product.image }}"
+            alt="{{ shoppingCartProduct.product.name }}"
+          />
+        </div>
+        <div class="container-text">
+          <h4>{{ shoppingCartProduct.product.name }}</h4>
+          <p class="section">{{ shoppingCartProduct.product.section }}</p>
+          <div class="container-amount">
+            <p>Cantidad:</p>
+            <span class="amount">{{ shoppingCartProduct.amount }}</span>
+          </div>
+          <div class="container-price">
+            <span class="price">{{ shoppingCartProduct.product.price }}</span>
+            <p>€/Kg</p>
+          </div>
+        </div>
+        <interaction-control
+          [amount]="shoppingCartProduct.amount"
+          (deleteButtonClick)="
+            deleteProductFromShoppingCart(shoppingCartProduct.product)
+          "
+          (removeButtonClick)="
+            removeProductFromShoppingCart(shoppingCartProduct.product)
+          "
+          (addButtonClick)="
+            addProductToShoppingCart(shoppingCartProduct.product)
+          "
+        ></interaction-control>
+      </div>
+    </div>
+  </div>
+
+  <div class="order-info-container" *ngIf="totalOrderPrice > 0">
+    <div class="container-total">
+      <p>Total:</p>
+      <span class="total-price">{{ totalOrderPrice }} €</span>
+    </div>
+    <button-component
+      [class]="'gold-button'"
+      [label]="'Tramitar pedido'"
+      [type]="'button'"
+    >
+    </button-component>
+  </div>
+</div>

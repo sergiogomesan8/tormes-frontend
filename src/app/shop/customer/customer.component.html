@@ -1,7 +1,19 @@
-<navbar-component *ngIf="!isLoggedIn"></navbar-component>
+<shopping-cart
+  [isExpanded]="sidebarExpanded"
+  (toggleSidebar)="sidebarExpanded = !sidebarExpanded"
+></shopping-cart>
+<navbar-component
+  *ngIf="!isLoggedIn"
+  [shoppingCartItems]="shoppingCartItems"
+  (shoppingCartButtonClick)="handleShoppingCart()"
+></navbar-component>
 <customer-navbar
   *ngIf="isLoggedIn"
   [customer]="userInfo"
+  [shoppingCartItems]="shoppingCartItems"
   (logoutButtonClick)="logout()"
+  (shoppingCartButtonClick)="handleShoppingCart()"
 ></customer-navbar>
-<router-outlet></router-outlet>
+<div class="content" [ngClass]="{ sidebarExpanded: sidebarExpanded }">
+  <router-outlet></router-outlet>
+</div>

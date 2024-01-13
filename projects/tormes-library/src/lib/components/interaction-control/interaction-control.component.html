@@ -1,0 +1,21 @@
+<div class="button-container">
+  <button
+    class="delete-button"
+    *ngIf="amount == 1"
+    (click)="deleteItem()"
+    type="button"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+  <button
+    class="remove-button"
+    *ngIf="amount > 1"
+    (click)="removeItem()"
+    type="button"
+  >
+    <mat-icon>remove_circle_outline</mat-icon>
+  </button>
+  <button class="add-button" (click)="addItem()" type="button">
+    <mat-icon>add_circle_outline</mat-icon>
+  </button>
+</div>

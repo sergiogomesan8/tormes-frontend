@@ -9,6 +9,7 @@ import { CustomerComponent } from './customer.component';
 import { LoginComponent } from './components/login/login.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { ProductComponent } from './components/product/product.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 @NgModule({
   imports: [CommonModule, CustomerRoutingModule, SharedModule],
@@ -18,6 +19,7 @@ import { ProductComponent } from './components/product/product.component';
     LoginComponent,
     CatalogComponent,
     ProductComponent,
+    ShoppingCartComponent,
   ],
 })
 export class CustomerModule {}
