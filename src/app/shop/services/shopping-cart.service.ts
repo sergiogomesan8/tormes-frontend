@@ -2,7 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { LocalStorageService } from '@shared/services/localStorage.service';
 import { Product } from '@shop/models/product';
 import { ShoppingCart, ShoppingCartProduct } from '@shop/models/shoppping-cart';
-import { BehaviorSubject, take } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { ProductService } from './product.service';
 
 @Injectable({
@@ -31,14 +31,14 @@ export class ShoppingCartService implements OnInit {
     if (localStorageShoppingCart) {
       let shoppingCart = JSON.parse(localStorageShoppingCart) as ShoppingCart;
 
-      for (let i = 0; i < shoppingCart.shoppingCartProducts.length; i++) {
-        let productId = shoppingCart.shoppingCartProducts[i].product.id;
+      for (let shoppingCartProduct of shoppingCart.shoppingCartProducts) {
+        let productId = shoppingCartProduct.product.id;
         if (productId) {
           this.productService
             .findProductById(productId)
             .subscribe((product) => {
               if (product) {
-                shoppingCart.shoppingCartProducts[i].product = product;
+                shoppingCartProduct.product = product;
               }
             });
         }
