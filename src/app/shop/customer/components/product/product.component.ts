@@ -20,7 +20,6 @@ export class ProductComponent implements OnInit {
   }
 
   get productImageUrl() {
-    console.log('image 2');
     return `${environment.TORMES_BACKEND_IMAGES_PRODUCTS}/${this.product.image}`;
   }
 
