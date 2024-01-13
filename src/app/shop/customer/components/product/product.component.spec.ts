@@ -12,7 +12,13 @@ describe('ProductComponent', () => {
 
   beforeEach(() => {
     mockShoppingCartService = {
-      shoppingCart$: of({ id: '1', shoppingCartProducts: [] }),
+      shoppingCart$: of({
+        id: '1',
+        shoppingCartProducts: [
+          { product: { id: '1' }, amount: 10 },
+          { product: { id: '2' }, amount: 2 },
+        ],
+      }),
       getShoppingCart: jest.fn(),
       deleteProductFromShoppingCart: jest.fn(),
       removeProductFromShoppingCart: jest.fn(),
@@ -63,5 +69,11 @@ describe('ProductComponent', () => {
     expect(
       mockShoppingCartService.addProductToShoppingCart
     ).toHaveBeenCalledWith(mockProduct);
+  });
+
+  it('should return total price of shopping cart items', () => {
+    const totalPrice = component.totalProductAmount;
+
+    expect(totalPrice).toBe(10);
   });
 });
