@@ -7,17 +7,17 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "npm run serve:ssr:tormes-frontend",
-    "local": "ng serve",
+    "start": "ng serve",
+    "start:prod": "npm run build:prod && npm run serve:ssr:tormes-frontend",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "jest --verbose",
     "coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "serve:ssr:tormes-frontend": "node dist/tormes-frontend/server/server.mjs",
     "build-library": "ng build tormes-library",
-    "start-library": "npm link ./projects/tormes-library && ng serve --watch",
-    "heroku-postbuild": "ng build --configuration production"
+    "start-library": "npm link ./projects/tormes-library && ng serve --watch"
   },
   "private": true,
   "dependencies": {
