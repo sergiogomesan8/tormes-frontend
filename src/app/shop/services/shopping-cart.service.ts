@@ -58,6 +58,7 @@ export class ShoppingCartService implements OnInit {
 
     if (existingProduct) {
       existingProduct.amount += 1;
+      this.updateShoppingCart(currentCart);
     } else {
       this.productService
         .findProductById(product.id)
@@ -71,8 +72,6 @@ export class ShoppingCartService implements OnInit {
           }
         });
     }
-
-    this.updateShoppingCart(currentCart);
   }
 
   removeProductFromShoppingCart(product: Product) {
