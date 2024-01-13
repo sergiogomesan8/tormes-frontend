@@ -10,7 +10,7 @@
     "start": "ng serve",
     "start:prod": "npm run build:prod && npm run serve:ssr:tormes-frontend",
     "build:local": "ng build",
-    "build:prod": "ng build --prod",
+    "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "jest --verbose",
     "coverage": "jest --coverage",
