@@ -30,8 +30,7 @@ export class RoleGuardService {
       return false;
     }
 
-    const decodedToken: any = jwtDecode(token);
-    const userRole: UserType | undefined = decodedToken.payload.userType;
+    const userRole: UserType | undefined = this.getUserRoleFromToken(token);
 
     if (userRole) {
       if (expectedRoles.includes(userRole)) {
@@ -43,6 +42,11 @@ export class RoleGuardService {
     } else {
       return false;
     }
+  }
+
+  private getUserRoleFromToken(token: string): UserType | undefined {
+    const decodedToken: any = jwtDecode(token);
+    return decodedToken.payload.userType;
   }
 }
 

@@ -1,6 +1,5 @@
 import { UserType } from '@shop/models/user.model';
 import { RoleGuardService } from './role-guard.service';
-import * as jwt from 'jsonwebtoken';
 
 describe('RoleGuardService', () => {
   let service: RoleGuardService;
@@ -23,8 +22,14 @@ describe('RoleGuardService', () => {
     const routeMock: any = {
       data: { roles: [UserType.manager, UserType.employee] },
     };
-    const mockToken = jwt.sign({ userType: UserType.manager }, 'secret');
+
+    const mockToken = 'mockToken';
+    const mockDecodedToken = { payload: { userType: UserType.manager } };
     authServiceMock.getToken.mockReturnValue(mockToken);
+
+    service['getUserRoleFromToken'] = jest
+      .fn()
+      .mockReturnValue(mockDecodedToken.payload.userType);
 
     expect(service.canActivate(routeMock, {} as any)).toBe(true);
   });
@@ -33,8 +38,14 @@ describe('RoleGuardService', () => {
     const routeMock: any = {
       data: { roles: [UserType.manager, UserType.employee] },
     };
-    const mockToken = jwt.sign({ userType: UserType.customer }, 'secret');
+
+    const mockToken = 'mockToken';
+    const mockDecodedToken = { payload: { userType: UserType.customer } };
     authServiceMock.getToken.mockReturnValue(mockToken);
+
+    service['getUserRoleFromToken'] = jest
+      .fn()
+      .mockReturnValue(mockDecodedToken.payload.userType);
 
     expect(service.canActivate(routeMock, {} as any)).toBe(false);
     expect(routerMock.navigate).toHaveBeenCalledWith(['/']);
@@ -45,8 +56,13 @@ describe('RoleGuardService', () => {
       data: { roles: [UserType.manager] },
     };
 
-    const mockToken = jwt.sign({ userType: undefined }, 'secret');
+    const mockToken = 'mockToken';
+    const mockDecodedToken = { payload: { userType: undefined } };
     authServiceMock.getToken.mockReturnValue(mockToken);
+
+    service['getUserRoleFromToken'] = jest
+      .fn()
+      .mockReturnValue(mockDecodedToken.payload.userType);
 
     expect(service.canActivate(routeMock, {} as any)).toBe(false);
   });
