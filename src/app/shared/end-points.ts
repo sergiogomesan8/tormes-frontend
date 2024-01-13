@@ -10,7 +10,7 @@ class EndPoint {
 
 export class AuthEndPoint extends EndPoint {
   constructor() {
-    super(environment.TORMES_BACKEND_API + '/auth');
+    super(environment.tormes_backend_api + '/auth');
   }
 
   REGISTER = this.buildUrl('/register');
@@ -20,7 +20,7 @@ export class AuthEndPoint extends EndPoint {
 
 export class ProductEndPoint extends EndPoint {
   constructor() {
-    super(environment.TORMES_BACKEND_API + '/product');
+    super(environment.tormes_backend_api + '/product');
   }
 
   FIND_BY_ID = this.buildUrl('/');
