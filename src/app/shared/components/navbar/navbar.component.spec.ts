@@ -33,4 +33,10 @@ describe('NavbarComponent', () => {
   it('should have a defined trigger', () => {
     expect(component.trigger).toBeDefined();
   });
+
+  it('should emit addButtonClick event when clicked and not disabled', () => {
+    component.shoppingCartButtonClick.emit = jest.fn();
+    component.shoppingCart();
+    expect(component.shoppingCartButtonClick.emit).toHaveBeenCalled();
+  });
 });
