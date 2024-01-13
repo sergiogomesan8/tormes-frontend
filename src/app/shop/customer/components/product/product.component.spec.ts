@@ -2,7 +2,6 @@
 import { ProductComponent } from './product.component';
 import { ShoppingCartService } from '@shop/services/shopping-cart.service';
 import { Product } from '@shop/models/product';
-import { fakeAsync, tick } from '@angular/core/testing';
 import { of } from 'rxjs';
 
 describe('ProductComponent', () => {

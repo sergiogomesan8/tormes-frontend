@@ -1,5 +1,4 @@
 /* tslint:disable:no-unused-variable */
-import { environment } from 'src/environments/environment';
 import { ShoppingCartComponent } from './shopping-cart.component';
 import { ShoppingCartService } from '@shop/services/shopping-cart.service';
 import { Product } from '@shop/models/product';

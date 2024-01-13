@@ -59,7 +59,6 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   get productImageUrl() {
-    console.log('image 1');
     return `${environment.TORMES_BACKEND_IMAGES_PRODUCTS}/`;
   }
 
