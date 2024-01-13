@@ -2,8 +2,8 @@
   "name": "tormes-frontend",
   "version": "0.0.0",
   "engines": {
-    "node": "14.x",
-    "npm": "6.x"
+    "node": "18.18.1",
+    "npm": "9.8.1"
   },
   "scripts": {
     "ng": "ng",
