@@ -65,7 +65,27 @@
             "getByIdError": "An error has occurred, please try again later",
             "noChanges": "No changes"
           },
-          "sections": "Sections"
+          "sections": "Sections",
+          "orders": {
+            "title": "Orders",
+            "status": "Status",
+            "date": "Date",
+            "total": "Total",
+            "details": "Details",
+            "update": "Update status",
+            "updateSuccess": "Status updated successfully!",
+            "updateError": "Error updating status, please try again later",
+            "getByIdError": "An error has occurred, please try again later",
+            "deleteSuccess": "Order deleted successfully! ",
+            "deleteError": "Error while deleting product, try again later",
+            "statusOptions": {
+              "processing": "Processing",
+              "shipped": "Shipped",
+              "delayed": "Delayed",
+              "delivered": "Delivered",
+              "cancelled": "Cancelled"
+            }
+          }
         }
       },
       "catalog": {

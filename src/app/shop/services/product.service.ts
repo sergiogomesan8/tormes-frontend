@@ -29,7 +29,7 @@ export class ProductService {
         }),
         catchError((error: undefined) => {
           this.snackbarService.showErrorSnackbar(
-            'shop.admin.dashboard.options.products.updateError'
+            'shop.admin.dashboard.options.products.getByIdError'
           );
           return of(error);
         })
