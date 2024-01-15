@@ -2,7 +2,7 @@
 import { ProductService } from '@shop/services/product.service';
 import { UpdateProductComponent } from './update-product.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { SnackbarService } from '@shared/services/snackbar.service';
 import { Product } from '@shop/models/product';
 import { of, throwError } from 'rxjs';

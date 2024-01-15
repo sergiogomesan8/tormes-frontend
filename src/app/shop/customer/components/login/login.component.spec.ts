@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import { LoginComponent } from './login.component';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { AuthenticationService } from '@core/services/authentication.service';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
