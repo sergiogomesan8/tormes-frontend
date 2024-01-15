@@ -73,7 +73,7 @@
             "total": "Total",
             "details": "Detalles",
             "update": "Actualizar estado",
-            "updateSuccess": "Estado actaualizado con éxito!",
+            "updateSuccess": "Estado actualizado con éxito!",
             "updateError": "Error al actualizar el estado, inténtelo de nuevo más tarde",
             "getByIdError": "Se ha producido un error, inténtelo de nuevo más tarde",
             "deleteSuccess": "Pedido eliminado con éxito! ",
@@ -81,7 +81,7 @@
             "statusOptions": {
               "processing": "Procesandose",
               "shipped": "En curso",
-              "delayed": "retrasado",
+              "delayed": "Retrasado",
               "delivered": "Entregado",
               "cancelled": "Cancelado"
             }
