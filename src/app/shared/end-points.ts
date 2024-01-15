@@ -38,7 +38,7 @@ export class OrderEndPoint extends EndPoint {
   FIND_BY_ID = this.buildUrl('/');
   FIND_ALL = this.buildUrl('/list');
   FIND_ALL_BY_USER = this.buildUrl('/');
-  UPDATE = this.buildUrl('/');
+  UPDATE_STATUS = this.buildUrl('/');
   DELETE = this.buildUrl('/');
   ADD = this.buildUrl('/');
 }

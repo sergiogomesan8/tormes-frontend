@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpService } from '@core/services/http-service.service';
 import { OrderEndPoint } from '@shared/end-points';
 import { SnackbarService } from '@shared/services/snackbar.service';
-import { Order } from '@shop/models/order';
+import { UpdateOrderStatusDto } from '@shop/admin/dtos/order.dto';
+import { Order, OrderStatus } from '@shop/models/order';
 import { Observable, catchError, map, of } from 'rxjs';
 
 @Injectable({
@@ -40,7 +41,32 @@ export class OrderService {
     );
   }
 
-  deleteProduct(order: Order): Observable<undefined> {
+  updateOrderStatus(
+    orderId: string,
+    updateOrderStatusDto: UpdateOrderStatusDto
+  ): Observable<Order | undefined> {
+    return this.httpService
+      .patch(
+        `${this.orderEndPoint.UPDATE_STATUS}${orderId}`,
+        updateOrderStatusDto
+      )
+      .pipe(
+        map((response: undefined) => {
+          this.snackbarService.showSuccessSnackbar(
+            'shop.admin.dashboard.options.orders.updateSuccess'
+          );
+          return response;
+        }),
+        catchError((error: undefined) => {
+          this.snackbarService.showErrorSnackbar(
+            'shop.admin.dashboard.options.orders.updateError'
+          );
+          return of(error);
+        })
+      );
+  }
+
+  deleteOrder(order: Order): Observable<undefined> {
     return this.httpService
       .delete(`${this.orderEndPoint.DELETE}${order.id}`, order)
       .pipe(

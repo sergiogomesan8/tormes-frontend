@@ -1,4 +1,4 @@
-import { OrderedProduct } from '@shop/models/order';
+import { OrderStatus, OrderedProduct } from '@shop/models/order';
 
 export class CreateOrderDto {
   customerName: string;
@@ -22,5 +22,13 @@ export class CreateOrderDto {
     this.billingAddress = billingAddress;
     this.paymentMethod = paymentMethod;
     this.orderedProducts = orderedProducts;
+  }
+}
+
+export class UpdateOrderStatusDto {
+  status: OrderStatus;
+
+  constructor(status: OrderStatus) {
+    this.status = status;
   }
 }
