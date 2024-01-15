@@ -4,8 +4,9 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { Order } from '@shop/models/order';
-import { User } from '@shop/models/user.model';
+import { Order, OrderStatus } from '@shop/models/order';
+import { OrderService } from '@shop/services/order.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-order-table',
@@ -13,21 +14,72 @@ import { User } from '@shop/models/user.model';
   styleUrls: ['./order-table.component.scss'],
 })
 export class OrderTableComponent implements OnInit {
-  toDoOrders: Order[] = toDoOrdersMock;
-  shippedOrders: Order[] = shippedOrdersMock;
-  cancelledOrders: Order[] = cancelledOrdersMock;
+  processingOrders: Order[] = [];
+  shippedOrders: Order[] = [];
+  delayedOrders: Order[] = [];
+  deliveredOrders: Order[] = [];
+  cancelledOrders: Order[] = [];
 
-  listNumbers1: number[] = [];
-  listNumbers2: number[] = [];
+  orders: Order[] = [];
+
+  constructor(
+    public translate: TranslateService,
+    private readonly orderService: OrderService
+  ) {}
 
   ngOnInit() {
-    for (let index = 0; index < 10; index++) {
-      this.listNumbers1.push(index);
-    }
+    this.findAllOrders();
+  }
 
-    for (let index = 10; index < 20; index++) {
-      this.listNumbers2.push(index);
-    }
+  findAllOrders() {
+    this.orderService.findAllOrders().subscribe({
+      next: (orders) => {
+        this.orders = orders;
+        this.filterAndSortOrders();
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  updateOrderStatus(order: Order, orderStatus: OrderStatus): void {
+    this.orderService
+      .updateOrderStatus(order.id, { status: orderStatus })
+      .subscribe({
+        next: () => {},
+        error: (error) => {
+          console.log(error);
+        },
+      });
+  }
+
+  filterAndSortOrders() {
+    this.orders.forEach((order) => {
+      switch (order.status) {
+        case OrderStatus.processing:
+          this.processingOrders.push(order);
+          break;
+        case OrderStatus.shipped:
+          this.shippedOrders.push(order);
+          break;
+        case OrderStatus.delayed:
+          this.delayedOrders.push(order);
+          break;
+        case OrderStatus.delivered:
+          this.deliveredOrders.push(order);
+          break;
+        case OrderStatus.cancelled:
+          this.cancelledOrders.push(order);
+          break;
+      }
+    });
+
+    this.processingOrders.sort((a, b) => a.date - b.date);
+    this.shippedOrders.sort((a, b) => a.date - b.date);
+    this.delayedOrders.sort((a, b) => a.date - b.date);
+    this.deliveredOrders.sort((a, b) => a.date - b.date);
+    this.cancelledOrders.sort((a, b) => a.date - b.date);
   }
 
   drop($event: CdkDragDrop<any[]>) {
@@ -44,60 +96,11 @@ export class OrderTableComponent implements OnInit {
         $event.previousIndex,
         $event.currentIndex
       );
+
+      const movedOrder = $event.item.data;
+      const newStatus =
+        OrderStatus[$event.container.id as keyof typeof OrderStatus];
+      this.updateOrderStatus(movedOrder, newStatus);
     }
   }
 }
-
-export const toDoOrdersMock: Order[] = [
-  {
-    id: 'i9000111',
-    customer: { name: 'Sergio' } as User,
-    total: 54.09,
-  } as Order,
-  {
-    id: 'i9000222',
-    customer: { name: 'Sergio' } as User,
-    total: 24.32,
-  } as Order,
-  {
-    id: 'i9000333',
-    customer: { name: 'Sergio' } as User,
-    total: 104.1,
-  } as Order,
-  {
-    id: 'i9000444',
-    customer: { name: 'Sergio' } as User,
-    total: 31.25,
-  } as Order,
-  {
-    id: 'i9000333',
-    customer: { name: 'Sergio' } as User,
-    total: 104.1,
-  } as Order,
-  {
-    id: 'i9000444',
-    customer: { name: 'Sergio' } as User,
-    total: 31.25,
-  } as Order,
-];
-
-export const shippedOrdersMock: Order[] = [
-  {
-    id: 'i9000000',
-    customer: { name: 'Sergio' } as User,
-    total: 54.09,
-  } as Order,
-  {
-    id: 'i9000000',
-    customer: { name: 'Sergio' } as User,
-    total: 54.09,
-  } as Order,
-];
-
-export const cancelledOrdersMock: Order[] = [
-  {
-    id: 'i9000000',
-    customer: { name: 'Sergio' } as User,
-    total: 20.09,
-  } as Order,
-];

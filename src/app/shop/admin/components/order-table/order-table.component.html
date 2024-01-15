@@ -2,19 +2,22 @@
   <div class="order-table">
     <div class="order-column-container">
       <div class="title-container">
-        <p>Pedidos</p>
+        <p>
+          [translate]="'shop.admin.dashboard.options.orders.statusOptions.processing'"
+        </p>
       </div>
       <div
         class="order-column"
+        id="processing"
         cdkDropList
         cdkDropListGroup
         #ln1="cdkDropList"
-        [cdkDropListData]="toDoOrders"
+        [cdkDropListData]="processingOrders"
         [cdkDropListConnectedTo]="[ln2]"
         (cdkDropListDropped)="drop($event)"
       >
-        <ng-container *ngFor="let order of toDoOrders">
-          <div cdkDrag class="order">
+        <ng-container *ngFor="let order of processingOrders">
+          <div cdkDrag [cdkDragData]="order" class="order">
             <span>{{ order.id }}</span>
             <img src="..\assets\images\icons\to-do.png" loading="lazy" />
           </div>
@@ -24,10 +27,13 @@
 
     <div class="order-column-container">
       <div class="title-container">
-        <p>Enviados</p>
+        <p>
+          [translate]="'shop.admin.dashboard.options.orders.statusOptions.shipped'"
+        </p>
       </div>
       <div
         class="order-column"
+        id="shipped"
         cdkDropList
         cdkDropListGroup
         #ln2="cdkDropList"
@@ -36,7 +42,7 @@
         (cdkDropListDropped)="drop($event)"
       >
         <ng-container *ngFor="let order of shippedOrders">
-          <div cdkDrag class="order">
+          <div cdkDrag [cdkDragData]="order" class="order">
             <span>{{ order.id }}</span>
             <img src="..\assets\images\icons\shipped.png" loading="lazy" />
           </div>
@@ -46,18 +52,67 @@
 
     <div class="order-column-container" cdkDropListGroup>
       <div class="title-container">
-        <p>Cancelados</p>
+        <p>
+          [translate]="'shop.admin.dashboard.options.orders.statusOptions.delayed'"
+        </p>
       </div>
       <div
         class="order-column"
+        id="delayed"
         cdkDropList
         #ln3="cdkDropList"
+        [cdkDropListData]="delayedOrders"
+        [cdkDropListConnectedTo]="[ln4]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <ng-container *ngFor="let order of delayedOrders">
+          <div cdkDrag [cdkDragData]="order" class="order">
+            <span>{{ order.id }}</span>
+            <img src="..\assets\images\icons\cancelled.png" loading="lazy" />
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="order-column-container" cdkDropListGroup>
+      <div class="title-container">
+        <p>
+          [translate]="'shop.admin.dashboard.options.orders.statusOptions.delivered'"
+        </p>
+      </div>
+      <div
+        class="order-column"
+        id="delivered"
+        cdkDropList
+        #ln4="cdkDropList"
+        [cdkDropListData]="deliveredOrders"
+        [cdkDropListConnectedTo]="[ln5]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <ng-container *ngFor="let order of deliveredOrders">
+          <div cdkDrag [cdkDragData]="order" class="order">
+            <span>{{ order.id }}</span>
+            <img src="..\assets\images\icons\cancelled.png" loading="lazy" />
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="order-column-container" cdkDropListGroup>
+      <div class="title-container">
+        [translate]="'shop.admin.dashboard.options.orders.statusOptions.cancelled'"
+      </div>
+      <div
+        class="order-column"
+        id="cancelled"
+        cdkDropList
+        #ln5="cdkDropList"
         [cdkDropListData]="cancelledOrders"
-        [cdkDropListConnectedTo]="[ln2]"
+        [cdkDropListConnectedTo]="[ln1]"
         (cdkDropListDropped)="drop($event)"
       >
         <ng-container *ngFor="let order of cancelledOrders">
-          <div cdkDrag class="order">
+          <div cdkDrag [cdkDragData]="order" class="order">
             <span>{{ order.id }}</span>
             <img src="..\assets\images\icons\cancelled.png" loading="lazy" />
           </div>
