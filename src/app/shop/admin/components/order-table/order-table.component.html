@@ -1,0 +1,68 @@
+<div id="orders">
+  <div class="order-table">
+    <div class="order-column-container">
+      <div class="title-container">
+        <p>Pedidos</p>
+      </div>
+      <div
+        class="order-column"
+        cdkDropList
+        cdkDropListGroup
+        #ln1="cdkDropList"
+        [cdkDropListData]="toDoOrders"
+        [cdkDropListConnectedTo]="[ln2]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <ng-container *ngFor="let order of toDoOrders">
+          <div cdkDrag class="order">
+            <span>{{ order.id }}</span>
+            <img src="..\assets\images\icons\to-do.png" loading="lazy" />
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="order-column-container">
+      <div class="title-container">
+        <p>Enviados</p>
+      </div>
+      <div
+        class="order-column"
+        cdkDropList
+        cdkDropListGroup
+        #ln2="cdkDropList"
+        [cdkDropListData]="shippedOrders"
+        [cdkDropListConnectedTo]="[ln3]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <ng-container *ngFor="let order of shippedOrders">
+          <div cdkDrag class="order">
+            <span>{{ order.id }}</span>
+            <img src="..\assets\images\icons\shipped.png" loading="lazy" />
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="order-column-container" cdkDropListGroup>
+      <div class="title-container">
+        <p>Cancelados</p>
+      </div>
+      <div
+        class="order-column"
+        cdkDropList
+        #ln3="cdkDropList"
+        [cdkDropListData]="cancelledOrders"
+        [cdkDropListConnectedTo]="[ln2]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <ng-container *ngFor="let order of cancelledOrders">
+          <div cdkDrag class="order">
+            <span>{{ order.id }}</span>
+            <img src="..\assets\images\icons\cancelled.png" loading="lazy" />
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
