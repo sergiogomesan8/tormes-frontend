@@ -29,3 +29,16 @@ export class ProductEndPoint extends EndPoint {
   DELETE = this.buildUrl('/');
   ADD = this.buildUrl('/');
 }
+
+export class OrderEndPoint extends EndPoint {
+  constructor() {
+    super(environment.tormes_backend_api + '/order');
+  }
+
+  FIND_BY_ID = this.buildUrl('/');
+  FIND_ALL = this.buildUrl('/list');
+  FIND_ALL_BY_USER = this.buildUrl('/');
+  UPDATE = this.buildUrl('/');
+  DELETE = this.buildUrl('/');
+  ADD = this.buildUrl('/');
+}
