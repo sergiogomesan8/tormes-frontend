@@ -2,9 +2,11 @@
   <div class="order-table">
     <div class="order-column-container">
       <div class="title-container">
-        <p>
-          [translate]="'shop.admin.dashboard.options.orders.statusOptions.processing'"
-        </p>
+        <p
+          [translate]="
+            'shop.admin.dashboard.options.orders.statusOptions.processing'
+          "
+        ></p>
       </div>
       <div
         class="order-column"
@@ -19,7 +21,7 @@
         <ng-container *ngFor="let order of processingOrders">
           <div cdkDrag [cdkDragData]="order" class="order">
             <span>{{ order.id }}</span>
-            <img src="..\assets\images\icons\to-do.png" loading="lazy" />
+            <img src="..\assets\images\icons\to-do.png" loading="lazy" alt="to-do.png"/>
           </div>
         </ng-container>
       </div>
@@ -27,9 +29,11 @@
 
     <div class="order-column-container">
       <div class="title-container">
-        <p>
-          [translate]="'shop.admin.dashboard.options.orders.statusOptions.shipped'"
-        </p>
+        <p
+          [translate]="
+            'shop.admin.dashboard.options.orders.statusOptions.shipped'
+          "
+        ></p>
       </div>
       <div
         class="order-column"
@@ -44,7 +48,7 @@
         <ng-container *ngFor="let order of shippedOrders">
           <div cdkDrag [cdkDragData]="order" class="order">
             <span>{{ order.id }}</span>
-            <img src="..\assets\images\icons\shipped.png" loading="lazy" />
+            <img src="..\assets\images\icons\shipped.png" loading="lazy" alt="shipped.png"/>
           </div>
         </ng-container>
       </div>
@@ -52,9 +56,11 @@
 
     <div class="order-column-container" cdkDropListGroup>
       <div class="title-container">
-        <p>
-          [translate]="'shop.admin.dashboard.options.orders.statusOptions.delayed'"
-        </p>
+        <p
+          [translate]="
+            'shop.admin.dashboard.options.orders.statusOptions.delayed'
+          "
+        ></p>
       </div>
       <div
         class="order-column"
@@ -68,7 +74,7 @@
         <ng-container *ngFor="let order of delayedOrders">
           <div cdkDrag [cdkDragData]="order" class="order">
             <span>{{ order.id }}</span>
-            <img src="..\assets\images\icons\cancelled.png" loading="lazy" />
+            <img src="..\assets\images\icons\cancelled.png" loading="lazy" alt="cancelled.png"/>
           </div>
         </ng-container>
       </div>
@@ -76,9 +82,11 @@
 
     <div class="order-column-container" cdkDropListGroup>
       <div class="title-container">
-        <p>
-          [translate]="'shop.admin.dashboard.options.orders.statusOptions.delivered'"
-        </p>
+        <p
+          [translate]="
+            'shop.admin.dashboard.options.orders.statusOptions.delivered'
+          "
+        ></p>
       </div>
       <div
         class="order-column"
@@ -92,7 +100,7 @@
         <ng-container *ngFor="let order of deliveredOrders">
           <div cdkDrag [cdkDragData]="order" class="order">
             <span>{{ order.id }}</span>
-            <img src="..\assets\images\icons\cancelled.png" loading="lazy" />
+            <img src="..\assets\images\icons\cancelled.png" loading="lazy" alt="cancelled.png" />
           </div>
         </ng-container>
       </div>
@@ -100,7 +108,11 @@
 
     <div class="order-column-container" cdkDropListGroup>
       <div class="title-container">
-        [translate]="'shop.admin.dashboard.options.orders.statusOptions.cancelled'"
+        <p
+          [translate]="
+            'shop.admin.dashboard.options.orders.statusOptions.cancelled'
+          "
+        ></p>
       </div>
       <div
         class="order-column"
@@ -114,7 +126,7 @@
         <ng-container *ngFor="let order of cancelledOrders">
           <div cdkDrag [cdkDragData]="order" class="order">
             <span>{{ order.id }}</span>
-            <img src="..\assets\images\icons\cancelled.png" loading="lazy" />
+            <img src="..\assets\images\icons\cancelled.png" loading="lazy" alt="cancelled.png"/>
           </div>
         </ng-container>
       </div>
