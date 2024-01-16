@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpService } from '@core/services/http-service.service';
 import { OrderEndPoint } from '@shared/end-points';
 import { SnackbarService } from '@shared/services/snackbar.service';
-import { UpdateOrderStatusDto } from '@shop/admin/dtos/order.dto';
+import {
+  CreateOrderDto,
+  UpdateOrderStatusDto,
+} from '@shop/admin/dtos/order.dto';
 import { Order, OrderStatus } from '@shop/models/order';
 import { Observable, catchError, map, of } from 'rxjs';
 
@@ -37,6 +40,23 @@ export class OrderService {
     return this.httpService.get(this.orderEndPoint.FIND_ALL).pipe(
       catchError((error: undefined) => {
         return of([]);
+      })
+    );
+  }
+
+  createOrder(createOrderDto: CreateOrderDto): Observable<Order | undefined> {
+    return this.httpService.post(this.orderEndPoint.ADD, createOrderDto).pipe(
+      map((response: Order) => {
+        this.snackbarService.showSuccessSnackbar(
+          'shop.admin.dashboard.options.orders.addSuccess'
+        );
+        return response;
+      }),
+      catchError((error: undefined) => {
+        this.snackbarService.showErrorSnackbar(
+          'shop.admin.dashboard.options.orders.addError'
+        );
+        return of(error);
       })
     );
   }
