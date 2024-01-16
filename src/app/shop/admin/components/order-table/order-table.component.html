@@ -21,7 +21,11 @@
         <ng-container *ngFor="let order of processingOrders">
           <div cdkDrag [cdkDragData]="order" class="order">
             <span>{{ order.id }}</span>
-            <img src="..\assets\images\icons\to-do.png" loading="lazy" alt="to-do.png"/>
+            <img
+              src="..\assets\images\icons\to-do.png"
+              loading="lazy"
+              alt="to-do.png"
+            />
           </div>
         </ng-container>
       </div>
@@ -48,7 +52,11 @@
         <ng-container *ngFor="let order of shippedOrders">
           <div cdkDrag [cdkDragData]="order" class="order">
             <span>{{ order.id }}</span>
-            <img src="..\assets\images\icons\shipped.png" loading="lazy" alt="shipped.png"/>
+            <img
+              src="..\assets\images\icons\shipped.png"
+              loading="lazy"
+              alt="shipped.png"
+            />
           </div>
         </ng-container>
       </div>
@@ -74,7 +82,11 @@
         <ng-container *ngFor="let order of delayedOrders">
           <div cdkDrag [cdkDragData]="order" class="order">
             <span>{{ order.id }}</span>
-            <img src="..\assets\images\icons\cancelled.png" loading="lazy" alt="cancelled.png"/>
+            <img
+              src="..\assets\images\icons\cancelled.png"
+              loading="lazy"
+              alt="cancelled.png"
+            />
           </div>
         </ng-container>
       </div>
@@ -100,7 +112,11 @@
         <ng-container *ngFor="let order of deliveredOrders">
           <div cdkDrag [cdkDragData]="order" class="order">
             <span>{{ order.id }}</span>
-            <img src="..\assets\images\icons\cancelled.png" loading="lazy" alt="cancelled.png" />
+            <img
+              src="..\assets\images\icons\cancelled.png"
+              loading="lazy"
+              alt="cancelled.png"
+            />
           </div>
         </ng-container>
       </div>
@@ -126,7 +142,11 @@
         <ng-container *ngFor="let order of cancelledOrders">
           <div cdkDrag [cdkDragData]="order" class="order">
             <span>{{ order.id }}</span>
-            <img src="..\assets\images\icons\cancelled.png" loading="lazy" alt="cancelled.png"/>
+            <img
+              src="..\assets\images\icons\cancelled.png"
+              loading="lazy"
+              alt="cancelled.png"
+            />
           </div>
         </ng-container>
       </div>
