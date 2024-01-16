@@ -73,6 +73,8 @@
             "total": "Total",
             "details": "Details",
             "update": "Update status",
+            "addSuccess": "Order placed successfully!",
+            "addError": "Error placing order, please try again later",
             "updateSuccess": "Status updated successfully!",
             "updateError": "Error updating status, please try again later",
             "getByIdError": "An error has occurred, please try again later",

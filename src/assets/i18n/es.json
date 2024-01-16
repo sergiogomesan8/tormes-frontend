@@ -73,6 +73,8 @@
             "total": "Total",
             "details": "Detalles",
             "update": "Actualizar estado",
+            "addSuccess": "Pedido realizado con éxito!",
+            "addError": "Se ha producido un error al realizar el pedido, inténtelo de nuevo más tarde",
             "updateSuccess": "Estado actualizado con éxito!",
             "updateError": "Error al actualizar el estado, inténtelo de nuevo más tarde",
             "getByIdError": "Se ha producido un error, inténtelo de nuevo más tarde",
