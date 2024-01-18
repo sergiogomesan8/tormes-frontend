@@ -11,7 +11,7 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ShoppingCartService } from '@shop/services/shopping-cart.service';
 import { OrderService } from '@shop/services/order.service';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { CreateOrderDto } from '@shop/admin/dtos/order.dto';
 
 describe('PlaceOrderComponent', () => {
@@ -89,5 +89,32 @@ describe('PlaceOrderComponent', () => {
 
     expect(orderService.createOrder).toHaveBeenCalledWith(createOrderDto);
     expect(router.navigate).toHaveBeenCalledWith(['/catalog']);
+  });
+
+  it('should log error on placeOrder failure', () => {
+    const error = new Error('Error');
+    jest.spyOn(console, 'log').mockImplementation(() => {});
+    jest.spyOn(orderService, 'createOrder').mockReturnValue(throwError(error));
+
+    const createOrderDto: CreateOrderDto = {
+      customerName: 'Test Name',
+      customerContact: 678912345,
+      deliveryAddress: 'Test Delivery Address',
+      billingAddress: 'Test Billing Address',
+      paymentMethod: 'Test Method',
+      orderedProducts: [],
+    };
+
+    component.formGroup.setValue({
+      customerName: createOrderDto.customerName,
+      customerContact: createOrderDto.customerContact,
+      deliveryAddress: createOrderDto.deliveryAddress,
+      billingAddress: createOrderDto.billingAddress,
+      paymentMethod: createOrderDto.paymentMethod,
+    });
+
+    component.placeOrder();
+
+    expect(console.log).toHaveBeenCalledWith(error);
   });
 });
