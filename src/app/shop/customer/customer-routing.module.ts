@@ -7,6 +7,8 @@ import { CatalogComponent } from './components/catalog/catalog.component';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
 import { RoleGuard } from '@core/guards/role-guard.service';
 import { UserType } from '@shop/models/user.model';
+import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {
@@ -15,7 +17,7 @@ const routes: Routes = [
     children: [
       { path: 'catalog', component: CatalogComponent },
       { path: 'catalogo', component: CatalogComponent },
-      { path: 'home', component: CatalogComponent },
+      { path: 'home', component: HomeComponent },
     ],
   },
   { path: 'signin', component: RegisterComponent },
@@ -23,6 +25,12 @@ const routes: Routes = [
   {
     path: 'customer/place-order',
     component: PlaceOrderComponent,
+    canActivate: [RoleGuard],
+    data: { roles: [UserType.customer, UserType.employee, UserType.manager] },
+  },
+  {
+    path: 'customer/my-orders',
+    component: MyOrdersComponent,
     canActivate: [RoleGuard],
     data: { roles: [UserType.customer, UserType.employee, UserType.manager] },
   },
