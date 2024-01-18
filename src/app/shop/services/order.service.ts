@@ -20,7 +20,7 @@ export class OrderService {
     private readonly snackbarService: SnackbarService
   ) {}
 
-  findProductById(orderId: string): Observable<Order | undefined> {
+  findOrderById(orderId: string): Observable<Order | undefined> {
     return this.httpService
       .get(`${this.orderEndPoint.FIND_BY_ID}${orderId}`)
       .pipe(
