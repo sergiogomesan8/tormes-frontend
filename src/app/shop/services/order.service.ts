@@ -44,6 +44,14 @@ export class OrderService {
     );
   }
 
+  findAllOrdersByUser() {
+    return this.httpService.get(this.orderEndPoint.FIND_ALL_BY_USER).pipe(
+      catchError((error: undefined) => {
+        return of([]);
+      })
+    );
+  }
+
   createOrder(createOrderDto: CreateOrderDto): Observable<Order | undefined> {
     return this.httpService.post(this.orderEndPoint.ADD, createOrderDto).pipe(
       map((response: Order) => {
