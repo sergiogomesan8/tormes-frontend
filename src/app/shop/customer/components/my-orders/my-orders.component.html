@@ -1,0 +1,14 @@
+<div id="orders-info">
+  <div class="orders-container">
+    <div class="table-header">
+      <search-component [placeholder]="'Buscar pedido...'"></search-component>
+    </div>
+
+    <table-crud-component
+      [elementsTable]="orders"
+      [displayedColumns]="displayedColumns"
+      [deleteAction]="true"
+      [updateAction]="true"
+    ></table-crud-component>
+  </div>
+</div>
