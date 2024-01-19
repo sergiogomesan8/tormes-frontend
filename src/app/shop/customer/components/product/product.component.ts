@@ -20,7 +20,9 @@ export class ProductComponent implements OnInit {
   }
 
   get productImageUrl() {
-    return `${environment.tormes_backend_images}/products/${this.product.image}`;
+    return environment.production
+      ? this.product.image
+      : `${environment.tormes_backend_images}/products/${this.product.image}`;
   }
 
   deleteProductFromShoppingCart(product: Product) {
