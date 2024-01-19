@@ -59,7 +59,9 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   get productImageUrl() {
-    return `${environment.tormes_backend_images}/products/`;
+    return environment.production
+      ? ''
+      : `${environment.tormes_backend_images}/products/`;
   }
 
   handleSidebarToggle = () => this.toggleSidebar.emit(!this.isExpanded);
