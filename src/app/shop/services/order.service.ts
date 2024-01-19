@@ -6,7 +6,7 @@ import {
   CreateOrderDto,
   UpdateOrderStatusDto,
 } from '@shop/admin/dtos/order.dto';
-import { Order, OrderStatus } from '@shop/models/order';
+import { Order } from '@shop/models/order';
 import { Observable, catchError, map, of } from 'rxjs';
 
 @Injectable({
