@@ -9,6 +9,7 @@ import { RoleGuard } from '@core/guards/role-guard.service';
 import { UserType } from '@shop/models/user.model';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import { HomeComponent } from './components/home/home.component';
+import { OrderComponent } from './components/order/order.component';
 
 const routes: Routes = [
   {
@@ -18,22 +19,34 @@ const routes: Routes = [
       { path: 'catalog', component: CatalogComponent },
       { path: 'catalogo', component: CatalogComponent },
       { path: 'home', component: HomeComponent },
+      {
+        path: 'customer/place-order',
+        component: PlaceOrderComponent,
+        canActivate: [RoleGuard],
+        data: {
+          roles: [UserType.customer, UserType.employee, UserType.manager],
+        },
+      },
+      {
+        path: 'customer/my-orders',
+        component: MyOrdersComponent,
+        canActivate: [RoleGuard],
+        data: {
+          roles: [UserType.customer, UserType.employee, UserType.manager],
+        },
+      },
+      {
+        path: 'customer/my-orders/:id',
+        component: OrderComponent,
+        canActivate: [RoleGuard],
+        data: {
+          roles: [UserType.customer, UserType.employee, UserType.manager],
+        },
+      },
     ],
   },
   { path: 'signin', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  {
-    path: 'customer/place-order',
-    component: PlaceOrderComponent,
-    canActivate: [RoleGuard],
-    data: { roles: [UserType.customer, UserType.employee, UserType.manager] },
-  },
-  {
-    path: 'customer/my-orders',
-    component: MyOrdersComponent,
-    canActivate: [RoleGuard],
-    data: { roles: [UserType.customer, UserType.employee, UserType.manager] },
-  },
 ];
 
 @NgModule({

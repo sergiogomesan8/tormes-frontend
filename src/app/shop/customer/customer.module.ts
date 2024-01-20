@@ -13,6 +13,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import { HomeComponent } from './components/home/home.component';
+import { OrderComponent } from './components/order/order.component';
 
 @NgModule({
   imports: [CommonModule, CustomerRoutingModule, SharedModule],
@@ -26,6 +27,7 @@ import { HomeComponent } from './components/home/home.component';
     ShoppingCartComponent,
     PlaceOrderComponent,
     MyOrdersComponent,
+    OrderComponent,
   ],
 })
 export class CustomerModule {}
