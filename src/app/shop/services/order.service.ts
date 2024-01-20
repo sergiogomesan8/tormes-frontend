@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@core/services/http-service.service';
 import { OrderEndPoint } from '@shared/end-points';
+import { LocalStorageService } from '@shared/services/localStorage.service';
 import { SnackbarService } from '@shared/services/snackbar.service';
 import {
   CreateOrderDto,
@@ -8,6 +9,7 @@ import {
 } from '@shop/admin/dtos/order.dto';
 import { Order } from '@shop/models/order';
 import { Observable, catchError, map, of } from 'rxjs';
+import { ShoppingCartService } from './shopping-cart.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +19,8 @@ export class OrderService {
 
   constructor(
     private readonly httpService: HttpService,
-    private readonly snackbarService: SnackbarService
+    private readonly snackbarService: SnackbarService,
+    private readonly shoppingCartService: ShoppingCartService
   ) {}
 
   findOrderById(orderId: string): Observable<Order | undefined> {
@@ -55,15 +58,14 @@ export class OrderService {
   createOrder(createOrderDto: CreateOrderDto): Observable<Order | undefined> {
     return this.httpService.post(this.orderEndPoint.ADD, createOrderDto).pipe(
       map((response: Order) => {
+        this.shoppingCartService.cleanShoppingCart();
         this.snackbarService.showSuccessSnackbar(
           'shop.customer.orders.addSuccess'
         );
         return response;
       }),
       catchError((error: undefined) => {
-        this.snackbarService.showErrorSnackbar(
-          'shop.customer.orders.addError'
-        );
+        this.snackbarService.showErrorSnackbar('shop.customer.orders.addError');
         return of(error);
       })
     );

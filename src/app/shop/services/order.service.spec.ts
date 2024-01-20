@@ -12,11 +12,14 @@ import {
   CreateOrderDto,
   UpdateOrderStatusDto,
 } from '@shop/admin/dtos/order.dto';
+import { Product } from '@shop/models/product';
+import { ShoppingCartService } from './shopping-cart.service';
 
 describe('Service: Order', () => {
   let service: OrderService;
   let httpService: jest.Mocked<HttpService>;
   let snackbarService: jest.Mocked<SnackbarService>;
+  let shoppingCartService: jest.Mocked<ShoppingCartService>;
 
   let orderEndPoint: OrderEndPoint;
 
@@ -31,14 +34,30 @@ describe('Service: Order', () => {
       showSuccessSnackbar: jest.fn(),
       showErrorSnackbar: jest.fn(),
     } as any;
+    shoppingCartService = {
+      cleanShoppingCart: jest.fn(),
+    } as any;
     orderEndPoint = new OrderEndPoint();
-    service = new OrderService(httpService, snackbarService);
+    service = new OrderService(
+      httpService,
+      snackbarService,
+      shoppingCartService
+    );
   });
 
   const user: User = {
     id: 'id',
     name: 'Test User',
     email: 'test@mail.com',
+  };
+
+  const product: Product = {
+    id: 'id',
+    name: 'test',
+    section: 'test',
+    price: 10,
+    description: 'test',
+    image: 'test',
   };
 
   const orders: Order[] = [
@@ -49,7 +68,7 @@ describe('Service: Order', () => {
       date: 123,
       total: 321,
       customer: user,
-      orderedProducts: [{ productId: 'product.id1', amount: 1 }],
+      orderedProducts: [{ product: product, amount: 1 }],
     },
     {
       id: 'id',
@@ -58,7 +77,7 @@ describe('Service: Order', () => {
       date: 123,
       total: 321,
       customer: user,
-      orderedProducts: [{ productId: 'product.id2', amount: 3 }],
+      orderedProducts: [{ product: product, amount: 3 }],
     },
   ];
 
@@ -106,7 +125,7 @@ describe('Service: Order', () => {
           );
 
           expect(snackbarService.showSuccessSnackbar).toHaveBeenCalledWith(
-            'shop.admin.dashboard.options.orders.updateError'
+            'shop.customer.orders.updateError'
           );
         }
       );
@@ -153,8 +172,11 @@ describe('Service: Order', () => {
         orderEndPoint.ADD,
         createOrderDto
       );
+
+      expect(shoppingCartService.cleanShoppingCart).toHaveBeenCalled();
+
       expect(snackbarService.showSuccessSnackbar).toHaveBeenCalledWith(
-        'shop.admin.dashboard.options.orders.addSuccess'
+        'shop.customer.orders.addSuccess'
       );
     });
 
@@ -167,7 +189,7 @@ describe('Service: Order', () => {
         (error) => {
           expect(error).toEqual(errorResponse);
           expect(snackbarService.showErrorSnackbar).toHaveBeenCalledWith(
-            'shop.admin.dashboard.options.orders.addError'
+            'shop.customer.orders.addError'
           );
         }
       );
@@ -198,7 +220,7 @@ describe('Service: Order', () => {
         updateOrderStatusDto
       );
       expect(snackbarService.showSuccessSnackbar).toHaveBeenCalledWith(
-        'shop.admin.dashboard.options.orders.updateSuccess'
+        'shop.customer.orders.updateSuccess'
       );
     });
 
@@ -210,7 +232,7 @@ describe('Service: Order', () => {
         .subscribe((res) => {
           expect(res).toBeUndefined();
           expect(snackbarService.showErrorSnackbar).toHaveBeenCalledWith(
-            'shop.admin.dashboard.options.orders.updateError'
+            'shop.customer.orders.updateError'
           );
         });
 
