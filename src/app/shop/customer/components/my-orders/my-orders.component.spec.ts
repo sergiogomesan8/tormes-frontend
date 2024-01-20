@@ -1,15 +1,16 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MyOrdersComponent } from './my-orders.component';
 import { OrderService } from '@shop/services/order.service';
 import { Order, OrderStatus } from '@shop/models/order';
 import { of, throwError } from 'rxjs';
 import { User } from '@shop/models/user.model';
 import { Product } from '@shop/models/product';
+import { Router } from '@angular/router';
 
 describe('MyOrdersComponent', () => {
   let component: MyOrdersComponent;
   let mockOrderService: jest.Mocked<OrderService>;
+  let mockRouter: jest.Mocked<Router>;
 
   const user: User = {
     id: 'id',
@@ -33,7 +34,7 @@ describe('MyOrdersComponent', () => {
     date: 123,
     total: 321,
     customer: user,
-    orderedProducts: [{ productId: product.id, amount: 1 }],
+    orderedProducts: [{ product: product, amount: 1 }],
   };
   const orders = [order];
 
@@ -42,7 +43,11 @@ describe('MyOrdersComponent', () => {
       findAllOrdersByUser: jest.fn().mockReturnValue(of(orders)),
     } as any;
 
-    component = new MyOrdersComponent(mockOrderService);
+    mockRouter = {
+      navigate: jest.fn(),
+    } as any;
+
+    component = new MyOrdersComponent(mockOrderService, mockRouter);
   });
 
   it('should create', () => {

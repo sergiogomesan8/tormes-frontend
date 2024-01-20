@@ -44,7 +44,7 @@ describe('OrderTableComponent', () => {
     date: 123,
     total: 321,
     customer: user,
-    orderedProducts: [{ productId: product.id, amount: 1 }],
+    orderedProducts: [{ product: product, amount: 1 }],
   };
   const orders = [order];
 
