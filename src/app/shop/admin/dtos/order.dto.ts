@@ -1,4 +1,8 @@
-import { OrderStatus, OrderedProduct } from '@shop/models/order';
+import {
+  OrderStatus,
+  OrderedProduct,
+  ShoppingOrderedProduct,
+} from '@shop/models/order';
 
 export class CreateOrderDto {
   customerName: string;
@@ -6,7 +10,7 @@ export class CreateOrderDto {
   deliveryAddress: string;
   billingAddress: string;
   paymentMethod: string;
-  orderedProducts: OrderedProduct[];
+  orderedProducts: ShoppingOrderedProduct[];
 
   constructor(
     customerName: string,
@@ -14,7 +18,7 @@ export class CreateOrderDto {
     deliveryAddress: string,
     billingAddress: string,
     paymentMethod: string,
-    orderedProducts: OrderedProduct[]
+    orderedProducts: ShoppingOrderedProduct[]
   ) {
     this.customerName = customerName;
     this.customerContact = customerContact;
