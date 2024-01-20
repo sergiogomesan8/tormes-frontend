@@ -1,0 +1,86 @@
+<div id="order">
+  <div class="order-container">
+    <div class="header-panel">
+      <fa-icon
+        class="close-icon"
+        routerLink="../"
+        [icon]="['fas', 'times']"
+      ></fa-icon>
+    </div>
+    <div class="order-info">
+      <div class="order-info-header">
+        <h3
+          [translate]="'shop.customer.orders.orderDetails'"
+        ></h3>
+      </div>
+      <ng-container *ngIf="!isLoading">
+        <div class="order-info-content">
+          <div class="field deliveryAddress">
+            <p
+              class="field-title"
+              [translate]="
+                'shop.customer.orders.deliveryAddress'
+              "
+            ></p>
+            <p class="field-info">{{ order.deliveryAddress }}</p>
+          </div>
+          <div class="field billingAddress">
+            <p
+              class="field-title"
+              [translate]="'shop.customer.orders.billingAddress'"
+            ></p>
+            <p class="field-info">{{ order.billingAddress }}</p>
+          </div>
+          <div class="field paymentMethod">
+            <p
+              class="field-title"
+              [translate]="'shop.customer.orders.paymentMethod'"
+            ></p>
+            <p class="field-info">{{ order.paymentMethod }}</p>
+          </div>
+          <div class="field date">
+            <p
+              class="field-title"
+              [translate]="'shop.customer.orders.date'"
+            ></p>
+            <p class="field-info">{{ order.date }}</p>
+          </div>
+          <div class="field total">
+            <p
+              class="field-title"
+              [translate]="'shop.customer.orders.total'"
+            ></p>
+            <p class="field-info">{{ order.total }} €</p>
+          </div>
+        </div>
+        <div *ngFor="let orderedProduct of order.orderedProducts">
+          <div class="product-card">
+            <div class="container-img" id="imagen">
+              <img
+                src="{{ getproductImageUrl(orderedProduct.product) }}"
+                alt="{{ orderedProduct.product.name }}"
+              />
+            </div>
+            <div class="container-text">
+              <h4>{{ orderedProduct.product.name }}</h4>
+              <p class="section">{{ orderedProduct.product.section }}</p>
+              <div class="container-amount">
+                <p>Cantidad:</p>
+                <span class="amount">{{ orderedProduct.amount }}</span>
+              </div>
+              <div class="container-price">
+                <span class="price">{{ orderedProduct.product.price }}</span>
+                <p>€/Kg</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="isLoading" class="main-container">
+        <div class="loading-container">
+          <mat-progress-spinner color="warn"></mat-progress-spinner>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
