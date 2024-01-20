@@ -13,7 +13,6 @@ import { New } from '@shop/models/new';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   @HostBinding('style.width')
