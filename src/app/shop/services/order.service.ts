@@ -29,7 +29,7 @@ export class OrderService {
         }),
         catchError((error: undefined) => {
           this.snackbarService.showErrorSnackbar(
-            'shop.admin.dashboard.options.orders.getByIdError'
+            'shop.customer.orders.getByIdError'
           );
           return of(error);
         })
@@ -56,13 +56,13 @@ export class OrderService {
     return this.httpService.post(this.orderEndPoint.ADD, createOrderDto).pipe(
       map((response: Order) => {
         this.snackbarService.showSuccessSnackbar(
-          'shop.admin.dashboard.options.orders.addSuccess'
+          'shop.customer.orders.addSuccess'
         );
         return response;
       }),
       catchError((error: undefined) => {
         this.snackbarService.showErrorSnackbar(
-          'shop.admin.dashboard.options.orders.addError'
+          'shop.customer.orders.addError'
         );
         return of(error);
       })
@@ -81,13 +81,13 @@ export class OrderService {
       .pipe(
         map((response: undefined) => {
           this.snackbarService.showSuccessSnackbar(
-            'shop.admin.dashboard.options.orders.updateSuccess'
+            'shop.customer.orders.updateSuccess'
           );
           return response;
         }),
         catchError((error: undefined) => {
           this.snackbarService.showErrorSnackbar(
-            'shop.admin.dashboard.options.orders.updateError'
+            'shop.customer.orders.updateError'
           );
           return of(error);
         })
@@ -100,13 +100,13 @@ export class OrderService {
       .pipe(
         map((response: undefined) => {
           this.snackbarService.showSuccessSnackbar(
-            'shop.admin.dashboard.options.orders.deleteSuccess'
+            'shop.customer.orders.deleteSuccess'
           );
           return response;
         }),
         catchError((error: undefined) => {
           this.snackbarService.showErrorSnackbar(
-            'shop.admin.dashboard.options.orders.deleteError'
+            'shop.customer.orders.deleteError'
           );
           return of(error);
         })
