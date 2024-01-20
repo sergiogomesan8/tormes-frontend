@@ -1,14 +1,18 @@
 <div id="orders-info">
   <div class="orders-container">
     <div class="table-header">
-      <search-component [placeholder]="'Buscar pedido...'"></search-component>
+      <h3 [translate]="
+      'shop.customer.orders.myOrders'
+    "></h3>
     </div>
 
     <table-crud-component
+      (viewEvent)="viewOrder($event)"
       [elementsTable]="orders"
       [displayedColumns]="displayedColumns"
-      [deleteAction]="true"
-      [updateAction]="true"
+      [deleteAction]="false"
+      [updateAction]="false"
+      [viewAction]="true"
     ></table-crud-component>
   </div>
 </div>

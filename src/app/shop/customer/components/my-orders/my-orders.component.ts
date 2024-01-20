@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Order } from '@shop/models/order';
 import { OrderService } from '@shop/services/order.service';
 
@@ -10,15 +11,12 @@ import { OrderService } from '@shop/services/order.service';
 export class MyOrdersComponent implements OnInit {
   orders: Order[] = [];
 
-  displayedColumns = [
-    'OrderId',
-    'Date',
-    'Tracking Number',
-    'Delivery Address',
-    'Total',
-  ];
+  displayedColumns = ['Date', 'Status', 'Total'];
 
-  constructor(private readonly orderService: OrderService) {}
+  constructor(
+    private readonly orderService: OrderService,
+    private readonly router: Router
+  ) {}
 
   ngOnInit() {
     this.findAllOrdersByUser();
@@ -33,5 +31,9 @@ export class MyOrdersComponent implements OnInit {
         console.log(error);
       },
     });
+  }
+
+  viewOrder(order: Order): void {
+    this.router.navigate(['/customer/my-orders/', order.id]);
   }
 }
