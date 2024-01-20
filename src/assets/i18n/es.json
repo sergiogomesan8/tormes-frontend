@@ -39,7 +39,39 @@
         "new-user": "¿Eres nuevo por aquí?",
         "register": "Registrarse",
         "error": "Error al iniciar sesión, inténtelo de nuevo más tarde"
-      }
+      },
+
+      "orders": {
+        "title": "Pedidos",
+        "status": "Estado",
+        "date": "Fecha",
+        "total": "Total",
+        "deliveryAddress": "Dirección de entrega",
+        "billingAddress": "Dirección de facturación",
+        "customerName": "Nombre",
+        "customerContact": "Teléfono",
+        "paymentMethod": "Método de pago",
+        "orderDetails": "Detalles del pedido",
+        "placeOrder": "Tramitar pedido",
+        "myOrders": "Mis pedidos",
+        "details": "Detalles",
+        "update": "Actualizar estado",
+        "addSuccess": "Pedido realizado con éxito!",
+        "addError": "Se ha producido un error al realizar el pedido, inténtelo de nuevo más tarde",
+        "updateSuccess": "Estado actualizado con éxito!",
+        "updateError": "Error al actualizar el estado, inténtelo de nuevo más tarde",
+        "getByIdError": "Se ha producido un error, inténtelo de nuevo más tarde",
+        "deleteSuccess": "Pedido eliminado con éxito! ",
+        "deleteError": "Error al eliminar el pedido, inténtelo de nuevo más tarde",
+        "statusOptions": {
+          "processing": "Procesandose",
+          "shipped": "En curso",
+          "delayed": "Retrasado",
+          "delivered": "Entregado",
+          "cancelled": "Cancelado"
+        }
+      },
+      "shoppingCart": "Carrito de la compra"
     },
     "admin": {
       "dashboard": {
@@ -65,29 +97,7 @@
             "getByIdError": "Se ha producido un error, inténtelo de nuevo más tarde",
             "noChanges": "No hay cambios"
           },
-          "sections": "Secciones",
-          "orders": {
-            "title": "Pedidos",
-            "status": "Estado",
-            "date": "Fecha",
-            "total": "Total",
-            "details": "Detalles",
-            "update": "Actualizar estado",
-            "addSuccess": "Pedido realizado con éxito!",
-            "addError": "Se ha producido un error al realizar el pedido, inténtelo de nuevo más tarde",
-            "updateSuccess": "Estado actualizado con éxito!",
-            "updateError": "Error al actualizar el estado, inténtelo de nuevo más tarde",
-            "getByIdError": "Se ha producido un error, inténtelo de nuevo más tarde",
-            "deleteSuccess": "Pedido eliminado con éxito! ",
-            "deleteError": "Error al eliminar el pedido, inténtelo de nuevo más tarde",
-            "statusOptions": {
-              "processing": "Procesandose",
-              "shipped": "En curso",
-              "delayed": "Retrasado",
-              "delivered": "Entregado",
-              "cancelled": "Cancelado"
-            }
-          }
+          "sections": "Secciones"
         }
       },
       "catalog": {
