@@ -57,7 +57,9 @@ export class UpdateProductComponent implements OnInit {
             description: this.product.description,
             image: this.product.image,
           });
-          this.imageUrl = `${environment.tormes_backend_images}/products/${this.product.image}`;
+          this.imageUrl = environment.production
+            ? this.product.image
+            : `${environment.tormes_backend_images}/products/${this.product.image}`;
         } else {
           this.router.navigate(['/admin/products']);
         }
