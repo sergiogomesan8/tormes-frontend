@@ -3,13 +3,13 @@
     <div class="header-panel">
       <fa-icon
         class="close-icon"
-        routerLink="../"
+        routerLink="/catalog"
         [icon]="['fas', 'times']"
       ></fa-icon>
     </div>
     <div class="form-creation">
       <div class="form-header">
-        <h3>Place Order</h3>
+        <h3 [translate]="'shop.customer.orders.placeOrder'"></h3>
       </div>
       <form
         class="form-container row"
@@ -21,7 +21,7 @@
           <mat-form-field appearance="outline" class="col-12">
             <mat-label
               [translate]="
-                'shop.admin.dashboard.options.products.deliveryAddress'
+                'shop.customer.orders.deliveryAddress'
               "
             ></mat-label>
             <input
@@ -34,9 +34,7 @@
 
           <mat-form-field appearance="outline" class="col-12">
             <mat-label
-              [translate]="
-                'shop.admin.dashboard.options.products.billingAddress'
-              "
+              [translate]="'shop.customer.orders.billingAddress'"
             ></mat-label>
             <input
               matInput
@@ -48,7 +46,7 @@
 
           <mat-form-field appearance="outline" class="col-12">
             <mat-label
-              [translate]="'shop.admin.dashboard.options.products.customerName'"
+              [translate]="'shop.customer.orders.customerName'"
             ></mat-label>
             <input
               matInput
@@ -61,7 +59,7 @@
           <mat-form-field appearance="outline" class="col-12">
             <mat-label
               [translate]="
-                'shop.admin.dashboard.options.products.customerContact'
+                'shop.customer.orders.customerContact'
               "
             ></mat-label>
             <input
@@ -71,15 +69,14 @@
               ng-model="data.customerContact"
               required
             />
+            <mat-icon matSuffix>phone</mat-icon>
           </mat-form-field>
         </div>
 
         <div class="image-picker col-sm-12 col-md-6">
           <mat-form-field appearance="outline" class="col-12">
             <mat-label
-              [translate]="
-                'shop.admin.dashboard.options.products.paymentMethod'
-              "
+              [translate]="'shop.customer.orders.paymentMethod'"
             ></mat-label>
             <input
               matInput
@@ -87,12 +84,13 @@
               ng-model="data.paymentMethod"
               required
             />
+            <mat-icon matSuffix>payments</mat-icon>
           </mat-form-field>
         </div>
       </form>
       <div class="form-submit">
         <button-component
-          [label]="'shop.admin.dashboard.options.products.add' | translate"
+          [label]="'shop.customer.orders.placeOrder' | translate"
           [class]="'purple-button'"
           [type]="'submit'"
           [disabled]="!formGroup.valid"
