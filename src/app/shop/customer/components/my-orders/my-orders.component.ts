@@ -31,7 +31,7 @@ export class MyOrdersComponent implements OnInit {
     },
     {
       id: 'total',
-      name: 'Total',
+      name: 'Total (€)',
     },
   ];
 
