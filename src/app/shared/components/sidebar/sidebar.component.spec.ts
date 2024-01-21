@@ -46,7 +46,7 @@ describe('SidebarComponent', () => {
       label: 'shop.admin.employee.title',
     },
     {
-      routerLink: 'order',
+      routerLink: 'orders',
       icon: faBoxOpen as unknown as IconName,
       label: 'shop.admin.orders.title',
     },

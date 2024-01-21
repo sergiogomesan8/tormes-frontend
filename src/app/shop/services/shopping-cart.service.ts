@@ -124,4 +124,9 @@ export class ShoppingCartService implements OnInit {
       JSON.stringify(localStorageCart)
     );
   }
+
+  cleanShoppingCart(){
+    this.shoppingCart.next({id: '', shoppingCartProducts: []});
+    this.localStorageService.removeItem('shopping_cart');
+  }
 }

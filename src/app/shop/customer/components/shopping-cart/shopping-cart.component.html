@@ -10,7 +10,7 @@
       *ngIf="isExpanded"
       (click)="handleSidebarToggle()"
     ></button>
-    <p>Shopping Cart</p>
+    <p [translate]="'shop.customer.shoppingCart'"></p>
   </div>
   <div class="content" @fadeInOut>
     <div
@@ -62,6 +62,7 @@
       [class]="'gold-button'"
       [label]="'Tramitar pedido'"
       [type]="'button'"
+      routerLink="/customer/place-order"
     >
     </button-component>
   </div>

@@ -6,14 +6,17 @@ import { AdminComponent } from './admin.component';
 import { ProductsComponent } from './components/products/products.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { OrderTableComponent } from './components/order-table/order-table.component';
 
 @NgModule({
-  imports: [CommonModule, AdminRoutingModule, SharedModule],
+  imports: [CommonModule, AdminRoutingModule, SharedModule, DragDropModule],
   declarations: [
     AdminComponent,
     ProductsComponent,
     CreateProductComponent,
     UpdateProductComponent,
+    OrderTableComponent,
   ],
 })
 export class AdminModule {}

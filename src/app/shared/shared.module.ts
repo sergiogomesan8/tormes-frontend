@@ -22,6 +22,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerNavbarComponent } from './components/customer-navbar/customer-navbar.component';
 
@@ -47,6 +49,7 @@ import { CustomerNavbarComponent } from './components/customer-navbar/customer-n
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatProgressSpinnerModule,
 
     //Translate
     TranslateModule,
@@ -93,6 +96,7 @@ import { CustomerNavbarComponent } from './components/customer-navbar/customer-n
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatProgressSpinnerModule,
 
     //Translate
     TranslateModule,
