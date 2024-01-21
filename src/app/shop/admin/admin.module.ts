@@ -8,6 +8,7 @@ import { CreateProductComponent } from './components/create-product/create-produ
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { OrderTableComponent } from './components/order-table/order-table.component';
+import { CashRegistersComponent } from './components/cash-registers/cash-registers.component';
 
 @NgModule({
   imports: [CommonModule, AdminRoutingModule, SharedModule, DragDropModule],
@@ -17,6 +18,7 @@ import { OrderTableComponent } from './components/order-table/order-table.compon
     CreateProductComponent,
     UpdateProductComponent,
     OrderTableComponent,
+    CashRegistersComponent,
   ],
 })
 export class AdminModule {}
