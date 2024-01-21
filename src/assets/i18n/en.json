@@ -96,7 +96,21 @@
             "getByIdError": "An error has occurred, please try again later",
             "noChanges": "No changes"
           },
-          "sections": "Sections"
+          "sections": "Sections",
+          "cashRegister": {
+            "title": "Cash Register",
+            "add": "Close cash register",
+            "addSuccess": "Cash regsiter closed successfully!",
+            "addError": "Error closing cash register, please try again later",
+            "delete": "Delete cash register",
+            "deleteSuccess": "Cash register deleted successfully!",
+            "deleteError": "Error while deleting cash register, try again later",
+            "update": "Update cash register",
+            "updateSuccess": "Cash register updated successfully!",
+            "updateError": "Error while updating the cash register, please try again later",
+            "getByIdError": "An error has occurred, please try again later",
+            "noChanges": "No changes"
+          }
         }
       },
       "catalog": {

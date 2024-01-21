@@ -97,7 +97,21 @@
             "getByIdError": "Se ha producido un error, inténtelo de nuevo más tarde",
             "noChanges": "No hay cambios"
           },
-          "sections": "Secciones"
+          "sections": "Secciones",
+          "cashRegister": {
+            "title": "Caja Registradora",
+            "add": "Cerrar nueva caja",
+            "addSuccess": "Caja cerrada con éxito!",
+            "addError": "Error al cerrar la caja, inténtelo de nuevo más tarde",
+            "delete": "Eliminar caja",
+            "deleteSuccess": "Caja eliminada con éxito!",
+            "deleteError": "Error al eliminar la caja, inténtelo de nuevo más tarde",
+            "update": "Actualizar caja registradora",
+            "updateSuccess": "Caja actualizada con éxito!",
+            "updateError": "Error al actualizar la caja, inténtelo de nuevo más tarde",
+            "getByIdError": "Se ha producido un error, inténtelo de nuevo más tarde",
+            "noChanges": "No hay cambios"
+          }
         }
       },
       "catalog": {
