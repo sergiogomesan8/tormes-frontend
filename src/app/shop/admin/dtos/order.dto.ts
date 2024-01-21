@@ -1,8 +1,4 @@
-import {
-  OrderStatus,
-  OrderedProduct,
-  ShoppingOrderedProduct,
-} from '@shop/models/order';
+import { OrderStatus, ShoppingOrderedProduct } from '@shop/models/order';
 
 export class CreateOrderDto {
   customerName: string;

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@core/services/http-service.service';
 import { OrderEndPoint } from '@shared/end-points';
-import { LocalStorageService } from '@shared/services/localStorage.service';
 import { SnackbarService } from '@shared/services/snackbar.service';
 import {
   CreateOrderDto,
