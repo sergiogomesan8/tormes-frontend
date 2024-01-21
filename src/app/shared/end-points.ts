@@ -45,7 +45,7 @@ export class OrderEndPoint extends EndPoint {
 
 export class CashRegisterEndPoint extends EndPoint {
   constructor() {
-    super(environment.tormes_backend_api + '/order');
+    super(environment.tormes_backend_api + '/cash-register');
   }
 
   FIND_BY_ID = this.buildUrl('/');
