@@ -7,6 +7,7 @@ import { CatalogComponent } from '@shop/customer/components/catalog/catalog.comp
 import { ProductsComponent } from './components/products/products.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
+import { OrderTableComponent } from './components/order-table/order-table.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
         path: 'products/update-product/:id',
         component: UpdateProductComponent,
       },
+      { path: 'orders', component: OrderTableComponent },
     ],
   },
   { path: 'signin', component: RegisterComponent },

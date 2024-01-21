@@ -1,0 +1,155 @@
+<div id="orders">
+  <div class="order-table">
+    <div class="order-column-container">
+      <div class="title-container">
+        <p
+          [translate]="
+            'shop.customer.orders.statusOptions.processing'
+          "
+        ></p>
+      </div>
+      <div
+        class="order-column"
+        id="processing"
+        cdkDropList
+        cdkDropListGroup
+        #ln1="cdkDropList"
+        [cdkDropListData]="processingOrders"
+        [cdkDropListConnectedTo]="[ln2]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <ng-container *ngFor="let order of processingOrders">
+          <div cdkDrag [cdkDragData]="order" class="order">
+            <span>{{ order.id }}</span>
+            <img
+              src="..\assets\images\icons\to-do.png"
+              loading="lazy"
+              alt="to-do.png"
+            />
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="order-column-container">
+      <div class="title-container">
+        <p
+          [translate]="
+            'shop.customer.orders.statusOptions.shipped'
+          "
+        ></p>
+      </div>
+      <div
+        class="order-column"
+        id="shipped"
+        cdkDropList
+        cdkDropListGroup
+        #ln2="cdkDropList"
+        [cdkDropListData]="shippedOrders"
+        [cdkDropListConnectedTo]="[ln3]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <ng-container *ngFor="let order of shippedOrders">
+          <div cdkDrag [cdkDragData]="order" class="order">
+            <span>{{ order.id }}</span>
+            <img
+              src="..\assets\images\icons\shipped.png"
+              loading="lazy"
+              alt="shipped.png"
+            />
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="order-column-container" cdkDropListGroup>
+      <div class="title-container">
+        <p
+          [translate]="
+            'shop.customer.orders.statusOptions.delayed'
+          "
+        ></p>
+      </div>
+      <div
+        class="order-column"
+        id="delayed"
+        cdkDropList
+        #ln3="cdkDropList"
+        [cdkDropListData]="delayedOrders"
+        [cdkDropListConnectedTo]="[ln4]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <ng-container *ngFor="let order of delayedOrders">
+          <div cdkDrag [cdkDragData]="order" class="order">
+            <span>{{ order.id }}</span>
+            <img
+              src="..\assets\images\icons\cancelled.png"
+              loading="lazy"
+              alt="cancelled.png"
+            />
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="order-column-container" cdkDropListGroup>
+      <div class="title-container">
+        <p
+          [translate]="
+            'shop.customer.orders.statusOptions.delivered'
+          "
+        ></p>
+      </div>
+      <div
+        class="order-column"
+        id="delivered"
+        cdkDropList
+        #ln4="cdkDropList"
+        [cdkDropListData]="deliveredOrders"
+        [cdkDropListConnectedTo]="[ln5]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <ng-container *ngFor="let order of deliveredOrders">
+          <div cdkDrag [cdkDragData]="order" class="order">
+            <span>{{ order.id }}</span>
+            <img
+              src="..\assets\images\icons\cancelled.png"
+              loading="lazy"
+              alt="cancelled.png"
+            />
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="order-column-container" cdkDropListGroup>
+      <div class="title-container">
+        <p
+          [translate]="
+            'shop.customer.orders.statusOptions.cancelled'
+          "
+        ></p>
+      </div>
+      <div
+        class="order-column"
+        id="cancelled"
+        cdkDropList
+        #ln5="cdkDropList"
+        [cdkDropListData]="cancelledOrders"
+        [cdkDropListConnectedTo]="[ln1]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <ng-container *ngFor="let order of cancelledOrders">
+          <div cdkDrag [cdkDragData]="order" class="order">
+            <span>{{ order.id }}</span>
+            <img
+              src="..\assets\images\icons\cancelled.png"
+              loading="lazy"
+              alt="cancelled.png"
+            />
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

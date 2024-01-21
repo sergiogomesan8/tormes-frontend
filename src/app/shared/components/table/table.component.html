@@ -29,16 +29,27 @@
           >
             <mat-icon>delete</mat-icon>
           </button>
+          <button
+            class="action-button"
+            mat-icon-button
+            color="accent"
+            (click)="view(element)"
+            *ngIf="viewAction == true"
+          >
+            <mat-icon>preview</mat-icon>
+          </button>
         </td>
       </ng-container>
-      <tr
-        mat-header-row
-        *matHeaderRowDef="displayedColumns.concat('actions')"
-      ></tr>
-      <tr
-        mat-row
-        *matRowDef="let row; columns: displayedColumns.concat('actions')"
-      ></tr>
+      <ng-container *ngIf="isAction">
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns.concat('actions')"
+        ></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumns.concat('actions')"
+        ></tr>
+      </ng-container>
     </table>
 
     <mat-paginator

@@ -1,0 +1,114 @@
+#orders {
+  .order-table {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    margin: 32px 0px;
+
+    .order-column-container {
+      display: flex;
+      flex-direction: column;
+
+      width: 400px;
+      height: 420px;
+      margin: 0px 8px;
+
+      border-radius: 4px;
+      background-color: #eaeaeb;
+
+      .title-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 40px;
+        p {
+          font-weight: 700;
+          color: rgb(68, 68, 68);
+          margin-bottom: 0px;
+        }
+      }
+      .order-column {
+        height: 100%;
+        padding: 8px 8px;
+
+        overflow-y: auto;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        background-color: #f4f5f7;
+
+        .order:not(:last-child) {
+          margin-bottom: 8px;
+        }
+        .order:hover {
+          background-color: #e7eef9;
+          box-shadow: 0 5px 12px 0 rgb(0 0 0 / 24%);
+        }
+        .order:active {
+          border-style: solid;
+          border-width: 1.5px;
+          border-color: #6a3c99;
+          box-shadow: 0 5px 12px 0 rgb(106 60 153 / 20%);
+        }
+      }
+
+      .order-column::-webkit-scrollbar {
+        width: 3px;
+      }
+
+      .order-column::-webkit-scrollbar-thumb {
+        background-color: #878787;
+        border-radius: 20px;
+      }
+    }
+  }
+}
+
+.order {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 80px;
+
+  padding: 8px 16px;
+
+  border-radius: 4px;
+
+  background-color: #fff;
+  box-shadow: 0 5px 12px 0 rgb(0 0 0 / 20%);
+
+  cursor: pointer;
+
+  img {
+    margin: 4px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.cdk-drag-preview {
+  border-style: solid;
+  border-width: 1.5px;
+  border-color: #6a3c99;
+  box-shadow: 0 5px 12px 0 rgb(106 60 153 / 20%);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.2;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.order-column.cdk-drop-list-dragging .order:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drop-list-dragging {
+  border-style: dotted;
+  border-width: 2px;
+  border-color: #20be67;
+}

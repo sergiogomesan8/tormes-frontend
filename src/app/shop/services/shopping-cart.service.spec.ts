@@ -178,4 +178,44 @@ describe('ShoppingCartService', () => {
       );
     });
   });
+
+  describe('cleanShoppingCart', () => {
+    it('should clean the shopping cart and remove it from local storage', () => {
+      const shoppingCart: ShoppingCart = {
+        id: '123',
+        shoppingCartProducts: [{ product: mockProduct, amount: 1 }],
+      };
+      service['shoppingCart'].next(shoppingCart);
+
+      const localStorageSpy = jest.spyOn(
+        service['localStorageService'],
+        'removeItem'
+      );
+
+      service.cleanShoppingCart();
+
+      expect(service['shoppingCart'].value).toEqual({
+        id: '',
+        shoppingCartProducts: [],
+      });
+      expect(localStorageSpy).toHaveBeenCalledWith('shopping_cart');
+    });
+
+    it('should throw an error if removing item from local storage fails', () => {
+      const shoppingCart: ShoppingCart = {
+        id: '123',
+        shoppingCartProducts: [{ product: mockProduct, amount: 1 }],
+      };
+      service['shoppingCart'].next(shoppingCart);
+
+      const error = new Error('Failed to remove item from local storage');
+      jest
+        .spyOn(service['localStorageService'], 'removeItem')
+        .mockImplementation(() => {
+          throw error;
+        });
+
+      expect(() => service.cleanShoppingCart()).toThrowError(error);
+    });
+  });
 });

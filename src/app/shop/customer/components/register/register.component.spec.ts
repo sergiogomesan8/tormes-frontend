@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { of, throwError } from 'rxjs';
 import { RegisterComponent } from './register.component';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from '@core/services/authentication.service';

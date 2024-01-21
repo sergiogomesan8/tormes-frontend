@@ -21,18 +21,22 @@ export class TableComponent implements OnInit, AfterViewInit {
   @Input() elementsTable: any[] = [];
   @Input() displayedColumns: Array<string> = [];
 
-  @Input() updateAction = true;
-  @Input() deleteAction = true;
+  @Input() updateAction = false;
+  @Input() deleteAction = false;
+  @Input() viewAction = false;
 
   @Output() updateEvent = new EventEmitter<any>();
   @Output() deleteEvent = new EventEmitter<any>();
+  @Output() viewEvent = new EventEmitter<any>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   dataSource!: MatTableDataSource<any>;
+  isAction!: boolean;
 
   ngOnInit() {
+    this.isAction = this.updateAction || this.deleteAction || this.viewAction;
     this.displayedColumns = this.displayedColumns.map((column) =>
       column.toLowerCase()
     );
@@ -54,5 +58,9 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   delete(element: any): void {
     this.deleteEvent.emit(element);
+  }
+
+  view(element: any): void {
+    this.viewEvent.emit(element);
   }
 }

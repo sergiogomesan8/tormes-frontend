@@ -55,6 +55,12 @@ describe('TableComponent', () => {
     component.delete(element);
   });
 
+  it('should emit viewEvent on view', () => {
+    const element = { id: 1 };
+    component.viewEvent.subscribe((e) => expect(e).toEqual(element));
+    component.delete(element);
+  });
+
   it('should set paginator and sort on ngAfterViewInit', () => {
     component.ngAfterViewInit();
     expect(component.dataSource.paginator).toEqual(mockPaginator);
