@@ -9,6 +9,7 @@ import { CreateProductComponent } from './components/create-product/create-produ
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { OrderTableComponent } from './components/order-table/order-table.component';
 import { CashRegistersComponent } from './components/cash-registers/cash-registers.component';
+import { CloseCashRegisterComponent } from './components/close-cash-register/close-cash-register.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
       },
       { path: 'orders', component: OrderTableComponent },
       { path: 'cash-registers', component: CashRegistersComponent },
+      {
+        path: 'cash-registers/close/:id',
+        component: CloseCashRegisterComponent,
+      },
     ],
   },
   { path: 'signin', component: RegisterComponent },
