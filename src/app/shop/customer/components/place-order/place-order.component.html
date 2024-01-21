@@ -1,0 +1,104 @@
+<div id="place-order">
+  <div class="place-order-container">
+    <div class="header-panel">
+      <fa-icon
+        class="close-icon"
+        routerLink="/catalog"
+        [icon]="['fas', 'times']"
+      ></fa-icon>
+    </div>
+    <div class="form-creation">
+      <div class="form-header">
+        <h3 [translate]="'shop.customer.orders.placeOrder'"></h3>
+      </div>
+      <form
+        class="form-container row"
+        [formGroup]="formGroup"
+        fxLayout="column"
+        fxLayoutAlign="start center"
+      >
+        <div class="col-sm-12 col-md-6">
+          <mat-form-field appearance="outline" class="col-12">
+            <mat-label
+              [translate]="
+                'shop.customer.orders.deliveryAddress'
+              "
+            ></mat-label>
+            <input
+              matInput
+              formControlName="deliveryAddress"
+              ng-model="data.deliveryAddress"
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="col-12">
+            <mat-label
+              [translate]="'shop.customer.orders.billingAddress'"
+            ></mat-label>
+            <input
+              matInput
+              formControlName="billingAddress"
+              ng-model="data.billingAddress"
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="col-12">
+            <mat-label
+              [translate]="'shop.customer.orders.customerName'"
+            ></mat-label>
+            <input
+              matInput
+              formControlName="customerName"
+              ng-model="data.customerName"
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="col-12">
+            <mat-label
+              [translate]="
+                'shop.customer.orders.customerContact'
+              "
+            ></mat-label>
+            <input
+              matInput
+              type="number"
+              formControlName="customerContact"
+              ng-model="data.customerContact"
+              required
+            />
+            <mat-icon matSuffix>phone</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="image-picker col-sm-12 col-md-6">
+          <mat-form-field appearance="outline" class="col-12">
+            <mat-label
+              [translate]="'shop.customer.orders.paymentMethod'"
+            ></mat-label>
+            <input
+              matInput
+              formControlName="paymentMethod"
+              ng-model="data.paymentMethod"
+              required
+            />
+            <mat-icon matSuffix>payments</mat-icon>
+          </mat-form-field>
+        </div>
+      </form>
+      <div class="form-submit">
+        <button-component
+          [label]="'shop.customer.orders.placeOrder' | translate"
+          [class]="'purple-button'"
+          [type]="'submit'"
+          [disabled]="!formGroup.valid"
+          (click)="placeOrder()"
+        >
+          <mat-icon>add</mat-icon>
+        </button-component>
+      </div>
+    </div>
+  </div>
+</div>

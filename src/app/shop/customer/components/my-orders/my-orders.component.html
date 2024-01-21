@@ -1,0 +1,18 @@
+<div id="orders-info">
+  <div class="orders-container">
+    <div class="table-header">
+      <h3 [translate]="
+      'shop.customer.orders.myOrders'
+    "></h3>
+    </div>
+
+    <table-crud-component
+      (viewEvent)="viewOrder($event)"
+      [elementsTable]="orders"
+      [displayedColumns]="displayedColumns"
+      [deleteAction]="false"
+      [updateAction]="false"
+      [viewAction]="true"
+    ></table-crud-component>
+  </div>
+</div>

@@ -39,7 +39,38 @@
         "new-user": "Are you new here?",
         "register": "Sing in",
         "error": "Error login in, please try again later"
-      }
+      },
+      "orders": {
+        "title": "Orders",
+        "status": "Status",
+        "date": "Date",
+        "total": "Total",
+        "deliveryAddress": "Delivery address",
+        "billingAddress": "Billing address",
+        "customerName": "Name",
+        "customerContact": "Phone number",
+        "paymentMethod": "Payment method",
+        "orderDetails": "Order Details",
+        "placeOrder": "Place order",
+        "myOrders": "My orders",
+        "details": "Details",
+        "update": "Update status",
+        "addSuccess": "Order placed successfully!",
+        "addError": "Error placing order, please try again later",
+        "updateSuccess": "Status updated successfully!",
+        "updateError": "Error updating status, please try again later",
+        "getByIdError": "An error has occurred, please try again later",
+        "deleteSuccess": "Order deleted successfully! ",
+        "deleteError": "Error while deleting product, try again later",
+        "statusOptions": {
+          "processing": "Processing",
+          "shipped": "Shipped",
+          "delayed": "Delayed",
+          "delivered": "Delivered",
+          "cancelled": "Cancelled"
+        }
+      },
+      "shoppingCart": "Shopping Cart"
     },
     "admin": {
       "dashboard": {

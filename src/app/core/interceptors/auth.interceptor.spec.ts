@@ -1,6 +1,5 @@
-import { of } from 'rxjs';
 import { AuthInterceptor } from './auth.interceptor';
-import { HttpHandler, HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpHandler, HttpRequest } from '@angular/common/http';
 import * as jwtDecode from 'jwt-decode';
 import { AuthenticationService } from '@core/services/authentication.service';
 
@@ -64,36 +63,4 @@ describe('AuthInterceptor', () => {
 
     expect(httpHandlerMock.handle).toHaveBeenCalledWith(httpRequestMock);
   });
-
-  // it('should handle expired token and refresh it', async () => {
-  //   authServiceMock.isRefreshingToken = false;
-
-  //   const token = 'token';
-  //   authServiceMock.getToken.mockReturnValue(token);
-
-  //   mockJwtDecode.mockImplementation(() => ({
-  //     exp: Date.now() / 1000 - 60,
-  //   }));
-
-  //   const newToken = 'newToken';
-  //   authServiceMock.refreshToken.mockReturnValue(
-  //     of({
-  //       access_token: newToken,
-  //       user_info: {
-  //         id: '1',
-  //         email: 'test@example.com',
-  //         name: 'Test User',
-  //       },
-  //       refresh_token: 'refreshToken',
-  //     })
-  //   );
-
-  //   httpHandlerMock.handle.mockImplementation(() => of(new HttpResponse()));
-
-  //   await interceptor.intercept(httpRequestMock, httpHandlerMock).toPromise();
-
-  //   expect(httpRequestMock.clone).toHaveBeenCalledWith({
-  //     setHeaders: { Authorization: `Bearer ${newToken}` },
-  //   });
-  // });
 });
