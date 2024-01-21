@@ -26,7 +26,7 @@ const routes: Routes = [
       { path: 'orders', component: OrderTableComponent },
       { path: 'cash-registers', component: CashRegistersComponent },
       {
-        path: 'cash-registers/close/:id',
+        path: 'cash-registers/close',
         component: CloseCashRegisterComponent,
       },
     ],
