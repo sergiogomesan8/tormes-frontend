@@ -36,7 +36,7 @@ describe('SidebarComponent', () => {
       label: 'shop.admin.catalog.title',
     },
     {
-      routerLink: 'cash-register',
+      routerLink: 'cash-registers',
       icon: faCashRegister as unknown as IconName,
       label: 'shop.admin.cashRegister.title',
     },
