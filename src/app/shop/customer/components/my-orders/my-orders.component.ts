@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TableColumn } from '@shared/models/tableColumn';
 import { Order } from '@shop/models/order';
 import { OrderService } from '@shop/services/order.service';
 
@@ -11,7 +12,28 @@ import { OrderService } from '@shop/services/order.service';
 export class MyOrdersComponent implements OnInit {
   orders: Order[] = [];
 
-  displayedColumns = ['Date', 'Status', 'Total'];
+  displayedColumns: TableColumn[] = [
+    {
+      id: 'orderId',
+      name: 'Order Id',
+    },
+    {
+      id: 'date',
+      name: 'Date',
+    },
+    {
+      id: 'paymentMethod',
+      name: 'Payment Method',
+    },
+    {
+      id: 'status',
+      name: 'Status',
+    },
+    {
+      id: 'total',
+      name: 'Total',
+    },
+  ];
 
   constructor(
     private readonly orderService: OrderService,
