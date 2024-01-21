@@ -1,0 +1,23 @@
+<div id="cash-registers-info">
+  <div class="cash-registers-container">
+    <div class="table-header">
+      <button-component
+        [label]="'shop.admin.options.cashRegister.add' | translate"
+        [routerLink]="'/admin/cash-registers/close-cash-register'"
+        [class]="'purple-button'"
+        [type]="'button'"
+      >
+        <mat-icon>add</mat-icon>
+      </button-component>
+    </div>
+
+    <table-crud-component
+      (updateEvent)="updateCashRegister($event)"
+      (deleteEvent)="deleteCashRegister($event)"
+      [elementsTable]="cashRegisters"
+      [displayedColumns]="displayedColumns"
+      [deleteAction]="true"
+      [updateAction]="true"
+    ></table-crud-component>
+  </div>
+</div>
