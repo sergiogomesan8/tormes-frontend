@@ -25,16 +25,43 @@ describe('TableComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize dataSource on ngOnInit', () => {
+  it('should set isAction correctly on ngOnInit', () => {
+    component.updateAction = true;
+    component.deleteAction = false;
+    component.viewAction = false;
+    component.ngOnInit();
+    expect(component.isAction).toEqual(true);
+
+    component.updateAction = false;
+    component.deleteAction = false;
+    component.viewAction = false;
+    component.ngOnInit();
+    expect(component.isAction).toEqual(false);
+  });
+
+  it('should fill columnIds correctly on ngOnInit', () => {
+    component.displayedColumns = [
+      { id: 'column1', name: 'Column1' },
+      { id: 'column2', name: 'Column2' },
+    ];
+    component.ngOnInit();
+    expect(component.columnIds).toEqual(['column1', 'column2']);
+  });
+
+  it('should add actions to columnIds if isAction is true on ngOnInit', () => {
+    component.updateAction = true;
+    component.displayedColumns = [
+      { id: 'column1', name: 'Column1' },
+      { id: 'column2', name: 'Column2' },
+    ];
+    component.ngOnInit();
+    expect(component.columnIds).toContain('actions');
+  });
+
+  it('should initialize dataSource correctly on ngOnInit', () => {
     component.elementsTable = [{ id: 1 }, { id: 2 }];
     component.ngOnInit();
     expect(component.dataSource.data).toEqual(component.elementsTable);
-  });
-
-  it('should convert displayedColumns to lower case on ngOnInit', () => {
-    component.displayedColumns = ['Column1', 'Column2'];
-    component.ngOnInit();
-    expect(component.displayedColumns).toEqual(['column1', 'column2']);
   });
 
   it('should update dataSource on ngOnChanges', () => {
@@ -58,7 +85,7 @@ describe('TableComponent', () => {
   it('should emit viewEvent on view', () => {
     const element = { id: 1 };
     component.viewEvent.subscribe((e) => expect(e).toEqual(element));
-    component.delete(element);
+    component.view(element);
   });
 
   it('should set paginator and sort on ngAfterViewInit', () => {
