@@ -23,16 +23,9 @@ export class RegisterComponent {
   ) {
     this.formGroup = this.formBuilder.group({
       name: ['', [Validators.required]],
-      // lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       pass: ['', [Validators.required]],
       passConfirmation: ['', [Validators.required]],
-      // phoneNumber: ['', [Validators.required]],
-      // deliveryAddress: ['', [Validators.required]],
-      // billingAddress: ['', [Validators.required]],
-      // postalCode: ['', [Validators.required]],
-      // gender: ['', [Validators.required]],
-      // birthdate: ['', [Validators.required]],
     });
   }
 
