@@ -133,7 +133,7 @@ describe('CashRegistersComponent', () => {
       cashRegisterscomponent.updateCashRegister(cashRegister);
 
       expect(mockRouter.navigate).toHaveBeenCalledWith([
-        '/admin/cash-registers/update-cash-register',
+        '/admin/cash-registers/update/',
         cashRegister.id,
       ]);
     });
