@@ -136,9 +136,7 @@ export class UpdateCashRegisterComponent implements OnInit {
       this.cashRegisterService
         .updateCashRegister(this.cashRegister.id, updateCashRegisterDto)
         .subscribe({
-          next: () => {
-            // this.router.navigate(['/admin/products']);
-          },
+          next: () => {},
           error: (error) => {
             console.log(error);
           },

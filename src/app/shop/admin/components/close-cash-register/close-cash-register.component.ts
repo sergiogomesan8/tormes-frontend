@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SnackbarService } from '@shared/services/snackbar.service';
 import { CreateCashRegisterDto } from '@shop/admin/dtos/cash-register.dto';
@@ -10,7 +10,7 @@ import { CashRegisterService } from '@shop/services/cash-register.service';
   templateUrl: './close-cash-register.component.html',
   styleUrls: ['./close-cash-register.component.scss'],
 })
-export class CloseCashRegisterComponent implements OnInit {
+export class CloseCashRegisterComponent {
   formGroup: FormGroup;
   loading: boolean = false;
 
@@ -66,8 +66,6 @@ export class CloseCashRegisterComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
-
   generateValidators(obj: any): { [key: string]: any[] } {
     let validators: { [key: string]: any[] } = {};
     for (let key in obj) {
@@ -103,9 +101,7 @@ export class CloseCashRegisterComponent implements OnInit {
       this.cashRegisterService
         .createCashRegister(createCashRegisterDto)
         .subscribe({
-          next: () => {
-            // this.router.navigate(['/admin/products']);
-          },
+          next: () => {},
           error: (error) => {
             console.log(error);
           },
