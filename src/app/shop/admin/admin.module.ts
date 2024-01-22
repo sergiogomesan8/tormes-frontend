@@ -10,6 +10,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { OrderTableComponent } from './components/order-table/order-table.component';
 import { CashRegistersComponent } from './components/cash-registers/cash-registers.component';
 import { CashRegisterComponent } from './components/cash-register/cash-register.component';
+import { SectionsComponent } from './components/sections/sections.component';
+import { SectionComponent } from './components/section/section.component';
 
 @NgModule({
   imports: [CommonModule, AdminRoutingModule, SharedModule, DragDropModule],
@@ -21,6 +23,8 @@ import { CashRegisterComponent } from './components/cash-register/cash-register.
     OrderTableComponent,
     CashRegistersComponent,
     CashRegisterComponent,
+    SectionsComponent,
+    SectionComponent,
   ],
 })
 export class AdminModule {}
