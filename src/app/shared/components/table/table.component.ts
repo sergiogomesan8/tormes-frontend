@@ -10,6 +10,7 @@ import {
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { TableColumn } from '@shared/models/tableColumn';
 import { Product } from '@shop/models/product';
 
 @Component({
@@ -19,7 +20,7 @@ import { Product } from '@shop/models/product';
 })
 export class TableComponent implements OnInit, AfterViewInit {
   @Input() elementsTable: any[] = [];
-  @Input() displayedColumns: Array<string> = [];
+  @Input() displayedColumns: TableColumn[] = [];
 
   @Input() updateAction = false;
   @Input() deleteAction = false;
@@ -34,12 +35,14 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   dataSource!: MatTableDataSource<any>;
   isAction!: boolean;
+  columnIds: string[] = [];
 
   ngOnInit() {
     this.isAction = this.updateAction || this.deleteAction || this.viewAction;
-    this.displayedColumns = this.displayedColumns.map((column) =>
-      column.toLowerCase()
-    );
+    this.columnIds = this.displayedColumns.map((column) => column.id);
+    if (this.isAction) {
+      this.columnIds.push('actions');
+    }
     this.dataSource = new MatTableDataSource<Product>(this.elementsTable);
   }
 

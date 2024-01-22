@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TableColumn } from '@shared/models/tableColumn';
 import { Product } from '@shop/models/product';
 import { ProductService } from '@shop/services/product.service';
 
@@ -11,7 +12,20 @@ import { ProductService } from '@shop/services/product.service';
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
 
-  displayedColumns = ['Name', 'Price', 'Section'];
+  displayedColumns: TableColumn[] = [
+    {
+      id: 'name',
+      name: 'Name',
+    },
+    {
+      id: 'prices',
+      name: 'Price',
+    },
+    {
+      id: 'section',
+      name: 'Section',
+    },
+  ];
 
   constructor(
     private readonly productService: ProductService,

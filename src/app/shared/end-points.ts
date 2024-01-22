@@ -42,3 +42,15 @@ export class OrderEndPoint extends EndPoint {
   DELETE = this.buildUrl('/');
   ADD = this.buildUrl('/');
 }
+
+export class CashRegisterEndPoint extends EndPoint {
+  constructor() {
+    super(environment.tormes_backend_api + '/cash-register');
+  }
+
+  FIND_BY_ID = this.buildUrl('/');
+  FIND_ALL = this.buildUrl('/list');
+  UPDATE = this.buildUrl('/');
+  DELETE = this.buildUrl('/');
+  ADD = this.buildUrl('/');
+}
