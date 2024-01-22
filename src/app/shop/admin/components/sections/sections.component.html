@@ -1,0 +1,24 @@
+<div id="sections-info">
+  <div class="sections-container">
+    <div class="table-header">
+      <search-component [placeholder]="'Buscar sección...'"></search-component>
+      <button-component
+        [label]="'shop.admin.dashboard.options.sections.add' | translate"
+        [class]="'purple-button'"
+        [routerLink]="'/admin/sections/create-section'"
+        [type]="'button'"
+      >
+        <mat-icon>add</mat-icon>
+      </button-component>
+    </div>
+
+    <table-crud-component
+      (updateEvent)="updateSection($event)"
+      (deleteEvent)="deleteSection($event)"
+      [elementsTable]="sections"
+      [displayedColumns]="displayedColumns"
+      [deleteAction]="true"
+      [updateAction]="true"
+    ></table-crud-component>
+  </div>
+</div>
