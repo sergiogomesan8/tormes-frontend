@@ -40,7 +40,7 @@ $product-width-margin: 276px;
       width: 100px;
       height: 100px;
 
-      margin: auto auto 16px ;
+      margin: auto auto 16px;
 
       overflow: hidden;
       border-radius: 16px;
@@ -117,7 +117,7 @@ $product-width-margin: 276px;
         font-size: 3.5rem;
       }
     }
-    .sections-carousel{
+    .sections-carousel {
       max-width: calc(($product-width-margin * 2) - 32px);
     }
     .sections .my-container {
@@ -154,7 +154,7 @@ $product-width-margin: 276px;
         font-size: 4rem;
       }
     }
-    .sections-carousel{
+    .sections-carousel {
       max-width: calc(($product-width-margin * 2) - 32px);
     }
     .sections .my-container {
@@ -173,7 +173,7 @@ $product-width-margin: 276px;
         font-size: 4.5rem;
       }
     }
-    .sections-carousel{
+    .sections-carousel {
       max-width: calc(($product-width-margin * 3) - 32px);
     }
     .sections .my-container {
@@ -184,9 +184,6 @@ $product-width-margin: 276px;
       max-width: calc(($product-width-margin * 3) - 32px);
     }
   }
-}
-
-@media screen and (min-width: 1200px) {
 }
 
 @media screen and (min-width: 1400px) {
