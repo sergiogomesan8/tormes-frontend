@@ -64,7 +64,7 @@ export class CashRegistersComponent implements OnInit {
 
   updateCashRegister(cashRegister: CashRegister): void {
     this.router.navigate([
-      '/admin/cash-registers/update-cash-register',
+      '/admin/cash-registers/update/',
       cashRegister.id,
     ]);
   }
