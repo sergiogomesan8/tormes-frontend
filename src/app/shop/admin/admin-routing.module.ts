@@ -8,6 +8,8 @@ import { ProductsComponent } from './components/products/products.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { OrderTableComponent } from './components/order-table/order-table.component';
+import { CashRegistersComponent } from './components/cash-registers/cash-registers.component';
+import { CashRegisterComponent } from './components/cash-register/cash-register.component';
 
 const routes: Routes = [
   {
@@ -22,6 +24,15 @@ const routes: Routes = [
         component: UpdateProductComponent,
       },
       { path: 'orders', component: OrderTableComponent },
+      { path: 'cash-registers', component: CashRegistersComponent },
+      {
+        path: 'cash-registers/close',
+        component: CashRegisterComponent,
+      },
+      {
+        path: 'cash-registers/update/:id',
+        component: CashRegisterComponent,
+      },
     ],
   },
   { path: 'signin', component: RegisterComponent },

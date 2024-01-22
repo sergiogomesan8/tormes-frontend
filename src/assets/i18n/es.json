@@ -40,7 +40,6 @@
         "register": "Registrarse",
         "error": "Error al iniciar sesión, inténtelo de nuevo más tarde"
       },
-
       "orders": {
         "title": "Pedidos",
         "status": "Estado",
@@ -97,7 +96,47 @@
             "getByIdError": "Se ha producido un error, inténtelo de nuevo más tarde",
             "noChanges": "No hay cambios"
           },
-          "sections": "Secciones"
+          "sections": "Secciones",
+          "cashRegister": {
+            "title": "Caja Registradora",
+            "add": "Cerrar nueva caja",
+            "addSuccess": "Caja cerrada con éxito!",
+            "addError": "Error al cerrar la caja, inténtelo de nuevo más tarde",
+            "delete": "Eliminar caja",
+            "deleteSuccess": "Caja eliminada con éxito!",
+            "deleteError": "Error al eliminar la caja, inténtelo de nuevo más tarde",
+            "update": "Actualizar caja registradora",
+            "updateSuccess": "Caja actualizada con éxito!",
+            "updateError": "Error al actualizar la caja, inténtelo de nuevo más tarde",
+            "getByIdError": "Se ha producido un error, inténtelo de nuevo más tarde",
+            "noChanges": "No hay cambios",
+            "date": "Fecha",
+            "totalCoinPayments": "Total monedas",
+            "totalBillPayments": "Total billetes",
+            "totalCardPayments": "Total tarjetas",
+            "totalSpent": "Total gastos",
+            "cashInBox": "Dinero en caja",
+            "reportedTotal": "Total reportado",
+            "calculatedTotal": "Total calculado",
+            "difference": "Diferencia",
+            "coins": {
+              "oneCent": "1 cent",
+              "twoCent": "2 cent",
+              "fiveCent": "5 cent",
+              "tenCent": "10 cent",
+              "twentyCent": "20 cent",
+              "fiftyCent": "50 cent",
+              "oneEuro": "1 €",
+              "twoEuro": "2 €"
+            },
+            "bills": {
+              "fiveEuro": "5 €",
+              "tenEuro": "10 €",
+              "twentyEuro": "20 €",
+              "fiftyEuro": "50 €",
+              "hundredEuro": "100 €"
+            }
+          }
         }
       },
       "catalog": {
