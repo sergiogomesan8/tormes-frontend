@@ -7,6 +7,7 @@ import { UpdateProductDto } from '@shop/admin/dtos/product.dto';
 import { Product } from '@shop/models/product';
 import { Section } from '@shop/models/section';
 import { ProductService } from '@shop/services/product.service';
+import { SectionService } from '@shop/services/section.service';
 
 @Component({
   selector: 'app-update-product',
@@ -18,15 +19,11 @@ export class UpdateProductComponent implements OnInit {
   formGroup: FormGroup;
   imageUrl!: string;
 
-  sections: Section[] = [
-    { name: 'Embutidos', image: 'image' },
-    { name: 'Carnes', image: 'image' },
-    { name: 'Fiambres', image: 'image' },
-    { name: 'Quesos', image: 'image' },
-  ];
+  sections: Section[] = [];
 
   constructor(
     private readonly productService: ProductService,
+    private readonly sectionService: SectionService,
     private readonly snackbarService: SnackbarService,
     private readonly formBuilder: FormBuilder,
     private router: Router,
@@ -47,26 +44,43 @@ export class UpdateProductComponent implements OnInit {
   ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');
     if (productId) {
-      this.productService.findProductById(productId).subscribe((product) => {
-        if (product) {
-          this.product = product;
-          this.formGroup.patchValue({
-            name: this.product.name,
-            section: this.product.section,
-            price: +this.product.price,
-            description: this.product.description,
-            image: this.product.image,
-          });
-          this.imageUrl = environment.production
-            ? this.product.image
-            : `${environment.tormes_backend_images}/products/${this.product.image}`;
-        } else {
-          this.router.navigate(['/admin/products']);
-        }
-      });
+      this.findProductById(productId);
     } else {
       this.router.navigate(['/admin/products']);
     }
+
+    this.findAllSections();
+  }
+
+  findProductById(productId: string) {
+    this.productService.findProductById(productId).subscribe((product) => {
+      if (product) {
+        this.product = product;
+        this.formGroup.patchValue({
+          name: this.product.name,
+          section: this.product.section,
+          price: +this.product.price,
+          description: this.product.description,
+          image: this.product.image,
+        });
+        this.imageUrl = environment.production
+          ? this.product.image
+          : `${environment.tormes_backend_images}/products/${this.product.image}`;
+      } else {
+        this.router.navigate(['/admin/products']);
+      }
+    });
+  }
+
+  findAllSections() {
+    this.sectionService.findAllSections().subscribe({
+      next: (sections) => {
+        this.sections = sections;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
 
   updateProduct(): void {

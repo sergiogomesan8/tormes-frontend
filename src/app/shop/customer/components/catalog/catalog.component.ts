@@ -12,6 +12,8 @@ import { Section } from '@shop/models/section';
 import { isPlatformBrowser } from '@angular/common';
 import { New } from '@shop/models/new';
 import { ProductService } from '@shop/services/product.service';
+import { SectionService } from '@shop/services/section.service';
+import { environment } from '@env';
 
 @Component({
   selector: 'app-catalog',
@@ -23,7 +25,7 @@ export class CatalogComponent implements OnInit {
   carouselWidth!: string;
 
   products: Product[] = [];
-  sections: Section[] = sectionsMock;
+  sections: Section[] = [];
   news: New[] = newsMock;
 
   sectionCarouselItems: CarouselItem[] = [];
@@ -31,13 +33,15 @@ export class CatalogComponent implements OnInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    private readonly productService: ProductService
+    private readonly productService: ProductService,
+    private readonly sectionService: SectionService
   ) {
     this.onResize();
   }
 
   ngOnInit(): void {
     this.findAllProducts();
+    this.findAllSections();
     this.sectionCarouselItems = this.sections.map((section) => ({
       src: section.image,
       alt: section.name,
@@ -56,6 +60,23 @@ export class CatalogComponent implements OnInit {
     this.productService.findAllProducts().subscribe({
       next: (products) => {
         this.products = products;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  getSectionImageUrl(section: Section) {
+    return environment.production
+      ? section.image
+      : `${environment.tormes_backend_images}/sections/${section.image}`;
+  }
+
+  findAllSections() {
+    this.sectionService.findAllSections().subscribe({
+      next: (sections) => {
+        this.sections = sections;
       },
       error: (error) => {
         console.log(error);
@@ -89,28 +110,5 @@ export const newsMock: New[] = [
     name: '¡Nuestro Queso en oferta!',
     description:
       '¡Estas Naviadades, hasta un 50% de descuentos en quesos de la mejor calidad!',
-  },
-];
-
-export const sectionsMock: Section[] = [
-  {
-    name: 'Example Section',
-    image: '../assets/images/embutidos.jpg',
-  },
-  {
-    name: 'Carnes',
-    image: '../assets/images/carne.jpg',
-  },
-  {
-    name: 'Quesos',
-    image: '../assets/images/quesos-3.jpeg',
-  },
-  {
-    name: 'Fiambres',
-    image: '../assets/images/fiambres.jpg',
-  },
-  {
-    name: 'Jamón',
-    image: '../assets/images/jamon.jpg',
   },
 ];
