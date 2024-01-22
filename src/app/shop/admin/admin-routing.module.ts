@@ -9,8 +9,7 @@ import { CreateProductComponent } from './components/create-product/create-produ
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { OrderTableComponent } from './components/order-table/order-table.component';
 import { CashRegistersComponent } from './components/cash-registers/cash-registers.component';
-import { CloseCashRegisterComponent } from './components/close-cash-register/close-cash-register.component';
-import { UpdateCashRegisterComponent } from './components/update-cash-register/update-cash-register.component';
+import { CashRegisterComponent } from './components/cash-register/cash-register.component';
 
 const routes: Routes = [
   {
@@ -28,11 +27,11 @@ const routes: Routes = [
       { path: 'cash-registers', component: CashRegistersComponent },
       {
         path: 'cash-registers/close',
-        component: CloseCashRegisterComponent,
+        component: CashRegisterComponent,
       },
       {
         path: 'cash-registers/update/:id',
-        component: UpdateCashRegisterComponent,
+        component: CashRegisterComponent,
       },
     ],
   },
