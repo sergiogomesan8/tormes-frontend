@@ -93,11 +93,11 @@ export class UpdateCashRegisterComponent implements OnInit {
               reportedTotal: this.cashRegister.reportedTotal,
             });
           } else {
-            this.router.navigate(['/admin/products']);
+            this.router.navigate(['/admin/cash-registers']);
           }
         });
     } else {
-      this.router.navigate(['/admin/products']);
+      this.router.navigate(['/admin/cash-registers']);
     }
   }
 
