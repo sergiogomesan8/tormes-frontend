@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SnackbarService } from '@shared/services/snackbar.service';
 import { CreateCashRegisterDto } from '@shop/admin/dtos/cash-register.dto';
 import { BillValue, Bills, CoinValue, Coins } from '@shop/models/cash-register';
 import { CashRegisterService } from '@shop/services/cash-register.service';
@@ -37,7 +38,8 @@ export class CloseCashRegisterComponent implements OnInit {
 
   constructor(
     private readonly cashRegisterService: CashRegisterService,
-    private readonly formBuilder: FormBuilder
+    private readonly formBuilder: FormBuilder,
+    private readonly snackbarService: SnackbarService
   ) {
     const coinsValidators = this.generateValidators(this.coins);
     const billsValidators = this.generateValidators(this.bills);
@@ -109,7 +111,9 @@ export class CloseCashRegisterComponent implements OnInit {
           },
         });
     } else {
-      console.log('Form is invalid');
+      this.snackbarService.showErrorSnackbar(
+        'shop.admin.dashboard.options.products.fileTypeError'
+      );
     }
   }
 
@@ -172,7 +176,7 @@ export class CloseCashRegisterComponent implements OnInit {
 
   calculateDifference() {
     const difference =
-      this.formGroup.value.reportedTotal - this.calculateFinalTotal();
+      this.calculateFinalTotal() - this.formGroup.value.reportedTotal;
     return parseFloat(difference.toFixed(2));
   }
 }
