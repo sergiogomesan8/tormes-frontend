@@ -1,0 +1,181 @@
+#update-cash-register-product {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  padding: 64px;
+
+  background-color: var(--grey-color);
+
+  .update-cash-register-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto auto 0;
+    padding: 32px;
+    max-width: 850px;
+
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #d8d8d8b3;
+
+    .header-panel {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 60px;
+      padding-left: 4px;
+      border-bottom: 2px solid var(--grey-color);
+
+      fa-icon {
+        cursor: pointer;
+      }
+
+      button-component {
+        margin-left: auto;
+        width: 150px;
+
+        mat-icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 10px;
+          height: 10px;
+        }
+      }
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+
+      .cash-register-values {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        padding-bottom: 32px;
+        margin-bottom: 32px;
+        border-bottom: 2px solid var(--grey-color);
+
+        --bs-gutter-x: 0 !important;
+
+        .sumatory {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: flex-end;
+
+          padding-top: 16px;
+          border-top: 1px solid rgb(150 146 146 / 32%);
+
+          .type {
+            font-size: 14px;
+            line-height: 14px;
+          }
+          .value {
+            font-size: 22px;
+            line-height: 22px;
+            font-weight: 700;
+          }
+        }
+
+        .cash-register-counts {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+
+          .bill,
+          .coin {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            .total-coin-value,
+            .total-bill-value {
+              text-align: right;
+              padding-bottom: 22px;
+
+              .value {
+                font-size: 16px;
+                line-height: 16px;
+                font-weight: 400;
+              }
+            }
+          }
+
+          .sumatory {
+            margin-top: auto;
+          }
+        }
+      }
+
+      .cash-register-extras-totals {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        padding-bottom: 8px;
+        margin-bottom: 24px;
+        border-bottom: 2px solid var(--grey-color);
+        --bs-gutter-x: 0 !important;
+      }
+
+      .cash-register-final-totals {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 24px;
+        --bs-gutter-x: 0 !important;
+
+        .final-total {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: flex-end;
+
+          .type {
+            font-size: 18px;
+            line-height: 18px;
+          }
+          .value {
+            font-size: 26px;
+            line-height: 26px;
+            font-weight: 700;
+          }
+        }
+        .final-difference {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: flex-end;
+
+          .type {
+            font-size: 14px;
+            line-height: 14px;
+          }
+          .value {
+            font-size: 20px;
+            line-height: 20px;
+            font-weight: 700;
+          }
+        }
+      }
+
+      .form-submit {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+
+        button-component {
+          width: 150px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #create-product {
+    height: 100vh;
+  }
+}
