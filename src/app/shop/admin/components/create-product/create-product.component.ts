@@ -45,7 +45,7 @@ export class CreateProductComponent implements OnInit {
     if (data.error) {
       console.log('Error', data.error);
       this.snackbarService.showErrorSnackbar(
-        'shop.admin.dashboard.options.products.fileTypeError'
+        'shop.admin.products.fileTypeError'
       );
     } else if (data.file) {
       this.formGroup.get('image')?.setValue(data.file);

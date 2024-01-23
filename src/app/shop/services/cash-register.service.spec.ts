@@ -118,7 +118,7 @@ describe('Service: CashRegister', () => {
           );
 
           expect(snackbarService.showSuccessSnackbar).toHaveBeenCalledWith(
-            'shop.admin.options.cashRegister.getByIdError'
+            'shop.admin.cashRegister.getByIdError'
           );
         }
       );
@@ -146,7 +146,7 @@ describe('Service: CashRegister', () => {
       );
 
       expect(snackbarService.showSuccessSnackbar).toHaveBeenCalledWith(
-        'shop.admin.options.cashRegister.addSuccess'
+        'shop.admin.cashRegister.addSuccess'
       );
     });
 
@@ -159,7 +159,7 @@ describe('Service: CashRegister', () => {
         (error) => {
           expect(error).toEqual(errorResponse);
           expect(snackbarService.showErrorSnackbar).toHaveBeenCalledWith(
-            'shop.admin.options.cashRegister.addError'
+            'shop.admin.cashRegister.addError'
           );
         }
       );
@@ -193,7 +193,7 @@ describe('Service: CashRegister', () => {
         updateCashRegisterDto
       );
       expect(snackbarService.showSuccessSnackbar).toHaveBeenCalledWith(
-        'shop.admin.options.cashRegister.updateSuccess'
+        'shop.admin.cashRegister.updateSuccess'
       );
     });
 

@@ -73,7 +73,7 @@ export class SectionComponent implements OnInit {
           });
       } else {
         this.snackbarService.showErrorSnackbar(
-          'shop.admin.dashboard.options.sections.noChanges'
+          'shop.admin.sections.noChanges'
         );
       }
     }
@@ -131,7 +131,7 @@ export class SectionComponent implements OnInit {
     if (data.error) {
       console.log('Error', data.error);
       this.snackbarService.showErrorSnackbar(
-        'shop.admin.dashboard.options.products.fileTypeError'
+        'shop.admin.products.fileTypeError'
       );
     } else if (data.file) {
       this.formGroup.get('image')?.setValue(data.file);

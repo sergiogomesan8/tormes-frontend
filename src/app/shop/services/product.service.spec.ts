@@ -96,7 +96,7 @@ describe('ProductService', () => {
           );
 
           expect(snackbarService.showSuccessSnackbar).toHaveBeenCalledWith(
-            'shop.admin.dashboard.options.products.updateError'
+            'shop.admin.products.updateError'
           );
         }
       );
@@ -132,7 +132,7 @@ describe('ProductService', () => {
         formData
       );
       expect(snackbarService.showSuccessSnackbar).toHaveBeenCalledWith(
-        'shop.admin.dashboard.options.products.addSuccess'
+        'shop.admin.products.addSuccess'
       );
     });
 
@@ -145,7 +145,7 @@ describe('ProductService', () => {
         (error) => {
           expect(error).toEqual(errorResponse);
           expect(snackbarService.showErrorSnackbar).toHaveBeenCalledWith(
-            'shop.admin.dashboard.options.products.addError'
+            'shop.admin.products.addError'
           );
         }
       );
@@ -199,7 +199,7 @@ describe('ProductService', () => {
         formData
       );
       expect(snackbarService.showSuccessSnackbar).toHaveBeenCalledWith(
-        'shop.admin.dashboard.options.products.updateSuccess'
+        'shop.admin.products.updateSuccess'
       );
     });
 
@@ -211,7 +211,7 @@ describe('ProductService', () => {
         .subscribe((res) => {
           expect(res).toBeUndefined();
           expect(snackbarService.showErrorSnackbar).toHaveBeenCalledWith(
-            'shop.admin.dashboard.options.products.updateError'
+            'shop.admin.products.updateError'
           );
         });
 
