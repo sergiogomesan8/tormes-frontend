@@ -16,8 +16,8 @@ const routes: Routes = [
     path: '',
     component: CustomerComponent,
     children: [
+      { path: '', component: CatalogComponent },
       { path: 'catalog', component: CatalogComponent },
-      { path: 'catalogo', component: CatalogComponent },
       { path: 'home', component: HomeComponent },
       {
         path: 'customer/place-order',
@@ -47,6 +47,7 @@ const routes: Routes = [
   },
   { path: 'signin', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: '**', redirectTo: 'catalog' },
 ];
 
 @NgModule({
