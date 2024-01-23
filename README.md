@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.6.
 
+## Installation
+
+Run: `npm run install`
+
 ## Local Development sever
 You need to have the backend up and running along with the Docker containers. For instructions, please refer to the README of the tormes-backend repository.
 
@@ -16,3 +20,9 @@ Run `npm run build:local`
 To execute the unit tests with Jest.
 
 Run `npm run coverage` 
+
+## Library Build
+
+Run: `npm run build-library`
+
+Run: `npm run start-library`
