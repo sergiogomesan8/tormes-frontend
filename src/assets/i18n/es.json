@@ -139,6 +139,9 @@
       }
     }
   },
+  "home": {
+    "title": "Inicio"
+  },
   "catalog": {
     "title": "Catálogo"
   },
@@ -149,6 +152,7 @@
     "title": "Empleados"
   },
   "orders": {
-    "title": "Pedidos"
+    "title": "Pedidos",
+    "myOrders": "Mis pedidos"
   }
 }

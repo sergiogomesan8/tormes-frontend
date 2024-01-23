@@ -139,6 +139,9 @@
       }
     }
   },
+  "home": {
+    "title": "Home"
+  },
   "catalog": {
     "title": "Catalog"
   },
@@ -149,6 +152,7 @@
     "title": "Employee"
   },
   "orders": {
-    "title": "Orders"
+    "title": "Orders",
+    "myOrders": "My orders"
   }
 }
