@@ -45,39 +45,34 @@ export class SidebarComponent {
 
   navbarData: NavItem[] = [
     {
-      routerLink: 'dashboard',
+      routerLink: '',
       icon: faHome as unknown as IconName,
       label: 'shop.admin.dashboard.title',
       childOptions: [
         {
           routerLink: 'products',
-          label: 'shop.admin.dashboard.options.products.title',
+          label: 'shop.admin.dashboard.products',
         },
         {
           routerLink: 'sections',
-          label: 'shop.admin.dashboard.options.sections',
+          label: 'shop.admin.dashboard.sections',
         },
       ],
     },
     {
       routerLink: 'catalog',
       icon: faStore as unknown as IconName,
-      label: 'shop.admin.catalog.title',
+      label: 'shop.admin.dashboard.catalog',
     },
     {
       routerLink: 'cash-registers',
       icon: faCashRegister as unknown as IconName,
-      label: 'shop.admin.cashRegister.title',
-    },
-    {
-      routerLink: 'employee-management',
-      icon: faUsers as unknown as IconName,
-      label: 'shop.admin.employee.title',
+      label: 'shop.admin.dashboard.cashRegister',
     },
     {
       routerLink: 'orders',
       icon: faBoxOpen as unknown as IconName,
-      label: 'shop.admin.orders.title',
+      label: 'shop.admin.dashboard.orders',
     },
   ];
 

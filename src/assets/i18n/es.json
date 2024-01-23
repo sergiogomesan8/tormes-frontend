@@ -74,7 +74,12 @@
     },
     "admin": {
       "dashboard": {
-        "title": "Tablero"
+        "title": "Tablero",
+        "products": "Productos",
+        "sections": "Secciones",
+        "catalog": "Catálogo",
+        "orders": "Pedidos",
+        "cashRegister": "Caja registradora"
       },
       "products": {
         "title": "Productos",

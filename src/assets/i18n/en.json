@@ -74,7 +74,12 @@
     },
     "admin": {
       "dashboard": {
-        "title": "Dashboard"
+        "title": "Dashboard",
+        "products": "Products",
+        "sections": "Sections",
+        "catalog": "Catalog",
+        "orders": "Orders",
+        "cashRegister": "Cash Register"
       },
       "products": {
         "title": "Products",
