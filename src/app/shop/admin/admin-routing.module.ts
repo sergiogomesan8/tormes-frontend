@@ -51,6 +51,7 @@ const routes: Routes = [
   },
   { path: 'signin', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
