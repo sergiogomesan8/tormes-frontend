@@ -4,10 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '@env';
 import { SnackbarService } from '@shared/services/snackbar.service';
 import { UpdateProductDto } from '@shop/admin/dtos/product.dto';
-import {
-  CreateSectionDto,
-  UpdateSectionDto,
-} from '@shop/admin/dtos/section.dto';
+import { CreateSectionDto } from '@shop/admin/dtos/section.dto';
 import { Section } from '@shop/models/section';
 import { SectionService } from '@shop/services/section.service';
 
