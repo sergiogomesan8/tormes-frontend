@@ -1,9 +1,11 @@
 <div id="sections-info">
   <div class="sections-container">
     <div class="table-header">
-      <search-component [placeholder]="'Buscar sección...'"></search-component>
+      <search-component
+        [placeholder]="'shop.admin.sections.search' | translate"
+      ></search-component>
       <button-component
-        [label]="'shop.admin.dashboard.options.sections.add' | translate"
+        [label]="'shop.admin.sections.add' | translate"
         [class]="'purple-button'"
         [routerLink]="'/admin/sections/create-section'"
         [type]="'button'"

@@ -9,18 +9,14 @@
     </div>
     <div class="order-info">
       <div class="order-info-header">
-        <h3
-          [translate]="'shop.customer.orders.orderDetails'"
-        ></h3>
+        <h3 [translate]="'shop.customer.orders.orderDetails'"></h3>
       </div>
       <ng-container *ngIf="!isLoading">
         <div class="order-info-content">
           <div class="field deliveryAddress">
             <p
               class="field-title"
-              [translate]="
-                'shop.customer.orders.deliveryAddress'
-              "
+              [translate]="'shop.customer.orders.deliveryAddress'"
             ></p>
             <p class="field-info">{{ order.deliveryAddress }}</p>
           </div>
@@ -65,7 +61,7 @@
               <h4>{{ orderedProduct.product.name }}</h4>
               <p class="section">{{ orderedProduct.product.section }}</p>
               <div class="container-amount">
-                <p>Cantidad:</p>
+                <p [translate]="'shop.admin.products.quantity'"></p>
                 <span class="amount">{{ orderedProduct.amount }}</span>
               </div>
               <div class="container-price">

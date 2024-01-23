@@ -1,9 +1,11 @@
 <div id="products-info">
   <div class="products-container">
     <div class="table-header">
-      <search-component [placeholder]="'Buscar producto...'"></search-component>
+      <search-component
+        [placeholder]="'shop.admin.products.search' | translate"
+      ></search-component>
       <button-component
-        [label]="'shop.admin.dashboard.options.products.add' | translate"
+        [label]="'shop.admin.products.add' | translate"
         [routerLink]="'/admin/products/create-product'"
         [class]="'purple-button'"
         [type]="'button'"
