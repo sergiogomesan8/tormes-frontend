@@ -18,21 +18,24 @@
     </button>
 
     <mat-menu class="navbar-menu app-menu" #appMenu="matMenu">
-      <a mat-menu-item routerLink="home">Inicio</a>
-      <button mat-menu-item routerLink="catalog">Catalogo</button>
+      <a mat-menu-item routerLink="home" [translate]="'home.title'"></a>
+      <button
+        mat-menu-item
+        routerLink="catalog"
+        [translate]="'catalog.title'"
+      ></button>
       <button
         mat-menu-item
         [matMenuTriggerFor]="ordersMenu"
         routerLink="/orders"
-      >
-        Pedidos
-      </button>
+        [translate]="'orders.title'"
+      ></button>
     </mat-menu>
 
     <div class="navbar-menu-big-size">
-      <a routerLink="home">Inicio</a>
-      <a routerLink="catalog">Catalogo</a>
-      <a [matMenuTriggerFor]="ordersMenu">Pedidos</a>
+      <a routerLink="home" [translate]="'home.title'"></a>
+      <a routerLink="catalog" [translate]="'catalog.title'"></a>
+      <a [matMenuTriggerFor]="ordersMenu" [translate]="'orders.title'"></a>
     </div>
 
     <mat-menu class="orders-menu" #ordersMenu="matMenu">
@@ -44,12 +47,16 @@
       [placeholder]="'Buscar producto..'"
     ></search-component>
 
+    <lang-selector
+      [language]="'es'"
+      (useLanguageChange)="useLanguage($event)"
+    ></lang-selector>
+
     <div class="user-info" *ngIf="customer">
       <mat-icon>person_pin</mat-icon>
       <a [matMenuTriggerFor]="profileMenu">{{ customer.name }}</a>
     </div>
     <mat-menu class="profile-menu" #profileMenu="matMenu">
-      <button mat-menu-item>Mi perfil</button>
       <button mat-menu-item (click)="logout()">Cerrar Sesión</button>
     </mat-menu>
 

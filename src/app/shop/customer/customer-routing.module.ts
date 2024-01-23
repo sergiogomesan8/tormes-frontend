@@ -16,8 +16,8 @@ const routes: Routes = [
     path: '',
     component: CustomerComponent,
     children: [
+      { path: '', component: CatalogComponent },
       { path: 'catalog', component: CatalogComponent },
-      { path: 'catalogo', component: CatalogComponent },
       { path: 'home', component: HomeComponent },
       {
         path: 'customer/place-order',

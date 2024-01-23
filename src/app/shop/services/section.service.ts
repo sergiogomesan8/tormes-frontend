@@ -29,7 +29,7 @@ export class SectionService {
         }),
         catchError((error: undefined) => {
           this.snackbarService.showErrorSnackbar(
-            'shop.admin.dashboard.options.sections.getByIdError'
+            'shop.admin.sections.getByIdError'
           );
           return of(error);
         })
@@ -54,13 +54,13 @@ export class SectionService {
     return this.httpService.post(this.sectionEndPoint.ADD, formData).pipe(
       map((response: Section) => {
         this.snackbarService.showSuccessSnackbar(
-          'shop.admin.dashboard.options.sections.addSuccess'
+          'shop.admin.sections.addSuccess'
         );
         return response;
       }),
       catchError((error: undefined) => {
         this.snackbarService.showErrorSnackbar(
-          'shop.admin.dashboard.options.sections.addError'
+          'shop.admin.sections.addError'
         );
         return of(error);
       })
@@ -85,13 +85,13 @@ export class SectionService {
       .pipe(
         map((response: undefined) => {
           this.snackbarService.showSuccessSnackbar(
-            'shop.admin.dashboard.options.sections.updateSuccess'
+            'shop.admin.sections.updateSuccess'
           );
           return response;
         }),
         catchError((error: undefined) => {
           this.snackbarService.showErrorSnackbar(
-            'shop.admin.dashboard.options.sections.updateError'
+            'shop.admin.sections.updateError'
           );
           return of(error);
         })
@@ -104,13 +104,13 @@ export class SectionService {
       .pipe(
         map((response: undefined) => {
           this.snackbarService.showSuccessSnackbar(
-            'shop.admin.dashboard.options.sections.deleteSuccess'
+            'shop.admin.sections.deleteSuccess'
           );
           return response;
         }),
         catchError((error: undefined) => {
           this.snackbarService.showErrorSnackbar(
-            'shop.admin.dashboard.options.sections.deleteError'
+            'shop.admin.sections.deleteError'
           );
           return of(error);
         })

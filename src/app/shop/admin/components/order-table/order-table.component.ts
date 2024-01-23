@@ -44,7 +44,6 @@ export class OrderTableComponent implements OnInit {
   }
 
   updateOrderStatus(order: Order, orderStatus: OrderStatus): void {
-    console.log('updateOrderStatus');
     this.orderService
       .updateOrderStatus(order.id, { status: orderStatus })
       .subscribe({

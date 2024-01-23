@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CustomerNavbarComponent } from './customer-navbar.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { TranslateService } from '@ngx-translate/core';
 
 describe('CustomerNavbarComponent', () => {
   let component: CustomerNavbarComponent;
@@ -12,6 +13,14 @@ describe('CustomerNavbarComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [CustomerNavbarComponent],
       imports: [MatMenuModule, NoopAnimationsModule],
+      providers: [
+        {
+          provide: TranslateService,
+          useValue: {
+            use: jest.fn(),
+          },
+        },
+      ],
     }).compileComponents();
   });
 
@@ -49,5 +58,14 @@ describe('CustomerNavbarComponent', () => {
     component.shoppingCartButtonClick.emit = jest.fn();
     component.shoppingCart();
     expect(component.shoppingCartButtonClick.emit).toHaveBeenCalled();
+  });
+
+  it('should call translate.use with the correct language when useLanguage is called', () => {
+    const translateService = TestBed.inject(TranslateService);
+    const useSpy = jest.spyOn(translateService, 'use');
+
+    component.useLanguage('en');
+
+    expect(useSpy).toHaveBeenCalledWith('en');
   });
 });

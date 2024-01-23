@@ -8,7 +8,7 @@
       ></fa-icon>
 
       <button-component
-        [label]="'shop.admin.dashboard.options.products.add' | translate"
+        [label]="'shop.admin.products.add' | translate"
         [class]="'purple-button'"
         [type]="'submit'"
         [disabled]="!formGroup.valid"
@@ -19,7 +19,7 @@
     </div>
     <div class="form-creation">
       <div class="form-header">
-        <h3>Create Product</h3>
+        <h3 [translate]="'shop.admin.products.create'"></h3>
       </div>
       <form
         class="form-container row"
@@ -29,9 +29,7 @@
       >
         <div class="col-sm-12 col-md-6">
           <mat-form-field appearance="outline" class="col-12">
-            <mat-label
-              [translate]="'shop.admin.dashboard.options.products.name'"
-            ></mat-label>
+            <mat-label [translate]="'shop.admin.products.name'"></mat-label>
             <input
               matInput
               formControlName="name"
@@ -41,9 +39,7 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="col-12">
-            <mat-label
-              [translate]="'shop.admin.dashboard.options.products.section'"
-            ></mat-label>
+            <mat-label [translate]="'shop.admin.products.section'"></mat-label>
             <mat-select formControlName="section" required>
               <mat-option
                 *ngFor="let section of sections"
@@ -55,9 +51,7 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="col-12">
-            <mat-label
-              [translate]="'shop.admin.dashboard.options.products.price'"
-            ></mat-label>
+            <mat-label [translate]="'shop.admin.products.price'"></mat-label>
             <input
               matInput
               type="number"
@@ -70,14 +64,14 @@
 
         <div class="image-picker col-sm-12 col-md-6">
           <file-upload-component
-            [label]="'shop.admin.dashboard.options.products.image' | translate"
+            [label]="'shop.admin.products.image' | translate"
             (fileSelected)="handleFile($event)"
           ></file-upload-component>
         </div>
 
         <mat-form-field appearance="outline" class="description col-12">
           <mat-label
-            [translate]="'shop.admin.dashboard.options.products.description'"
+            [translate]="'shop.admin.products.description'"
           ></mat-label>
           <input
             matInput

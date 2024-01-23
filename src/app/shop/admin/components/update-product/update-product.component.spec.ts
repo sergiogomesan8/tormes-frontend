@@ -187,7 +187,7 @@ describe('UpdateProductComponent', () => {
       component.product = product;
       component.updateProduct();
       expect(snackbarService.showErrorSnackbar).toHaveBeenCalledWith(
-        'shop.admin.dashboard.options.products.noChanges'
+        'shop.admin.products.noChanges'
       );
     });
 
@@ -225,7 +225,7 @@ describe('UpdateProductComponent', () => {
       const error = 'Test error';
       component.handleFile({ error });
       expect(snackbarService.showErrorSnackbar).toHaveBeenCalledWith(
-        'shop.admin.dashboard.options.products.fileTypeError'
+        'shop.admin.products.fileTypeError'
       );
     });
   });

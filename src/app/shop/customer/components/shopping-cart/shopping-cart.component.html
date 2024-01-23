@@ -29,7 +29,7 @@
           <h4>{{ shoppingCartProduct.product.name }}</h4>
           <p class="section">{{ shoppingCartProduct.product.section }}</p>
           <div class="container-amount">
-            <p>Cantidad:</p>
+            <p [translate]="'shop.admin.products.quantity'">:</p>
             <span class="amount">{{ shoppingCartProduct.amount }}</span>
           </div>
           <div class="container-price">
@@ -55,7 +55,7 @@
 
   <div class="order-info-container" *ngIf="totalOrderPrice > 0">
     <div class="container-total">
-      <p>Total:</p>
+      <p [translate]="'shop.customer.orders.total'">:</p>
       <span class="total-price">{{ totalOrderPrice }} €</span>
     </div>
     <button-component

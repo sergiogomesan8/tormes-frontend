@@ -20,7 +20,7 @@
   </button-component>
   <div class="container-amount-interaction" *ngIf="totalProductAmount > 0">
     <div class="container-amount">
-      <p>Cantidad:</p>
+      <p [translate]="'shop.admin.products.quantity'">:</p>
       <span class="amount">{{ totalProductAmount }}</span>
     </div>
     <interaction-control

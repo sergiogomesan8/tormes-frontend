@@ -91,7 +91,7 @@ describe('Sectionservice', () => {
           );
 
           expect(snackbarService.showSuccessSnackbar).toHaveBeenCalledWith(
-            'shop.admin.dashboard.options.sections.updateError'
+            'shop.admin.sections.updateError'
           );
         }
       );
@@ -121,7 +121,7 @@ describe('Sectionservice', () => {
         formData
       );
       expect(snackbarService.showSuccessSnackbar).toHaveBeenCalledWith(
-        'shop.admin.dashboard.options.sections.addSuccess'
+        'shop.admin.sections.addSuccess'
       );
     });
 
@@ -134,7 +134,7 @@ describe('Sectionservice', () => {
         (error) => {
           expect(error).toEqual(errorResponse);
           expect(snackbarService.showErrorSnackbar).toHaveBeenCalledWith(
-            'shop.admin.dashboard.options.sections.addError'
+            'shop.admin.sections.addError'
           );
         }
       );
@@ -176,7 +176,7 @@ describe('Sectionservice', () => {
         formData
       );
       expect(snackbarService.showSuccessSnackbar).toHaveBeenCalledWith(
-        'shop.admin.dashboard.options.sections.updateSuccess'
+        'shop.admin.sections.updateSuccess'
       );
     });
 
@@ -188,7 +188,7 @@ describe('Sectionservice', () => {
         .subscribe((res) => {
           expect(res).toBeUndefined();
           expect(snackbarService.showErrorSnackbar).toHaveBeenCalledWith(
-            'shop.admin.dashboard.options.sections.updateError'
+            'shop.admin.sections.updateError'
           );
         });
 

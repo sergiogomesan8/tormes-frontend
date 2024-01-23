@@ -18,19 +18,28 @@
     </button>
 
     <mat-menu class="navbar-menu app-menu" #appMenu="matMenu">
-      <a mat-menu-item routerLink="/home">Inicio</a>
-      <button mat-menu-item routerLink="catalog">Catalogo</button>
+      <a mat-menu-item routerLink="/home" [translate]="'home.title'"></a>
+      <button
+        mat-menu-item
+        routerLink="catalog"
+        [translate]="'catalog.title'"
+      ></button>
     </mat-menu>
 
     <div class="navbar-menu-big-size">
-      <a routerLink="home">Inicio</a>
-      <a routerLink="catalog">Catalogo</a>
+      <a routerLink="home" [translate]="'home.title'"></a>
+      <a routerLink="catalog" [translate]="'catalog.title'"></a>
     </div>
 
     <search-component
       class="d-none d-md-flex"
       [placeholder]="'Buscar producto..'"
     ></search-component>
+
+    <lang-selector
+      [language]="'es'"
+      (useLanguageChange)="useLanguage($event)"
+    ></lang-selector>
 
     <div class="authentication">
       <button-component

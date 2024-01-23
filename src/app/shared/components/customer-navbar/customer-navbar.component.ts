@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { TranslateService } from '@ngx-translate/core';
 import { User } from '@shop/models/user.model';
 
 @Component({
@@ -16,11 +17,13 @@ import { User } from '@shop/models/user.model';
 export class CustomerNavbarComponent {
   @Input() customer: User | undefined;
   @Input() shoppingCartItems: number = 0;
-  
+
   @ViewChild(MatMenuTrigger) trigger!: MatMenuTrigger;
   @Output() logoutButtonClick: EventEmitter<void> = new EventEmitter<void>();
   @Output() shoppingCartButtonClick: EventEmitter<void> =
     new EventEmitter<void>();
+
+  constructor(public translate: TranslateService) {}
 
   someMethod() {
     this.trigger.openMenu();
@@ -32,5 +35,9 @@ export class CustomerNavbarComponent {
 
   shoppingCart() {
     this.shoppingCartButtonClick.emit();
+  }
+
+  useLanguage(language: string): void {
+    this.translate.use(language);
   }
 }

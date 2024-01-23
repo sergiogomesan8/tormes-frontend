@@ -143,7 +143,7 @@ export class CashRegisterComponent implements OnInit {
         });
     } else {
       this.snackbarService.showErrorSnackbar(
-        'shop.admin.dashboard.options.products.fileTypeError'
+        'shop.admin.cashRegister.noChanges'
       );
     }
   }
@@ -179,7 +179,7 @@ export class CashRegisterComponent implements OnInit {
         });
     } else {
       this.snackbarService.showErrorSnackbar(
-        'shop.admin.dashboard.options.products.fileTypeError'
+        'shop.admin.cashRegister.noChanges'
       );
     }
   }
