@@ -6,7 +6,6 @@ import {
   faBoxOpen,
   faCashRegister,
   faStore,
-  faUsers,
   faChevronDown,
 } from '@fortawesome/free-solid-svg-icons';
 
