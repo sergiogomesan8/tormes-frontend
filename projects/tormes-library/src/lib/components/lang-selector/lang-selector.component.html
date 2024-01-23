@@ -1,0 +1,8 @@
+<div class="lang-selector">
+  <a class="lang" *ngIf="language === 'en'" (click)="useLanguage('es')">
+    <img [src]="spainImage" alt="Spain" />
+  </a>
+  <a class="lang" *ngIf="language === 'es'" (click)="useLanguage('en')">
+    <img [src]="englandImage" alt="England" />
+  </a>
+</div>

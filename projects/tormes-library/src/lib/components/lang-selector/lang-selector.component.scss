@@ -1,0 +1,26 @@
+/********** HEADER/NAV COMPONENT STYLES **********/
+
+.lang-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+  .lang {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      width: 45px;
+    }
+  }
+}

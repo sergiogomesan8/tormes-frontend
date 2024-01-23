@@ -159,7 +159,7 @@ describe('CreateProductComponent', () => {
       const error = 'Test error';
       component.handleFile({ error });
       expect(snackbarService.showErrorSnackbar).toHaveBeenCalledWith(
-        'shop.admin.dashboard.options.products.fileTypeError'
+        'shop.admin.products.fileTypeError'
       );
     });
   });

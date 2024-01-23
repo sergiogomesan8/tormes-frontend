@@ -161,7 +161,7 @@ describe('SectionComponent', () => {
       component.section = section;
       component.updateSection();
       expect(snackbarService.showErrorSnackbar).toHaveBeenCalledWith(
-        'shop.admin.dashboard.options.sections.noChanges'
+        'shop.admin.sections.noChanges'
       );
     });
 
@@ -196,7 +196,7 @@ describe('SectionComponent', () => {
       const error = 'Test error';
       component.handleFile({ error });
       expect(snackbarService.showErrorSnackbar).toHaveBeenCalledWith(
-        'shop.admin.dashboard.options.products.fileTypeError'
+        'shop.admin.sections.fileTypeError'
       );
     });
   });

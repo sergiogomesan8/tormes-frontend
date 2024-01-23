@@ -9,7 +9,7 @@
 
       <button-component
         *ngIf="!section"
-        [label]="'shop.admin.dashboard.options.sections.add' | translate"
+        [label]="'shop.admin.sections.add' | translate"
         [class]="'purple-button'"
         [type]="'submit'"
         [disabled]="!formGroup.valid"
@@ -20,7 +20,7 @@
 
       <button-component
         *ngIf="section"
-        [label]="'shop.admin.dashboard.options.sections.update' | translate"
+        [label]="'shop.admin.sections.update' | translate"
         [class]="'purple-button'"
         [type]="'submit'"
         [disabled]="!formGroup.valid"
@@ -31,7 +31,7 @@
     </div>
     <div class="form-creation">
       <div class="form-header">
-        <h3>Section</h3>
+        <h3 [translate]="'shop.admin.sections.create'"></h3>
       </div>
       <form
         class="form-container row"
@@ -41,9 +41,7 @@
       >
         <div class="col-sm-12 col-md-6">
           <mat-form-field appearance="outline" class="col-12">
-            <mat-label
-              [translate]="'shop.admin.dashboard.options.products.name'"
-            ></mat-label>
+            <mat-label [translate]="'shop.admin.sections.name'"></mat-label>
             <input
               matInput
               formControlName="name"
@@ -55,7 +53,7 @@
 
         <div class="image-picker col-sm-12 col-md-6">
           <file-upload-component
-            [label]="'shop.admin.dashboard.options.products.image' | translate"
+            [label]="'shop.admin.sections.image' | translate"
             (fileSelected)="handleFile($event)"
           ></file-upload-component>
         </div>

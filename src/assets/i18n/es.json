@@ -40,11 +40,15 @@
         "register": "Registrarse",
         "error": "Error al iniciar sesión, inténtelo de nuevo más tarde"
       },
+      "catalog": {
+        "title": "Catálogo",
+        "lookAt": "Échales un vistazo"
+      },
       "orders": {
         "title": "Pedidos",
         "status": "Estado",
         "date": "Fecha",
-        "total": "Total",
+        "total": "Total:",
         "deliveryAddress": "Dirección de entrega",
         "billingAddress": "Dirección de facturación",
         "customerName": "Nombre",
@@ -75,82 +79,115 @@
     "admin": {
       "dashboard": {
         "title": "Tablero",
-        "options": {
-          "products": {
-            "title": "Productos",
-            "add": "Añadir producto",
-            "addSuccess": "Producto añadido con éxito!",
-            "addError": "Error al añadir el producto, inténtelo de nuevo más tarde",
-            "name": "Nombre del producto",
-            "section": "Sección",
-            "price": "Precio",
-            "image": "Imagen",
-            "description": "Descripción...",
-            "delete": "Eliminar producto",
-            "deleteSuccess": "Producto eliminado con éxito!",
-            "deleteError": "Error al eliminar el producto, inténtelo de nuevo más tarde",
-            "update": "Actualizar producto",
-            "updateSuccess": "Producto actualizado con éxito!",
-            "updateError": "Error al actualizar el producto, inténtelo de nuevo más tarde",
-            "fileTypeError": "El archivo debe ser 'png', 'jpg' o 'jpeg'",
-            "getByIdError": "Se ha producido un error, inténtelo de nuevo más tarde",
-            "noChanges": "No hay cambios"
-          },
-          "sections": "Secciones",
-          "cashRegister": {
-            "title": "Caja Registradora",
-            "add": "Cerrar nueva caja",
-            "addSuccess": "Caja cerrada con éxito!",
-            "addError": "Error al cerrar la caja, inténtelo de nuevo más tarde",
-            "delete": "Eliminar caja",
-            "deleteSuccess": "Caja eliminada con éxito!",
-            "deleteError": "Error al eliminar la caja, inténtelo de nuevo más tarde",
-            "update": "Actualizar caja registradora",
-            "updateSuccess": "Caja actualizada con éxito!",
-            "updateError": "Error al actualizar la caja, inténtelo de nuevo más tarde",
-            "getByIdError": "Se ha producido un error, inténtelo de nuevo más tarde",
-            "noChanges": "No hay cambios",
-            "date": "Fecha",
-            "totalCoinPayments": "Total monedas",
-            "totalBillPayments": "Total billetes",
-            "totalCardPayments": "Total tarjetas",
-            "totalSpent": "Total gastos",
-            "cashInBox": "Dinero en caja",
-            "reportedTotal": "Total reportado",
-            "calculatedTotal": "Total calculado",
-            "difference": "Diferencia",
-            "coins": {
-              "oneCent": "1 cent",
-              "twoCent": "2 cent",
-              "fiveCent": "5 cent",
-              "tenCent": "10 cent",
-              "twentyCent": "20 cent",
-              "fiftyCent": "50 cent",
-              "oneEuro": "1 €",
-              "twoEuro": "2 €"
-            },
-            "bills": {
-              "fiveEuro": "5 €",
-              "tenEuro": "10 €",
-              "twentyEuro": "20 €",
-              "fiftyEuro": "50 €",
-              "hundredEuro": "100 €"
-            }
-          }
-        }
+        "products": "Productos",
+        "sections": "Secciones",
+        "catalog": "Catálogo",
+        "orders": "Pedidos",
+        "cashRegister": "Caja registradora"
       },
-      "catalog": {
-        "title": "Catálogo"
+      "products": {
+        "title": "Productos",
+        "name": "Nombre del producto",
+        "section": "Sección",
+        "price": "Precio",
+        "image": "Imagen",
+        "description": "Descripción...",
+        "quantity": "Cantidad:",
+        "search": "Buscar producto...",
+        "create": "Crear producto",
+        "add": "Añadir producto",
+        "addSuccess": "Producto añadido con éxito!",
+        "addError": "Error al añadir el producto, inténtelo de nuevo más tarde",
+        "delete": "Eliminar producto",
+        "deleteSuccess": "Producto eliminado con éxito!",
+        "deleteError": "Error al eliminar el producto, inténtelo de nuevo más tarde",
+        "update": "Actualizar producto",
+        "updateSuccess": "Producto actualizado con éxito!",
+        "updateError": "Error al actualizar el producto, inténtelo de nuevo más tarde",
+        "fileTypeError": "El archivo debe ser 'png', 'jpg' o 'jpeg'",
+        "getByIdError": "Se ha producido un error, inténtelo de nuevo más tarde",
+        "noChanges": "No hay cambios"
+      },
+      "sections": {
+        "title": "Secciones",
+        "name": "Nombre de la sección",
+        "image": "Imagen",
+        "search": "Buscar sección...",
+        "create": "Crear sección",
+        "add": "Añadir sección",
+        "addSuccess": "Sección añadida con éxito!",
+        "addError": "Error al añadir la sección, inténtelo de nuevo más tarde",
+        "delete": "Eliminar sección",
+        "deleteSuccess": "Sección eliminada con éxito!",
+        "deleteError": "Error al eliminar la sección, inténtelo de nuevo más tarde",
+        "update": "Actualizar sección",
+        "updateSuccess": "Sección actualizada con éxito!",
+        "updateError": "Error al actualizar la sección, inténtelo de nuevo más tarde",
+        "fileTypeError": "El archivo debe ser 'png', 'jpg' o 'jpeg'",
+        "getByIdError": "Se ha producido un error, inténtelo de nuevo más tarde",
+        "noChanges": "No hay cambios"
       },
       "cashRegister": {
-        "title": "Caja"
-      },
-      "employee": {
-        "title": "Empleados"
-      },
-      "orders": {
-        "title": "Pedidos"
+        "title": "Caja Registradora",
+        "date": "Fecha",
+        "totalCoinPayments": "Total monedas",
+        "totalBillPayments": "Total billetes",
+        "totalCardPayments": "Total tarjetas",
+        "totalSpent": "Total gastos",
+        "cashInBox": "Dinero en caja",
+        "reportedTotal": "Total reportado",
+        "calculatedTotal": "Total calculado",
+        "difference": "Diferencia",
+        "coins": {
+          "title": "Monedas",
+          "oneCent": "1 cent",
+          "twoCent": "2 cent",
+          "fiveCent": "5 cent",
+          "tenCent": "10 cent",
+          "twentyCent": "20 cent",
+          "fiftyCent": "50 cent",
+          "oneEuro": "1 €",
+          "twoEuro": "2 €"
+        },
+        "bills": {
+          "title": "Billetes",
+          "fiveEuro": "5 €",
+          "tenEuro": "10 €",
+          "twentyEuro": "20 €",
+          "fiftyEuro": "50 €",
+          "hundredEuro": "100 €"
+        },
+        "add": "Cerrar nueva caja",
+        "addSuccess": "Caja cerrada con éxito!",
+        "addError": "Error al cerrar la caja, inténtelo de nuevo más tarde",
+        "delete": "Eliminar caja",
+        "deleteSuccess": "Caja eliminada con éxito!",
+        "deleteError": "Error al eliminar la caja, inténtelo de nuevo más tarde",
+        "update": "Actualizar caja registradora",
+        "updateSuccess": "Caja actualizada con éxito!",
+        "updateError": "Error al actualizar la caja, inténtelo de nuevo más tarde",
+        "getByIdError": "Se ha producido un error, inténtelo de nuevo más tarde",
+        "noChanges": "No hay cambios"
       }
     }
+  },
+  "home": {
+    "title": "Inicio"
+  },
+  "catalog": {
+    "title": "Catálogo"
+  },
+  "cashRegister": {
+    "title": "Caja"
+  },
+  "employee": {
+    "title": "Empleados"
+  },
+  "orders": {
+    "title": "Pedidos",
+    "myOrders": "Mis pedidos"
+  },
+  "logout": {
+    "title": "Cerrar sesión"
   }
 }

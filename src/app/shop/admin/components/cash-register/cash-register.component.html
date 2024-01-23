@@ -9,9 +9,7 @@
     </div>
     <div class="form-creation">
       <div class="form-header">
-        <h3
-          [translate]="'shop.admin.dashboard.options.cashRegister.title'"
-        ></h3>
+        <h3 [translate]="'shop.admin.cashRegister.title'"></h3>
       </div>
       <form
         class="form-container row"
@@ -24,10 +22,7 @@
             <div class="coin col-12" *ngFor="let coinName of coinNames">
               <mat-form-field appearance="outline" class="col-9">
                 <mat-label
-                  [translate]="
-                    'shop.admin.dashboard.options.cashRegister.coins.' +
-                    coinName
-                  "
+                  [translate]="'shop.admin.cashRegister.coins.' + coinName"
                 ></mat-label>
                 <input
                   matInput
@@ -44,7 +39,10 @@
               </div>
             </div>
             <div class="sumatory">
-              <label class="type">Monedas</label>
+              <label
+                class="type"
+                [translate]="'shop.admin.cashRegister.coins.title'"
+              ></label>
               <label class="value">{{ calculateTotalCoinValue() }} €</label>
             </div>
           </div>
@@ -52,10 +50,7 @@
             <div class="bill col-12" *ngFor="let billName of billNames">
               <mat-form-field appearance="outline" class="col-9">
                 <mat-label
-                  [translate]="
-                    'shop.admin.dashboard.options.cashRegister.bills.' +
-                    billName
-                  "
+                  [translate]="'shop.admin.cashRegister.bills.' + billName"
                 ></mat-label>
                 <input
                   matInput
@@ -72,7 +67,10 @@
               </div>
             </div>
             <div class="sumatory">
-              <label class="type">Billetes</label>
+              <label
+                class="type"
+                [translate]="'shop.admin.cashRegister.bills.title'"
+              ></label>
               <label class="value">{{ calculateTotalBillValue() }} €</label>
             </div>
           </div>
@@ -82,9 +80,7 @@
             <div class="extra">
               <mat-form-field appearance="outline" class="col-12">
                 <mat-label
-                  [translate]="
-                    'shop.admin.dashboard.options.cashRegister.totalSpent'
-                  "
+                  [translate]="'shop.admin.cashRegister.totalSpent'"
                 ></mat-label>
                 <input
                   matInput
@@ -98,9 +94,7 @@
             <div class="extra">
               <mat-form-field appearance="outline" class="col-12">
                 <mat-label
-                  [translate]="
-                    'shop.admin.dashboard.options.cashRegister.cashInBox'
-                  "
+                  [translate]="'shop.admin.cashRegister.cashInBox'"
                 ></mat-label>
                 <input
                   matInput
@@ -116,9 +110,7 @@
             <div class="total">
               <mat-form-field appearance="outline" class="col-12">
                 <mat-label
-                  [translate]="
-                    'shop.admin.dashboard.options.cashRegister.totalCardPayments'
-                  "
+                  [translate]="'shop.admin.cashRegister.totalCardPayments'"
                 ></mat-label>
                 <input
                   matInput
@@ -132,9 +124,7 @@
             <div class="total">
               <mat-form-field appearance="outline" class="col-12">
                 <mat-label
-                  [translate]="
-                    'shop.admin.dashboard.options.cashRegister.reportedTotal'
-                  "
+                  [translate]="'shop.admin.cashRegister.reportedTotal'"
                 ></mat-label>
                 <input
                   matInput
@@ -160,7 +150,7 @@
       </form>
       <div class="form-submit" *ngIf="!cashRegister">
         <button-component
-          [label]="'shop.admin.dashboard.options.cashRegister.add' | translate"
+          [label]="'shop.admin.cashRegister.add' | translate"
           [class]="'purple-button'"
           [type]="'submit'"
           (click)="closeCashRegister()"
@@ -170,9 +160,7 @@
       </div>
       <div class="form-submit" *ngIf="cashRegister">
         <button-component
-          [label]="
-            'shop.admin.dashboard.options.cashRegister.update' | translate
-          "
+          [label]="'shop.admin.cashRegister.update' | translate"
           [class]="'purple-button'"
           [type]="'submit'"
           (click)="updateCashRegister()"

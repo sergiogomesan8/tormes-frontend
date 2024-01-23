@@ -40,11 +40,15 @@
         "register": "Sing in",
         "error": "Error login in, please try again later"
       },
+      "catalog": {
+        "title": "Catalog",
+        "lookAt": "Take a look at them"
+      },
       "orders": {
         "title": "Orders",
         "status": "Status",
         "date": "Date",
-        "total": "Total",
+        "total": "Total:",
         "deliveryAddress": "Delivery address",
         "billingAddress": "Billing address",
         "customerName": "Name",
@@ -75,82 +79,115 @@
     "admin": {
       "dashboard": {
         "title": "Dashboard",
-        "options": {
-          "products": {
-            "title": "Products",
-            "add": "Add product",
-            "addSuccess": "Product added successfully!",
-            "addError": "Error adding product, please try again later",
-            "name": "Product Name",
-            "section": "Section",
-            "price": "Price",
-            "image": "Image",
-            "description": "Description...",
-            "delete": "Delete product",
-            "deleteSuccess": "Product deleted successfully! ",
-            "deleteError": "Error while deleting product, try again later",
-            "update": "Update producto",
-            "updateSuccess": "Product updated successfully!",
-            "updateError": "Error while updating the product, please try again later",
-            "fileTypeError": "The file must be 'png', 'jpg' or 'jpeg'",
-            "getByIdError": "An error has occurred, please try again later",
-            "noChanges": "No changes"
-          },
-          "sections": "Sections",
-          "cashRegister": {
-            "title": "Cash Register",
-            "add": "Close cash register",
-            "addSuccess": "Cash regsiter closed successfully!",
-            "addError": "Error closing cash register, please try again later",
-            "delete": "Delete cash register",
-            "deleteSuccess": "Cash register deleted successfully!",
-            "deleteError": "Error while deleting cash register, try again later",
-            "update": "Update cash register",
-            "updateSuccess": "Cash register updated successfully!",
-            "updateError": "Error while updating the cash register, please try again later",
-            "getByIdError": "An error has occurred, please try again later",
-            "noChanges": "No changes",
-            "date": "Date",
-            "totalCoinPayments": "Coins total",
-            "totalBillPayments": "Bills total",
-            "totalCardPayments": "Cards total",
-            "totalSpent": "Total spent",
-            "cashInBox": "Cash in Cash",
-            "reportedTotal": "Reported total",
-            "calculatedTotal": "Calculated total",
-            "difference": "Difference",
-            "coins": {
-              "oneCent": "1 cent",
-              "twoCent": "2 cent",
-              "fiveCent": "5 cent",
-              "tenCent": "10 cent",
-              "twentyCent": "20 cent",
-              "fiftyCent": "50 cent",
-              "oneEuro": "1 €",
-              "twoEuro": "2 €"
-            },
-            "bills": {
-              "fiveEuro": "5 €",
-              "tenEuro": "10 €",
-              "twentyEuro": "20 €",
-              "fiftyEuro": "50 €",
-              "hundredEuro": "100 €"
-            }
-          }
-        }
+        "products": "Products",
+        "sections": "Sections",
+        "catalog": "Catalog",
+        "orders": "Orders",
+        "cashRegister": "Cash Register"
       },
-      "catalog": {
-        "title": "Catalog"
+      "products": {
+        "title": "Products",
+        "name": "Product Name",
+        "section": "Section",
+        "price": "Price",
+        "image": "Image",
+        "description": "Description...",
+        "quantity": "Quantity: ",
+        "search": "Search product...",
+        "create": "Create product",
+        "add": "Add product",
+        "addSuccess": "Product added successfully!",
+        "addError": "Error adding product, please try again later",
+        "delete": "Delete product",
+        "deleteSuccess": "Product deleted successfully! ",
+        "deleteError": "Error while deleting product, try again later",
+        "update": "Update product",
+        "updateSuccess": "Product updated successfully!",
+        "updateError": "Error while updating the product, please try again later",
+        "getByIdError": "An error has occurred, please try again later",
+        "fileTypeError": "The file must be 'png', 'jpg' or 'jpeg'",
+        "noChanges": "No changes"
+      },
+      "sections": {
+        "title": "Sections",
+        "name": "Section name",
+        "image": "Image",
+        "search": "Search section...",
+        "create": "Create section",
+        "add": "Add section",
+        "addSuccess": "Section added successfully!",
+        "addError": "Error adding section, please try again later",
+        "delete": "Delete section",
+        "deleteSuccess": "Section deleted successfully! ",
+        "deleteError": "Error while deleting section, try again later",
+        "update": "Update section",
+        "updateSuccess": "Section updated successfully!",
+        "updateError": "Error while updating the section, please try again later",
+        "getByIdError": "An error has occurred, please try again later",
+        "fileTypeError": "The file must be 'png', 'jpg' or 'jpeg'",
+        "noChanges": "No changes"
       },
       "cashRegister": {
-        "title": "Cash Register"
-      },
-      "employee": {
-        "title": "Employee"
-      },
-      "orders": {
-        "title": "Orders"
+        "title": "Cash Register",
+        "date": "Date",
+        "totalCoinPayments": "Coins total",
+        "totalBillPayments": "Bills total",
+        "totalCardPayments": "Cards total",
+        "totalSpent": "Total spent",
+        "cashInBox": "Cash in Cash",
+        "reportedTotal": "Reported total",
+        "calculatedTotal": "Calculated total",
+        "difference": "Difference",
+        "coins": {
+          "title": "Coins",
+          "oneCent": "1 cent",
+          "twoCent": "2 cent",
+          "fiveCent": "5 cent",
+          "tenCent": "10 cent",
+          "twentyCent": "20 cent",
+          "fiftyCent": "50 cent",
+          "oneEuro": "1 €",
+          "twoEuro": "2 €"
+        },
+        "bills": {
+          "title": "Bills",
+          "fiveEuro": "5 €",
+          "tenEuro": "10 €",
+          "twentyEuro": "20 €",
+          "fiftyEuro": "50 €",
+          "hundredEuro": "100 €"
+        },
+        "add": "Close cash register",
+        "addSuccess": "Cash regsiter closed successfully!",
+        "addError": "Error closing cash register, please try again later",
+        "delete": "Delete cash register",
+        "deleteSuccess": "Cash register deleted successfully!",
+        "deleteError": "Error while deleting cash register, try again later",
+        "update": "Update cash register",
+        "updateSuccess": "Cash register updated successfully!",
+        "updateError": "Error while updating the cash register, please try again later",
+        "getByIdError": "An error has occurred, please try again later",
+        "noChanges": "No changes"
       }
     }
+  },
+  "home": {
+    "title": "Home"
+  },
+  "catalog": {
+    "title": "Catalog"
+  },
+  "cashRegister": {
+    "title": "Cash Register"
+  },
+  "employee": {
+    "title": "Employee"
+  },
+  "orders": {
+    "title": "Orders",
+    "myOrders": "My orders"
+  },
+  "logout": {
+    "title": "Logout"
   }
 }

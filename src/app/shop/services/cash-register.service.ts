@@ -31,7 +31,7 @@ export class CashRegisterService {
         }),
         catchError((error: undefined) => {
           this.snackbarService.showErrorSnackbar(
-            'shop.admin.options.cashRegister.getByIdError'
+            'shop.admin.cashRegister.getByIdError'
           );
           return of(error);
         })
@@ -54,13 +54,13 @@ export class CashRegisterService {
       .pipe(
         map((response: CashRegister) => {
           this.snackbarService.showSuccessSnackbar(
-            'shop.admin.options.cashRegister.addSuccess'
+            'shop.admin.cashRegister.addSuccess'
           );
           return response;
         }),
         catchError((error: undefined) => {
           this.snackbarService.showErrorSnackbar(
-            'shop.admin.options.cashRegister.addError'
+            'shop.admin.cashRegister.addError'
           );
           return of(error);
         })
@@ -79,13 +79,13 @@ export class CashRegisterService {
       .pipe(
         map((response: undefined) => {
           this.snackbarService.showSuccessSnackbar(
-            'shop.admin.options.cashRegister.updateSuccess'
+            'shop.admin.cashRegister.updateSuccess'
           );
           return response;
         }),
         catchError((error: undefined) => {
           this.snackbarService.showErrorSnackbar(
-            'shop.admin.options.cashRegister.updateError'
+            'shop.admin.cashRegister.updateError'
           );
           return of(error);
         })
@@ -101,13 +101,13 @@ export class CashRegisterService {
       .pipe(
         map((response: undefined) => {
           this.snackbarService.showSuccessSnackbar(
-            'shop.admin.options.cashRegister.deleteSuccess'
+            'shop.admin.cashRegister.deleteSuccess'
           );
           return response;
         }),
         catchError((error: undefined) => {
           this.snackbarService.showErrorSnackbar(
-            'shop.admin.options.cashRegister.deleteError'
+            'shop.admin.cashRegister.deleteError'
           );
           return of(error);
         })
