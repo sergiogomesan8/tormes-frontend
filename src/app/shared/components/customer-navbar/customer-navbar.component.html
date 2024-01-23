@@ -56,11 +56,7 @@
       <a [matMenuTriggerFor]="profileMenu">{{ customer.name }}</a>
     </div>
     <mat-menu class="profile-menu" #profileMenu="matMenu">
-      <button
-        mat-menu-item
-        (click)="logout()"
-        [translate]="'logout.title'"
-      ></button>
+      <button mat-menu-item (click)="logout()">Cerrar Sesión</button>
     </mat-menu>
 
     <shopping-cart-button
