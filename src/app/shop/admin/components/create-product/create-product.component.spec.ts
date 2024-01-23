@@ -5,15 +5,21 @@ import { ProductService } from '@shop/services/product.service';
 import { CreateProductComponent } from './create-product.component';
 import { of, throwError } from 'rxjs';
 import { SnackbarService } from '@shared/services/snackbar.service';
+import { Section } from '@shop/models/section';
+import { SectionService } from '@shop/services/section.service';
 
 describe('CreateProductComponent', () => {
   let component: CreateProductComponent;
   let mockProductService: jest.Mocked<ProductService>;
+  let mockSectionService: jest.Mocked<SectionService>;
   let mockRouter: jest.Mocked<Router>;
   let formBuilder: FormBuilder;
   let snackbarService: jest.Mocked<SnackbarService>;
 
   beforeEach(() => {
+    mockSectionService = {
+      findAllSections: jest.fn(),
+    } as any;
     mockProductService = {
       createProduct: jest.fn(),
     } as any;
@@ -30,10 +36,47 @@ describe('CreateProductComponent', () => {
 
     component = new CreateProductComponent(
       mockProductService,
+      mockSectionService,
       snackbarService,
       formBuilder,
       mockRouter
     );
+  });
+
+  const sections: Section[] = [
+    {
+      id: 'D000000001',
+      image: '../assets/images/salchichón-iberico-de-bellota.jpg',
+      name: 'Salchichón ibérico de bellota',
+    },
+    {
+      id: 'A000000002',
+      image: '../assets/images/chorizo-iberico-de-bellota.jpg',
+      name: 'Chorizo ibérico de bellota',
+    },
+  ];
+
+  describe('findAllSections', () => {
+    it('should find all sections on findAllSections', () => {
+      jest
+        .spyOn(mockSectionService, 'findAllSections')
+        .mockReturnValue(of(sections));
+
+      component.findAllSections();
+
+      expect(mockSectionService.findAllSections).toHaveBeenCalled();
+      expect(component.sections).toEqual(sections);
+    });
+
+    it('should handle error on findAllSections', () => {
+      jest
+        .spyOn(mockSectionService, 'findAllSections')
+        .mockReturnValue(throwError(() => new Error('Error')));
+
+      component.findAllSections();
+
+      expect(mockSectionService.findAllSections).toHaveBeenCalled();
+    });
   });
 
   describe('createProduct', () => {
