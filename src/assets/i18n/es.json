@@ -154,5 +154,8 @@
   "orders": {
     "title": "Pedidos",
     "myOrders": "Mis pedidos"
+  },
+  "logout": {
+    "title": "Cerrar sesión"
   }
 }

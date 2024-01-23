@@ -154,5 +154,8 @@
   "orders": {
     "title": "Orders",
     "myOrders": "My orders"
+  },
+  "logout": {
+    "title": "Logout"
   }
 }
