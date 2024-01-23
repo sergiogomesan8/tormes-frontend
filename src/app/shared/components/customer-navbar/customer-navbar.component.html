@@ -47,6 +47,11 @@
       [placeholder]="'Buscar producto..'"
     ></search-component>
 
+    <lang-selector
+      [language]="'es'"
+      (useLanguageChange)="useLanguage($event)"
+    ></lang-selector>
+
     <div class="user-info" *ngIf="customer">
       <mat-icon>person_pin</mat-icon>
       <a [matMenuTriggerFor]="profileMenu">{{ customer.name }}</a>

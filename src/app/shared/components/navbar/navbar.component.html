@@ -36,6 +36,11 @@
       [placeholder]="'Buscar producto..'"
     ></search-component>
 
+    <lang-selector
+      [language]="'es'"
+      (useLanguageChange)="useLanguage($event)"
+    ></lang-selector>
+
     <div class="authentication">
       <button-component
         [routerLink]="'/login'"
