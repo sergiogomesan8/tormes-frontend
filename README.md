@@ -42,7 +42,7 @@ To build the project. The build artifacts will be stored in the `dist/` director
 
 Run `npm run build:local` 
 
-### Running unit tests
+### Running unit tests & coverage
 To execute the unit tests with Jest.
 
 Run `npm run coverage` 
