@@ -40,11 +40,15 @@
         "register": "Sing in",
         "error": "Error login in, please try again later"
       },
+      "catalog": {
+        "title": "Catalog",
+        "lookAt": "Take a look at them"
+      },
       "orders": {
         "title": "Orders",
         "status": "Status",
         "date": "Date",
-        "total": "Total",
+        "total": "Total:",
         "deliveryAddress": "Delivery address",
         "billingAddress": "Billing address",
         "customerName": "Name",
@@ -88,6 +92,9 @@
         "price": "Price",
         "image": "Image",
         "description": "Description...",
+        "quantity": "Quantity: ",
+        "search": "Search product...",
+        "create": "Create product",
         "add": "Add product",
         "addSuccess": "Product added successfully!",
         "addError": "Error adding product, please try again later",
@@ -101,7 +108,25 @@
         "fileTypeError": "The file must be 'png', 'jpg' or 'jpeg'",
         "noChanges": "No changes"
       },
-      "sections": "Sections",
+      "sections": {
+        "title": "Sections",
+        "name": "Section name",
+        "image": "Image",
+        "search": "Search section...",
+        "create": "Create section",
+        "add": "Add section",
+        "addSuccess": "Section added successfully!",
+        "addError": "Error adding section, please try again later",
+        "delete": "Delete section",
+        "deleteSuccess": "Section deleted successfully! ",
+        "deleteError": "Error while deleting section, try again later",
+        "update": "Update section",
+        "updateSuccess": "Section updated successfully!",
+        "updateError": "Error while updating the section, please try again later",
+        "getByIdError": "An error has occurred, please try again later",
+        "fileTypeError": "The file must be 'png', 'jpg' or 'jpeg'",
+        "noChanges": "No changes"
+      },
       "cashRegister": {
         "title": "Cash Register",
         "date": "Date",
@@ -114,6 +139,7 @@
         "calculatedTotal": "Calculated total",
         "difference": "Difference",
         "coins": {
+          "title": "Coins",
           "oneCent": "1 cent",
           "twoCent": "2 cent",
           "fiveCent": "5 cent",
@@ -124,6 +150,7 @@
           "twoEuro": "2 €"
         },
         "bills": {
+          "title": "Bills",
           "fiveEuro": "5 €",
           "tenEuro": "10 €",
           "twentyEuro": "20 €",

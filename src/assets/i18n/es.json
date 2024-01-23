@@ -40,11 +40,15 @@
         "register": "Registrarse",
         "error": "Error al iniciar sesión, inténtelo de nuevo más tarde"
       },
+      "catalog": {
+        "title": "Catálogo",
+        "lookAt": "Échales un vistazo"
+      },
       "orders": {
         "title": "Pedidos",
         "status": "Estado",
         "date": "Fecha",
-        "total": "Total",
+        "total": "Total:",
         "deliveryAddress": "Dirección de entrega",
         "billingAddress": "Dirección de facturación",
         "customerName": "Nombre",
@@ -88,6 +92,9 @@
         "price": "Precio",
         "image": "Imagen",
         "description": "Descripción...",
+        "quantity": "Cantidad:",
+        "search": "Buscar producto...",
+        "create": "Crear producto",
         "add": "Añadir producto",
         "addSuccess": "Producto añadido con éxito!",
         "addError": "Error al añadir el producto, inténtelo de nuevo más tarde",
@@ -101,7 +108,25 @@
         "getByIdError": "Se ha producido un error, inténtelo de nuevo más tarde",
         "noChanges": "No hay cambios"
       },
-      "sections": "Secciones",
+      "sections": {
+        "title": "Seccciones",
+        "name": "Nombre de la sección",
+        "image": "Imagen",
+        "search": "Buscar sección...",
+        "create": "Crear sección",
+        "add": "Añadir sección",
+        "addSuccess": "Sectión añadida con éxito!",
+        "addError": "Error al añadir la sección, inténtelo de nuevo más tarde",
+        "delete": "Eliminar sección",
+        "deleteSuccess": "Sección eliminada con éxito!",
+        "deleteError": "Error al eliminar la sección, inténtelo de nuevo más tarde",
+        "update": "Actualizar sección",
+        "updateSuccess": "Sección actualizada con éxito!",
+        "updateError": "Error al actualizar la sección, inténtelo de nuevo más tarde",
+        "fileTypeError": "El archivo debe ser 'png', 'jpg' o 'jpeg'",
+        "getByIdError": "Se ha producido un error, inténtelo de nuevo más tarde",
+        "noChanges": "No hay cambios"
+      },
       "cashRegister": {
         "title": "Caja Registradora",
         "date": "Fecha",
@@ -114,6 +139,7 @@
         "calculatedTotal": "Total calculado",
         "difference": "Diferencia",
         "coins": {
+          "title": "Monedas",
           "oneCent": "1 cent",
           "twoCent": "2 cent",
           "fiveCent": "5 cent",
@@ -124,6 +150,7 @@
           "twoEuro": "2 €"
         },
         "bills": {
+          "title": "Billetes",
           "fiveEuro": "5 €",
           "tenEuro": "10 €",
           "twentyEuro": "20 €",
