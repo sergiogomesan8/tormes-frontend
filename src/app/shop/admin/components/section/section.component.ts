@@ -131,7 +131,7 @@ export class SectionComponent implements OnInit {
     if (data.error) {
       console.log('Error', data.error);
       this.snackbarService.showErrorSnackbar(
-        'shop.admin.products.fileTypeError'
+        'shop.admin.sections.fileTypeError'
       );
     } else if (data.file) {
       this.formGroup.get('image')?.setValue(data.file);

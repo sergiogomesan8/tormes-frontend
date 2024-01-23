@@ -196,7 +196,7 @@ describe('SectionComponent', () => {
       const error = 'Test error';
       component.handleFile({ error });
       expect(snackbarService.showErrorSnackbar).toHaveBeenCalledWith(
-        'shop.admin.products.fileTypeError'
+        'shop.admin.sections.fileTypeError'
       );
     });
   });
