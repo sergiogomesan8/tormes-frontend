@@ -7,7 +7,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ### Web
 
-`https://tormes-frontend.netlify.app/catalog/`
+Customer: `https://tormes-frontend.netlify.app/catalog`
+Admin: `https://tormes-frontend.netlify.app/admin`
 
 ### Admin Credentials:
 
