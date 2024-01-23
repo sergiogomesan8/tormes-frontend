@@ -109,13 +109,13 @@
         "noChanges": "No hay cambios"
       },
       "sections": {
-        "title": "Seccciones",
+        "title": "Secciones",
         "name": "Nombre de la sección",
         "image": "Imagen",
         "search": "Buscar sección...",
         "create": "Crear sección",
         "add": "Añadir sección",
-        "addSuccess": "Sectión añadida con éxito!",
+        "addSuccess": "Sección añadida con éxito!",
         "addError": "Error al añadir la sección, inténtelo de nuevo más tarde",
         "delete": "Eliminar sección",
         "deleteSuccess": "Sección eliminada con éxito!",
