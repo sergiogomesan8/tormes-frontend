@@ -1,30 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SnackbarService } from '@shared/services/snackbar.service';
 import { CreateProductDto } from '@shop/admin/dtos/product.dto';
 import { Section } from '@shop/models/section';
 import { ProductService } from '@shop/services/product.service';
+import { SectionService } from '@shop/services/section.service';
 
 @Component({
   selector: 'app-create-product',
   templateUrl: './create-product.component.html',
   styleUrls: ['./create-product.component.scss'],
 })
-export class CreateProductComponent {
+export class CreateProductComponent implements OnInit {
   formGroup: FormGroup;
   loading: boolean = false;
   hidePass = true;
 
-  sections: Section[] = [
-    { name: 'Embutidos', image: 'image' },
-    { name: 'Carnes', image: 'image' },
-    { name: 'Fiambres', image: 'image' },
-    { name: 'Quesos', image: 'image' },
-  ];
+  sections: Section[] = [];
 
   constructor(
     private readonly productService: ProductService,
+    private readonly sectionService: SectionService,
     private readonly snackbarService: SnackbarService,
     private readonly formBuilder: FormBuilder,
     private router: Router
@@ -40,6 +37,9 @@ export class CreateProductComponent {
       image: ['', [Validators.required]],
     });
   }
+  ngOnInit(): void {
+    this.findAllSections();
+  }
 
   handleFile(data: { file?: File; error?: string }) {
     if (data.error) {
@@ -50,6 +50,17 @@ export class CreateProductComponent {
     } else if (data.file) {
       this.formGroup.get('image')?.setValue(data.file);
     }
+  }
+
+  findAllSections() {
+    this.sectionService.findAllSections().subscribe({
+      next: (sections) => {
+        this.sections = sections;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
 
   createProduct(): void {
