@@ -3,14 +3,18 @@ import { of, throwError } from 'rxjs';
 import { CatalogComponent } from './catalog.component';
 import { ProductService } from '@shop/services/product.service';
 import { Product } from '@shop/models/product';
+import { Section } from '@shop/models/section';
+import { SectionService } from '@shop/services/section.service';
 
 describe('CatalogComponent', () => {
   let component: CatalogComponent;
   let productService: ProductService;
+  let sectionService: SectionService;
 
   beforeEach(() => {
     productService = { findAllProducts: jest.fn() } as any;
-    component = new CatalogComponent('browser', productService);
+    sectionService = { findAllSections: jest.fn() } as any;
+    component = new CatalogComponent('browser', productService, sectionService);
   });
 
   const products: Product[] = [
@@ -32,13 +36,25 @@ describe('CatalogComponent', () => {
     },
   ];
 
+  const sections: Section[] = [
+    {
+      id: 'D000000001',
+      image: '../assets/images/salchichón-iberico-de-bellota.jpg',
+      name: 'Salchichón ibérico de bellota',
+    },
+    {
+      id: 'A000000002',
+      image: '../assets/images/chorizo-iberico-de-bellota.jpg',
+      name: 'Chorizo ibérico de bellota',
+    },
+  ];
+
   describe('ngOnInit', () => {
     it('should call findAllProducts on init', () => {
       jest
         .spyOn(productService, 'findAllProducts')
         .mockReturnValue(of(products));
 
-      component.ngOnInit();
       component.findAllProducts();
 
       expect(productService.findAllProducts).toHaveBeenCalled();
@@ -53,6 +69,27 @@ describe('CatalogComponent', () => {
       component.findAllProducts();
 
       expect(productService.findAllProducts).toHaveBeenCalled();
+    });
+
+    it('should call findAllSections on init', () => {
+      jest
+        .spyOn(sectionService, 'findAllSections')
+        .mockReturnValue(of(sections));
+
+      component.findAllSections();
+
+      expect(sectionService.findAllSections).toHaveBeenCalled();
+      expect(component.sections).toEqual(sections);
+    });
+
+    it('should handle error on findAllSections', () => {
+      jest
+        .spyOn(sectionService, 'findAllSections')
+        .mockReturnValue(throwError(() => new Error('Error')));
+
+      component.findAllSections();
+
+      expect(sectionService.findAllSections).toHaveBeenCalled();
     });
   });
 

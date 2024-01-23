@@ -7,10 +7,13 @@ import { SnackbarService } from '@shared/services/snackbar.service';
 import { Product } from '@shop/models/product';
 import { of, throwError } from 'rxjs';
 import { UpdateProductDto } from '@shop/admin/dtos/product.dto';
+import { SectionService } from '@shop/services/section.service';
+import { Section } from '@shop/models/section';
 
 describe('UpdateProductComponent', () => {
   let component: UpdateProductComponent;
   let mockProductService: jest.Mocked<ProductService>;
+  let mockSectionService: jest.Mocked<SectionService>;
   let mockRouter: jest.Mocked<Router>;
   let formBuilder: FormBuilder;
   let route: ActivatedRoute;
@@ -20,6 +23,10 @@ describe('UpdateProductComponent', () => {
     mockProductService = {
       updateProduct: jest.fn(),
       findProductById: jest.fn(),
+    } as any;
+
+    mockSectionService = {
+      findAllSections: jest.fn(),
     } as any;
 
     mockRouter = {
@@ -42,6 +49,7 @@ describe('UpdateProductComponent', () => {
 
     component = new UpdateProductComponent(
       mockProductService,
+      mockSectionService,
       snackbarService,
       formBuilder,
       mockRouter,
@@ -58,6 +66,19 @@ describe('UpdateProductComponent', () => {
     image: 'test',
   };
 
+  const sections: Section[] = [
+    {
+      id: 'D000000001',
+      image: '../assets/images/salchichón-iberico-de-bellota.jpg',
+      name: 'Salchichón ibérico de bellota',
+    },
+    {
+      id: 'A000000002',
+      image: '../assets/images/chorizo-iberico-de-bellota.jpg',
+      name: 'Chorizo ibérico de bellota',
+    },
+  ];
+
   describe('ngOnInit', () => {
     it('should initialize form with product data if product id is present', () => {
       const testProduct: Product = {
@@ -69,6 +90,9 @@ describe('UpdateProductComponent', () => {
         image: 'Test Image',
       };
 
+      jest
+        .spyOn(mockSectionService, 'findAllSections')
+        .mockReturnValue(of(sections));
       mockProductService.findProductById.mockReturnValue(of(testProduct));
 
       component.ngOnInit();
@@ -81,24 +105,55 @@ describe('UpdateProductComponent', () => {
         description: testProduct.description,
         image: testProduct.image,
       });
+      expect(component.sections).toEqual(sections);
       expect(mockRouter.navigate).not.toHaveBeenCalled();
     });
 
     it('should navigate to /admin/products if product id is not present', () => {
+      jest
+        .spyOn(mockSectionService, 'findAllSections')
+        .mockReturnValue(of(sections));
       route.snapshot.paramMap.get = jest.fn().mockImplementation(() => null);
 
       component.ngOnInit();
 
+      expect(component.sections).toEqual(sections);
       expect(route.snapshot.paramMap.get).toHaveBeenCalledWith('id');
       expect(mockRouter.navigate).toHaveBeenCalledWith(['/admin/products']);
     });
 
     it('should navigate to /admin/products if product is not found', () => {
+      jest
+        .spyOn(mockSectionService, 'findAllSections')
+        .mockReturnValue(of(sections));
       mockProductService.findProductById.mockReturnValue(of(undefined));
 
       component.ngOnInit();
-
+      expect(component.sections).toEqual(sections);
       expect(mockRouter.navigate).toHaveBeenCalledWith(['/admin/products']);
+    });
+  });
+
+  describe('findAllSections', () => {
+    it('should find all sections on findAllSections', () => {
+      jest
+        .spyOn(mockSectionService, 'findAllSections')
+        .mockReturnValue(of(sections));
+
+      component.findAllSections();
+
+      expect(mockSectionService.findAllSections).toHaveBeenCalled();
+      expect(component.sections).toEqual(sections);
+    });
+
+    it('should handle error on findAllSections', () => {
+      jest
+        .spyOn(mockSectionService, 'findAllSections')
+        .mockReturnValue(throwError(() => new Error('Error')));
+
+      component.findAllSections();
+
+      expect(mockSectionService.findAllSections).toHaveBeenCalled();
     });
   });
 

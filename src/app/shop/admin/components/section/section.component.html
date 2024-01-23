@@ -1,0 +1,66 @@
+<div id="section">
+  <div class="section-container">
+    <div class="header-panel">
+      <fa-icon
+        class="close-icon"
+        routerLink="../../"
+        [icon]="['fas', 'times']"
+      ></fa-icon>
+
+      <button-component
+        *ngIf="!section"
+        [label]="'shop.admin.dashboard.options.sections.add' | translate"
+        [class]="'purple-button'"
+        [type]="'submit'"
+        [disabled]="!formGroup.valid"
+        (click)="createSection()"
+      >
+        <mat-icon>add</mat-icon>
+      </button-component>
+
+      <button-component
+        *ngIf="section"
+        [label]="'shop.admin.dashboard.options.sections.update' | translate"
+        [class]="'purple-button'"
+        [type]="'submit'"
+        [disabled]="!formGroup.valid"
+        (click)="updateSection()"
+      >
+        <mat-icon>edit</mat-icon>
+      </button-component>
+    </div>
+    <div class="form-creation">
+      <div class="form-header">
+        <h3>Section</h3>
+      </div>
+      <form
+        class="form-container row"
+        [formGroup]="formGroup"
+        fxLayout="column"
+        fxLayoutAlign="start center"
+      >
+        <div class="col-sm-12 col-md-6">
+          <mat-form-field appearance="outline" class="col-12">
+            <mat-label
+              [translate]="'shop.admin.dashboard.options.products.name'"
+            ></mat-label>
+            <input
+              matInput
+              formControlName="name"
+              ng-model="data.name"
+              required
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="image-picker col-sm-12 col-md-6">
+          <file-upload-component
+            [label]="'shop.admin.dashboard.options.products.image' | translate"
+            (fileSelected)="handleFile($event)"
+          ></file-upload-component>
+        </div>
+      </form>
+      <div class="form-submit"></div>
+    </div>
+  </div>
+</div>

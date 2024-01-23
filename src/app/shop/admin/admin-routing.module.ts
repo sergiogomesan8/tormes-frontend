@@ -10,6 +10,8 @@ import { UpdateProductComponent } from './components/update-product/update-produ
 import { OrderTableComponent } from './components/order-table/order-table.component';
 import { CashRegistersComponent } from './components/cash-registers/cash-registers.component';
 import { CashRegisterComponent } from './components/cash-register/cash-register.component';
+import { SectionsComponent } from './components/sections/sections.component';
+import { SectionComponent } from './components/section/section.component';
 
 const routes: Routes = [
   {
@@ -32,6 +34,18 @@ const routes: Routes = [
       {
         path: 'cash-registers/update/:id',
         component: CashRegisterComponent,
+      },
+      {
+        path: 'sections',
+        component: SectionsComponent,
+      },
+      {
+        path: 'sections/create-section',
+        component: SectionComponent,
+      },
+      {
+        path: 'sections/update-section/:id',
+        component: SectionComponent,
       },
     ],
   },
